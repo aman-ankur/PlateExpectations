@@ -2,19 +2,28 @@ import { Dish } from './types'
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 
-async function callOpenAI(messages: Array<{ role: string; content: unknown }>, model = 'gpt-4o') {
+async function callOpenAI(
+  messages: Array<{ role: string; content: unknown }>,
+  model = 'gpt-4o',
+  jsonMode = false,
+) {
+  const body: Record<string, unknown> = {
+    model,
+    messages,
+    max_tokens: 4096,
+    temperature: 0.3,
+  }
+  if (jsonMode) {
+    body.response_format = { type: 'json_object' }
+  }
+
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${OPENAI_API_KEY}`,
     },
-    body: JSON.stringify({
-      model,
-      messages,
-      max_tokens: 4096,
-      temperature: 0.3,
-    }),
+    body: JSON.stringify(body),
   })
 
   if (!res.ok) {
@@ -35,7 +44,7 @@ export async function extractMenuItems(imageBase64: string): Promise<string> {
 - The price (if visible)
 - Any description text
 
-Return as JSON array: [{"name_local": "...", "price": "...", "description_local": "..."}]
+Return as JSON: {"items": [{"name_local": "...", "price": "...", "description_local": "..."}]}
 If you can't read the menu or it's not a menu image, return {"error": "Could not read menu"}.`,
     },
     {
@@ -48,7 +57,7 @@ If you can't read the menu or it's not a menu image, return {"error": "Could not
         { type: 'text', text: 'Extract all menu items from this image.' },
       ],
     },
-  ], 'gpt-4o')
+  ], 'gpt-4o', true)
 
   return content
 }
@@ -59,27 +68,30 @@ export async function enrichDishes(menuItemsJson: string, preferencesJson: strin
       role: 'system',
       content: `You are a food expert specializing in Southeast and East Asian cuisine, helping Indian travelers understand foreign menus.
 
-Given extracted menu items (in original language), translate and enrich each dish. Return a JSON array of dishes with this exact structure for each:
+Given extracted menu items (in original language), translate and enrich each dish. Return JSON with this structure:
 
-{
-  "id": "unique-id",
-  "nameEnglish": "English name",
-  "nameLocal": "Original script name",
-  "description": "Short 1-2 sentence English description",
-  "country": "Country of origin (Vietnam/Thailand/Korea/Japan/Indonesia)",
-  "price": "Price as shown on menu",
-  "dietaryType": "veg" | "non-veg" | "jain-safe",
-  "allergens": ["list of common allergens present"],
-  "ingredients": [
-    {"name": "ingredient name", "category": "protein|vegetable|sauce|carb|dairy|spice|other", "isUnfamiliar": true/false, "explanation": "simple explanation if unfamiliar"}
-  ],
-  "nutrition": {"protein": grams, "carbs": grams, "fat": grams, "fiber": grams, "kcal": number},
-  "explanation": "Conversational explanation of the dish written for an Indian traveler who has never seen it",
-  "culturalTerms": [{"term": "local term", "explanation": "simple English explanation"}],
-  "rankScore": 0-30 popularity/recommendation score
-}
+{"dishes": [
+  {
+    "id": "dish-1",
+    "nameEnglish": "English name",
+    "nameLocal": "Original script name",
+    "description": "Short 1-2 sentence English description",
+    "country": "Country of origin (Vietnam/Thailand/Korea/Japan/Indonesia)",
+    "price": "Price as shown on menu",
+    "dietaryType": "veg" or "non-veg" or "jain-safe",
+    "allergens": ["list of common allergens present"],
+    "ingredients": [
+      {"name": "ingredient name", "category": "protein" or "vegetable" or "sauce" or "carb" or "dairy" or "spice" or "other", "isUnfamiliar": true or false, "explanation": "simple explanation if unfamiliar"}
+    ],
+    "nutrition": {"protein": 10, "carbs": 30, "fat": 8, "fiber": 3, "kcal": 350},
+    "explanation": "Conversational explanation of the dish written for an Indian traveler who has never seen it",
+    "culturalTerms": [{"term": "local term", "explanation": "simple English explanation"}],
+    "rankScore": 15
+  }
+]}
 
 Important:
+- Use sequential IDs like "dish-1", "dish-2", etc.
 - Be accurate about dietary classification (veg means absolutely no meat/eggs)
 - Flag common allergens: egg, soy, sesame, peanut, shellfish, gluten, dairy
 - Mark ingredients as "isUnfamiliar" if an average Indian traveler wouldn't know them
@@ -88,13 +100,17 @@ Important:
     },
     {
       role: 'user',
-      content: `Menu items:\n${menuItemsJson}\n\nUser preferences:\n${preferencesJson}\n\nTranslate, enrich, and return the full dish data as JSON array.`,
+      content: `Menu items:\n${menuItemsJson}\n\nUser preferences:\n${preferencesJson}\n\nTranslate, enrich, and return as JSON.`,
     },
-  ])
+  ], 'gpt-4o', true)
 
-  // Parse the JSON from GPT response
-  const jsonMatch = content.match(/\[[\s\S]*\]/)
-  if (!jsonMatch) throw new Error('Failed to parse dish data from AI response')
-
-  return JSON.parse(jsonMatch[0])
+  try {
+    const parsed = JSON.parse(content)
+    return parsed.dishes || (Array.isArray(parsed) ? parsed : [parsed])
+  } catch {
+    // Fallback: try to extract JSON from response
+    const arrayMatch = content.match(/\[[\s\S]*\]/)
+    if (arrayMatch) return JSON.parse(arrayMatch[0])
+    throw new Error('Failed to parse dish data from AI response')
+  }
 }
