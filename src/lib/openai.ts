@@ -10,7 +10,7 @@ async function callOpenAI(
   const body: Record<string, unknown> = {
     model,
     messages,
-    max_tokens: 4096,
+    max_tokens: 16384,
     temperature: 0.3,
   }
   if (jsonMode) {
@@ -108,9 +108,19 @@ Important:
     const parsed = JSON.parse(content)
     return parsed.dishes || (Array.isArray(parsed) ? parsed : [parsed])
   } catch {
-    // Fallback: try to extract JSON from response
-    const arrayMatch = content.match(/\[[\s\S]*\]/)
-    if (arrayMatch) return JSON.parse(arrayMatch[0])
+    // Try to recover truncated JSON by extracting complete dish objects
+    const dishMatches = content.match(/\{[^{}]*"id"\s*:\s*"dish-\d+"[^{}]*(?:\{[^{}]*\}[^{}]*)*\}/g)
+    if (dishMatches && dishMatches.length > 0) {
+      const dishes: Dish[] = []
+      for (const match of dishMatches) {
+        try {
+          dishes.push(JSON.parse(match))
+        } catch {
+          // Skip malformed dish
+        }
+      }
+      if (dishes.length > 0) return dishes
+    }
     throw new Error('Failed to parse dish data from AI response')
   }
 }
