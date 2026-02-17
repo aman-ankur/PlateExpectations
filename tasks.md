@@ -11,15 +11,17 @@
 - [x] Set up Zustand store for app state
 - [x] First-launch detection — show Preferences on first visit
 
-## Phase 2: Menu Scan Pipeline — DONE (skeleton)
+## Phase 2: Menu Scan Pipeline — DONE
 
 - [x] Create `/api/scan` route (GPT-4o Vision OCR → GPT-4o enrichment → ranked JSON)
 - [x] Define TypeScript types (Dish, Ingredient, CulturalTerm, Preferences)
 - [x] Wire Home → upload → `/api/scan` → Results
 - [x] Loading state UI (skeleton cards)
 - [x] Error states (bad image, API error)
+- [x] Increased max_tokens to 16384 for large menus (17+ items)
+- [x] Robust JSON parsing with truncation recovery
 
-## Phase 3: Results List — DONE (skeleton)
+## Phase 3: Results List — DONE
 
 - [x] Menu Detected screen (header, back arrow, item count)
 - [x] Dish card component (rank badge, name, local script, description, price, chevron)
@@ -28,7 +30,7 @@
 
 ## Phase 4: Dish Detail View — DONE (skeleton)
 
-- [x] Hero image section with fallback
+- [x] Hero image section with fallback (emoji placeholder — no real images yet)
 - [x] Floating ingredient badges (color-coded)
 - [x] Country label + dish name + local script
 - [x] Status tags (dietary, allergens, macro)
@@ -38,34 +40,38 @@
 - [x] Unfamiliar terms section
 - [x] Back navigation
 
+## P1 Fixes — DONE
+
+- [x] Client-side image compression (1200px max, JPEG 0.7 quality)
+- [x] End-to-end test with real OpenAI API + Korean Kitchen menu (17 dishes)
+- [x] GPT JSON mode enabled for reliable parsing
+- [x] Truncated JSON recovery for large menus
+- [x] Settings page with gear icon on home screen
+- [x] `error.tsx` + `loading.tsx` in route segments
+- [x] Hydration fix (mounted guard for localStorage-dependent UI)
+- [x] Console logging in scan API for debugging
+
 ---
 
 ## Remaining Work (by priority)
 
-### P1: End-to-end testing & fixes
-- [x] Add client-side image compression before upload (max ~1MB base64)
-- [ ] Test full flow with real OpenAI API key + real menu photo
-- [x] Fix API response parsing issues (GPT JSON mode + robust fallback parsing)
-- [ ] Handle large menus (pagination or batch limits)
+### P2: Speed & Images (NEXT — new branch)
+- [ ] Combine OCR + enrichment into single GPT-4o Vision call (eliminate 2nd API call)
+- [ ] Fetch real dish images (Unsplash/Wikipedia/web search)
+- [ ] Annotate dish images with ingredient overlays
+- [ ] AI-generated fallback images when no photo found
+- [ ] Image caching strategy
 
-### P2: UI polish to match mockups
+### P3: UI polish to match mockups
 - [ ] Home screen — match mockup spacing, button sizing, icon weight
 - [ ] Preferences — match mockup grid layout, selected state styling
 - [ ] Results list — card spacing, rank badge positioning, typography sizing
 - [ ] Dish detail — hero image aspect ratio, floating badge layout, nutrition grid alignment, tooltip animations
 
-### P3: Missing app features
-- [x] Settings page — way to re-edit preferences after onboarding
+### P4: Missing app features
 - [ ] Basic service worker for PWA install (offline app shell)
-- [x] `error.tsx` error boundaries in route segments
-- [x] `loading.tsx` loading states in route segments
 - [ ] PWA icons (192px + 512px)
-
-### P4: Phase 5 — Dish images
-- [ ] Integrate web image search for real dish photos (in enrichment pipeline)
-- [ ] AI-generated fallback via DALL-E when no photo found
-- [ ] Image caching strategy
-- [ ] "Illustration" badge on AI-generated images
+- [ ] Handle very large menus (20+ items — pagination or batch)
 
 ### P5: Future
 - [ ] Offline mode (cache scan results, service worker data caching)

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import { compressImage } from '@/lib/compress'
@@ -9,7 +9,10 @@ export default function HomePage() {
   const router = useRouter()
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [preview, setPreview] = useState<string | null>(null)
+  const [mounted, setMounted] = useState(false)
   const { preferences, setMenuImage } = useStore()
+
+  useEffect(() => setMounted(true), [])
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -42,7 +45,7 @@ export default function HomePage() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center px-6 py-12">
       {/* Settings gear */}
-      {preferences.hasCompletedOnboarding && (
+      {mounted && preferences.hasCompletedOnboarding && (
         <button
           onClick={() => router.push('/settings')}
           className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-pe-surface"
