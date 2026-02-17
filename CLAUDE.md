@@ -139,6 +139,14 @@ Zustand store with two slices:
    { dishes: Dish[], isLoading: boolean, error: string | null, selectedDishId: string | null }
    ```
 
+## Git Workflow
+
+- **`main` branch is protected** — must always be in a working/deployable state
+- **All major feature work must happen on a new branch** (e.g., `feat/dish-images`, `fix/ocr-parsing`)
+- Branch naming: `feat/<name>`, `fix/<name>`, `refactor/<name>`
+- Merge to main only after verifying the build passes (`npm run build`)
+- Small config/docs changes can go directly to main
+
 ## Key Rules
 
 - Never hardcode OpenAI API keys — use `OPENAI_API_KEY` env var
@@ -147,3 +155,20 @@ Zustand store with two slices:
 - Image uploads: compress client-side before sending to API (max 1MB)
 - All AI prompts live in `/lib/openai.ts` for easy iteration
 - Use `loading.tsx` and `error.tsx` in route segments for loading/error states
+
+## ⚙️ COMMON COMMANDS
+- Build: `npm run build`
+- Test: `npm test`
+- Lint: `npm run lint`
+- Deploy: `vercel deploy`
+- Local dev: `npm run dev`
+
+## 🐝 AGENT/SKILL INTEGRATION (Advanced)
+- Load "UX" skill for design tasks: See .claude/skills/ux.yaml
+- Use subagents for parallel work: e.g., "Designer" for UI, "Tester" for bugs
+- Hooks: Auto-run linter after edits
+
+## 📝 MAINTENANCE NOTES
+- Update this file after sessions if Claude repeats mistakes
+- Reference /research/ for APIs; /examples/ for patterns
+- Keep under 200 lines - move details to sub-CLAUDE.md or other files
