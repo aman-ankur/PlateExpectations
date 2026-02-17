@@ -1,67 +1,73 @@
 # Plate Expectations — Task Breakdown
 
-## Phase 1: PWA Scaffold & Foundations
+## Phase 1: PWA Scaffold & Foundations — DONE
 
 - [x] Initialize Next.js 14 project with App Router, TypeScript, Tailwind CSS
-- [ ] Configure PWA manifest (`manifest.json`) + basic service worker
-- [ ] Define dark theme design tokens in Tailwind config (colors, typography, spacing)
-- [ ] Create shared layout component (dark background, mobile-first max-width)
-- [ ] Build Home/Scan screen
-  - [ ] App title + tagline
-  - [ ] Dashed-border upload zone with camera icon
-  - [ ] "Choose Photo" button — triggers `<input type="file" accept="image/*" capture="environment">`
-  - [ ] Image preview after selection
-  - [ ] Navigation to results (wired in Phase 2)
-- [ ] Build Preferences screen
-  - [ ] Protein multi-select grid (Chicken, Beef, Pork, Seafood)
-  - [ ] Spice tolerance single-select (Mild, Medium, Spicy, Any)
-  - [ ] Dietary mode selector (Veg, Non-Veg, Jain)
-  - [ ] Restrictions toggles (Halal, No Beef, No Pork)
-  - [ ] Allergy multi-select (Egg, Soy, Sesame, Peanut, Shellfish, Gluten)
-  - [ ] Continue + Skip buttons
-  - [ ] Persist to localStorage
-- [ ] Set up Zustand store for app state (preferences, scan results, current dish)
-- [ ] First-launch detection — show Preferences on first visit, then Home
+- [x] Configure PWA manifest (`manifest.json`)
+- [x] Define dark theme design tokens in Tailwind config
+- [x] Create shared layout component (dark background, mobile-first max-width)
+- [x] Build Home/Scan screen (title, tagline, upload zone, camera capture, image preview)
+- [x] Build Preferences screen (protein grid, spice, diet, restrictions, allergies, localStorage)
+- [x] Set up Zustand store for app state
+- [x] First-launch detection — show Preferences on first visit
 
-## Phase 2: Menu Scan Pipeline
+## Phase 2: Menu Scan Pipeline — DONE (skeleton)
 
-- [ ] Create `/api/scan` route
-  - [ ] Accept image upload (multipart form data or base64)
-  - [ ] Call GPT-4o Vision for OCR extraction
-  - [ ] Call GPT-4o for translation, enrichment, dietary classification
-  - [ ] Return structured JSON array of dishes
-- [ ] Define TypeScript types for Dish, Ingredient, NutritionEstimate, CulturalTerm
-- [ ] Wire Home screen "Choose Photo" → upload → `/api/scan` → navigate to results
-- [ ] Loading state UI (skeleton cards while processing)
-- [ ] Error states (no dishes found, bad image, API error)
+- [x] Create `/api/scan` route (GPT-4o Vision OCR → GPT-4o enrichment → ranked JSON)
+- [x] Define TypeScript types (Dish, Ingredient, CulturalTerm, Preferences)
+- [x] Wire Home → upload → `/api/scan` → Results
+- [x] Loading state UI (skeleton cards)
+- [x] Error states (bad image, API error)
 
-## Phase 3: Results List
+## Phase 3: Results List — DONE (skeleton)
 
-- [ ] Build Menu Detected screen
-  - [ ] Header with back arrow + "X items identified"
-  - [ ] Dish card component (rank badge, name, local script, description, price, chevron)
-  - [ ] Gold badge system ("TOP PICK FOR YOU", "#2 FOR YOU", etc.)
-- [ ] Implement ranking algorithm
-  - [ ] Hard filter: flag dietary violations
-  - [ ] Soft rank: protein preference match, spice tolerance match, GPT popularity
-- [ ] Tap card → navigate to Dish Detail
+- [x] Menu Detected screen (header, back arrow, item count)
+- [x] Dish card component (rank badge, name, local script, description, price, chevron)
+- [x] Ranking algorithm (hard dietary filter, soft protein/spice rank, GPT score)
+- [x] Tap card → Dish Detail navigation
 
-## Phase 4: Dish Detail View
+## Phase 4: Dish Detail View — DONE (skeleton)
 
-- [ ] Build Dish Detail screen
-  - [ ] Hero image section (placeholder/fallback)
-  - [ ] Floating ingredient badges (color-coded overlays)
-  - [ ] Country label + dish name + local script
-  - [ ] Status tags row (dietary, allergens, macro)
-  - [ ] "What is this dish?" card
-  - [ ] Nutrition card (4-column grid + kcal footer)
-  - [ ] Ingredients chip list with `?` icon for unfamiliar terms
-  - [ ] Unfamiliar terms section — tappable chips with tooltip/modal explanations
-- [ ] Back navigation to results list
+- [x] Hero image section with fallback
+- [x] Floating ingredient badges (color-coded)
+- [x] Country label + dish name + local script
+- [x] Status tags (dietary, allergens, macro)
+- [x] "What is this dish?" card
+- [x] Nutrition card (4-column + kcal)
+- [x] Ingredients chip list with `?` tooltips
+- [x] Unfamiliar terms section
+- [x] Back navigation
 
-## Phase 5: Dish Images
+---
 
-- [ ] Integrate image search for real dish photos
-- [ ] AI-generated fallback via DALL-E (or similar)
-- [ ] Image caching (URL-based, avoid re-fetching)
+## Remaining Work (by priority)
+
+### P1: End-to-end testing & fixes
+- [x] Add client-side image compression before upload (max ~1MB base64)
+- [ ] Test full flow with real OpenAI API key + real menu photo
+- [x] Fix API response parsing issues (GPT JSON mode + robust fallback parsing)
+- [ ] Handle large menus (pagination or batch limits)
+
+### P2: UI polish to match mockups
+- [ ] Home screen — match mockup spacing, button sizing, icon weight
+- [ ] Preferences — match mockup grid layout, selected state styling
+- [ ] Results list — card spacing, rank badge positioning, typography sizing
+- [ ] Dish detail — hero image aspect ratio, floating badge layout, nutrition grid alignment, tooltip animations
+
+### P3: Missing app features
+- [x] Settings page — way to re-edit preferences after onboarding
+- [ ] Basic service worker for PWA install (offline app shell)
+- [x] `error.tsx` error boundaries in route segments
+- [x] `loading.tsx` loading states in route segments
+- [ ] PWA icons (192px + 512px)
+
+### P4: Phase 5 — Dish images
+- [ ] Integrate web image search for real dish photos (in enrichment pipeline)
+- [ ] AI-generated fallback via DALL-E when no photo found
+- [ ] Image caching strategy
 - [ ] "Illustration" badge on AI-generated images
+
+### P5: Future
+- [ ] Offline mode (cache scan results, service worker data caching)
+- [ ] Scan history (saved menus)
+- [ ] Community ratings/tips

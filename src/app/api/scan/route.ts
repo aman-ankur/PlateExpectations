@@ -20,8 +20,18 @@ export async function POST(req: NextRequest) {
     const menuItemsJson = await extractMenuItems(image)
 
     // Check for OCR error
-    if (menuItemsJson.includes('"error"')) {
-      return NextResponse.json({ error: 'Could not read menu from image. Try a clearer photo.' }, { status: 422 })
+    try {
+      const parsed = JSON.parse(menuItemsJson)
+      if (parsed.error) {
+        return NextResponse.json({ error: 'Could not read menu from image. Try a clearer photo.' }, { status: 422 })
+      }
+      // Normalize to items array string for enrichment
+      const items = parsed.items || parsed
+      if (!Array.isArray(items) || items.length === 0) {
+        return NextResponse.json({ error: 'No menu items found. Try a different photo.' }, { status: 422 })
+      }
+    } catch {
+      // If JSON parsing fails, pass raw text to enrichment anyway
     }
 
     // Step 2: Translate & enrich
