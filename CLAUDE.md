@@ -20,7 +20,7 @@ src/app/
   page.tsx                  — Home / Scan screen (camera upload)
   preferences/page.tsx      — Dietary preferences onboarding
   results/page.tsx          — Menu results list (streaming, progressive loading)
-  dish/[id]/page.tsx        — Dish detail (hero image, badges, nutrition)
+  dish/[id]/page.tsx        — Dish detail (immersive 55vh hero, infographic badges, nutrition)
   settings/page.tsx         — Edit preferences
   api/scan/route.ts         — NDJSON streaming scan pipeline
   api/dish-image/route.ts   — Vision-validated dish image search + DALL-E fallback
@@ -98,6 +98,14 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - Validate candidates in parallel (batches of 3) to avoid sequential latency
 - Food-related filenames (soup, kimchi, ramen) can skip Vision — high confidence from filename alone
 - Unsplash returns generic food photos — must be Vision-validated too
+- **Non-food rejection**: Filename heuristic rejects concert/crowd/people/band/stadium images before Vision. Vision prompt explicitly asks "if this is not food at all, answer NO" to catch non-food images that slip through filename filters.
+
+### Dish Detail Hero
+- Immersive hero: `h-[55vh] min-h-[320px]` with heavy gradient (`from-[#0f0f0f] via-[#0f0f0f]/70 via-40% to-transparent`) blending into page background
+- Dish name, local name, country label, and dietary tags all sit inside the gradient zone at the bottom — no sharp boundary between image and content
+- Ingredient badges use infographic-style scattered positioning across the image (8 fixed positions avoiding back button and text zones), NOT a scrollable row
+- Badge backgrounds are subtle (`bg-black/30`) with muted category-colored dots — food should be the hero, not the badges
+- `IngredientBadge` component supports tap-to-explain for unfamiliar ingredients
 
 ### Common Bugs to Watch For
 - **Hydration errors**: Any component reading localStorage must use a `mounted` state guard
