@@ -108,7 +108,7 @@
 - **What**: Compare each screen against design mockups, fix spacing/sizing/colors
 - **Why**: Current UI is functional but not polished
 - **How**: Screen-by-screen comparison with mockups
-- **Status**: TODO
+- **Status**: IN PROGRESS — Dish detail hero redesigned (immersive 55vh hero, infographic badges, gradient overlay with text)
 
 ### 4.2 Camera integration
 - **What**: Direct camera capture instead of file upload picker
