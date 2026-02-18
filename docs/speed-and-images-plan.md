@@ -86,6 +86,14 @@ OpenAI token generation speed is the bottleneck, not network or image processing
 
 Phase A → Phase B → Phase C (sequential — each builds on the previous)
 
+## Status
+
+All three phases implemented and committed on `feat/speed-and-images`:
+
+- **Phase A** (Speed): Parallel batch pipeline — ~40s for 17 dishes (down from 90s)
+- **Phase B** (Images): Wikimedia Commons search, ~1s/image, cached in store
+- **Phase C** (Annotations): Ingredient badges positioned at image corners/edges
+
 ## Verification
 
 - Korean Kitchen menu (17 items): should complete in ~15-20 seconds (down from 55-90s)
