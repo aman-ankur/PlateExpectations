@@ -29,6 +29,11 @@ interface AppState {
   // Image
   menuImage: string | null
   setMenuImage: (image: string | null) => void
+
+  // Dish image cache: dishId -> imageUrl
+  dishImages: Record<string, string>
+  setDishImage: (dishId: string, url: string) => void
+  fetchDishImages: () => void
 }
 
 export const useStore = create<AppState>((set, get) => ({
@@ -52,4 +57,23 @@ export const useStore = create<AppState>((set, get) => ({
 
   menuImage: null,
   setMenuImage: (menuImage) => set({ menuImage }),
+
+  dishImages: {},
+  setDishImage: (dishId, url) =>
+    set((state) => ({ dishImages: { ...state.dishImages, [dishId]: url } })),
+  fetchDishImages: () => {
+    const { dishes, dishImages } = get()
+    dishes.forEach((dish) => {
+      if (dish.imageSearchQuery && !dishImages[dish.id]) {
+        fetch(`/api/dish-image?q=${encodeURIComponent(dish.imageSearchQuery)}`)
+          .then((r) => r.json())
+          .then((data) => {
+            if (data.imageUrl) {
+              get().setDishImage(dish.id, data.imageUrl)
+            }
+          })
+          .catch(() => {}) // Silently fail — images are non-critical
+      }
+    })
+  },
 }))

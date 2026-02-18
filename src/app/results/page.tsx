@@ -6,7 +6,14 @@ import { useStore } from '@/lib/store'
 
 export default function ResultsPage() {
   const router = useRouter()
-  const { dishes, isLoading, error, menuImage, preferences, setDishes, setLoading, setError } = useStore()
+  const { dishes, isLoading, error, menuImage, preferences, setDishes, setLoading, setError, fetchDishImages, dishImages } = useStore()
+
+  // Prefetch dish images after dishes load
+  useEffect(() => {
+    if (dishes.length > 0 && !isLoading) {
+      fetchDishImages()
+    }
+  }, [dishes, isLoading, fetchDishImages])
 
   useEffect(() => {
     if (!menuImage) {
@@ -94,7 +101,15 @@ export default function ResultsPage() {
               onClick={() => router.push(`/dish/${dish.id}`)}
               className="flex w-full items-center gap-4 rounded-xl border border-pe-border bg-pe-surface p-4 text-left transition-colors hover:border-pe-accent"
             >
-              <div className="flex-1">
+              {/* Thumbnail */}
+              <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-pe-elevated">
+                {dishImages[dish.id] ? (
+                  <img src={dishImages[dish.id]} alt={dish.nameEnglish} className="h-full w-full object-cover" />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-2xl">🍽️</div>
+                )}
+              </div>
+              <div className="flex-1 min-w-0">
                 {dish.rankLabel && (
                   <span className="mb-1 inline-block rounded-full bg-pe-tag-rank-bg px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-pe-tag-rank">
                     {index === 0 ? 'Top Pick For You' : `#${index + 1} For You`}
