@@ -21,6 +21,9 @@ export default function ResultsPage() {
       return
     }
 
+    // Skip API call if dishes are already loaded (e.g. navigating back from detail)
+    if (dishes.length > 0) return
+
     const scanMenu = async () => {
       setLoading(true)
       setError(null)
@@ -41,6 +44,7 @@ export default function ResultsPage() {
     }
 
     scanMenu()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuImage, router, setDishes, setLoading, setError])
 
   return (
