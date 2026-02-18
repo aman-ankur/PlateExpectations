@@ -20,7 +20,7 @@ src/app/
   page.tsx                  — Home / Scan screen (camera upload)
   preferences/page.tsx      — Dietary preferences onboarding
   results/page.tsx          — Menu results list (streaming, progressive loading)
-  dish/[id]/page.tsx        — Dish detail (hero image, badges, nutrition)
+  dish/[id]/page.tsx        — Dish detail (immersive 55vh hero, infographic badges, nutrition)
   settings/page.tsx         — Edit preferences
   api/scan/route.ts         — NDJSON streaming scan pipeline
   api/dish-image/route.ts   — Vision-validated dish image search + DALL-E fallback
@@ -98,6 +98,14 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - Validate candidates in parallel (batches of 3) to avoid sequential latency
 - Food-related filenames (soup, kimchi, ramen) can skip Vision — high confidence from filename alone
 - Unsplash returns generic food photos — must be Vision-validated too
+- **Non-food rejection**: Filename heuristic rejects concert/crowd/people/band/stadium images before Vision. Vision prompt explicitly asks "if this is not food at all, answer NO" to catch non-food images that slip through filename filters.
+
+### Dish Detail Hero
+- Immersive hero: `h-[55vh] min-h-[320px]` with heavy gradient (`from-[#0f0f0f] via-[#0f0f0f]/70 via-40% to-transparent`) blending into page background
+- Dish name, local name, country label, and dietary tags all sit inside the gradient zone at the bottom — no sharp boundary between image and content
+- Ingredient badges use infographic-style scattered positioning across the image (8 fixed positions avoiding back button and text zones), NOT a scrollable row
+- Badge backgrounds are subtle (`bg-black/30`) with muted category-colored dots — food should be the hero, not the badges
+- `IngredientBadge` component supports tap-to-explain for unfamiliar ingredients
 
 ### Common Bugs to Watch For
 - **Hydration errors**: Any component reading localStorage must use a `mounted` state guard
@@ -110,7 +118,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 
 ### Testing
 - Test images: `/Users/aankur/Downloads/korean.jpg` (17 dishes), `/Users/aankur/Downloads/korean2.jpg` (8 dishes)
-- Dev server: `npm run dev -- -p 3001`
+- Dev server: always use port 3001 — `npm run dev -- -p 3001` (kill existing process on 3001 first if needed)
 - Curl NDJSON test: `BASE64=$(base64 -i image.jpg | tr -d '\n') && curl -N -X POST localhost:3001/api/scan -H 'Content-Type: application/json' -d "{\"image\":\"data:image/jpeg;base64,${BASE64}\"}"`
 - Always verify with `npm run build` before merging to main
 - React Strict Mode causes double API calls in dev — this is normal, doesn't happen in prod
