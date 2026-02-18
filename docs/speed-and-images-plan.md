@@ -30,44 +30,43 @@ OpenAI token generation speed is the bottleneck, not network or image processing
 | Structured Outputs (`json_schema`) | **158s** | Schema validation adds huge overhead with Vision. 10x slower. |
 | `detail: "low"` | **19s** | Faster but misses 5/17 dishes. Quality unacceptable. |
 | gpt-4o-mini only | **41s** | Same speed — bottleneck is output tokens, not model. |
-| **Two-phase parallel (chosen)** | **~20s** | Phase 1: Vision OCR ~5s. Phase 2: 4 parallel batches of ~5 dishes, each ~15s, run concurrently. |
+| **Two-phase parallel (chosen)** | **~40-50s** | Phase 1: Vision OCR ~15s. Phase 2: 4 parallel batches of ~5 dishes, each ~15-20s, run concurrently. |
 
 **Architecture:**
-1. **Phase 1** — GPT-4o Vision: Extract dish names, prices, local script, country (~5s, ~700 tokens)
-2. **Phase 2** — GPT-4o-mini × N batches in parallel: Enrich with descriptions, allergens, nutrition, ingredients, explanations (~15s per batch, all concurrent)
+1. **Phase 1** — GPT-4o-mini Vision: Extract dish names, prices, local script, country (~15s, ~700 tokens)
+2. **Phase 2** — GPT-4o-mini × N batches in parallel: Enrich with descriptions, allergens, nutrition, ingredients, explanations (~15-20s per batch, all concurrent)
 
 **Files changed:**
 - `src/lib/openai.ts` — `scanMenu()` → `extractDishes()` + `enrichInParallel()` + `enrichBatch()`
 - `src/app/api/scan/route.ts` — logging update
 
-### Phase B: Dish Images — Wikipedia Commons + Unsplash Fallback
+### Phase B: Dish Images — Wikipedia Article Images
 
 **Change**: Add image search pipeline triggered after results load. Non-blocking (results show immediately, images lazy-load).
 
-**Why this combination:**
+**Image search strategy (evolved through testing):**
 
-| Option considered | Verdict | Reasoning |
-|-------------------|---------|-----------|
-| Unsplash only | **NO** | 50 requests/hour free tier. Attribution required. Too limiting. |
-| Google Custom Search | **NO** | Requires GCP setup + API key. Costs after 100/day. Overkill for MVP. |
-| Wikipedia Commons (primary) | **YES** | Free, unlimited, no attribution needed. Covers most well-known Asian dishes. |
-| Unsplash (fallback) | **YES** | Fills gaps when Wikipedia has no image. 50/hr is fine as fallback. |
-| GPT returning image URLs | **NO** | GPT hallucinates URLs. Cannot search the web. |
-| DALL-E generated images | **NO** | Slow (3-5s per image), expensive, looks artificial. |
+| Approach | Result | Why |
+|----------|--------|-----|
+| Wikimedia Commons keyword search | **Poor** | Returns generic/wrong images. "Korean ramen" → instant ramen packet. Many duplicates. |
+| Wikipedia `generator=images` | **Poor** | Needs exact article title, fragile matching. |
+| **Wikipedia opensearch → pageimages (chosen)** | **Best** | Finds correct article via fuzzy search, returns editorially curated lead image. 17/17 Korean dishes found. |
+| Using local name (Korean script) as search query | **Key improvement** | 잡채 matches "Japchae" article perfectly. English "japchae" matched "Japheth" (wrong article). |
 
-**How it works:**
-1. GPT returns a `imageSearchQuery` field per dish (e.g., "Korean Bibimbap rice bowl")
-2. Client fetches images in parallel via `/api/dish-image?q=...` after results load
-3. API tries Wikipedia Commons first, then Unsplash
-4. Images cached in Zustand store — no re-fetching
+**Final architecture:**
+1. GPT returns `imageSearchQuery` field per dish
+2. Client uses **local name** (Korean/Thai script) as primary search query
+3. `/api/dish-image` endpoint: Wikipedia opensearch → article lead image → Commons fallback → Unsplash fallback
+4. Images cached in Zustand store with deduplication (no two dishes share the same image URL)
+5. Bad results filtered (logos, flags, newspapers, etc.)
 
 **Files changed:**
-- `src/lib/types.ts` — add `imageSearchQuery` to Dish
-- `src/lib/openai.ts` — include `imageSearchQuery` in schema
-- `src/app/api/dish-image/route.ts` — new endpoint
-- `src/app/results/page.tsx` — trigger image prefetch
-- `src/app/dish/[id]/page.tsx` — display fetched image
-- `src/lib/store.ts` — image URL cache
+- `src/lib/types.ts` — add `imageSearchQuery` to Dish interface
+- `src/lib/openai.ts` — include `imageSearchQuery` in enrichment prompt
+- `src/app/api/dish-image/route.ts` — new endpoint (Wikipedia opensearch + pageimages)
+- `src/app/results/page.tsx` — trigger image prefetch, show thumbnails
+- `src/app/dish/[id]/page.tsx` — display hero image from cache
+- `src/lib/store.ts` — image URL cache with deduplication
 
 ### Phase C: Ingredient Annotations on Hero Image
 
@@ -78,24 +77,26 @@ OpenAI token generation speed is the bottleneck, not network or image processing
 - Fixed positions (corners + edges) look clean and professional
 - Top 4-5 ingredients by category (protein, vegetable, sauce, carb) placed at preset spots
 - Color-coded: red=protein, green=vegetable, orange=sauce, yellow=carb
+- Backdrop blur for readability over photos
 
 **Files changed:**
 - `src/app/dish/[id]/page.tsx` — badge positioning layout
 
-## Execution Order
+### Bug Fixes (discovered during testing)
 
-Phase A → Phase B → Phase C (sequential — each builds on the previous)
+1. **Back navigation re-scan**: Results page re-triggered OpenAI API on every mount. Fixed: skip scan if dishes already in Zustand store.
+2. **"Dish not found" on detail page**: Phase 2 enrichment batches returned inconsistent IDs (numeric, duplicates). Fixed: normalize all IDs to `dish-N` strings after enrichment; use String() comparison in detail lookup.
+3. **Duplicate/wrong images**: Multiple dishes got same generic photo. Fixed: deduplicate URLs in store, filter bad Wikimedia results, use local name as primary search.
 
-## Status
+## Status: COMPLETE
 
-All three phases implemented and committed on `feat/speed-and-images`:
+All phases implemented, tested, and committed on `feat/speed-and-images` (8 commits).
 
-- **Phase A** (Speed): Parallel batch pipeline — ~40s for 17 dishes (down from 90s)
-- **Phase B** (Images): Wikimedia Commons search, ~1s/image, cached in store
-- **Phase C** (Annotations): Ingredient badges positioned at image corners/edges
+**Test results (Korean Kitchen menu, 17 dishes):**
+- Scan time: ~40-50s (down from 90s)
+- All 17 dishes return relevant food images via Wikipedia
+- Back navigation is instant (no re-scan)
+- Dish detail loads correctly with hero image + ingredient badges
+- Build passes
 
-## Verification
-
-- Korean Kitchen menu (17 items): should complete in ~15-20 seconds (down from 55-90s)
-- Each dish detail should show a real food photo
-- Ingredient badges should overlay on the photo with correct colors
+**Ready to merge to `main` after final review.**
