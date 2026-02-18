@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 /**
  * GET /api/dish-image?q=Korean+bibimbap+rice+bowl
  *
- * Searches for a dish photo: Wikipedia Commons first, Unsplash fallback.
+ * Searches for a dish photo: Wikimedia Commons first, Unsplash fallback.
  * Returns { imageUrl: string } or { imageUrl: null }.
  */
 export async function GET(req: NextRequest) {
@@ -13,14 +13,14 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // Try Wikimedia Commons direct search first (free, unlimited, best for food photos)
+    // Try Wikimedia Commons direct search (free, unlimited, best for food photos)
     const commonsUrl = await searchCommonsDirectly(query)
     if (commonsUrl) {
       return NextResponse.json({ imageUrl: commonsUrl })
     }
 
     // Try Wikipedia article images
-    const wikiUrl = await searchWikimediaCommons(query)
+    const wikiUrl = await searchWikipediaImages(query)
     if (wikiUrl) {
       return NextResponse.json({ imageUrl: wikiUrl })
     }
@@ -38,7 +38,68 @@ export async function GET(req: NextRequest) {
   }
 }
 
-async function searchWikimediaCommons(query: string): Promise<string | null> {
+const BAD_PATTERNS = /logo|flag|map|icon|stamp|newspaper|portrait|sign|banner|diagram|coat.of.arms/i
+
+async function searchCommonsDirectly(query: string): Promise<string | null> {
+  const params = new URLSearchParams({
+    action: 'query',
+    format: 'json',
+    list: 'search',
+    srsearch: query,
+    srnamespace: '6',
+    srlimit: '5',
+    origin: '*',
+  })
+
+  const res = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
+    headers: { 'User-Agent': 'PlateExpectations/1.0 (menu-translator-app)' },
+  })
+
+  if (!res.ok) return null
+  const data = await res.json()
+  const results = data.query?.search
+  if (!results?.length) return null
+
+  // Try multiple results to find a food-related image, skip bad matches
+  for (const result of results) {
+    if (BAD_PATTERNS.test(result.title)) continue
+
+    const thumbUrl = await getCommonsThumbUrl(result.title)
+    if (thumbUrl) return thumbUrl
+  }
+
+  return null
+}
+
+async function getCommonsThumbUrl(title: string): Promise<string | null> {
+  const params = new URLSearchParams({
+    action: 'query',
+    format: 'json',
+    titles: title,
+    prop: 'imageinfo',
+    iiprop: 'url',
+    iiurlwidth: '400',
+    origin: '*',
+  })
+
+  const res = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
+    headers: { 'User-Agent': 'PlateExpectations/1.0 (menu-translator-app)' },
+  })
+
+  if (!res.ok) return null
+  const data = await res.json()
+  const pages = data.query?.pages
+  if (!pages) return null
+
+  for (const page of Object.values(pages) as any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
+    const info = page.imageinfo?.[0]
+    if (info?.thumburl) return info.thumburl
+  }
+
+  return null
+}
+
+async function searchWikipediaImages(query: string): Promise<string | null> {
   const params = new URLSearchParams({
     action: 'query',
     format: 'json',
@@ -60,62 +121,11 @@ async function searchWikimediaCommons(query: string): Promise<string | null> {
   const pages = data.query?.pages
   if (!pages) return null
 
-  // Find first JPEG/PNG image
   for (const page of Object.values(pages) as any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
     const info = page.imageinfo?.[0]
-    if (info?.mime?.startsWith('image/') && info.thumburl) {
+    if (info?.mime?.startsWith('image/') && info.thumburl && !BAD_PATTERNS.test(page.title || '')) {
       return info.thumburl
     }
-  }
-
-  // Fallback: search Wikimedia Commons directly
-  return searchCommonsDirectly(query)
-}
-
-async function searchCommonsDirectly(query: string): Promise<string | null> {
-  const params = new URLSearchParams({
-    action: 'query',
-    format: 'json',
-    list: 'search',
-    srsearch: `${query} food`,
-    srnamespace: '6', // File namespace
-    srlimit: '3',
-    origin: '*',
-  })
-
-  const res = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
-    headers: { 'User-Agent': 'PlateExpectations/1.0 (menu-translator-app)' },
-  })
-
-  if (!res.ok) return null
-  const data = await res.json()
-  const results = data.query?.search
-  if (!results?.length) return null
-
-  // Get image URL for first result
-  const title = results[0].title
-  const infoParams = new URLSearchParams({
-    action: 'query',
-    format: 'json',
-    titles: title,
-    prop: 'imageinfo',
-    iiprop: 'url',
-    iiurlwidth: '400',
-    origin: '*',
-  })
-
-  const infoRes = await fetch(`https://commons.wikimedia.org/w/api.php?${infoParams}`, {
-    headers: { 'User-Agent': 'PlateExpectations/1.0 (menu-translator-app)' },
-  })
-
-  if (!infoRes.ok) return null
-  const infoData = await infoRes.json()
-  const pages = infoData.query?.pages
-  if (!pages) return null
-
-  for (const page of Object.values(pages) as any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
-    const info = page.imageinfo?.[0]
-    if (info?.thumburl) return info.thumburl
   }
 
   return null

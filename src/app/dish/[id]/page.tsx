@@ -21,7 +21,7 @@ export default function DishDetailPage() {
   const { dishes, dishImages } = useStore()
   const [expandedTerm, setExpandedTerm] = useState<string | null>(null)
 
-  const dish = dishes.find((d) => d.id === params.id)
+  const dish = dishes.find((d) => String(d.id) === String(params.id))
   const imageUrl = dish ? dishImages[dish.id] || dish.imageUrl : undefined
 
   if (!dish) {
