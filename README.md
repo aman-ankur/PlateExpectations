@@ -1,12 +1,12 @@
 # Plate Expectations 🍽️
 
-**Decode any menu, anywhere.** AI-powered menu translator for Indian travelers in Southeast & East Asia.
+**Decode any menu, anywhere.** AI-powered menu translator for travelers abroad.
 
 Scan a foreign menu with your phone camera and get a translated, personalized, visually rich breakdown of every dish — with dietary info, allergen warnings, nutrition estimates, and cultural context.
 
 ## The Problem
 
-Indian couples traveling to Vietnam, Thailand, Korea, Japan, or Indonesia face menus they can't read. They don't know what dishes contain, whether items are vegetarian-safe, or what's worth ordering.
+Travelers facing foreign-language menus don't know what dishes contain, whether items meet their dietary needs, or what's worth ordering.
 
 ## How It Works
 
@@ -16,17 +16,18 @@ Indian couples traveling to Vietnam, Thailand, Korea, Japan, or Indonesia face m
 
 ## Features
 
-- **OCR + Translation** — GPT-4o Vision reads menus in Thai, Vietnamese, Korean, Japanese, Indonesian
+- **OCR + Translation** — GPT-4o Vision reads menus in any foreign language
+- **Real Dish Photos** — Wikipedia-sourced images for every dish
 - **Personalized Ranking** — Dishes ranked based on your dietary preferences and restrictions
 - **Dietary System** — Veg/Non-Veg/Jain, Halal, No Beef/Pork, allergy tracking (egg, soy, sesame, peanut, shellfish, gluten)
-- **Dish Detail** — Ingredients, approximate nutrition, cultural term explanations
+- **Dish Detail** — Ingredients with photo annotations, approximate nutrition, cultural term explanations
 - **Mobile-First PWA** — Installable on any phone, dark theme
 
 ## Tech Stack
 
 - **Frontend:** Next.js 14 (App Router), TypeScript, Tailwind CSS
 - **State:** Zustand + localStorage
-- **AI:** OpenAI GPT-4o Vision (OCR) + GPT-4o (translation/enrichment)
+- **AI:** OpenAI GPT-4o-mini Vision (OCR) + GPT-4o-mini (translation/enrichment, parallel batches)
 - **Deploy:** Vercel
 
 ## Getting Started
@@ -55,7 +56,8 @@ src/
     results/page.tsx      # Menu results list
     dish/[id]/page.tsx    # Dish detail view
     settings/page.tsx     # Edit preferences
-    api/scan/route.ts     # OpenAI OCR + enrichment pipeline
+    api/scan/route.ts     # OpenAI OCR + enrichment pipeline (parallel batches)
+    api/dish-image/route.ts # Wikipedia image search for dishes
   lib/
     store.ts              # Zustand state management
     openai.ts             # OpenAI API helpers
@@ -72,9 +74,10 @@ src/
 - [x] Menu scan pipeline (OCR → translate → enrich → rank)
 - [x] Results list with personalized ranking
 - [x] Dish detail (nutrition, ingredients, cultural terms)
-- [ ] End-to-end testing with real menus
+- [x] End-to-end testing with real menus
+- [x] Dish images via Wikipedia article lead photos
+- [x] Ingredient annotations on dish hero images
 - [ ] UI polish to match design mockups
-- [ ] Dish image search + AI-generated fallbacks
 - [ ] Offline mode
 - [ ] Scan history
 
