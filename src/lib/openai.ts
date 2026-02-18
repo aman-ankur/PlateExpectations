@@ -1,7 +1,10 @@
 import { Dish, Preferences, RawDish, ScanEvent } from './types'
+import { extractTextFromImage } from './ocr'
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions'
+const GROQ_API_KEY = process.env.GROQ_API_KEY
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
 const BATCH_SIZE = 3
 
 /**
@@ -117,8 +120,100 @@ export async function* scanMenuStreaming(imageBase64: string, preferences: Prefe
   yield { type: 'done' }
 }
 
-/** Phase 1: Vision call — extract just names, prices, local text. Minimal output tokens. */
+/** Phase 1: Try fast OCR path first, fall back to GPT Vision. */
 async function extractDishes(imageBase64: string, signal?: AbortSignal): Promise<RawDish[]> {
+  // Fast path: Cloud Vision OCR → GPT text parsing
+  try {
+    const t = Date.now()
+    const ocrText = await extractTextFromImage(imageBase64, signal)
+    console.log(`[ocr] Fast path: got ${ocrText.length} chars, parsing with GPT...`)
+    const dishes = await extractDishesFromText(ocrText, signal)
+    if (dishes.length > 0) {
+      console.log(`[ocr] Fast path complete: ${dishes.length} dishes in ${Date.now() - t}ms`)
+      return dishes
+    }
+    console.log('[ocr] Fast path returned 0 dishes, falling back to Vision')
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.log(`[ocr] Fast path failed (${msg}), falling back to Vision`)
+  }
+
+  // Fallback: GPT Vision
+  return extractDishesVision(imageBase64, signal)
+}
+
+/** Backfill empty nameLocal from OCR text. Llama models sometimes omit non-Latin scripts in JSON. */
+function backfillNameLocal(dishes: RawDish[], ocrText: string): RawDish[] {
+  return dishes.map((dish) => {
+    if (dish.nameLocal && dish.nameLocal.trim()) return dish
+    // Try to find a matching non-Latin token by checking if the English name romanization
+    // appears near it in the OCR text. Simple heuristic: find the first unused non-Latin
+    // token on a line containing the price or English name.
+    const engLower = dish.nameEnglish.toLowerCase().replace(/\s+/g, '')
+    const lines = ocrText.split('\n')
+    for (const line of lines) {
+      const lineNonLatin = line.match(/[^\x00-\x7F\s]+(?:\s*[^\x00-\x7F\s]+)*/g)
+      if (!lineNonLatin) continue
+      // Check if this line has the price or a partial English match
+      const hasPrice = dish.price && line.includes(dish.price)
+      const lineLatinLower = line.replace(/[^\x00-\x7F]/g, '').toLowerCase().replace(/\s+/g, '')
+      const hasEngMatch = engLower.length > 3 && lineLatinLower.includes(engLower)
+      if (hasPrice || hasEngMatch) {
+        return { ...dish, nameLocal: lineNonLatin.join(' ') }
+      }
+    }
+    return dish
+  })
+}
+
+/** Fast text-only call to parse OCR text into dishes. Tries Groq first (10x faster), falls back to GPT. */
+async function extractDishesFromText(ocrText: string, signal?: AbortSignal): Promise<RawDish[]> {
+  const messages = [
+    {
+      role: 'system' as const,
+      content: `You are given OCR text from a restaurant menu. Extract EVERY dish/item. Do NOT skip any items. Include all sections, categories, and variations. Return JSON: {"dishes":[{"id":"dish-1","nameEnglish":"...","nameLocal":"original script in native characters (e.g. 김치전, ผัดไทย). If the menu is only in English, infer the native script from the dish name and country.","price":"...","brief":"3 word description","country":"Korea|Thailand|Vietnam|Japan|Indonesia"}]}. Number IDs sequentially. Minimal output but complete coverage.`,
+    },
+    {
+      role: 'user' as const,
+      content: `Extract ALL dishes from this menu text:\n\n${ocrText}`,
+    },
+  ]
+
+  // Try Groq first (Llama 3.3 70B at ~400-500 tok/s)
+  if (GROQ_API_KEY) {
+    try {
+      const res = await groqCall({
+        model: 'llama-3.3-70b-versatile',
+        messages,
+        max_tokens: 4096,
+        temperature: 0.2,
+        response_format: { type: 'json_object' },
+      }, signal)
+      const parsed = parseJSON(res)
+      const dishes = parsed.dishes || []
+      if (dishes.length > 0) return backfillNameLocal(dishes, ocrText)
+      console.log('[groq] Returned 0 dishes, falling back to GPT')
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err)
+      console.log(`[groq] Failed (${msg}), falling back to GPT`)
+    }
+  }
+
+  // Fallback: GPT-4o-mini
+  const res = await gptCall({
+    model: 'gpt-4o-mini',
+    messages,
+    max_tokens: 4096,
+    temperature: 0.2,
+    response_format: { type: 'json_object' },
+  }, signal)
+
+  const parsed = parseJSON(res)
+  return parsed.dishes || []
+}
+
+/** Fallback: GPT Vision call — extract dishes directly from image. */
+async function extractDishesVision(imageBase64: string, signal?: AbortSignal): Promise<RawDish[]> {
   const res = await gptCall({
     model: 'gpt-4o-mini',
     messages: [
@@ -234,6 +329,32 @@ Return JSON: {"dishes": [<array>]}. Be concise.`,
     console.warn(`[openai] Enrichment returned ${result.length}/${dishes.length} dishes. Response preview: ${res.substring(0, 200)}`)
   }
   return result
+}
+
+/** Low-level Groq API call wrapper (OpenAI-compatible). */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function groqCall(body: Record<string, any>, signal?: AbortSignal): Promise<string> {
+  const t = Date.now()
+  const res = await fetch(GROQ_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${GROQ_API_KEY}`,
+    },
+    body: JSON.stringify(body),
+    signal,
+  })
+
+  if (!res.ok) {
+    const err = await res.text()
+    console.error(`[groq] groqCall FAILED in ${Date.now() - t}ms: ${res.status} ${err.substring(0, 300)}`)
+    throw new Error(`Groq API error: ${res.status} ${err}`)
+  }
+
+  const data = await res.json()
+  const content = data.choices[0].message.content
+  console.log(`[groq] groqCall OK in ${Date.now() - t}ms, finish=${data.choices[0].finish_reason}, len=${content?.length}`)
+  return content
 }
 
 /** Low-level OpenAI API call wrapper. */

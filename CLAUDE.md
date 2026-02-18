@@ -110,7 +110,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 
 ### Testing
 - Test images: `/Users/aankur/Downloads/korean.jpg` (17 dishes), `/Users/aankur/Downloads/korean2.jpg` (8 dishes)
-- Dev server: `npm run dev -- -p 3001`
+- Dev server: always use port 3001 — `npm run dev -- -p 3001` (kill existing process on 3001 first if needed)
 - Curl NDJSON test: `BASE64=$(base64 -i image.jpg | tr -d '\n') && curl -N -X POST localhost:3001/api/scan -H 'Content-Type: application/json' -d "{\"image\":\"data:image/jpeg;base64,${BASE64}\"}"`
 - Always verify with `npm run build` before merging to main
 - React Strict Mode causes double API calls in dev — this is normal, doesn't happen in prod
