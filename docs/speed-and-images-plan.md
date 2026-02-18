@@ -2,31 +2,43 @@
 
 ## Problem
 
-1. **Speed**: Two sequential GPT-4o API calls (OCR → enrichment) takes 10-15 seconds per menu scan
+1. **Speed**: Menu scan takes too long — generating structured JSON for 17 dishes is bottlenecked by OpenAI's output token speed (~40-50 tokens/sec)
 2. **No dish images**: Detail view shows emoji placeholder — no real food photos
 3. **Ingredient annotations**: Mockups show ingredient badges overlaid on dish photos
 
 ## Approach & Reasoning
 
-### Phase A: Speed — Single Call + Structured Outputs
+### Phase A: Speed — Parallel Batch Pipeline
 
-**Change**: Merge OCR + enrichment into a single GPT-4o Vision call with Structured Outputs.
+**Change**: Two-phase pipeline: fast Vision OCR → parallel enrichment batches.
 
-**Why this is the best approach:**
+**Key finding from benchmarking** (Feb 2026):
 
-| Option considered | Verdict | Reasoning |
-|-------------------|---------|-----------|
-| Single merged call | **YES** | Eliminates a full network round-trip. GPT-4o Vision handles OCR + enrichment well in one pass. ~50% latency reduction. |
-| GPT-4o-mini | **NO** | Significantly worse OCR for Thai/Korean/Japanese/Vietnamese scripts. 20-30% faster but quality loss is unacceptable. |
-| Structured Outputs (`json_schema`) | **YES** | Guarantees valid schema-compliant JSON from OpenAI's side. Eliminates all our fallback parsing hacks. ~10% faster than `json_object` mode. |
-| Streaming responses | **NO** | Partial JSON is useless — users need complete dish data (allergens, nutrition) to make decisions. Adds frontend complexity with no UX benefit. |
-| `detail: "auto"` instead of `"high"` | **YES** | Lets OpenAI choose optimal resolution. Saves input tokens on clearly readable menus. |
+OpenAI token generation speed is the bottleneck, not network or image processing:
+- Simple text call: ~0.4s
+- Vision + short answer: ~3s
+- 17 dishes × full schema JSON: ~55-90s (2000-3000 completion tokens at 40-50 tok/s)
+- This is the same speed regardless of model (gpt-4o vs gpt-4o-mini)
+- VPN adds ~50ms ping, not the issue
 
-**Expected result**: 10-15s → 5-7s
+**Options benchmarked on Korean Kitchen menu (17 dishes):**
+
+| Approach | Time | Why |
+|----------|------|-----|
+| Single merged call (all fields) | **90s** | ~3000 output tokens sequentially. Too slow. |
+| Single merged call (lean fields) | **39s** | Still ~1300 tokens sequentially. |
+| Structured Outputs (`json_schema`) | **158s** | Schema validation adds huge overhead with Vision. 10x slower. |
+| `detail: "low"` | **19s** | Faster but misses 5/17 dishes. Quality unacceptable. |
+| gpt-4o-mini only | **41s** | Same speed — bottleneck is output tokens, not model. |
+| **Two-phase parallel (chosen)** | **~20s** | Phase 1: Vision OCR ~5s. Phase 2: 4 parallel batches of ~5 dishes, each ~15s, run concurrently. |
+
+**Architecture:**
+1. **Phase 1** — GPT-4o Vision: Extract dish names, prices, local script, country (~5s, ~700 tokens)
+2. **Phase 2** — GPT-4o-mini × N batches in parallel: Enrich with descriptions, allergens, nutrition, ingredients, explanations (~15s per batch, all concurrent)
 
 **Files changed:**
-- `src/lib/openai.ts` — new `scanMenu()` function replaces `extractMenuItems()` + `enrichDishes()`
-- `src/app/api/scan/route.ts` — simplified to single function call
+- `src/lib/openai.ts` — `scanMenu()` → `extractDishes()` + `enrichInParallel()` + `enrichBatch()`
+- `src/app/api/scan/route.ts` — logging update
 
 ### Phase B: Dish Images — Wikipedia Commons + Unsplash Fallback
 
@@ -74,14 +86,8 @@
 
 Phase A → Phase B → Phase C (sequential — each builds on the previous)
 
-## Why Single Agent, Not Team
-
-- Codebase is ~15 files, all phases touch overlapping files (`openai.ts`, `dish/[id]/page.tsx`)
-- Phases are sequential (B depends on A's schema changes, C depends on B's image loading)
-- No parallelization benefit — team overhead would slow things down
-
 ## Verification
 
-- Korean Kitchen menu (17 items): should complete in ~5-7 seconds
+- Korean Kitchen menu (17 items): should complete in ~15-20 seconds (down from 55-90s)
 - Each dish detail should show a real food photo
 - Ingredient badges should overlay on the photo with correct colors
