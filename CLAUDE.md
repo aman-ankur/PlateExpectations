@@ -10,7 +10,7 @@ PWA for travelers to scan and understand foreign-language menus anywhere. Scan a
 - **Styling:** Tailwind CSS 3 (dark theme, `pe-*` color namespace)
 - **State:** Zustand + localStorage for preferences
 - **AI:** OpenAI GPT-4o-mini (Vision OCR + parallel batch enrichment)
-- **Images:** Wikipedia pageimages API (free, no key needed)
+- **Images:** Wikipedia pageimages API + GPT-4o-mini Vision validation + DALL-E 3 fallback
 - **Deploy:** Vercel | **Package manager:** npm
 
 ## File Structure
@@ -23,7 +23,7 @@ src/app/
   dish/[id]/page.tsx        — Dish detail (hero image, badges, nutrition)
   settings/page.tsx         — Edit preferences
   api/scan/route.ts         — NDJSON streaming scan pipeline
-  api/dish-image/route.ts   — Wikipedia image search endpoint
+  api/dish-image/route.ts   — Vision-validated dish image search + DALL-E fallback
 src/lib/
   openai.ts                 — extractDishes() + scanMenuStreaming() + enrichBatch()
   store.ts                  — Zustand store (preferences, scan, skeletons, dish image cache)
@@ -58,7 +58,16 @@ docs/
 5. Client ranks dishes on `done` event (top 5 get labels, menu order preserved)
 
 ### GET `/api/dish-image?q=<query>` — Dish photo search
-Wikipedia opensearch → article lead image (pageimages) → Commons fallback → Unsplash fallback. Uses local script names (Korean/Thai) for best matching. ~1s per image. Parenthetical suffixes (weights like `(150g)`) are stripped before search.
+Wikipedia opensearch → article lead image (pageimages) → Commons fallback → Unsplash fallback. Uses local script names (Korean/Thai) for best matching. Parenthetical suffixes (weights like `(150g)`) are stripped before search.
+
+**Image validation pipeline:**
+1. Filename heuristic: reject non-food patterns (portrait, flag, pdf, etc.) — free
+2. Filename heuristic: accept food patterns (soup, kimchi, galbi, ramen, etc.) — free, ~1s
+3. Remaining candidates: GPT-4o-mini Vision validation ("Is this {dish}? YES/NO") — ~$0.0001/check, 3 candidates validated in parallel
+4. All candidates rejected → DALL-E 3 generation — ~$0.04/image, ~15s
+5. Response includes `generated: true` flag for AI-generated images
+
+**Cost:** ~$0.003 for Vision checks on a 20-dish menu. DALL-E only triggered when no real photo matches.
 
 ## Learnings & Gotchas (from testing)
 
@@ -82,6 +91,12 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - Local script names (잡채) match articles better than English ("japchae" → "Japheth" wrong match)
 - Deduplicate image URLs in store — multiple dishes can match the same Commons photo
 - Strip weight/quantity suffixes from queries: `소갈비살(150g)` → `소갈비살`
+- **Text-based search can't catch wrong-food-for-wrong-food** (e.g., "순대" → StrawberrySundae.jpg). Vision AI validation is the only reliable check.
+- Vision validation with `detail: "low"` + `max_tokens: 3` costs ~$0.0001 per check — negligible
+- **Fail closed**: if Vision API errors, reject the image (don't show wrong food)
+- Validate candidates in parallel (batches of 3) to avoid sequential latency
+- Food-related filenames (soup, kimchi, ramen) can skip Vision — high confidence from filename alone
+- Unsplash returns generic food photos — must be Vision-validated too
 
 ### Common Bugs to Watch For
 - **Hydration errors**: Any component reading localStorage must use a `mounted` state guard
@@ -89,6 +104,8 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - **Back nav re-scan**: Results page must check `dishes.length > 0` before calling API
 - **next.config.mjs**: `api.bodyParser` is Pages Router only — don't use with App Router
 - **Derived loading state**: Don't rely on `isLoading` flag alone — derive from `menuImage` + `dishes.length` + `scanProgress` to avoid flash of empty content
+- **Zustand re-renders**: Don't destructure the entire store in list components. Use targeted selectors (e.g., `useStore((s) => s.dishImages[dish.id])`) to avoid full-page re-renders when individual images load.
+- **Inline component definitions**: Never define components inside render functions — they get recreated every render, defeating React reconciliation and causing webpack HMR errors
 
 ### Testing
 - Test images: `/Users/aankur/Downloads/korean.jpg` (17 dishes), `/Users/aankur/Downloads/korean2.jpg` (8 dishes)
@@ -99,7 +116,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 
 ## State Management
 
-Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral: dishes, skeletonDishes, scanProgress), **dishImages** (cache with dedup). Key actions: `appendEnrichedDishes()` for incremental batch merging, `clearScan()` for full reset, `fetchDishImagesForBatch()` for per-batch image loading.
+Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral: dishes, skeletonDishes, scanProgress), **dishImages** (cache with dedup), **generatedDishIds** (module-level Set tracking AI-generated images). Key actions: `appendEnrichedDishes()` for incremental batch merging, `clearScan()` for full reset, `fetchDishImagesForBatch()` for per-batch image loading, `isGeneratedImage()` for checking if a dish image was AI-generated.
 
 ## Git Workflow
 

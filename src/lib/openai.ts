@@ -52,6 +52,8 @@ export async function* scanMenuStreaming(imageBase64: string, preferences: Prefe
     return
   }
 
+  console.log(`[scan] Phase 1 extracted ${rawDishes.length} dishes:`, rawDishes.map(d => d.nameEnglish).join(', '))
+
   yield { type: 'progress', message: `Found ${rawDishes.length} dishes` }
   yield { type: 'phase1', dishes: rawDishes }
 
@@ -112,17 +114,17 @@ async function extractDishes(imageBase64: string): Promise<RawDish[]> {
     messages: [
       {
         role: 'system',
-        content: `Extract every dish from this menu image. Return JSON: {"dishes":[{"id":"dish-1","nameEnglish":"...","nameLocal":"original script","price":"...","brief":"3 word description","country":"Korea|Thailand|Vietnam|Japan|Indonesia"}]}. Minimal output.`,
+        content: `Extract EVERY single dish/item from this menu image. Do NOT skip any items. Include all sections, categories, and variations. Return JSON: {"dishes":[{"id":"dish-1","nameEnglish":"...","nameLocal":"original script","price":"...","brief":"3 word description","country":"Korea|Thailand|Vietnam|Japan|Indonesia"}]}. Number IDs sequentially. Minimal output but complete coverage.`,
       },
       {
         role: 'user',
         content: [
           { type: 'image_url', image_url: { url: imageBase64, detail: 'auto' } },
-          { type: 'text', text: 'Extract all dishes.' },
+          { type: 'text', text: 'Extract ALL dishes from this menu. Do not miss any items.' },
         ],
       },
     ],
-    max_tokens: 2048,
+    max_tokens: 4096,
     temperature: 0.2,
     response_format: { type: 'json_object' },
   })
@@ -173,14 +175,14 @@ For each dish return ALL these fields:
 - "id": keep the original id
 - "nameEnglish": English name
 - "nameLocal": original script
-- "description": 1 sentence description
+- "description": 1-2 sentences describing the dish — what it looks like, key ingredients, cooking method, and how it tastes
 - "country": "${country}"
 - "price": as given
 - "dietaryType": "veg" (no meat/fish/eggs), "non-veg", or "jain-safe"
 - "allergens": from [egg, soy, sesame, peanut, shellfish, gluten, dairy] — only those present
 - "ingredients": [{"name":"...", "category":"protein|vegetable|sauce|carb|dairy|spice|other", "isUnfamiliar":true/false, "explanation":"brief if unfamiliar else empty"}] — top 4-5 ingredients
 - "nutrition": {"protein":g, "carbs":g, "fat":g, "fiber":g, "kcal":num} — approximate
-- "explanation": 1 sentence for Indian traveler, relate to Indian food
+- "explanation": 2-3 sentences. First: describe what the dish actually is (cooking method, key flavors, how it's served/eaten). Second: compare to a well-known Indian or global dish if a good analogy exists (e.g. "Similar to tandoori chicken..." or "Think of it as a Korean version of biryani..."). Third (optional): a tip or recommendation (e.g. "Best enjoyed with steamed rice" or "Ask for extra sauce on the side").
 - "culturalTerms": [{"term":"...", "explanation":"..."}] — 0-2 terms
 - "imageSearchQuery": English query to find a photo (e.g. "Korean bibimbap rice bowl")
 - "rankScore": 0-30 popularity score
