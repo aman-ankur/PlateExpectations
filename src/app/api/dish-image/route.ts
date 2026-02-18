@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from 'next/server'
 /**
  * GET /api/dish-image?q=Korean+bibimbap+rice+bowl
  *
- * Searches for a dish photo: Wikimedia Commons first, Unsplash fallback.
+ * Finds a dish photo using Wikipedia's curated article images (pageimages API).
+ * Strategy: opensearch to find article → get lead image. Falls back to Commons search.
  * Returns { imageUrl: string } or { imageUrl: null }.
  */
 export async function GET(req: NextRequest) {
@@ -13,19 +14,19 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // Try Wikimedia Commons direct search (free, unlimited, best for food photos)
+    // Strategy 1: Wikipedia article lead image (best quality, curated)
+    const wikiUrl = await getWikipediaArticleImage(query)
+    if (wikiUrl) {
+      return NextResponse.json({ imageUrl: wikiUrl })
+    }
+
+    // Strategy 2: Wikimedia Commons search (broader but lower quality)
     const commonsUrl = await searchCommonsDirectly(query)
     if (commonsUrl) {
       return NextResponse.json({ imageUrl: commonsUrl })
     }
 
-    // Try Wikipedia article images
-    const wikiUrl = await searchWikipediaImages(query)
-    if (wikiUrl) {
-      return NextResponse.json({ imageUrl: wikiUrl })
-    }
-
-    // Fallback: Unsplash (50 req/hr free tier)
+    // Strategy 3: Unsplash fallback (needs API key)
     const unsplashUrl = await searchUnsplash(query)
     if (unsplashUrl) {
       return NextResponse.json({ imageUrl: unsplashUrl })
@@ -36,6 +37,72 @@ export async function GET(req: NextRequest) {
     console.error('[dish-image] Error:', err)
     return NextResponse.json({ imageUrl: null })
   }
+}
+
+const HEADERS = { 'User-Agent': 'PlateExpectations/1.0 (menu-translator-app)' }
+
+/**
+ * Best approach: find the Wikipedia article for the dish, get its lead image.
+ * These are editorially curated and almost always show the actual dish.
+ */
+async function getWikipediaArticleImage(query: string): Promise<string | null> {
+  // Strip common prefixes that prevent article matching
+  const dishName = query
+    .replace(/^(Korean|Thai|Vietnamese|Japanese|Indonesian)\s+/i, '')
+    .replace(/\s+(food|dish|meal|recipe|soup|noodle|noodles|rice|bowl|pancake|stir.fried|fried|steamed|cold|spicy)\s*$/gi, '')
+    .trim()
+
+  // Try multiple search variants
+  const variants = [
+    dishName,
+    query, // original query as fallback
+    dishName.replace(/\s+/g, '-'), // hyphenated form (e.g. "Gyeran-jjim")
+    `${dishName} food`, // disambiguate from non-food articles
+  ]
+
+  for (const variant of variants) {
+    // Step 1: opensearch to find the correct article title
+    const searchParams = new URLSearchParams({
+      action: 'opensearch',
+      search: variant,
+      limit: '5',
+      format: 'json',
+      origin: '*',
+    })
+
+    const searchRes = await fetch(`https://en.wikipedia.org/w/api.php?${searchParams}`, { headers: HEADERS })
+    if (!searchRes.ok) continue
+
+    const searchData = await searchRes.json()
+    const titles: string[] = searchData[1] || []
+    if (titles.length === 0) continue
+
+    // Step 2: get pageimages for all found titles at once
+    const imgParams = new URLSearchParams({
+      action: 'query',
+      format: 'json',
+      titles: titles.slice(0, 3).join('|'),
+      prop: 'pageimages',
+      pithumbsize: '400',
+      origin: '*',
+    })
+
+    const imgRes = await fetch(`https://en.wikipedia.org/w/api.php?${imgParams}`, { headers: HEADERS })
+    if (!imgRes.ok) continue
+
+    const imgData = await imgRes.json()
+    const pages = imgData.query?.pages
+    if (!pages) continue
+
+    // Return first article that has a thumbnail
+    for (const page of Object.values(pages) as any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
+      if (page.thumbnail?.source) {
+        return page.thumbnail.source
+      }
+    }
+  }
+
+  return null
 }
 
 const BAD_PATTERNS = /logo|flag|map|icon|stamp|newspaper|portrait|sign|banner|diagram|coat.of.arms/i
@@ -51,16 +118,13 @@ async function searchCommonsDirectly(query: string): Promise<string | null> {
     origin: '*',
   })
 
-  const res = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
-    headers: { 'User-Agent': 'PlateExpectations/1.0 (menu-translator-app)' },
-  })
-
+  const res = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, { headers: HEADERS })
   if (!res.ok) return null
+
   const data = await res.json()
   const results = data.query?.search
   if (!results?.length) return null
 
-  // Try multiple results to find a food-related image, skip bad matches
   for (const result of results) {
     if (BAD_PATTERNS.test(result.title)) continue
 
@@ -82,50 +146,15 @@ async function getCommonsThumbUrl(title: string): Promise<string | null> {
     origin: '*',
   })
 
-  const res = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
-    headers: { 'User-Agent': 'PlateExpectations/1.0 (menu-translator-app)' },
-  })
-
+  const res = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, { headers: HEADERS })
   if (!res.ok) return null
+
   const data = await res.json()
   const pages = data.query?.pages
   if (!pages) return null
 
   for (const page of Object.values(pages) as any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
-    const info = page.imageinfo?.[0]
-    if (info?.thumburl) return info.thumburl
-  }
-
-  return null
-}
-
-async function searchWikipediaImages(query: string): Promise<string | null> {
-  const params = new URLSearchParams({
-    action: 'query',
-    format: 'json',
-    generator: 'images',
-    titles: query,
-    gimlimit: '5',
-    prop: 'imageinfo',
-    iiprop: 'url|mime',
-    iiurlwidth: '400',
-    origin: '*',
-  })
-
-  const res = await fetch(`https://en.wikipedia.org/w/api.php?${params}`, {
-    headers: { 'User-Agent': 'PlateExpectations/1.0 (menu-translator-app)' },
-  })
-
-  if (!res.ok) return null
-  const data = await res.json()
-  const pages = data.query?.pages
-  if (!pages) return null
-
-  for (const page of Object.values(pages) as any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
-    const info = page.imageinfo?.[0]
-    if (info?.mime?.startsWith('image/') && info.thumburl && !BAD_PATTERNS.test(page.title || '')) {
-      return info.thumburl
-    }
+    if (page.imageinfo?.[0]?.thumburl) return page.imageinfo[0].thumburl
   }
 
   return null
