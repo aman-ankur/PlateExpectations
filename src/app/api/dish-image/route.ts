@@ -119,7 +119,7 @@ const HEADERS = { 'User-Agent': 'PlateExpectations/1.0 (menu-translator-app)' }
 
 // --- Filename-based classification (free, no API call) ---
 
-const REJECT_FILENAME = /portrait|headshot|logo|flag|map|statue|monument|building|skyline|album|screenshot|coat.of.arms|diagram|newspaper|sign|banner|field|hybrid|paddy|harvest|farm|cultivation|compilation|tray|pdf|document/i
+const REJECT_FILENAME = /portrait|headshot|logo|flag|map|statue|monument|building|skyline|album|screenshot|coat.of.arms|diagram|newspaper|sign|banner|field|hybrid|paddy|harvest|farm|cultivation|compilation|tray|pdf|document|concert|crowd|people|band|music|stadium|event|audience|singer|performer/i
 const FOOD_FILENAME = /food|dish|cuisine|plate|bowl|soup|noodle|cook|restaurant|meal|stew|curry|grill|fry|roast|bake|sushi|kimchi|dumpling|bibimbap|jjigae|bulgogi|galbi|tteok|banchan|samgyeopsal|japchae|bokk|ramen|udon|sashimi|tempura|tofu|rice_cake/i
 
 function classifyCandidate(imageUrl: string): 'reject' | 'high' | 'check' {
@@ -149,7 +149,7 @@ async function validateWithVision(imageUrl: string, dishName: string): Promise<b
             role: 'user',
             content: [
               { type: 'image_url', image_url: { url: imageUrl, detail: 'low' } },
-              { type: 'text', text: `Is this an image of the food dish '${dishName}'? Answer only YES or NO.` },
+              { type: 'text', text: `Is this a photo of the food/dish "${dishName}"? If this is not food at all, answer NO. Answer only YES or NO.` },
             ],
           },
         ],
