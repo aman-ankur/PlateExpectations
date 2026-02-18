@@ -5,19 +5,43 @@
 ### 1.1 Progressive dish loading
 - **What**: Show dishes one-by-one as Phase 2 enrichment batches complete, instead of waiting for all batches
 - **Why**: First dishes appear in ~20s instead of ~45s. Users can start browsing immediately.
-- **How**: Return Phase 1 results immediately (names/prices), then stream enrichment via SSE or polling
-- **Status**: TODO
+- **How**: NDJSON streaming via ReadableStream, unified skeleton→enriched card list
+- **Status**: DONE
 
 ### 1.2 Better loading progress indicator
-- **What**: Step-by-step progress: "Reading menu..." → "Found 17 dishes" → "Translating 1/4..." → "Done"
+- **What**: Step-by-step progress: rotating messages during Phase 1, enrichment counter during Phase 2
 - **Why**: Makes 45s wait feel shorter. Users know something is happening.
-- **How**: Split scan endpoint into phases with progress events, or use SSE
-- **Status**: TODO
+- **How**: Rotating client-side messages + menu image preview during Phase 1, batch counter during Phase 2
+- **Status**: DONE
 
 ### 1.3 Scan new menu button
 - **What**: Button to clear current results and scan another menu
 - **Why**: Currently no way to scan again without refreshing the page
-- **How**: Clear dishes/images from Zustand store, navigate to home
+- **How**: clearScan() in Zustand store, button in header
+- **Status**: DONE
+
+### 1.4 Replace Phase 1 Vision OCR with dedicated OCR + Translate
+- **What**: Use Google Cloud Vision (or Tesseract.js client-side) for OCR, Google Translate for translation, skip GPT Vision entirely for Phase 1
+- **Why**: Cuts Phase 1 from ~15s to ~2-3s. OCR and translation are solved problems — GPT Vision is overkill.
+- **How**: Client-side Tesseract.js OCR while uploading, server-side Google Translate, simple parsing to structure dishes
+- **Status**: TODO
+
+### 1.5 Image hash caching
+- **What**: Hash menu images and cache scan results. Same photo = instant results.
+- **Why**: Repeat scans of same menu (common in groups) skip all API calls
+- **How**: perceptual hash or SHA of compressed image, Redis/KV cache
+- **Status**: TODO
+
+### 1.6 Restaurant menu DB
+- **What**: Recognize known restaurants via GPS + image matching, serve pre-cached menus
+- **Why**: Eliminates all wait time for known restaurants
+- **How**: Build menu DB over time from user scans, match by location + image similarity
+- **Status**: TODO
+
+### 1.7 Improve dish image match rate
+- **What**: ~50% of dishes get no image from Wikipedia. Add fallback image sources and smarter query construction.
+- **Why**: Empty plate icons look unfinished and reduce trust
+- **How**: Try English name fallback if local script fails, add Pexels/Unsplash API as fallback, use `imageSearchQuery` from GPT enrichment as secondary query
 - **Status**: TODO
 
 ## Priority 2: Core Functionality

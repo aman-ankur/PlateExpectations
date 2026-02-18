@@ -1,6 +1,9 @@
 import { Preferences, Dish } from './types'
 
+const TOP_N = 5
+
 export function rankDishes(dishes: Dish[], preferences: Preferences): Dish[] {
+  // Score each dish but keep original menu order
   const scored = dishes.map((dish) => {
     let score = 50 // base score
 
@@ -36,7 +39,6 @@ export function rankDishes(dishes: Dish[], preferences: Preferences): Dish[] {
       }
     }
 
-    // Spice matching is handled by GPT's ranking signal
     // Use GPT's own rank score as a factor
     if (dish.rankScore) {
       score += dish.rankScore
@@ -45,10 +47,20 @@ export function rankDishes(dishes: Dish[], preferences: Preferences): Dish[] {
     return { ...dish, rankScore: score }
   })
 
-  const sorted = scored.sort((a, b) => (b.rankScore ?? 0) - (a.rankScore ?? 0))
+  // Only top N dishes get rank labels, kept in original menu order
+  const byScore = [...scored].sort((a, b) => (b.rankScore ?? 0) - (a.rankScore ?? 0))
+  const topIds = new Set(byScore.slice(0, TOP_N).map((d) => d.id))
+  const rankMap = new Map<string, string>()
+  let rank = 0
+  byScore.forEach((dish) => {
+    if (topIds.has(dish.id)) {
+      rank++
+      rankMap.set(dish.id, rank === 1 ? 'Top Pick' : `#${rank} Pick`)
+    }
+  })
 
-  return sorted.map((dish, i) => ({
+  return scored.map((dish) => ({
     ...dish,
-    rankLabel: i === 0 ? 'Top Pick For You' : `#${i + 1} For You`,
+    rankLabel: rankMap.get(dish.id),
   }))
 }

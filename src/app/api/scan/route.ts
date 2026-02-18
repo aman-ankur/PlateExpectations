@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { scanMenu } from '@/lib/openai'
-import { rankDishes } from '@/lib/ranking'
+import { scanMenuStreaming } from '@/lib/openai'
 import { DEFAULT_PREFERENCES, Preferences } from '@/lib/types'
 
 export const maxDuration = 60
@@ -19,19 +18,47 @@ export async function POST(req: NextRequest) {
     }
 
     const prefs = preferences || DEFAULT_PREFERENCES
-    console.log('[scan] Starting parallel pipeline scan, image size:', Math.round(image.length / 1024), 'KB')
-    const startTime = Date.now()
+    console.log('[scan] Starting streaming pipeline, image size:', Math.round(image.length / 1024), 'KB')
 
-    const dishes = await scanMenu(image, prefs)
+    const generator = scanMenuStreaming(image, prefs)
+    const encoder = new TextEncoder()
+    let closed = false
 
-    if (dishes.length === 0) {
-      return NextResponse.json({ error: 'Could not read menu from image. Try a clearer photo.' }, { status: 422 })
-    }
+    const stream = new ReadableStream({
+      async pull(controller) {
+        try {
+          const { done, value } = await generator.next()
+          if (done || closed) {
+            if (!closed) {
+              closed = true
+              controller.close()
+            }
+            return
+          }
+          controller.enqueue(encoder.encode(JSON.stringify(value) + '\n'))
+        } catch (err) {
+          if (!closed) {
+            const message = err instanceof Error ? err.message : 'Internal server error'
+            console.error('[scan] Stream error:', err)
+            controller.enqueue(encoder.encode(JSON.stringify({ type: 'error', message }) + '\n'))
+            closed = true
+            controller.close()
+          }
+        }
+      },
+      cancel() {
+        closed = true
+        generator.return(undefined)
+      },
+    })
 
-    const ranked = rankDishes(dishes, prefs)
-    console.log('[scan] Complete:', dishes.length, 'dishes in', Date.now() - startTime, 'ms')
-
-    return NextResponse.json({ dishes: ranked })
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/event-stream; charset=utf-8',
+        'Cache-Control': 'no-cache, no-transform',
+        'X-Accel-Buffering': 'no',
+      },
+    })
   } catch (err) {
     console.error('[scan] API error:', err)
     return NextResponse.json(
