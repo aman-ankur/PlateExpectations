@@ -34,6 +34,10 @@ src/lib/
 docs/
   backlog.md                — Prioritized improvement items
   speed-and-images-plan.md  — Benchmarks and architecture decisions
+  accuracy-results.md       — Accuracy test results tracking
+scripts/
+  accuracy-test.sh          — Automated accuracy comparison (scan + image check vs ground truth)
+  ground-truth/             — Expected output JSON files for test menus
 ```
 
 ## API Architecture
@@ -107,6 +111,15 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - Badge backgrounds are subtle (`bg-black/30`) with muted category-colored dots — food should be the hero, not the badges
 - `IngredientBadge` component supports tap-to-explain for unfamiliar ingredients
 
+### OCR Correction
+- Cloud Vision garbles diacritical marks in Vietnamese/Thai — "GỎI CUỐN" becomes "CÒI CUỐN"
+- Enrichment LLM knows the correct name but echoes the garbled OCR by default
+- Fix: `nameLocalCorrected` field in enrichment prompt asks LLM to fix OCR errors
+- Image search uses `nameLocalCorrected` > `nameLocal` > `imageSearchQuery` > `nameEnglish` priority
+- `imageSearchQuery` should prefer canonical local names ("Gỏi cuốn") over generic English ("Vietnamese spring rolls")
+- Tone-stripped variants (NFD decompose + strip combining chars) help Wikipedia matching for diacritical languages
+- Accuracy test script: `./scripts/accuracy-test.sh` compares scan output against ground truth JSON
+
 ### Common Bugs to Watch For
 - **Hydration errors**: Any component reading localStorage must use a `mounted` state guard
 - **Dish ID mismatch**: Enrichment batches return inconsistent IDs — always normalize after
@@ -122,6 +135,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - Curl NDJSON test: `BASE64=$(base64 -i image.jpg | tr -d '\n') && curl -N -X POST localhost:3001/api/scan -H 'Content-Type: application/json' -d "{\"image\":\"data:image/jpeg;base64,${BASE64}\"}"`
 - Always verify with `npm run build` before merging to main
 - React Strict Mode causes double API calls in dev — this is normal, doesn't happen in prod
+- Accuracy test: `./scripts/accuracy-test.sh [ground-truth.json] [port]` — results tracked in `docs/accuracy-results.md`
 
 ## State Management
 

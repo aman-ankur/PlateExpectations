@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import type { CulturalTerm, Ingredient } from '@/lib/types'
@@ -56,13 +56,22 @@ function IngredientBadge({ ing, position, expanded, onTap }: { ing: Ingredient; 
 export default function DishDetailPage() {
   const router = useRouter()
   const params = useParams()
-  const { dishes, dishImages, setDishImage, isGeneratedImage } = useStore()
+  const { dishes, dishImages, addDishImage, isGeneratedImage } = useStore()
   const [expandedTerm, setExpandedTerm] = useState<string | null>(null)
   const [expandedBadge, setExpandedBadge] = useState<string | null>(null)
   const [generating, setGenerating] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const galleryRef = useRef<HTMLDivElement>(null)
 
   const dish = dishes.find((d) => String(d.id) === String(params.id))
-  const imageUrl = dish ? dishImages[dish.id] || dish.imageUrl : undefined
+  const images: string[] = dish ? (dishImages[dish.id] || []) : []
+
+  const handleScroll = useCallback(() => {
+    const el = galleryRef.current
+    if (!el) return
+    const idx = Math.round(el.scrollLeft / el.clientWidth)
+    setCurrentIndex(idx)
+  }, [])
 
   if (!dish) {
     return (
@@ -90,15 +99,39 @@ export default function DishDetailPage() {
     <div className="min-h-screen pb-10">
       {/* Immersive Hero */}
       <div className="relative h-[55vh] min-h-[320px] w-full bg-pe-elevated">
-        {imageUrl ? (
+        {images.length > 0 ? (
           <>
-            <img src={imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
+            <div
+              ref={galleryRef}
+              onScroll={handleScroll}
+              className="flex h-full w-full snap-x snap-mandatory overflow-x-auto scrollbar-hide"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+            >
+              {images.map((url, i) => (
+                <div key={url} className="relative h-full w-full flex-shrink-0 snap-start">
+                  <img src={url} alt={`${dish.nameEnglish} ${i + 1}`} className="h-full w-full object-cover" />
+                  {isGeneratedImage(url) && (
+                    <span className="absolute top-3 right-16 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
+                      AI Generated
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
             {/* Heavy gradient overlay — fades into page background */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/70 via-40% to-transparent" />
-            {dish && isGeneratedImage(dish.id) && (
-              <span className="absolute top-3 right-16 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
-                ✨ AI Generated
-              </span>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/70 via-40% to-transparent" />
+            {/* Dot indicators */}
+            {images.length > 1 && (
+              <div className="absolute top-3 right-16 z-20 flex gap-1.5">
+                {images.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                      i === currentIndex ? 'bg-white' : 'bg-white/40'
+                    }`}
+                  />
+                ))}
+              </div>
             )}
           </>
         ) : (
@@ -115,7 +148,7 @@ export default function DishDetailPage() {
                     body: JSON.stringify({ dishName: dish.nameEnglish, description: dish.description }),
                   })
                   const data = await res.json()
-                  if (data.imageUrl) setDishImage(dish.id, data.imageUrl)
+                  if (data.imageUrl) addDishImage(dish.id, data.imageUrl)
                 } catch { /* ignore */ }
                 setGenerating(false)
               }}
@@ -146,8 +179,8 @@ export default function DishDetailPage() {
           </svg>
         </button>
 
-        {/* Scattered ingredient badges — infographic style */}
-        {imageUrl && dish.ingredients.length > 0 && dish.ingredients.slice(0, 5).map((ing, i) => (
+        {/* Scattered ingredient badges — infographic style (first image only) */}
+        {images.length > 0 && currentIndex === 0 && dish.ingredients.length > 0 && dish.ingredients.slice(0, 8).map((ing, i) => (
           <IngredientBadge
             key={ing.name}
             ing={ing}
@@ -156,6 +189,33 @@ export default function DishDetailPage() {
             onTap={() => toggleBadge(ing.name)}
           />
         ))}
+
+        {/* Generate more button — inside hero when images exist but < 3 */}
+        {images.length > 0 && images.length < 3 && (
+          <button
+            disabled={generating}
+            onClick={async () => {
+              setGenerating(true)
+              try {
+                const res = await fetch('/api/generate-dish-image', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ dishName: dish.nameEnglish, description: dish.description }),
+                })
+                const data = await res.json()
+                if (data.imageUrl) addDishImage(dish.id, data.imageUrl)
+              } catch { /* ignore */ }
+              setGenerating(false)
+            }}
+            className="absolute top-4 right-28 z-20 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm"
+          >
+            {generating ? (
+              <span className="h-3 w-3 animate-spin rounded-full border-2 border-pe-accent/30 border-t-pe-accent" />
+            ) : (
+              <>✨ + AI</>
+            )}
+          </button>
+        )}
 
         {/* Hero overlay content — sits inside gradient zone */}
         <div className="absolute bottom-0 left-0 right-0 z-10 px-5 pb-5">
@@ -169,8 +229,8 @@ export default function DishDetailPage() {
           {dish.nameRomanized && (
             <p className="mt-0.5 text-lg font-semibold text-white/90">{dish.nameRomanized}</p>
           )}
-          {dish.nameLocal && (
-            <p className="mt-0.5 text-xl font-medium text-white/70">{dish.nameLocal}</p>
+          {(dish.nameLocalCorrected || dish.nameLocal) && (
+            <p className="mt-0.5 text-xl font-medium text-white/70">{dish.nameLocalCorrected || dish.nameLocal}</p>
           )}
 
           {/* Dietary / allergen tags */}

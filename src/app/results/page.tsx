@@ -16,7 +16,7 @@ const PHASE1_MESSAGES = [
 ]
 
 function GenerateButton({ dish }: { dish: Dish }) {
-  const setDishImage = useStore((s) => s.setDishImage)
+  const addDishImage = useStore((s) => s.addDishImage)
   const [generating, setGenerating] = useState(false)
 
   return (
@@ -32,7 +32,7 @@ function GenerateButton({ dish }: { dish: Dish }) {
             body: JSON.stringify({ dishName: dish.nameEnglish, description: dish.description }),
           })
           const data = await res.json()
-          if (data.imageUrl) setDishImage(dish.id, data.imageUrl)
+          if (data.imageUrl) addDishImage(dish.id, data.imageUrl)
         } catch { /* ignore */ }
         setGenerating(false)
       }}
@@ -50,8 +50,8 @@ function GenerateButton({ dish }: { dish: Dish }) {
 
 function DishCard({ dish }: { dish: Dish }) {
   const router = useRouter()
-  const imageUrl = useStore((s) => s.dishImages[dish.id])
-  const isGenerated = useStore((s) => s.isGeneratedImage(dish.id))
+  const imageUrl = useStore((s) => s.dishImages[dish.id]?.[0])
+  const isGenerated = useStore((s) => s.isGeneratedImage(s.dishImages[dish.id]?.[0] || ''))
 
   return (
     <button
@@ -84,7 +84,7 @@ function DishCard({ dish }: { dish: Dish }) {
         <h3 className="font-semibold text-pe-text">{dish.nameEnglish}</h3>
         <p className="text-sm text-pe-text-muted">
           {dish.nameRomanized && <span className="font-medium text-pe-text-secondary">{dish.nameRomanized} · </span>}
-          {dish.nameLocal}
+          {dish.nameLocalCorrected || dish.nameLocal}
         </p>
         <p className="mt-1 line-clamp-2 text-sm text-pe-text-secondary">
           {dish.description}

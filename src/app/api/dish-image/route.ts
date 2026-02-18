@@ -3,14 +3,14 @@ import { NextRequest, NextResponse } from 'next/server'
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 
 /**
- * GET /api/dish-image?q=볶음밥&fallback=Korean+fried+rice&dishName=Fried+Rice&description=Stir-fried+rice
+ * GET /api/dish-image?q=볶음밥&fallback=Korean+fried+rice&dishName=Fried+Rice
  *
- * Finds a dish photo with Vision-validated candidates:
+ * Finds up to 3 dish photos with Vision-validated candidates:
  * 1. Collect candidates from Wikipedia/Commons/Unsplash
  * 2. Filter by filename heuristics (free)
  * 3. High-confidence food filenames accepted without Vision
  * 4. Remaining candidates Vision-validated in parallel
- * 5. DALL-E auto-generation as ultimate fallback
+ * Returns { imageUrl, imageUrls[], generated[] }
  */
 export async function GET(req: NextRequest) {
   const query = req.nextUrl.searchParams.get('q')
@@ -34,14 +34,14 @@ export async function GET(req: NextRequest) {
   console.log(`[dish-image] Searching for: q="${query}" fallback="${fallback || ''}" (${queries.length} queries)`)
 
   try {
-    // Collect candidates from all sources, try high-confidence first
+    // Collect candidates from all sources
     const candidates: { imageUrl: string; source: string }[] = []
+    const highConfidence: string[] = []
 
     // Strategy 1: Wikipedia article lead images
     for (const q of queries) {
       const result = await getWikipediaArticleImage(q)
       if (result) {
-        // Check for high-confidence fast path or filename rejection
         const check = classifyCandidate(result.imageUrl)
         if (check === 'reject') {
           console.log(`[dish-image]   Wikipedia rejected for "${q}" (filename)`)
@@ -49,7 +49,8 @@ export async function GET(req: NextRequest) {
         }
         if (check === 'high') {
           console.log(`[dish-image] ✓ Wikipedia high-confidence hit for "${q}" → ${result.imageUrl.slice(0, 80)}...`)
-          return NextResponse.json({ imageUrl: result.imageUrl })
+          if (!highConfidence.includes(result.imageUrl)) highConfidence.push(result.imageUrl)
+          continue
         }
         candidates.push({ imageUrl: result.imageUrl, source: `Wikipedia:${q}` })
       } else {
@@ -58,18 +59,37 @@ export async function GET(req: NextRequest) {
     }
 
     // Strategy 2: Wikimedia Commons search
+    // High-confidence filenames are spot-checked with Vision using the fallback (clean English name)
+    const commonsHighConfidence: string[] = []
     for (const q of queries) {
       const urls = await searchCommonsDirectly(q)
       for (const url of urls) {
         const check = classifyCandidate(url)
         if (check === 'reject') continue
         if (check === 'high') {
-          console.log(`[dish-image] ✓ Commons high-confidence hit for "${q}" → ${url.slice(0, 80)}...`)
-          return NextResponse.json({ imageUrl: url })
+          if (!commonsHighConfidence.includes(url)) commonsHighConfidence.push(url)
+          continue
         }
         candidates.push({ imageUrl: url, source: `Commons:${q}` })
       }
       if (urls.length === 0) console.log(`[dish-image]   Commons miss for "${q}"`)
+    }
+
+    // Spot-check first Commons high-confidence hit with Vision using the fallback name
+    if (commonsHighConfidence.length > 0) {
+      const visionName = fallback || dishName || query
+      if (OPENAI_API_KEY) {
+        const spotCheck = await validateWithVision(commonsHighConfidence[0], visionName)
+        if (spotCheck) {
+          console.log(`[dish-image] ✓ Commons high-confidence verified (${commonsHighConfidence.length} images) for "${visionName}"`)
+          highConfidence.push(...commonsHighConfidence.filter(u => !highConfidence.includes(u)))
+        } else {
+          console.log(`[dish-image]   Commons high-confidence spot-check FAILED for "${visionName}", sending to Vision`)
+          candidates.push(...commonsHighConfidence.map(u => ({ imageUrl: u, source: 'Commons:high-rejected' })))
+        }
+      } else {
+        highConfidence.push(...commonsHighConfidence.filter(u => !highConfidence.includes(u)))
+      }
     }
 
     // Strategy 3: Unsplash
@@ -85,33 +105,71 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    // Vision-validate candidates in parallel (up to 3 at a time)
-    if (candidates.length > 0 && OPENAI_API_KEY) {
-      console.log(`[dish-image] Vision-validating ${candidates.length} candidates for "${dishName || query}"`)
-      const validated = await validateCandidatesParallel(candidates.map(c => c.imageUrl), dishName || query)
-      if (validated) {
-        const source = candidates.find(c => c.imageUrl === validated)?.source || 'unknown'
-        console.log(`[dish-image] ✓ Vision accepted (${source}) → ${validated.slice(0, 80)}...`)
-        return NextResponse.json({ imageUrl: validated })
+    // Collect validated images — start with high-confidence ones
+    const imageUrls: string[] = [...highConfidence.slice(0, 3)]
+
+    // Vision-validate remaining candidates to fill up to 3
+    if (imageUrls.length < 3 && candidates.length > 0 && OPENAI_API_KEY) {
+      // Deduplicate against already-collected URLs
+      const candidateUrls = candidates.map(c => c.imageUrl).filter(u => !imageUrls.includes(u))
+      if (candidateUrls.length > 0) {
+        console.log(`[dish-image] Vision-validating ${candidateUrls.length} candidates for "${dishName || query}"`)
+        const validated = await validateCandidatesParallel(candidateUrls, dishName || query, 3 - imageUrls.length)
+        for (const url of validated) {
+          const source = candidates.find(c => c.imageUrl === url)?.source || 'unknown'
+          console.log(`[dish-image] ✓ Vision accepted (${source}) → ${url.slice(0, 80)}...`)
+        }
+        imageUrls.push(...validated)
+        if (validated.length === 0) {
+          console.log(`[dish-image]   All ${candidateUrls.length} candidates rejected by Vision`)
+        }
       }
-      console.log(`[dish-image]   All ${candidates.length} candidates rejected by Vision`)
     }
 
-    // Strategy 4: DALL-E auto-generation
+    // Secondary search if < 3 images and dishName available
+    if (imageUrls.length < 3 && dishName) {
+      const secondaryQuery = `${dishName} food dish`
+      console.log(`[dish-image] Secondary search: "${secondaryQuery}"`)
+      const secondaryResult = await getWikipediaArticleImage(secondaryQuery)
+      if (secondaryResult && !imageUrls.includes(secondaryResult.imageUrl)) {
+        const check = classifyCandidate(secondaryResult.imageUrl)
+        if (check === 'high') {
+          imageUrls.push(secondaryResult.imageUrl)
+        } else if (check === 'check' && OPENAI_API_KEY) {
+          const validated = await validateCandidatesParallel([secondaryResult.imageUrl], dishName, 1)
+          imageUrls.push(...validated)
+        }
+      }
+    }
+
+    if (imageUrls.length > 0) {
+      console.log(`[dish-image] ✓ Found ${imageUrls.length} images for "${query}"`)
+      return NextResponse.json({
+        imageUrl: imageUrls[0],
+        imageUrls,
+        generated: imageUrls.map(() => false),
+      })
+    }
+
+    // DALL-E fallback when no real photos found
     if (dishName && OPENAI_API_KEY) {
       console.log(`[dish-image] Generating with DALL-E for "${dishName}"`)
       const generated = await generateWithDalle(dishName, description || '')
       if (generated) {
         console.log(`[dish-image] ✓ DALL-E generated for "${dishName}"`)
-        return NextResponse.json({ imageUrl: generated, generated: true })
+        return NextResponse.json({
+          imageUrl: generated,
+          imageUrls: [generated],
+          generated: [true],
+        })
       }
     }
 
     console.log(`[dish-image] ✗ No image found for "${query}"`)
-    return NextResponse.json({ imageUrl: null })
+    return NextResponse.json({ imageUrl: null, imageUrls: [], generated: [] })
   } catch (err) {
     console.error('[dish-image] Error:', err)
-    return NextResponse.json({ imageUrl: null })
+    return NextResponse.json({ imageUrl: null, imageUrls: [], generated: [] })
   }
 }
 
@@ -171,18 +229,20 @@ async function validateWithVision(imageUrl: string, dishName: string): Promise<b
   }
 }
 
-/** Validate up to 3 candidates in parallel, return first YES or null */
-async function validateCandidatesParallel(urls: string[], dishName: string): Promise<string | null> {
+/** Validate candidates in parallel, return ALL validated URLs (up to maxCount) */
+async function validateCandidatesParallel(urls: string[], dishName: string, maxCount: number = 3): Promise<string[]> {
+  const validated: string[] = []
   // Process in batches of 3
-  for (let i = 0; i < urls.length; i += 3) {
+  for (let i = 0; i < urls.length && validated.length < maxCount; i += 3) {
     const batch = urls.slice(i, i + 3)
     const results = await Promise.all(
       batch.map(async (url) => ({ url, valid: await validateWithVision(url, dishName) }))
     )
-    const winner = results.find(r => r.valid)
-    if (winner) return winner.url
+    for (const r of results) {
+      if (r.valid && validated.length < maxCount) validated.push(r.url)
+    }
   }
-  return null
+  return validated
 }
 
 // --- DALL-E generation ---
@@ -234,9 +294,13 @@ async function getWikipediaArticleImage(query: string): Promise<WikiResult | nul
     .replace(/\s+(food|dish|meal|recipe|soup|noodle|noodles|rice|bowl|pancake|stir.fried|fried|steamed|cold|spicy)\s*$/gi, '')
     .trim()
 
+  // Add tone-stripped variant for Vietnamese/diacritical names
+  const noTones = dishName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd')
+
   const variants = [
     dishName,
     query,
+    ...(noTones !== dishName ? [noTones] : []),
     dishName.replace(/\s+/g, '-'),
     `${dishName} food`,
   ]
