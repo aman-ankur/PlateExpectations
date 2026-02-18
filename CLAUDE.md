@@ -77,13 +77,14 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - `detail: "low"` is faster but misses dishes on dense menus — use `detail: "auto"`
 - Bottleneck is always output tokens, not image processing or network
 - Parallel batches are the only way to speed up large menus
+- **Concurrent batch limit**: Firing 8+ parallel gpt-4o-mini requests simultaneously causes some to return `{"dishes": []}` (valid 200, `finish_reason=stop`, ~650ms). Not a rate limit — the model returns an empty array. Fix: stagger batch launches by 200ms each.
 
 ### Streaming
 - `ReadableStream` with `start()` doesn't await async work — use `pull()` pattern instead
 - `text/event-stream` content type + `X-Accel-Buffering: no` prevents proxy buffering
-- React Strict Mode aborts first request in dev — causes harmless JSON parse error server-side
+- React Strict Mode fires effects twice (mount → unmount → remount). Use a `useRef` guard (`scanStarted`) to ensure the scan only runs once — don't rely on abort-and-restart which creates race conditions with in-flight OpenAI requests.
 - Batches that complete at similar times (~300ms apart) will appear together to the client
-- Use `AbortController` on client for cleanup; `cancel()` on `ReadableStream` for server cleanup
+- `AbortController` on server-side `ReadableStream.cancel()` for cleanup when client disconnects; client fetch has no abort signal (let scan complete through Strict Mode cycles)
 
 ### Image Search
 - Wikimedia Commons keyword search returns generic/wrong images — don't use
