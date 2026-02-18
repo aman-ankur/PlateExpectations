@@ -166,8 +166,11 @@ export default function DishDetailPage() {
 
           {/* Dish name */}
           <h1 className="text-3xl font-bold text-white">{dish.nameEnglish}</h1>
+          {dish.nameRomanized && (
+            <p className="mt-0.5 text-lg font-semibold text-white/90">{dish.nameRomanized}</p>
+          )}
           {dish.nameLocal && (
-            <p className="mt-1 text-xl font-medium text-white/70">{dish.nameLocal}</p>
+            <p className="mt-0.5 text-xl font-medium text-white/70">{dish.nameLocal}</p>
           )}
 
           {/* Dietary / allergen tags */}

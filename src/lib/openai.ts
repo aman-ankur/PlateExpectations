@@ -79,9 +79,18 @@ export async function* scanMenuStreaming(imageBase64: string, preferences: Prefe
       setTimeout(() => {
         enrichBatch(batch, prefsDescription, signal).then((dishes) => {
           console.log(`[openai] Batch ${batchIdx} done in ${Date.now() - t2}ms (sent ${batch.length}, got ${dishes.length})`)
+          // Preserve Phase 1 romanized name (e.g. "JJAJANGMYEON") before enrichment overwrites nameEnglish
+          const rawById = new Map(batch.map(d => [d.id, d]))
           resolve({
             batchIdx,
-            dishes: dishes.map((dish, i) => ({ ...dish, id: `dish-${startIdx + i + 1}` })),
+            dishes: dishes.map((dish, i) => {
+              const raw = rawById.get(dish.id)
+              const romanized = raw?.nameEnglish || ''
+              // Only set nameRomanized if it differs from the enriched English name
+              const nameRomanized = romanized && romanized.toLowerCase() !== dish.nameEnglish.toLowerCase()
+                ? romanized : undefined
+              return { ...dish, nameRomanized, id: `dish-${startIdx + i + 1}` }
+            }),
           })
         }).catch((err) => {
           console.warn(`[openai] Batch ${batchIdx} failed:`, err?.message || err)
