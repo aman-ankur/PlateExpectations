@@ -1,0 +1,15 @@
+{
+  "menuImage": "/Users/aankur/Downloads/menuapp/vietnam1.png",
+  "expectedDishCount": 9,
+  "dishes": [
+    { "nameLocal": "GỎI CUỐN", "nameEnglish": "Salad Rolls", "price": "7.00" },
+    { "nameLocal": "CHẢ GIÒ", "nameEnglish": "Crispy Rolls", "price": "7.00" },
+    { "nameLocal": "CÁNH GÀ NƯỚC MẮM", "nameEnglish": "Fish Sauce Wings", "price": "13.00" },
+    { "nameLocal": "TÔM LĂN BỘT", "nameEnglish": "Butterfly Shrimp", "price": "14.00" },
+    { "nameLocal": "MỰC RANG MUỐI", "nameEnglish": "Salt & Pepper Squid", "price": "14.00" },
+    { "nameLocal": "BÁNH CUỐN", "nameEnglish": "Steamed Rice Rolls", "price": "14.00" },
+    { "nameLocal": "BÁNH ƯỚT TÔM SẤY", "nameEnglish": "Toasted Shrimp Crepes", "price": "14.00" },
+    { "nameLocal": "BÁNH ƯỚT CHẢ LỤA", "nameEnglish": "Vietnamese Ham Crepes", "price": "12.50" },
+    { "nameLocal": "BÁNH ƯỚT ĐẬU HŨ", "nameEnglish": "Tofu Crepes", "price": "12.50" }
+  ]
+}
