@@ -35,6 +35,22 @@ export interface Dish {
   rankLabel?: string
 }
 
+export interface RawDish {
+  id: string
+  nameEnglish: string
+  nameLocal: string
+  price: string
+  brief: string
+  country: string
+}
+
+export type ScanEvent =
+  | { type: 'progress'; message: string }
+  | { type: 'phase1'; dishes: RawDish[] }
+  | { type: 'batch'; dishes: Dish[] }
+  | { type: 'done' }
+  | { type: 'error'; message: string }
+
 export interface Preferences {
   proteins: string[]
   spice: string

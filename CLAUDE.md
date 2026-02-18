@@ -19,34 +19,46 @@ PWA for travelers to scan and understand foreign-language menus anywhere. Scan a
 src/app/
   page.tsx                  — Home / Scan screen (camera upload)
   preferences/page.tsx      — Dietary preferences onboarding
-  results/page.tsx          — Menu results list with thumbnails
+  results/page.tsx          — Menu results list (streaming, progressive loading)
   dish/[id]/page.tsx        — Dish detail (hero image, badges, nutrition)
   settings/page.tsx         — Edit preferences
-  api/scan/route.ts         — Two-phase parallel scan pipeline
+  api/scan/route.ts         — NDJSON streaming scan pipeline
   api/dish-image/route.ts   — Wikipedia image search endpoint
 src/lib/
-  openai.ts                 — extractDishes() + enrichInParallel() + enrichBatch()
-  store.ts                  — Zustand store (preferences, scan, dish image cache)
-  types.ts                  — Dish, Ingredient, CulturalTerm, Preferences
-  ranking.ts                — Preference-based dish ranking
+  openai.ts                 — extractDishes() + scanMenuStreaming() + enrichBatch()
+  store.ts                  — Zustand store (preferences, scan, skeletons, dish image cache)
+  types.ts                  — Dish, RawDish, ScanEvent, Ingredient, CulturalTerm, Preferences
+  ranking.ts                — Preference-based dish ranking (top 5 labels, menu order preserved)
   compress.ts               — Client-side image compression (max 1200px, 0.7 quality)
   constants.ts              — Design tokens, dietary options
 docs/
-  backlog.md                — Prioritized improvement items (16 items, 4 tiers)
+  backlog.md                — Prioritized improvement items
   speed-and-images-plan.md  — Benchmarks and architecture decisions
 ```
 
 ## API Architecture
 
-### POST `/api/scan` — Menu scan pipeline
+### POST `/api/scan` — Streaming menu scan pipeline
 **Input:** `{ image: string, preferences?: Preferences }` (base64)
+**Output:** NDJSON stream (`text/event-stream`) with events:
+```
+{"type":"progress","message":"Reading menu..."}
+{"type":"progress","message":"Found 17 dishes"}
+{"type":"phase1","dishes":[{id,nameEnglish,nameLocal,price,brief,country},...]}
+{"type":"progress","message":"Enriching 17 dishes..."}
+{"type":"batch","dishes":[<enriched Dish objects>]}
+{"type":"batch","dishes":[<enriched Dish objects>]}
+{"type":"done"}
+```
+
 1. **Phase 1**: GPT-4o-mini Vision → dish names, prices, local script (~15s)
 2. **Phase 2**: GPT-4o-mini × N parallel batches of 5 → full enrichment (~15-20s concurrent)
-3. IDs normalized to `dish-N` strings after enrichment
-4. Return `{ dishes: Dish[] }` ranked by preferences
+3. Events streamed via `ReadableStream` with `pull()` pattern
+4. Batches yielded in completion order (first-finished-first-shown)
+5. Client ranks dishes on `done` event (top 5 get labels, menu order preserved)
 
 ### GET `/api/dish-image?q=<query>` — Dish photo search
-Wikipedia opensearch → article lead image (pageimages) → Commons fallback → Unsplash fallback. Uses local script names (Korean/Thai) for best matching. ~1s per image.
+Wikipedia opensearch → article lead image (pageimages) → Commons fallback → Unsplash fallback. Uses local script names (Korean/Thai) for best matching. ~1s per image. Parenthetical suffixes (weights like `(150g)`) are stripped before search.
 
 ## Learnings & Gotchas (from testing)
 
@@ -57,28 +69,37 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - Bottleneck is always output tokens, not image processing or network
 - Parallel batches are the only way to speed up large menus
 
+### Streaming
+- `ReadableStream` with `start()` doesn't await async work — use `pull()` pattern instead
+- `text/event-stream` content type + `X-Accel-Buffering: no` prevents proxy buffering
+- React Strict Mode aborts first request in dev — causes harmless JSON parse error server-side
+- Batches that complete at similar times (~300ms apart) will appear together to the client
+- Use `AbortController` on client for cleanup; `cancel()` on `ReadableStream` for server cleanup
+
 ### Image Search
 - Wikimedia Commons keyword search returns generic/wrong images — don't use
 - Wikipedia opensearch → pageimages gives editorially curated photos — best quality
 - Local script names (잡채) match articles better than English ("japchae" → "Japheth" wrong match)
 - Deduplicate image URLs in store — multiple dishes can match the same Commons photo
+- Strip weight/quantity suffixes from queries: `소갈비살(150g)` → `소갈비살`
 
 ### Common Bugs to Watch For
 - **Hydration errors**: Any component reading localStorage must use a `mounted` state guard
 - **Dish ID mismatch**: Enrichment batches return inconsistent IDs — always normalize after
 - **Back nav re-scan**: Results page must check `dishes.length > 0` before calling API
 - **next.config.mjs**: `api.bodyParser` is Pages Router only — don't use with App Router
+- **Derived loading state**: Don't rely on `isLoading` flag alone — derive from `menuImage` + `dishes.length` + `scanProgress` to avoid flash of empty content
 
 ### Testing
-- Test image: `/Users/aankur/Downloads/korean.jpg` (Korean Kitchen menu, 17 dishes)
+- Test images: `/Users/aankur/Downloads/korean.jpg` (17 dishes), `/Users/aankur/Downloads/korean2.jpg` (8 dishes)
 - Dev server: `npm run dev -- -p 3001`
-- Curl test: `BASE64=$(base64 -i image.jpg | tr -d '\n') && curl -X POST localhost:3001/api/scan -H 'Content-Type: application/json' -d "{\"image\":\"data:image/jpeg;base64,${BASE64}\"}"`
+- Curl NDJSON test: `BASE64=$(base64 -i image.jpg | tr -d '\n') && curl -N -X POST localhost:3001/api/scan -H 'Content-Type: application/json' -d "{\"image\":\"data:image/jpeg;base64,${BASE64}\"}"`
 - Always verify with `npm run build` before merging to main
 - React Strict Mode causes double API calls in dev — this is normal, doesn't happen in prod
 
 ## State Management
 
-Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral), **dishImages** (cache with dedup)
+Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral: dishes, skeletonDishes, scanProgress), **dishImages** (cache with dedup). Key actions: `appendEnrichedDishes()` for incremental batch merging, `clearScan()` for full reset, `fetchDishImagesForBatch()` for per-batch image loading.
 
 ## Git Workflow
 
