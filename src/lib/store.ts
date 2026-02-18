@@ -29,6 +29,11 @@ interface AppState {
   // Image
   menuImage: string | null
   setMenuImage: (image: string | null) => void
+
+  // Dish image cache: dishId -> imageUrl
+  dishImages: Record<string, string>
+  setDishImage: (dishId: string, url: string) => void
+  fetchDishImages: () => void
 }
 
 export const useStore = create<AppState>((set, get) => ({
@@ -52,4 +57,28 @@ export const useStore = create<AppState>((set, get) => ({
 
   menuImage: null,
   setMenuImage: (menuImage) => set({ menuImage }),
+
+  dishImages: {},
+  setDishImage: (dishId, url) =>
+    set((state) => ({ dishImages: { ...state.dishImages, [dishId]: url } })),
+  fetchDishImages: () => {
+    const { dishes, dishImages } = get()
+    const usedUrls = new Set(Object.values(dishImages))
+    dishes.forEach((dish) => {
+      if (dish.imageSearchQuery && !dishImages[dish.id]) {
+        // Use local name as primary search (more specific on Wikipedia)
+        // and English name as fallback
+        const query = dish.nameLocal || dish.imageSearchQuery || dish.nameEnglish
+        fetch(`/api/dish-image?q=${encodeURIComponent(query)}`)
+          .then((r) => r.json())
+          .then((data) => {
+            if (data.imageUrl && !usedUrls.has(data.imageUrl)) {
+              usedUrls.add(data.imageUrl)
+              get().setDishImage(dish.id, data.imageUrl)
+            }
+          })
+          .catch(() => {})
+      }
+    })
+  },
 }))

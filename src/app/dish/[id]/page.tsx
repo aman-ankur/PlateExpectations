@@ -18,10 +18,11 @@ const BADGE_COLORS: Record<string, string> = {
 export default function DishDetailPage() {
   const router = useRouter()
   const params = useParams()
-  const { dishes } = useStore()
+  const { dishes, dishImages } = useStore()
   const [expandedTerm, setExpandedTerm] = useState<string | null>(null)
 
-  const dish = dishes.find((d) => d.id === params.id)
+  const dish = dishes.find((d) => String(d.id) === String(params.id))
+  const imageUrl = dish ? dishImages[dish.id] || dish.imageUrl : undefined
 
   if (!dish) {
     return (
@@ -46,8 +47,8 @@ export default function DishDetailPage() {
     <div className="min-h-screen pb-10">
       {/* Hero Image */}
       <div className="relative h-64 w-full bg-pe-elevated">
-        {dish.imageUrl ? (
-          <img src={dish.imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
+        {imageUrl ? (
+          <img src={imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
         ) : (
           <div className="flex h-full items-center justify-center text-6xl">🍽️</div>
         )}
@@ -60,18 +61,29 @@ export default function DishDetailPage() {
           </svg>
         </button>
 
-        {/* Floating ingredient badges */}
-        <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
-          {dish.ingredients.slice(0, 5).map((ing) => (
-            <span
-              key={ing.name}
-              className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium text-white shadow ${BADGE_COLORS[ing.category] || 'bg-pe-text-muted'}`}
-            >
-              <span className={`inline-block h-1.5 w-1.5 rounded-full bg-white/60`} />
-              {ing.name}
-            </span>
-          ))}
-        </div>
+        {/* Floating ingredient badges — positioned around image edges */}
+        {dish.ingredients.length > 0 && (
+          <>
+            {dish.ingredients.slice(0, 5).map((ing, i) => {
+              const positions = [
+                'top-3 left-3',      // top-left
+                'top-3 right-14',    // top-right
+                'bottom-3 right-3',  // bottom-right
+                'bottom-3 left-3',   // bottom-left
+                'top-1/2 right-3 -translate-y-1/2', // mid-right
+              ]
+              return (
+                <span
+                  key={ing.name}
+                  className={`absolute ${positions[i]} flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-medium text-white shadow-lg backdrop-blur-sm ${BADGE_COLORS[ing.category] || 'bg-pe-text-muted'} bg-opacity-90`}
+                >
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/70" />
+                  {ing.name}
+                </span>
+              )
+            })}
+          </>
+        )}
       </div>
 
       <div className="px-5 pt-5">
