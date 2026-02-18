@@ -63,16 +63,22 @@ export const useStore = create<AppState>((set, get) => ({
     set((state) => ({ dishImages: { ...state.dishImages, [dishId]: url } })),
   fetchDishImages: () => {
     const { dishes, dishImages } = get()
+    const usedUrls = new Set(Object.values(dishImages))
     dishes.forEach((dish) => {
       if (dish.imageSearchQuery && !dishImages[dish.id]) {
-        fetch(`/api/dish-image?q=${encodeURIComponent(dish.imageSearchQuery)}`)
+        // Use both English query and local name for better results
+        const query = dish.nameLocal
+          ? `${dish.imageSearchQuery} ${dish.nameLocal}`
+          : dish.imageSearchQuery
+        fetch(`/api/dish-image?q=${encodeURIComponent(query)}`)
           .then((r) => r.json())
           .then((data) => {
-            if (data.imageUrl) {
+            if (data.imageUrl && !usedUrls.has(data.imageUrl)) {
+              usedUrls.add(data.imageUrl)
               get().setDishImage(dish.id, data.imageUrl)
             }
           })
-          .catch(() => {}) // Silently fail — images are non-critical
+          .catch(() => {})
       }
     })
   },

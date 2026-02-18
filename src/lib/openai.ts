@@ -87,7 +87,12 @@ async function enrichInParallel(rawDishes: RawDish[], preferences: Preferences):
     batches.map((batch) => enrichBatch(batch, prefsDescription))
   )
 
-  return results.flat()
+  // Normalize IDs: enrichment batches may return inconsistent IDs
+  const allDishes = results.flat()
+  return allDishes.map((dish, i) => ({
+    ...dish,
+    id: `dish-${i + 1}`,
+  }))
 }
 
 /** Enrich a single batch of dishes via GPT-4o-mini (no vision needed). */
