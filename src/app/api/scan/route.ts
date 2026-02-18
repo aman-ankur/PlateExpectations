@@ -20,7 +20,8 @@ export async function POST(req: NextRequest) {
     const prefs = preferences || DEFAULT_PREFERENCES
     console.log('[scan] Starting streaming pipeline, image size:', Math.round(image.length / 1024), 'KB')
 
-    const generator = scanMenuStreaming(image, prefs)
+    const abortController = new AbortController()
+    const generator = scanMenuStreaming(image, prefs, abortController.signal)
     const encoder = new TextEncoder()
     let closed = false
 
@@ -39,8 +40,12 @@ export async function POST(req: NextRequest) {
         } catch (err) {
           if (!closed) {
             const message = err instanceof Error ? err.message : 'Internal server error'
-            console.error('[scan] Stream error:', err)
-            controller.enqueue(encoder.encode(JSON.stringify({ type: 'error', message }) + '\n'))
+            if (err instanceof Error && err.name === 'AbortError') {
+              console.log('[scan] Stream aborted by client')
+            } else {
+              console.error('[scan] Stream error:', err)
+              controller.enqueue(encoder.encode(JSON.stringify({ type: 'error', message }) + '\n'))
+            }
             closed = true
             controller.close()
           }
@@ -48,6 +53,7 @@ export async function POST(req: NextRequest) {
       },
       cancel() {
         closed = true
+        abortController.abort()
         generator.return(undefined)
       },
     })

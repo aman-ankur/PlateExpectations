@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import { rankDishes } from '@/lib/ranking'
@@ -108,6 +108,7 @@ export default function ResultsPage() {
 
   const [phase1Msg, setPhase1Msg] = useState(0)
   const [sortByReco, setSortByReco] = useState(false)
+  const scanStarted = useRef(false)
   const inPhase1 = !!scanProgress && skeletonDishes.length === 0
 
   useEffect(() => {
@@ -124,9 +125,8 @@ export default function ResultsPage() {
       return
     }
 
-    if (dishes.length > 0) return
-
-    const controller = new AbortController()
+    if (dishes.length > 0 || scanStarted.current) return
+    scanStarted.current = true
 
     const streamScan = async () => {
       setLoading(true)
@@ -138,7 +138,6 @@ export default function ResultsPage() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ image: menuImage, preferences }),
-          signal: controller.signal,
         })
 
         if (!res.ok) throw new Error('Failed to analyze menu')
@@ -191,9 +190,7 @@ export default function ResultsPage() {
           }
         }
       } catch (err) {
-        if ((err as Error).name !== 'AbortError') {
-          setError(err instanceof Error ? err.message : 'Something went wrong')
-        }
+        setError(err instanceof Error ? err.message : 'Something went wrong')
       } finally {
         setLoading(false)
         setScanProgress(null)
@@ -201,8 +198,6 @@ export default function ResultsPage() {
     }
 
     streamScan()
-
-    return () => { controller.abort() }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuImage, router])
 

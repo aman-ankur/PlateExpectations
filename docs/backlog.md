@@ -126,7 +126,7 @@
 - **What**: If one enrichment batch fails, still show the others
 - **Why**: Currently one failed batch causes the entire scan to fail
 - **How**: Use `Promise.allSettled` instead of `Promise.all`, return partial results
-- **Status**: TODO
+- **Status**: DONE (batch promises catch errors individually, empty batches skipped, retry logic per batch)
 
 ### 4.5 Response caching
 - **What**: Cache scan results by image hash so re-scanning the same menu is instant
