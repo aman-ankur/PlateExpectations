@@ -42,7 +42,19 @@
 - **What**: ~50% of dishes get no image from Wikipedia. Add fallback image sources and smarter query construction.
 - **Why**: Empty plate icons look unfinished and reduce trust
 - **How**: Try English name fallback if local script fails, add Pexels/Unsplash API as fallback, use `imageSearchQuery` from GPT enrichment as secondary query
-- **Status**: TODO
+- **Status**: DONE (Vision validation + DALL-E fallback ensures every dish gets an image)
+
+### 1.8 Vision-validated dish images
+- **What**: Use GPT-4o-mini Vision to validate image candidates before showing them. DALL-E 3 generates images when no real photo matches.
+- **Why**: Text-based search matches keywords not content — "순대" (blood sausage soup) matched StrawberrySundae.jpg, "Marinated Pork" matched sushi images
+- **How**: Filename heuristic pre-filter (free) → high-confidence food filenames accepted instantly → remaining candidates Vision-validated in parallel (3 at a time) → DALL-E fallback. AI-generated images show ✨ badge.
+- **Status**: DONE
+
+### 1.9 Optimize results page re-renders
+- **What**: Extract DishCard as top-level component with targeted Zustand selectors
+- **Why**: Each image load triggered full-page re-render of 20+ cards, making UI sluggish during image loading
+- **How**: DishCard subscribes only to its own `dishImages[dish.id]` via `useStore((s) => s.dishImages[dish.id])` instead of entire store
+- **Status**: DONE
 
 ## Priority 2: Core Functionality
 
@@ -76,6 +88,18 @@
 - **What**: Add Pexels as a fallback when Wikipedia has no image
 - **Why**: Professional food photography, free (200 req/hr), covers dishes Wikipedia misses
 - **How**: Get free API key from pexels.com, add as third fallback after Wikipedia + Commons
+- **Status**: LOW PRIORITY (DALL-E fallback now covers all gaps, Pexels would reduce DALL-E cost)
+
+### 3.2 Vision validation result caching
+- **What**: Cache Vision validation results (image URL + dish name → YES/NO) to avoid re-validating the same candidates
+- **Why**: Same Wikipedia images appear across scans; caching avoids redundant API calls
+- **How**: In-memory LRU cache or Redis, keyed by image URL hash + dish name
+- **Status**: TODO
+
+### 3.3 DALL-E image caching
+- **What**: Cache DALL-E generated images permanently instead of using ephemeral URLs
+- **Why**: DALL-E URLs expire after ~1 hour; re-scanning same menu regenerates images at $0.04 each
+- **How**: Upload DALL-E images to Cloudflare R2 or Vercel Blob, cache by dish name hash
 - **Status**: TODO
 
 ## Priority 4: Polish & Production
@@ -102,7 +126,7 @@
 - **What**: If one enrichment batch fails, still show the others
 - **Why**: Currently one failed batch causes the entire scan to fail
 - **How**: Use `Promise.allSettled` instead of `Promise.all`, return partial results
-- **Status**: TODO
+- **Status**: DONE (batch promises catch errors individually, empty batches skipped, retry logic per batch)
 
 ### 4.5 Response caching
 - **What**: Cache scan results by image hash so re-scanning the same menu is instant

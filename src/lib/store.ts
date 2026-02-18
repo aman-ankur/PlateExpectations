@@ -1,6 +1,40 @@
 import { create } from 'zustand'
 import { Dish, RawDish, Preferences, DEFAULT_PREFERENCES } from './types'
 
+// Shared across all batches — tracks URLs already assigned to prevent duplicates
+const usedImageUrls = new Set<string>()
+// Tracks which dish IDs have AI-generated images
+const generatedDishIds = new Set<string>()
+
+function assignDishImage(
+  dish: Dish,
+  imageUrl: string,
+  get: () => AppState,
+) {
+  if (usedImageUrls.has(imageUrl)) {
+    // Duplicate — auto-generate with DALL-E
+    if (dish.nameEnglish) {
+      fetch('/api/generate-dish-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dishName: dish.nameEnglish, description: dish.description }),
+      })
+        .then((r) => r.json())
+        .then((gen) => {
+          if (gen.imageUrl) {
+            usedImageUrls.add(gen.imageUrl)
+            generatedDishIds.add(dish.id)
+            get().setDishImage(dish.id, gen.imageUrl)
+          }
+        })
+        .catch(() => {})
+    }
+  } else {
+    usedImageUrls.add(imageUrl)
+    get().setDishImage(dish.id, imageUrl)
+  }
+}
+
 // Strip parenthetical suffixes like (150g), (1kg), (200g) that break Wikipedia search
 function cleanImageQuery(raw: string): string {
   return raw.replace(/\s*\([^)]*\)\s*$/, '').trim()
@@ -46,6 +80,7 @@ interface AppState {
   setDishImage: (dishId: string, url: string) => void
   fetchDishImages: () => void
   fetchDishImagesForBatch: (dishes: Dish[]) => void
+  isGeneratedImage: (dishId: string) => boolean
 }
 
 export const useStore = create<AppState>((set, get) => ({
@@ -81,14 +116,18 @@ export const useStore = create<AppState>((set, get) => ({
     }
     set({ dishes: merged })
   },
-  clearScan: () => set({
+  clearScan: () => {
+    usedImageUrls.clear()
+    generatedDishIds.clear()
+    set({
     dishes: [],
     skeletonDishes: [],
     dishImages: {},
     menuImage: null,
     scanProgress: null,
     error: null,
-  }),
+  })
+  },
 
   menuImage: null,
   setMenuImage: (menuImage) => set({ menuImage }),
@@ -98,16 +137,20 @@ export const useStore = create<AppState>((set, get) => ({
     set((state) => ({ dishImages: { ...state.dishImages, [dishId]: url } })),
   fetchDishImages: () => {
     const { dishes, dishImages } = get()
-    const usedUrls = new Set(Object.values(dishImages))
     dishes.forEach((dish) => {
       if (dish.imageSearchQuery && !dishImages[dish.id]) {
         const query = cleanImageQuery(dish.nameLocal || dish.imageSearchQuery || dish.nameEnglish)
-        fetch(`/api/dish-image?q=${encodeURIComponent(query)}`)
+        const fallback = dish.imageSearchQuery || dish.nameEnglish
+        const params = new URLSearchParams({ q: query, fallback })
+        if (dish.nameEnglish) params.set('dishName', dish.nameEnglish)
+        if (dish.description) params.set('description', dish.description)
+        const url = `/api/dish-image?${params}`
+        fetch(url)
           .then((r) => r.json())
           .then((data) => {
-            if (data.imageUrl && !usedUrls.has(data.imageUrl)) {
-              usedUrls.add(data.imageUrl)
-              get().setDishImage(dish.id, data.imageUrl)
+            if (data.imageUrl) {
+              if (data.generated) generatedDishIds.add(dish.id)
+              assignDishImage(dish, data.imageUrl, get)
             }
           })
           .catch(() => {})
@@ -116,20 +159,25 @@ export const useStore = create<AppState>((set, get) => ({
   },
   fetchDishImagesForBatch: (dishes) => {
     const { dishImages } = get()
-    const usedUrls = new Set(Object.values(dishImages))
     dishes.forEach((dish) => {
       if (dish.imageSearchQuery && !dishImages[dish.id]) {
         const query = cleanImageQuery(dish.nameLocal || dish.imageSearchQuery || dish.nameEnglish)
-        fetch(`/api/dish-image?q=${encodeURIComponent(query)}`)
+        const fallback = dish.imageSearchQuery || dish.nameEnglish
+        const params = new URLSearchParams({ q: query, fallback })
+        if (dish.nameEnglish) params.set('dishName', dish.nameEnglish)
+        if (dish.description) params.set('description', dish.description)
+        const url = `/api/dish-image?${params}`
+        fetch(url)
           .then((r) => r.json())
           .then((data) => {
-            if (data.imageUrl && !usedUrls.has(data.imageUrl)) {
-              usedUrls.add(data.imageUrl)
-              get().setDishImage(dish.id, data.imageUrl)
+            if (data.imageUrl) {
+              if (data.generated) generatedDishIds.add(dish.id)
+              assignDishImage(dish, data.imageUrl, get)
             }
           })
           .catch(() => {})
       }
     })
   },
+  isGeneratedImage: (dishId) => generatedDishIds.has(dishId),
 }))

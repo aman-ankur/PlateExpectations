@@ -2,7 +2,7 @@ import { Dish, Preferences, RawDish, ScanEvent } from './types'
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions'
-const BATCH_SIZE = 5
+const BATCH_SIZE = 3
 
 /**
  * Two-phase parallel pipeline:
@@ -42,15 +42,17 @@ function buildPrefsDescription(preferences: Preferences): string {
 }
 
 /** Streaming pipeline: yields ScanEvent objects as processing progresses. */
-export async function* scanMenuStreaming(imageBase64: string, preferences: Preferences): AsyncGenerator<ScanEvent> {
+export async function* scanMenuStreaming(imageBase64: string, preferences: Preferences, signal?: AbortSignal): AsyncGenerator<ScanEvent> {
   yield { type: 'progress', message: 'Reading menu...' }
 
-  const rawDishes = await extractDishes(imageBase64)
+  const rawDishes = await extractDishes(imageBase64, signal)
 
   if (rawDishes.length === 0) {
     yield { type: 'error', message: 'Could not read menu from image. Try a clearer photo.' }
     return
   }
+
+  console.log(`[scan] Phase 1 extracted ${rawDishes.length} dishes:`, rawDishes.map(d => d.nameEnglish).join(', '))
 
   yield { type: 'progress', message: `Found ${rawDishes.length} dishes` }
   yield { type: 'phase1', dishes: rawDishes }
@@ -63,17 +65,26 @@ export async function* scanMenuStreaming(imageBase64: string, preferences: Prefe
     batches.push(rawDishes.slice(i, i + BATCH_SIZE))
   }
 
-  // Launch all batches concurrently, yield as each completes
+  // Launch batches with stagger to avoid OpenAI returning empty responses under concurrency
   type BatchResult = { batchIdx: number; dishes: Dish[] }
   const t2 = Date.now()
+  const STAGGER_MS = 200
   const batchPromises = batches.map((batch, batchIdx) => {
     const startIdx = batchIdx * BATCH_SIZE
-    return enrichBatch(batch, prefsDescription).then((dishes): BatchResult => {
-      console.log(`[openai] Batch ${batchIdx} done in ${Date.now() - t2}ms`)
-      return {
-        batchIdx,
-        dishes: dishes.map((dish, i) => ({ ...dish, id: `dish-${startIdx + i + 1}` })),
-      }
+    const delay = batchIdx * STAGGER_MS
+    return new Promise<BatchResult>((resolve) => {
+      setTimeout(() => {
+        enrichBatch(batch, prefsDescription, signal).then((dishes) => {
+          console.log(`[openai] Batch ${batchIdx} done in ${Date.now() - t2}ms (sent ${batch.length}, got ${dishes.length})`)
+          resolve({
+            batchIdx,
+            dishes: dishes.map((dish, i) => ({ ...dish, id: `dish-${startIdx + i + 1}` })),
+          })
+        }).catch((err) => {
+          console.warn(`[openai] Batch ${batchIdx} failed:`, err?.message || err)
+          resolve({ batchIdx, dishes: [] })
+        })
+      }, delay)
     })
   })
 
@@ -99,6 +110,7 @@ export async function* scanMenuStreaming(imageBase64: string, preferences: Prefe
     const result: BatchResult = results.length > 0
       ? results.shift()!
       : await new Promise<BatchResult>((resolve) => { resolveNext = resolve })
+    if (result.dishes.length === 0) continue
     yield { type: 'batch', dishes: result.dishes }
   }
 
@@ -106,26 +118,26 @@ export async function* scanMenuStreaming(imageBase64: string, preferences: Prefe
 }
 
 /** Phase 1: Vision call — extract just names, prices, local text. Minimal output tokens. */
-async function extractDishes(imageBase64: string): Promise<RawDish[]> {
+async function extractDishes(imageBase64: string, signal?: AbortSignal): Promise<RawDish[]> {
   const res = await gptCall({
     model: 'gpt-4o-mini',
     messages: [
       {
         role: 'system',
-        content: `Extract every dish from this menu image. Return JSON: {"dishes":[{"id":"dish-1","nameEnglish":"...","nameLocal":"original script","price":"...","brief":"3 word description","country":"Korea|Thailand|Vietnam|Japan|Indonesia"}]}. Minimal output.`,
+        content: `Extract EVERY single dish/item from this menu image. Do NOT skip any items. Include all sections, categories, and variations. Return JSON: {"dishes":[{"id":"dish-1","nameEnglish":"...","nameLocal":"original script","price":"...","brief":"3 word description","country":"Korea|Thailand|Vietnam|Japan|Indonesia"}]}. Number IDs sequentially. Minimal output but complete coverage.`,
       },
       {
         role: 'user',
         content: [
           { type: 'image_url', image_url: { url: imageBase64, detail: 'auto' } },
-          { type: 'text', text: 'Extract all dishes.' },
+          { type: 'text', text: 'Extract ALL dishes from this menu. Do not miss any items.' },
         ],
       },
     ],
-    max_tokens: 2048,
+    max_tokens: 8192,
     temperature: 0.2,
     response_format: { type: 'json_object' },
-  })
+  }, signal)
 
   const parsed = parseJSON(res)
   return parsed.dishes || []
@@ -154,8 +166,25 @@ async function enrichInParallel(rawDishes: RawDish[], preferences: Preferences):
   }))
 }
 
-/** Enrich a single batch of dishes via GPT-4o-mini (no vision needed). */
-async function enrichBatch(dishes: RawDish[], prefsDescription: string): Promise<Dish[]> {
+/** Enrich a single batch of dishes via GPT-4o-mini (no vision needed). Retries missing dishes once. */
+async function enrichBatch(dishes: RawDish[], prefsDescription: string, signal?: AbortSignal): Promise<Dish[]> {
+  const result = await enrichBatchOnce(dishes, prefsDescription, signal)
+
+  // Retry missing dishes once
+  if (result.length < dishes.length) {
+    const returnedIds = new Set(result.map(d => d.id))
+    const missing = dishes.filter(d => !returnedIds.has(d.id))
+    if (missing.length > 0) {
+      console.log(`[openai] Retrying ${missing.length} missing dishes: ${missing.map(d => d.nameEnglish).join(', ')}`)
+      const retryResult = await enrichBatchOnce(missing, prefsDescription, signal)
+      result.push(...retryResult)
+    }
+  }
+
+  return result
+}
+
+async function enrichBatchOnce(dishes: RawDish[], prefsDescription: string, signal?: AbortSignal): Promise<Dish[]> {
   const dishList = dishes
     .map((d) => `${d.id}: ${d.nameEnglish} (${d.nameLocal}) - ${d.price} - ${d.brief}`)
     .join('\n')
@@ -173,14 +202,14 @@ For each dish return ALL these fields:
 - "id": keep the original id
 - "nameEnglish": English name
 - "nameLocal": original script
-- "description": 1 sentence description
+- "description": 1-2 sentences describing the dish — what it looks like, key ingredients, cooking method, and how it tastes
 - "country": "${country}"
 - "price": as given
 - "dietaryType": "veg" (no meat/fish/eggs), "non-veg", or "jain-safe"
 - "allergens": from [egg, soy, sesame, peanut, shellfish, gluten, dairy] — only those present
 - "ingredients": [{"name":"...", "category":"protein|vegetable|sauce|carb|dairy|spice|other", "isUnfamiliar":true/false, "explanation":"brief if unfamiliar else empty"}] — top 4-5 ingredients
 - "nutrition": {"protein":g, "carbs":g, "fat":g, "fiber":g, "kcal":num} — approximate
-- "explanation": 1 sentence for Indian traveler, relate to Indian food
+- "explanation": 2-3 sentences. First: describe what the dish actually is (cooking method, key flavors, how it's served/eaten). Second: compare to a well-known Indian or global dish if a good analogy exists (e.g. "Similar to tandoori chicken..." or "Think of it as a Korean version of biryani..."). Third (optional): a tip or recommendation (e.g. "Best enjoyed with steamed rice" or "Ask for extra sauce on the side").
 - "culturalTerms": [{"term":"...", "explanation":"..."}] — 0-2 terms
 - "imageSearchQuery": English query to find a photo (e.g. "Korean bibimbap rice bowl")
 - "rankScore": 0-30 popularity score
@@ -194,18 +223,23 @@ Return JSON: {"dishes": [<array>]}. Be concise.`,
         content: `Enrich these dishes:\n${dishList}`,
       },
     ],
-    max_tokens: 4096,
+    max_tokens: 8192,
     temperature: 0.2,
     response_format: { type: 'json_object' },
-  })
+  }, signal)
 
   const parsed = parseJSON(res)
-  return parsed.dishes || []
+  const result = parsed.dishes || []
+  if (result.length < dishes.length) {
+    console.warn(`[openai] Enrichment returned ${result.length}/${dishes.length} dishes. Response preview: ${res.substring(0, 200)}`)
+  }
+  return result
 }
 
 /** Low-level OpenAI API call wrapper. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function gptCall(body: Record<string, any>): Promise<string> {
+async function gptCall(body: Record<string, any>, signal?: AbortSignal): Promise<string> {
+  const t = Date.now()
   const res = await fetch(OPENAI_URL, {
     method: 'POST',
     headers: {
@@ -213,15 +247,19 @@ async function gptCall(body: Record<string, any>): Promise<string> {
       Authorization: `Bearer ${OPENAI_API_KEY}`,
     },
     body: JSON.stringify(body),
+    signal,
   })
 
   if (!res.ok) {
     const err = await res.text()
+    console.error(`[openai] gptCall FAILED in ${Date.now() - t}ms: ${res.status} ${err.substring(0, 300)}`)
     throw new Error(`OpenAI API error: ${res.status} ${err}`)
   }
 
   const data = await res.json()
-  return data.choices[0].message.content
+  const content = data.choices[0].message.content
+  console.log(`[openai] gptCall OK in ${Date.now() - t}ms, finish=${data.choices[0].finish_reason}, len=${content?.length}`)
+  return content
 }
 
 /** Parse JSON with fallback for malformed responses. */
