@@ -87,10 +87,12 @@ Extend the default Tailwind config with the above tokens under `colors.pe` names
 
 **Input:** `{ image: string }` (base64-encoded image)
 
-**Pipeline:**
-1. Call GPT-4o Vision with the image → extract structured menu items (name, price, description in original language)
-2. Call GPT-4o with extracted items + user preferences → translate, enrich, classify each dish
+**Pipeline (two-phase parallel):**
+1. **Phase 1**: GPT-4o-mini Vision — extract dish names, prices, local script (~15s)
+2. **Phase 2**: GPT-4o-mini × N parallel batches (5 dishes each) — enrich with allergens, nutrition, ingredients, explanations (~15s concurrent)
 3. Return `{ dishes: Dish[] }`
+
+**Performance**: ~38-56s for 17 dishes (down from 90s single-call). Bottleneck is OpenAI token generation speed (~40-50 tok/s).
 
 **Dish type:**
 ```typescript

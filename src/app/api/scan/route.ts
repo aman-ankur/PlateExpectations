@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { extractMenuItems, enrichDishes } from '@/lib/openai'
+import { scanMenu } from '@/lib/openai'
 import { rankDishes } from '@/lib/ranking'
-import { Preferences, DEFAULT_PREFERENCES } from '@/lib/types'
+import { DEFAULT_PREFERENCES, Preferences } from '@/lib/types'
 
-// Increase body size limit for large base64 images
-export const maxDuration = 60 // seconds (Vercel serverless timeout)
+export const maxDuration = 60
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,35 +18,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'OpenAI API key not configured' }, { status: 500 })
     }
 
-    console.log('[scan] Starting OCR, image size:', Math.round(image.length / 1024), 'KB')
+    const prefs = preferences || DEFAULT_PREFERENCES
+    console.log('[scan] Starting parallel pipeline scan, image size:', Math.round(image.length / 1024), 'KB')
+    const startTime = Date.now()
 
-    // Step 1: OCR — extract menu items from image
-    const menuItemsJson = await extractMenuItems(image)
-    console.log('[scan] OCR complete, extracting items...')
+    const dishes = await scanMenu(image, prefs)
 
-    // Check for OCR error
-    try {
-      const parsed = JSON.parse(menuItemsJson)
-      if (parsed.error) {
-        return NextResponse.json({ error: 'Could not read menu from image. Try a clearer photo.' }, { status: 422 })
-      }
-      const items = parsed.items || parsed
-      if (!Array.isArray(items) || items.length === 0) {
-        return NextResponse.json({ error: 'No menu items found. Try a different photo.' }, { status: 422 })
-      }
-      console.log('[scan] Found', items.length, 'menu items')
-    } catch {
-      console.log('[scan] OCR response not JSON, passing raw to enrichment')
+    if (dishes.length === 0) {
+      return NextResponse.json({ error: 'Could not read menu from image. Try a clearer photo.' }, { status: 422 })
     }
 
-    // Step 2: Translate & enrich
-    console.log('[scan] Starting enrichment...')
-    const prefs = preferences || DEFAULT_PREFERENCES
-    const dishes = await enrichDishes(menuItemsJson, JSON.stringify(prefs))
-    console.log('[scan] Enrichment complete,', dishes.length, 'dishes')
-
-    // Step 3: Rank by preferences
     const ranked = rankDishes(dishes, prefs)
+    console.log('[scan] Complete:', dishes.length, 'dishes in', Date.now() - startTime, 'ms')
 
     return NextResponse.json({ dishes: ranked })
   } catch (err) {
