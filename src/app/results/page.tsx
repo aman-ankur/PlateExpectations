@@ -15,13 +15,95 @@ const PHASE1_MESSAGES = [
   'Almost there...',
 ]
 
+function GenerateButton({ dish }: { dish: Dish }) {
+  const setDishImage = useStore((s) => s.setDishImage)
+  const [generating, setGenerating] = useState(false)
+
+  return (
+    <button
+      disabled={generating}
+      onClick={async (e) => {
+        e.stopPropagation()
+        setGenerating(true)
+        try {
+          const res = await fetch('/api/generate-dish-image', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ dishName: dish.nameEnglish, description: dish.description }),
+          })
+          const data = await res.json()
+          if (data.imageUrl) setDishImage(dish.id, data.imageUrl)
+        } catch { /* ignore */ }
+        setGenerating(false)
+      }}
+      className="absolute inset-0 flex items-center justify-center bg-pe-elevated/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
+      title="Generate with AI"
+    >
+      {generating ? (
+        <span className="h-4 w-4 animate-spin rounded-full border-2 border-pe-accent/30 border-t-pe-accent" />
+      ) : (
+        <span className="text-[10px] font-bold text-pe-accent">✨ AI</span>
+      )}
+    </button>
+  )
+}
+
+function DishCard({ dish }: { dish: Dish }) {
+  const router = useRouter()
+  const imageUrl = useStore((s) => s.dishImages[dish.id])
+  const isGenerated = useStore((s) => s.isGeneratedImage(dish.id))
+
+  return (
+    <button
+      onClick={() => router.push(`/dish/${dish.id}`)}
+      className="flex w-full items-center gap-4 rounded-xl border border-pe-border bg-pe-surface p-4 text-left transition-colors hover:border-pe-accent"
+    >
+      <div className="group relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-pe-elevated">
+        {imageUrl ? (
+          <>
+            <img src={imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
+            {isGenerated && (
+              <span className="absolute bottom-0.5 right-0.5 rounded bg-black/60 px-1 py-0.5 text-[8px] font-bold text-pe-accent backdrop-blur-sm">
+                ✨ AI
+              </span>
+            )}
+          </>
+        ) : (
+          <>
+            <div className="flex h-full items-center justify-center text-2xl">🍽️</div>
+            <GenerateButton dish={dish} />
+          </>
+        )}
+      </div>
+      <div className="flex-1 min-w-0">
+        {dish.rankLabel && (
+          <span className="mb-1 inline-block rounded-full bg-pe-tag-rank-bg px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-pe-tag-rank">
+            {dish.rankLabel}
+          </span>
+        )}
+        <h3 className="font-semibold text-pe-text">{dish.nameEnglish}</h3>
+        <p className="text-sm text-pe-text-muted">{dish.nameLocal}</p>
+        <p className="mt-1 line-clamp-2 text-sm text-pe-text-secondary">
+          {dish.description}
+        </p>
+      </div>
+      <div className="flex flex-col items-end gap-2">
+        <span className="text-sm font-medium text-pe-text-secondary">{dish.price}</span>
+        <svg className="h-4 w-4 text-pe-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    </button>
+  )
+}
+
 export default function ResultsPage() {
   const router = useRouter()
   const {
     dishes, error, menuImage, preferences,
     scanProgress, skeletonDishes,
     setDishes, setLoading, setError, setScanProgress, setSkeletonDishes,
-    appendEnrichedDishes, fetchDishImagesForBatch, clearScan, dishImages,
+    appendEnrichedDishes, fetchDishImagesForBatch, clearScan,
   } = useStore()
 
   const [phase1Msg, setPhase1Msg] = useState(0)
@@ -133,42 +215,6 @@ export default function ResultsPage() {
     if (!sortByReco) return dishes
     return [...dishes].sort((a, b) => (b.rankScore ?? 0) - (a.rankScore ?? 0))
   }, [dishes, sortByReco])
-
-  // Reusable enriched card
-  function DishCard({ dish }: { dish: Dish }) {
-    return (
-      <button
-        onClick={() => router.push(`/dish/${dish.id}`)}
-        className="flex w-full items-center gap-4 rounded-xl border border-pe-border bg-pe-surface p-4 text-left transition-colors hover:border-pe-accent"
-      >
-        <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-pe-elevated">
-          {dishImages[dish.id] ? (
-            <img src={dishImages[dish.id]} alt={dish.nameEnglish} className="h-full w-full object-cover" />
-          ) : (
-            <div className="flex h-full items-center justify-center text-2xl">🍽️</div>
-          )}
-        </div>
-        <div className="flex-1 min-w-0">
-          {dish.rankLabel && (
-            <span className="mb-1 inline-block rounded-full bg-pe-tag-rank-bg px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-pe-tag-rank">
-              {dish.rankLabel}
-            </span>
-          )}
-          <h3 className="font-semibold text-pe-text">{dish.nameEnglish}</h3>
-          <p className="text-sm text-pe-text-muted">{dish.nameLocal}</p>
-          <p className="mt-1 line-clamp-2 text-sm text-pe-text-secondary">
-            {dish.description}
-          </p>
-        </div>
-        <div className="flex flex-col items-end gap-2">
-          <span className="text-sm font-medium text-pe-text-secondary">{dish.price}</span>
-          <svg className="h-4 w-4 text-pe-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </div>
-      </button>
-    )
-  }
 
   return (
     <div className="min-h-screen px-4 py-6">

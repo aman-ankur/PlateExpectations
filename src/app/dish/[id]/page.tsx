@@ -18,8 +18,9 @@ const BADGE_COLORS: Record<string, string> = {
 export default function DishDetailPage() {
   const router = useRouter()
   const params = useParams()
-  const { dishes, dishImages } = useStore()
+  const { dishes, dishImages, setDishImage, isGeneratedImage } = useStore()
   const [expandedTerm, setExpandedTerm] = useState<string | null>(null)
+  const [generating, setGenerating] = useState(false)
 
   const dish = dishes.find((d) => String(d.id) === String(params.id))
   const imageUrl = dish ? dishImages[dish.id] || dish.imageUrl : undefined
@@ -48,9 +49,47 @@ export default function DishDetailPage() {
       {/* Hero Image */}
       <div className="relative h-64 w-full bg-pe-elevated">
         {imageUrl ? (
-          <img src={imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
+          <>
+            <img src={imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
+            {dish && isGeneratedImage(dish.id) && (
+              <span className="absolute top-3 right-14 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
+                ✨ AI Generated
+              </span>
+            )}
+          </>
         ) : (
-          <div className="flex h-full items-center justify-center text-6xl">🍽️</div>
+          <div className="flex h-full flex-col items-center justify-center gap-3">
+            <span className="text-6xl">🍽️</span>
+            <button
+              disabled={generating}
+              onClick={async () => {
+                setGenerating(true)
+                try {
+                  const res = await fetch('/api/generate-dish-image', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ dishName: dish.nameEnglish, description: dish.description }),
+                  })
+                  const data = await res.json()
+                  if (data.imageUrl) setDishImage(dish.id, data.imageUrl)
+                } catch { /* ignore */ }
+                setGenerating(false)
+              }}
+              className="flex items-center gap-1.5 rounded-full bg-pe-accent/90 px-4 py-2 text-xs font-semibold text-white backdrop-blur-sm transition-colors hover:bg-pe-accent"
+            >
+              {generating ? (
+                <>
+                  <span className="h-3 w-3 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                  Generating...
+                </>
+              ) : (
+                <>
+                  <span className="text-sm">✨</span>
+                  Generate with AI
+                </>
+              )}
+            </button>
+          </div>
         )}
         <button
           onClick={() => router.back()}
