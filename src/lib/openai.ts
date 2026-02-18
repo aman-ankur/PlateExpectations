@@ -1,17 +1,8 @@
-import { Dish, Preferences } from './types'
+import { Dish, Preferences, RawDish, ScanEvent } from './types'
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions'
 const BATCH_SIZE = 5
-
-interface RawDish {
-  id: string
-  nameEnglish: string
-  nameLocal: string
-  price: string
-  brief: string
-  country: string
-}
 
 /**
  * Two-phase parallel pipeline:
@@ -38,6 +29,80 @@ export async function scanMenu(imageBase64: string, preferences: Preferences): P
   console.log('[openai] Phase 2 done:', enriched.length, 'dishes in', Date.now() - t2, 'ms')
 
   return enriched
+}
+
+function buildPrefsDescription(preferences: Preferences): string {
+  return [
+    preferences.diet && `Diet: ${preferences.diet}`,
+    preferences.proteins.length > 0 && `Enjoys: ${preferences.proteins.join(', ')}`,
+    preferences.spice && `Spice tolerance: ${preferences.spice}`,
+    preferences.restrictions.length > 0 && `Restrictions: ${preferences.restrictions.join(', ')}`,
+    preferences.allergies.length > 0 && `Allergies: ${preferences.allergies.join(', ')}`,
+  ].filter(Boolean).join('. ')
+}
+
+/** Streaming pipeline: yields ScanEvent objects as processing progresses. */
+export async function* scanMenuStreaming(imageBase64: string, preferences: Preferences): AsyncGenerator<ScanEvent> {
+  yield { type: 'progress', message: 'Reading menu...' }
+
+  const rawDishes = await extractDishes(imageBase64)
+
+  if (rawDishes.length === 0) {
+    yield { type: 'error', message: 'Could not read menu from image. Try a clearer photo.' }
+    return
+  }
+
+  yield { type: 'progress', message: `Found ${rawDishes.length} dishes` }
+  yield { type: 'phase1', dishes: rawDishes }
+
+  const prefsDescription = buildPrefsDescription(preferences)
+
+  // Split into batches
+  const batches: RawDish[][] = []
+  for (let i = 0; i < rawDishes.length; i += BATCH_SIZE) {
+    batches.push(rawDishes.slice(i, i + BATCH_SIZE))
+  }
+
+  // Launch all batches concurrently, yield as each completes
+  type BatchResult = { batchIdx: number; dishes: Dish[] }
+  const t2 = Date.now()
+  const batchPromises = batches.map((batch, batchIdx) => {
+    const startIdx = batchIdx * BATCH_SIZE
+    return enrichBatch(batch, prefsDescription).then((dishes): BatchResult => {
+      console.log(`[openai] Batch ${batchIdx} done in ${Date.now() - t2}ms`)
+      return {
+        batchIdx,
+        dishes: dishes.map((dish, i) => ({ ...dish, id: `dish-${startIdx + i + 1}` })),
+      }
+    })
+  })
+
+  yield { type: 'progress', message: `Enriching ${rawDishes.length} dishes...` }
+
+  // Yield batches in completion order using channel pattern
+  const results: BatchResult[] = []
+  let resolveNext: ((r: BatchResult) => void) | null = null
+
+  batchPromises.forEach((p) => {
+    p.then((result) => {
+      if (resolveNext) {
+        const resolve = resolveNext
+        resolveNext = null
+        resolve(result)
+      } else {
+        results.push(result)
+      }
+    })
+  })
+
+  for (let i = 0; i < batchPromises.length; i++) {
+    const result: BatchResult = results.length > 0
+      ? results.shift()!
+      : await new Promise<BatchResult>((resolve) => { resolveNext = resolve })
+    yield { type: 'batch', dishes: result.dishes }
+  }
+
+  yield { type: 'done' }
 }
 
 /** Phase 1: Vision call — extract just names, prices, local text. Minimal output tokens. */
@@ -68,13 +133,7 @@ async function extractDishes(imageBase64: string): Promise<RawDish[]> {
 
 /** Phase 2: Split dishes into batches, enrich all batches concurrently. */
 async function enrichInParallel(rawDishes: RawDish[], preferences: Preferences): Promise<Dish[]> {
-  const prefsDescription = [
-    preferences.diet && `Diet: ${preferences.diet}`,
-    preferences.proteins.length > 0 && `Enjoys: ${preferences.proteins.join(', ')}`,
-    preferences.spice && `Spice tolerance: ${preferences.spice}`,
-    preferences.restrictions.length > 0 && `Restrictions: ${preferences.restrictions.join(', ')}`,
-    preferences.allergies.length > 0 && `Allergies: ${preferences.allergies.join(', ')}`,
-  ].filter(Boolean).join('. ')
+  const prefsDescription = buildPrefsDescription(preferences)
 
   // Split into batches
   const batches: RawDish[][] = []
