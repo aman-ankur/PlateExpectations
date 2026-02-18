@@ -2,188 +2,99 @@
 
 ## Project Overview
 
-PWA for Indian travelers to scan and understand foreign menus in SE/East Asia.
+PWA for travelers to scan and understand foreign-language menus anywhere. Scan a menu photo → get translated, enriched dish cards with images, dietary info, allergens, nutrition.
 
 ## Tech Stack
 
 - **Framework:** Next.js 14, App Router, TypeScript
-- **Styling:** Tailwind CSS 3
+- **Styling:** Tailwind CSS 3 (dark theme, `pe-*` color namespace)
 - **State:** Zustand + localStorage for preferences
-- **AI:** OpenAI API (GPT-4o Vision for OCR, GPT-4o for enrichment)
-- **Deploy:** Vercel
-- **Package manager:** npm
+- **AI:** OpenAI GPT-4o-mini (Vision OCR + parallel batch enrichment)
+- **Images:** Wikipedia pageimages API (free, no key needed)
+- **Deploy:** Vercel | **Package manager:** npm
 
 ## File Structure
 
 ```
-/app
-  /layout.tsx          — Root layout (dark theme, fonts, metadata)
-  /page.tsx            — Home / Scan screen
-  /preferences/page.tsx — Preferences onboarding
-  /results/page.tsx    — Menu Detected results list
-  /dish/[id]/page.tsx  — Dish Detail view
-  /api/scan/route.ts   — Menu scan endpoint (OCR + enrichment)
-/components
-  /ui/                 — Reusable UI primitives (Button, Card, Badge, Tag, Chip, Tooltip)
-  /scan/               — Upload zone, image preview
-  /preferences/        — Protein grid, spice selector, diet toggles
-  /results/            — DishCard, RankBadge
-  /dish/               — HeroImage, FloatingBadge, StatusTags, NutritionCard, IngredientChips, TermExplainer
-/lib
-  /store.ts            — Zustand store
-  /types.ts            — TypeScript types (Dish, Preferences, etc.)
-  /openai.ts           — OpenAI API helpers
-  /ranking.ts          — Preference-based ranking logic
-  /constants.ts        — Design tokens, dietary options, country list
-/public
-  /manifest.json       — PWA manifest
-  /icons/              — App icons
+src/app/
+  page.tsx                  — Home / Scan screen (camera upload)
+  preferences/page.tsx      — Dietary preferences onboarding
+  results/page.tsx          — Menu results list with thumbnails
+  dish/[id]/page.tsx        — Dish detail (hero image, badges, nutrition)
+  settings/page.tsx         — Edit preferences
+  api/scan/route.ts         — Two-phase parallel scan pipeline
+  api/dish-image/route.ts   — Wikipedia image search endpoint
+src/lib/
+  openai.ts                 — extractDishes() + enrichInParallel() + enrichBatch()
+  store.ts                  — Zustand store (preferences, scan, dish image cache)
+  types.ts                  — Dish, Ingredient, CulturalTerm, Preferences
+  ranking.ts                — Preference-based dish ranking
+  compress.ts               — Client-side image compression (max 1200px, 0.7 quality)
+  constants.ts              — Design tokens, dietary options
+docs/
+  backlog.md                — Prioritized improvement items (16 items, 4 tiers)
+  speed-and-images-plan.md  — Benchmarks and architecture decisions
 ```
 
-## Design Tokens (Dark Theme)
+## API Architecture
 
-```
-Background:        #1a1a1a (main), #242424 (card surface), #2a2a2a (elevated)
-Text primary:      #f5f5f5
-Text secondary:    #a0a0a0
-Text muted:        #707070
-Accent (sage):     #8fbc8f
-Accent hover:      #7aab7a
+### POST `/api/scan` — Menu scan pipeline
+**Input:** `{ image: string, preferences?: Preferences }` (base64)
+1. **Phase 1**: GPT-4o-mini Vision → dish names, prices, local script (~15s)
+2. **Phase 2**: GPT-4o-mini × N parallel batches of 5 → full enrichment (~15-20s concurrent)
+3. IDs normalized to `dish-N` strings after enrichment
+4. Return `{ dishes: Dish[] }` ranked by preferences
 
-Tag dietary:       bg #3d2028, text #f4a0b0 (pink/rose)
-Tag allergen:      bg #3d3520, text #f0c060 (yellow/amber)
-Tag macro:         bg #1a3030, text #60c0b0 (teal)
-Tag rank gold:     bg #3d3520, text #d4a030 (gold)
+### GET `/api/dish-image?q=<query>` — Dish photo search
+Wikipedia opensearch → article lead image (pageimages) → Commons fallback → Unsplash fallback. Uses local script names (Korean/Thai) for best matching. ~1s per image.
 
-Badge protein:     #e05050 (red)
-Badge vegetable:   #50b050 (green)
-Badge sauce:       #e08030 (orange)
-Badge carb:        #d0c040 (yellow)
+## Learnings & Gotchas (from testing)
 
-Border:            #333333
-Border subtle:     #2a2a2a
-```
+### OpenAI Performance
+- Token generation is ~40-50 tok/s regardless of model (gpt-4o vs gpt-4o-mini)
+- Structured Outputs (`json_schema`) is 10x SLOWER with Vision — use `json_object` mode
+- `detail: "low"` is faster but misses dishes on dense menus — use `detail: "auto"`
+- Bottleneck is always output tokens, not image processing or network
+- Parallel batches are the only way to speed up large menus
 
-## Tailwind Config Extensions
+### Image Search
+- Wikimedia Commons keyword search returns generic/wrong images — don't use
+- Wikipedia opensearch → pageimages gives editorially curated photos — best quality
+- Local script names (잡채) match articles better than English ("japchae" → "Japheth" wrong match)
+- Deduplicate image URLs in store — multiple dishes can match the same Commons photo
 
-Extend the default Tailwind config with the above tokens under `colors.pe` namespace:
-- `pe-bg`, `pe-surface`, `pe-elevated`
-- `pe-text`, `pe-text-secondary`, `pe-text-muted`
-- `pe-accent`, `pe-accent-hover`
-- `pe-tag-*`, `pe-badge-*`, `pe-border`
+### Common Bugs to Watch For
+- **Hydration errors**: Any component reading localStorage must use a `mounted` state guard
+- **Dish ID mismatch**: Enrichment batches return inconsistent IDs — always normalize after
+- **Back nav re-scan**: Results page must check `dishes.length > 0` before calling API
+- **next.config.mjs**: `api.bodyParser` is Pages Router only — don't use with App Router
 
-## Component Patterns
-
-- All components are React Server Components by default; add `'use client'` only when needed (interactivity, hooks, browser APIs)
-- Use Tailwind classes directly — no CSS modules or styled-components
-- Mobile-first: design for 375px viewport, scale up
-- Cards: `rounded-xl border border-pe-border bg-pe-surface p-4`
-- Buttons: `rounded-full bg-pe-accent text-white font-semibold px-6 py-3`
-- Tags: `rounded-full px-3 py-1 text-xs font-medium`
-
-## API Route Architecture
-
-### POST `/api/scan`
-
-**Input:** `{ image: string }` (base64-encoded image)
-
-**Pipeline (two-phase parallel):**
-1. **Phase 1**: GPT-4o-mini Vision — extract dish names, prices, local script (~15s)
-2. **Phase 2**: GPT-4o-mini × N parallel batches (5 dishes each) — enrich with allergens, nutrition, ingredients, explanations (~15s concurrent)
-3. Return `{ dishes: Dish[] }`
-
-**Performance**: ~40-50s for 17 dishes (down from 90s single-call). Bottleneck is OpenAI token generation speed (~40-50 tok/s).
-
-### GET `/api/dish-image`
-
-**Input:** `?q=<search query>` (dish name, preferably in local script)
-
-**Pipeline:** Wikipedia opensearch → article lead image (pageimages API) → Commons search fallback → Unsplash fallback
-
-**Output:** `{ imageUrl: string | null }`
-
-**Notes:**
-- Uses dish local name (Korean/Thai script) for best Wikipedia article matching
-- ~1s per image, no API key needed (Wikipedia is free)
-- Images cached in Zustand store client-side with deduplication
-
-**Dish type:**
-```typescript
-interface Dish {
-  id: string
-  nameEnglish: string
-  nameLocal: string
-  description: string
-  country: string
-  price: string
-  dietaryType: 'veg' | 'non-veg' | 'jain-safe'
-  allergens: string[]
-  ingredients: Ingredient[]
-  nutrition: { protein: number; carbs: number; fat: number; fiber: number; kcal: number }
-  explanation: string
-  culturalTerms: CulturalTerm[]
-  imageUrl?: string
-  rankScore?: number
-  rankLabel?: string
-}
-
-interface Ingredient {
-  name: string
-  category: 'protein' | 'vegetable' | 'sauce' | 'carb' | 'dairy' | 'spice' | 'other'
-  isUnfamiliar: boolean
-  explanation?: string
-}
-
-interface CulturalTerm {
-  term: string
-  explanation: string
-}
-```
+### Testing
+- Test image: `/Users/aankur/Downloads/korean.jpg` (Korean Kitchen menu, 17 dishes)
+- Dev server: `npm run dev -- -p 3001`
+- Curl test: `BASE64=$(base64 -i image.jpg | tr -d '\n') && curl -X POST localhost:3001/api/scan -H 'Content-Type: application/json' -d "{\"image\":\"data:image/jpeg;base64,${BASE64}\"}"`
+- Always verify with `npm run build` before merging to main
+- React Strict Mode causes double API calls in dev — this is normal, doesn't happen in prod
 
 ## State Management
 
-Zustand store with two slices:
-
-1. **preferences** — synced to localStorage
-   ```typescript
-   { proteins: string[], spice: string, diet: string, restrictions: string[], allergies: string[] }
-   ```
-
-2. **scan** — ephemeral session state
-   ```typescript
-   { dishes: Dish[], isLoading: boolean, error: string | null, selectedDishId: string | null }
-   ```
+Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral), **dishImages** (cache with dedup)
 
 ## Git Workflow
 
-- **`main` branch is protected** — must always be in a working/deployable state
-- **All major feature work must happen on a new branch** (e.g., `feat/dish-images`, `fix/ocr-parsing`)
-- Branch naming: `feat/<name>`, `fix/<name>`, `refactor/<name>`
-- Merge to main only after verifying the build passes (`npm run build`)
-- Small config/docs changes can go directly to main
+- `main` is protected — always deployable
+- Feature branches: `feat/<name>`, `fix/<name>`, `refactor/<name>`
+- Merge only after `npm run build` passes
+- Small docs/config changes can go directly to main
 
 ## Key Rules
 
-- Never hardcode OpenAI API keys — use `OPENAI_API_KEY` env var
-- Always show a disclaimer on dietary/allergen info: "AI-estimated. Verify with restaurant staff."
-- Keep bundle size small — no heavy UI libraries
-- Image uploads: compress client-side before sending to API (max 1MB)
-- All AI prompts live in `/lib/openai.ts` for easy iteration
-- Use `loading.tsx` and `error.tsx` in route segments for loading/error states
+- Never hardcode API keys — use `OPENAI_API_KEY` env var
+- Always show disclaimer: "AI-estimated. Verify with restaurant staff."
+- All AI prompts live in `src/lib/openai.ts`
+- Compress images client-side before upload (max 1MB)
+- Keep bundle small — no heavy UI libraries
+- Backlog tracked in `docs/backlog.md`
 
-## ⚙️ COMMON COMMANDS
-- Build: `npm run build`
-- Test: `npm test`
-- Lint: `npm run lint`
-- Deploy: `vercel deploy`
-- Local dev: `npm run dev`
-
-## 🐝 AGENT/SKILL INTEGRATION (Advanced)
-- Load "UX" skill for design tasks: See .claude/skills/ux.yaml
-- Use subagents for parallel work: e.g., "Designer" for UI, "Tester" for bugs
-- Hooks: Auto-run linter after edits
-
-## 📝 MAINTENANCE NOTES
-- Update this file after sessions if Claude repeats mistakes
-- Reference /research/ for APIs; /examples/ for patterns
-- Keep under 200 lines - move details to sub-CLAUDE.md or other files
+## Commands
+- Build: `npm run build` | Dev: `npm run dev` | Lint: `npm run lint` | Deploy: `vercel deploy`
