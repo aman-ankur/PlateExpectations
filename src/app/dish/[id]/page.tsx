@@ -18,10 +18,11 @@ const BADGE_COLORS: Record<string, string> = {
 export default function DishDetailPage() {
   const router = useRouter()
   const params = useParams()
-  const { dishes } = useStore()
+  const { dishes, dishImages } = useStore()
   const [expandedTerm, setExpandedTerm] = useState<string | null>(null)
 
   const dish = dishes.find((d) => d.id === params.id)
+  const imageUrl = dish ? dishImages[dish.id] || dish.imageUrl : undefined
 
   if (!dish) {
     return (
@@ -46,8 +47,8 @@ export default function DishDetailPage() {
     <div className="min-h-screen pb-10">
       {/* Hero Image */}
       <div className="relative h-64 w-full bg-pe-elevated">
-        {dish.imageUrl ? (
-          <img src={dish.imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
+        {imageUrl ? (
+          <img src={imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
         ) : (
           <div className="flex h-full items-center justify-center text-6xl">🍽️</div>
         )}
