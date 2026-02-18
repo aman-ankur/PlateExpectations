@@ -82,7 +82,10 @@ function DishCard({ dish }: { dish: Dish }) {
           </span>
         )}
         <h3 className="font-semibold text-pe-text">{dish.nameEnglish}</h3>
-        <p className="text-sm text-pe-text-muted">{dish.nameLocal}</p>
+        <p className="text-sm text-pe-text-muted">
+          {dish.nameRomanized && <span className="font-medium text-pe-text-secondary">{dish.nameRomanized} · </span>}
+          {dish.nameLocal}
+        </p>
         <p className="mt-1 line-clamp-2 text-sm text-pe-text-secondary">
           {dish.description}
         </p>

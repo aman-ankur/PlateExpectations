@@ -79,9 +79,18 @@ export async function* scanMenuStreaming(imageBase64: string, preferences: Prefe
       setTimeout(() => {
         enrichBatch(batch, prefsDescription, signal).then((dishes) => {
           console.log(`[openai] Batch ${batchIdx} done in ${Date.now() - t2}ms (sent ${batch.length}, got ${dishes.length})`)
+          // Preserve Phase 1 romanized name (e.g. "JJAJANGMYEON") before enrichment overwrites nameEnglish
+          const rawById = new Map(batch.map(d => [d.id, d]))
           resolve({
             batchIdx,
-            dishes: dishes.map((dish, i) => ({ ...dish, id: `dish-${startIdx + i + 1}` })),
+            dishes: dishes.map((dish, i) => {
+              const raw = rawById.get(dish.id)
+              const romanized = raw?.nameEnglish || ''
+              // Only set nameRomanized if it differs from the enriched English name
+              const nameRomanized = romanized && romanized.toLowerCase() !== dish.nameEnglish.toLowerCase()
+                ? romanized : undefined
+              return { ...dish, nameRomanized, id: `dish-${startIdx + i + 1}` }
+            }),
           })
         }).catch((err) => {
           console.warn(`[openai] Batch ${batchIdx} failed:`, err?.message || err)
@@ -286,12 +295,10 @@ async function enrichBatchOnce(dishes: RawDish[], prefsDescription: string, sign
 
   const country = dishes[0]?.country || 'unknown'
 
-  const res = await gptCall({
-    model: 'gpt-4o-mini',
-    messages: [
-      {
-        role: 'system',
-        content: `You enrich ${country} restaurant dishes for Indian travelers.
+  const messages = [
+    {
+      role: 'system' as const,
+      content: `You enrich ${country} restaurant dishes for Indian travelers.
 
 For each dish return ALL these fields:
 - "id": keep the original id
@@ -312,17 +319,36 @@ For each dish return ALL these fields:
 ${prefsDescription ? `User preferences: ${prefsDescription}` : ''}
 
 Return JSON: {"dishes": [<array>]}. Be concise.`,
-      },
-      {
-        role: 'user',
-        content: `Enrich these dishes:\n${dishList}`,
-      },
-    ],
-    max_tokens: 8192,
-    temperature: 0.2,
-    response_format: { type: 'json_object' },
-  }, signal)
+    },
+    {
+      role: 'user' as const,
+      content: `Enrich these dishes:\n${dishList}`,
+    },
+  ]
 
+  const callParams = { messages, max_tokens: 8192, temperature: 0.2, response_format: { type: 'json_object' } }
+
+  // Try Groq first (Llama 3.3 70B — 8x faster enrichment)
+  if (GROQ_API_KEY) {
+    try {
+      const res = await groqCall({ model: 'llama-3.3-70b-versatile', ...callParams }, signal)
+      const parsed = parseJSON(res)
+      const result = parsed.dishes || []
+      if (result.length > 0) {
+        if (result.length < dishes.length) {
+          console.warn(`[groq] Enrichment returned ${result.length}/${dishes.length} dishes`)
+        }
+        return result
+      }
+      console.log('[groq] Enrichment returned 0 dishes, falling back to GPT')
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err)
+      console.log(`[groq] Enrichment failed (${msg}), falling back to GPT`)
+    }
+  }
+
+  // Fallback: GPT-4o-mini
+  const res = await gptCall({ model: 'gpt-4o-mini', ...callParams }, signal)
   const parsed = parseJSON(res)
   const result = parsed.dishes || []
   if (result.length < dishes.length) {

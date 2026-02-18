@@ -15,17 +15,17 @@ const BADGE_COLORS: Record<string, { bg: string; border: string; dot: string }> 
   other: { bg: 'bg-black/30', border: 'border-white/10', dot: 'bg-white/40' },
 }
 
-// Scattered positions for infographic-style badges across the image
-// Avoids top-left (back button) and bottom zone (text overlay)
+// Scattered positions — spread into 3 rows × alternating left/right, no overlaps
+// Avoids top-left (back button zone) and bottom 45% (gradient text overlay)
 const BADGE_POSITIONS = [
-  'top-[18%] right-[8%]',
-  'top-[30%] left-[6%]',
-  'top-[15%] left-[35%]',
-  'top-[38%] right-[5%]',
-  'top-[48%] left-[10%]',
-  'top-[28%] right-[30%]',
-  'top-[42%] right-[22%]',
-  'top-[52%] right-[8%]',
+  'top-[5%] right-[4%]',
+  'top-[5%] left-[28%]',
+  'top-[20%] left-[3%]',
+  'top-[20%] right-[22%]',
+  'top-[35%] right-[3%]',
+  'top-[35%] left-[18%]',
+  'top-[11%] right-[42%]',
+  'top-[28%] left-[42%]',
 ]
 
 function IngredientBadge({ ing, position, expanded, onTap }: { ing: Ingredient; position: string; expanded: boolean; onTap: () => void }) {
@@ -147,7 +147,7 @@ export default function DishDetailPage() {
         </button>
 
         {/* Scattered ingredient badges — infographic style */}
-        {imageUrl && dish.ingredients.length > 0 && dish.ingredients.slice(0, 8).map((ing, i) => (
+        {imageUrl && dish.ingredients.length > 0 && dish.ingredients.slice(0, 5).map((ing, i) => (
           <IngredientBadge
             key={ing.name}
             ing={ing}
@@ -166,8 +166,11 @@ export default function DishDetailPage() {
 
           {/* Dish name */}
           <h1 className="text-3xl font-bold text-white">{dish.nameEnglish}</h1>
+          {dish.nameRomanized && (
+            <p className="mt-0.5 text-lg font-semibold text-white/90">{dish.nameRomanized}</p>
+          )}
           {dish.nameLocal && (
-            <p className="mt-1 text-xl font-medium text-white/70">{dish.nameLocal}</p>
+            <p className="mt-0.5 text-xl font-medium text-white/70">{dish.nameLocal}</p>
           )}
 
           {/* Dietary / allergen tags */}

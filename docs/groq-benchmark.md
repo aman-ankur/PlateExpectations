@@ -71,8 +71,31 @@ set -a && source .env.local && set +a && npx tsx scripts/compare-parsers.ts /pat
 
 Groq free tier: 6,000 requests/day, 6,000 tokens/minute.
 
+## Phase 2: Enrichment Benchmark (korean.jpg, 3-dish batch)
+
+| Metric | GPT-4o-mini | Groq Llama 3.3 70B |
+|--------|------------|-------------------|
+| Time per batch | ~21s | **~2.6s** |
+| Speedup | — | **8.3x** |
+| Field completeness | 3/3 all fields | 3/3 all fields |
+| Dietary type accuracy | Missed egg in pajeon (called "veg") | Correctly flagged egg ("non-veg") |
+| Cultural terms | None returned | Useful terms (Banchan, Kimchi, Haemul) |
+| Ingredients | 5 per dish | 4 per dish |
+| Explanation quality | Good Indian analogies | Good Indian analogies |
+
+### Full pipeline time (17 dishes)
+
+| Phase | Before (all GPT) | After (Groq) |
+|-------|-----------------|--------------|
+| Phase 1 (OCR + parse) | ~24s | ~6s |
+| Phase 2 (enrichment) | ~15-20s | ~3-5s |
+| **Total** | **~35-44s** | **~11s** |
+
+### Key finding
+Groq is **more accurate** on dietary classification — correctly identifies egg in Korean pancakes (pajeon), which GPT misses. Critical for Indian vegetarian travelers. Cultural terms also richer.
+
 ## Files Changed
 
-- `src/lib/openai.ts` — added `groqCall()`, `backfillNameLocal()`, updated `extractDishesFromText()`
-- `scripts/compare-parsers.ts` — benchmark script
+- `src/lib/openai.ts` — added `groqCall()`, `backfillNameLocal()`, updated `extractDishesFromText()`, Groq-first `enrichBatchOnce()`
+- `scripts/compare-parsers.ts` — benchmark script with `--enrich` flag for Phase 2 comparison
 - `tsconfig.json` — excluded `scripts/` from build

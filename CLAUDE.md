@@ -9,7 +9,7 @@ PWA for travelers to scan and understand foreign-language menus anywhere. Scan a
 - **Framework:** Next.js 14, App Router, TypeScript
 - **Styling:** Tailwind CSS 3 (dark theme, `pe-*` color namespace)
 - **State:** Zustand + localStorage for preferences
-- **AI:** OpenAI GPT-4o-mini (Vision OCR + parallel batch enrichment)
+- **AI:** Groq Llama 3.3 70B (Phase 1 parsing + Phase 2 enrichment) with GPT-4o-mini fallback; OpenAI GPT-4o-mini Vision for image validation
 - **Images:** Wikipedia pageimages API + GPT-4o-mini Vision validation + DALL-E 3 fallback
 - **Deploy:** Vercel | **Package manager:** npm
 
@@ -17,7 +17,7 @@ PWA for travelers to scan and understand foreign-language menus anywhere. Scan a
 
 ```
 src/app/
-  page.tsx                  — Home / Scan screen (camera upload)
+  page.tsx                  — Home / Scan screen (dual camera/gallery buttons)
   preferences/page.tsx      — Dietary preferences onboarding
   results/page.tsx          — Menu results list (streaming, progressive loading)
   dish/[id]/page.tsx        — Dish detail (immersive 55vh hero, infographic badges, nutrition)
@@ -51,8 +51,8 @@ docs/
 {"type":"done"}
 ```
 
-1. **Phase 1**: GPT-4o-mini Vision → dish names, prices, local script (~15s)
-2. **Phase 2**: GPT-4o-mini × N parallel batches of 5 → full enrichment (~15-20s concurrent)
+1. **Phase 1**: Cloud Vision OCR → Groq Llama 3.3 70B text parsing → dish names, prices, local script (~6s)
+2. **Phase 2**: Groq Llama 3.3 70B × N parallel batches of 3 → full enrichment (~3-5s concurrent, GPT-4o-mini fallback)
 3. Events streamed via `ReadableStream` with `pull()` pattern
 4. Batches yielded in completion order (first-finished-first-shown)
 5. Client ranks dishes on `done` event (top 5 get labels, menu order preserved)
@@ -117,7 +117,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - **Inline component definitions**: Never define components inside render functions — they get recreated every render, defeating React reconciliation and causing webpack HMR errors
 
 ### Testing
-- Test images: `/Users/aankur/Downloads/korean.jpg` (17 dishes), `/Users/aankur/Downloads/korean2.jpg` (8 dishes)
+- Test images: `/Users/aankur/Downloads/menuapp/korean.jpg` (17 dishes), `/Users/aankur/Downloads/menuapp/korean2.jpg` (8 dishes)
 - Dev server: always use port 3001 — `npm run dev -- -p 3001` (kill existing process on 3001 first if needed)
 - Curl NDJSON test: `BASE64=$(base64 -i image.jpg | tr -d '\n') && curl -N -X POST localhost:3001/api/scan -H 'Content-Type: application/json' -d "{\"image\":\"data:image/jpeg;base64,${BASE64}\"}"`
 - Always verify with `npm run build` before merging to main
