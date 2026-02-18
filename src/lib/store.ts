@@ -66,10 +66,9 @@ export const useStore = create<AppState>((set, get) => ({
     const usedUrls = new Set(Object.values(dishImages))
     dishes.forEach((dish) => {
       if (dish.imageSearchQuery && !dishImages[dish.id]) {
-        // Use both English query and local name for better results
-        const query = dish.nameLocal
-          ? `${dish.imageSearchQuery} ${dish.nameLocal}`
-          : dish.imageSearchQuery
+        // Use local name as primary search (more specific on Wikipedia)
+        // and English name as fallback
+        const query = dish.nameLocal || dish.imageSearchQuery || dish.nameEnglish
         fetch(`/api/dish-image?q=${encodeURIComponent(query)}`)
           .then((r) => r.json())
           .then((data) => {
