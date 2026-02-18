@@ -1,23 +1,153 @@
-import { Dish } from './types'
+import { Dish, Preferences } from './types'
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY
+const OPENAI_URL = 'https://api.openai.com/v1/chat/completions'
+const BATCH_SIZE = 5
 
-async function callOpenAI(
-  messages: Array<{ role: string; content: unknown }>,
-  model = 'gpt-4o',
-  jsonMode = false,
-) {
-  const body: Record<string, unknown> = {
-    model,
-    messages,
-    max_tokens: 16384,
-    temperature: 0.3,
-  }
-  if (jsonMode) {
-    body.response_format = { type: 'json_object' }
+interface RawDish {
+  id: string
+  nameEnglish: string
+  nameLocal: string
+  price: string
+  brief: string
+  country: string
+}
+
+/**
+ * Two-phase parallel pipeline:
+ *   Phase 1: GPT-4o Vision extracts dish names/prices from image (~5s, minimal tokens)
+ *   Phase 2: GPT-4o-mini enriches dishes in parallel batches (~15s, runs concurrently)
+ *
+ * Total: ~15-20s instead of 55-90s for a single monolithic call.
+ * Bottleneck is OpenAI output token speed (~40-50 tok/s). Parallelizing batches
+ * lets us generate tokens concurrently across multiple requests.
+ */
+export async function scanMenu(imageBase64: string, preferences: Preferences): Promise<Dish[]> {
+  // Phase 1: Fast Vision OCR — extract dish list
+  console.log('[openai] Phase 1: Vision OCR starting...')
+  const t1 = Date.now()
+  const rawDishes = await extractDishes(imageBase64)
+  console.log('[openai] Phase 1 done:', rawDishes.length, 'dishes in', Date.now() - t1, 'ms')
+
+  if (rawDishes.length === 0) return []
+
+  // Phase 2: Parallel enrichment batches
+  console.log('[openai] Phase 2: Enriching in parallel batches of', BATCH_SIZE)
+  const t2 = Date.now()
+  const enriched = await enrichInParallel(rawDishes, preferences)
+  console.log('[openai] Phase 2 done:', enriched.length, 'dishes in', Date.now() - t2, 'ms')
+
+  return enriched
+}
+
+/** Phase 1: Vision call — extract just names, prices, local text. Minimal output tokens. */
+async function extractDishes(imageBase64: string): Promise<RawDish[]> {
+  const res = await gptCall({
+    model: 'gpt-4o-mini',
+    messages: [
+      {
+        role: 'system',
+        content: `Extract every dish from this menu image. Return JSON: {"dishes":[{"id":"dish-1","nameEnglish":"...","nameLocal":"original script","price":"...","brief":"3 word description","country":"Korea|Thailand|Vietnam|Japan|Indonesia"}]}. Minimal output.`,
+      },
+      {
+        role: 'user',
+        content: [
+          { type: 'image_url', image_url: { url: imageBase64, detail: 'auto' } },
+          { type: 'text', text: 'Extract all dishes.' },
+        ],
+      },
+    ],
+    max_tokens: 2048,
+    temperature: 0.2,
+    response_format: { type: 'json_object' },
+  })
+
+  const parsed = parseJSON(res)
+  return parsed.dishes || []
+}
+
+/** Phase 2: Split dishes into batches, enrich all batches concurrently. */
+async function enrichInParallel(rawDishes: RawDish[], preferences: Preferences): Promise<Dish[]> {
+  const prefsDescription = [
+    preferences.diet && `Diet: ${preferences.diet}`,
+    preferences.proteins.length > 0 && `Enjoys: ${preferences.proteins.join(', ')}`,
+    preferences.spice && `Spice tolerance: ${preferences.spice}`,
+    preferences.restrictions.length > 0 && `Restrictions: ${preferences.restrictions.join(', ')}`,
+    preferences.allergies.length > 0 && `Allergies: ${preferences.allergies.join(', ')}`,
+  ].filter(Boolean).join('. ')
+
+  // Split into batches
+  const batches: RawDish[][] = []
+  for (let i = 0; i < rawDishes.length; i += BATCH_SIZE) {
+    batches.push(rawDishes.slice(i, i + BATCH_SIZE))
   }
 
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+  // Run all batches concurrently
+  const results = await Promise.all(
+    batches.map((batch) => enrichBatch(batch, prefsDescription))
+  )
+
+  // Normalize IDs: enrichment batches may return inconsistent IDs
+  const allDishes = results.flat()
+  return allDishes.map((dish, i) => ({
+    ...dish,
+    id: `dish-${i + 1}`,
+  }))
+}
+
+/** Enrich a single batch of dishes via GPT-4o-mini (no vision needed). */
+async function enrichBatch(dishes: RawDish[], prefsDescription: string): Promise<Dish[]> {
+  const dishList = dishes
+    .map((d) => `${d.id}: ${d.nameEnglish} (${d.nameLocal}) - ${d.price} - ${d.brief}`)
+    .join('\n')
+
+  const country = dishes[0]?.country || 'unknown'
+
+  const res = await gptCall({
+    model: 'gpt-4o-mini',
+    messages: [
+      {
+        role: 'system',
+        content: `You enrich ${country} restaurant dishes for Indian travelers.
+
+For each dish return ALL these fields:
+- "id": keep the original id
+- "nameEnglish": English name
+- "nameLocal": original script
+- "description": 1 sentence description
+- "country": "${country}"
+- "price": as given
+- "dietaryType": "veg" (no meat/fish/eggs), "non-veg", or "jain-safe"
+- "allergens": from [egg, soy, sesame, peanut, shellfish, gluten, dairy] — only those present
+- "ingredients": [{"name":"...", "category":"protein|vegetable|sauce|carb|dairy|spice|other", "isUnfamiliar":true/false, "explanation":"brief if unfamiliar else empty"}] — top 4-5 ingredients
+- "nutrition": {"protein":g, "carbs":g, "fat":g, "fiber":g, "kcal":num} — approximate
+- "explanation": 1 sentence for Indian traveler, relate to Indian food
+- "culturalTerms": [{"term":"...", "explanation":"..."}] — 0-2 terms
+- "imageSearchQuery": English query to find a photo (e.g. "Korean bibimbap rice bowl")
+- "rankScore": 0-30 popularity score
+
+${prefsDescription ? `User preferences: ${prefsDescription}` : ''}
+
+Return JSON: {"dishes": [<array>]}. Be concise.`,
+      },
+      {
+        role: 'user',
+        content: `Enrich these dishes:\n${dishList}`,
+      },
+    ],
+    max_tokens: 4096,
+    temperature: 0.2,
+    response_format: { type: 'json_object' },
+  })
+
+  const parsed = parseJSON(res)
+  return parsed.dishes || []
+}
+
+/** Low-level OpenAI API call wrapper. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function gptCall(body: Record<string, any>): Promise<string> {
+  const res = await fetch(OPENAI_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -35,92 +165,14 @@ async function callOpenAI(
   return data.choices[0].message.content
 }
 
-export async function extractMenuItems(imageBase64: string): Promise<string> {
-  const content = await callOpenAI([
-    {
-      role: 'system',
-      content: `You are a menu OCR expert. Extract all menu items from the image. For each item, extract:
-- The dish name in the original language
-- The price (if visible)
-- Any description text
-
-Return as JSON: {"items": [{"name_local": "...", "price": "...", "description_local": "..."}]}
-If you can't read the menu or it's not a menu image, return {"error": "Could not read menu"}.`,
-    },
-    {
-      role: 'user',
-      content: [
-        {
-          type: 'image_url',
-          image_url: { url: imageBase64, detail: 'high' },
-        },
-        { type: 'text', text: 'Extract all menu items from this image.' },
-      ],
-    },
-  ], 'gpt-4o', true)
-
-  return content
-}
-
-export async function enrichDishes(menuItemsJson: string, preferencesJson: string): Promise<Dish[]> {
-  const content = await callOpenAI([
-    {
-      role: 'system',
-      content: `You are a food expert specializing in Southeast and East Asian cuisine, helping Indian travelers understand foreign menus.
-
-Given extracted menu items (in original language), translate and enrich each dish. Return JSON with this structure:
-
-{"dishes": [
-  {
-    "id": "dish-1",
-    "nameEnglish": "English name",
-    "nameLocal": "Original script name",
-    "description": "Short 1-2 sentence English description",
-    "country": "Country of origin (Vietnam/Thailand/Korea/Japan/Indonesia)",
-    "price": "Price as shown on menu",
-    "dietaryType": "veg" or "non-veg" or "jain-safe",
-    "allergens": ["list of common allergens present"],
-    "ingredients": [
-      {"name": "ingredient name", "category": "protein" or "vegetable" or "sauce" or "carb" or "dairy" or "spice" or "other", "isUnfamiliar": true or false, "explanation": "simple explanation if unfamiliar"}
-    ],
-    "nutrition": {"protein": 10, "carbs": 30, "fat": 8, "fiber": 3, "kcal": 350},
-    "explanation": "Conversational explanation of the dish written for an Indian traveler who has never seen it",
-    "culturalTerms": [{"term": "local term", "explanation": "simple English explanation"}],
-    "rankScore": 15
-  }
-]}
-
-Important:
-- Use sequential IDs like "dish-1", "dish-2", etc.
-- Be accurate about dietary classification (veg means absolutely no meat/eggs)
-- Flag common allergens: egg, soy, sesame, peanut, shellfish, gluten, dairy
-- Mark ingredients as "isUnfamiliar" if an average Indian traveler wouldn't know them
-- Write explanations in a friendly, conversational tone
-- Estimate nutrition approximately per serving`,
-    },
-    {
-      role: 'user',
-      content: `Menu items:\n${menuItemsJson}\n\nUser preferences:\n${preferencesJson}\n\nTranslate, enrich, and return as JSON.`,
-    },
-  ], 'gpt-4o', true)
-
+/** Parse JSON with fallback for malformed responses. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function parseJSON(content: string): any {
   try {
-    const parsed = JSON.parse(content)
-    return parsed.dishes || (Array.isArray(parsed) ? parsed : [parsed])
+    return JSON.parse(content)
   } catch {
-    // Try to recover truncated JSON by extracting complete dish objects
-    const dishMatches = content.match(/\{[^{}]*"id"\s*:\s*"dish-\d+"[^{}]*(?:\{[^{}]*\}[^{}]*)*\}/g)
-    if (dishMatches && dishMatches.length > 0) {
-      const dishes: Dish[] = []
-      for (const match of dishMatches) {
-        try {
-          dishes.push(JSON.parse(match))
-        } catch {
-          // Skip malformed dish
-        }
-      }
-      if (dishes.length > 0) return dishes
-    }
-    throw new Error('Failed to parse dish data from AI response')
+    const arrayMatch = content.match(/\[[\s\S]*\]/)
+    if (arrayMatch) return { dishes: JSON.parse(arrayMatch[0]) }
+    throw new Error('Failed to parse menu data')
   }
 }

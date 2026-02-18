@@ -30,6 +30,7 @@ export interface Dish {
   explanation: string
   culturalTerms: CulturalTerm[]
   imageUrl?: string
+  imageSearchQuery?: string
   rankScore?: number
   rankLabel?: string
 }
