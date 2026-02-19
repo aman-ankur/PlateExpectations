@@ -1,0 +1,255 @@
+{
+  "events": [
+    { "type": "progress", "message": "Reading menu..." },
+    { "type": "progress", "message": "Found 8 dishes" },
+    {
+      "type": "phase1",
+      "dishes": [
+        { "id": "1", "nameEnglish": "Bibimbap", "nameLocal": "비빔밥", "price": "₩9,000", "brief": "Mixed rice with vegetables and egg", "country": "Korea" },
+        { "id": "2", "nameEnglish": "Japchae", "nameLocal": "잡채", "price": "₩12,000", "brief": "Stir-fried glass noodles with vegetables", "country": "Korea" },
+        { "id": "3", "nameEnglish": "Kimchi Jjigae", "nameLocal": "김치찌개", "price": "₩8,000", "brief": "Spicy kimchi stew with pork", "country": "Korea" },
+        { "id": "4", "nameEnglish": "Bulgogi", "nameLocal": "불고기", "price": "₩15,000", "brief": "Marinated grilled beef", "country": "Korea" },
+        { "id": "5", "nameEnglish": "Tteokbokki", "nameLocal": "떡볶이", "price": "₩7,000", "brief": "Spicy stir-fried rice cakes", "country": "Korea" },
+        { "id": "6", "nameEnglish": "Samgyeopsal", "nameLocal": "삼겹살", "price": "₩14,000", "brief": "Grilled pork belly", "country": "Korea" },
+        { "id": "7", "nameEnglish": "Sundubu Jjigae", "nameLocal": "순두부찌개", "price": "₩8,500", "brief": "Soft tofu stew", "country": "Korea" },
+        { "id": "8", "nameEnglish": "Haemul Pajeon", "nameLocal": "해물파전", "price": "₩13,000", "brief": "Seafood green onion pancake", "country": "Korea" }
+      ]
+    },
+    { "type": "progress", "message": "Enriching 8 dishes..." },
+    {
+      "type": "batch",
+      "dishes": [
+        {
+          "id": "1",
+          "nameEnglish": "Bibimbap",
+          "nameLocal": "비빔밥",
+          "nameLocalCorrected": "비빔밥",
+          "nameRomanized": "Bibimbap",
+          "description": "A signature Korean rice bowl topped with sautéed vegetables (spinach, bean sprouts, carrots, zucchini), a fried egg, sliced meat, and spicy gochujang sauce. Mixed together before eating for a harmony of flavors and textures.",
+          "country": "Korea",
+          "price": "₩9,000",
+          "dietaryType": "non-veg",
+          "allergens": ["egg", "sesame", "soy"],
+          "ingredients": [
+            { "name": "Steamed rice", "category": "carb", "isUnfamiliar": false },
+            { "name": "Gochujang", "category": "sauce", "isUnfamiliar": true, "explanation": "Fermented red chili paste — sweet, spicy, and savory. The soul of Korean cooking." },
+            { "name": "Spinach", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Bean sprouts", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Carrot", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Zucchini", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Fried egg", "category": "protein", "isUnfamiliar": false },
+            { "name": "Sesame oil", "category": "sauce", "isUnfamiliar": false }
+          ],
+          "nutrition": { "protein": 22, "carbs": 78, "fat": 18, "fiber": 6, "kcal": 560 },
+          "explanation": "A balanced, colorful bowl that's one of Korea's most iconic dishes. The mix-it-yourself format means you control the ratio of rice to toppings.",
+          "culturalTerms": [
+            { "term": "Bibim", "explanation": "Means 'mixed' — you stir everything together before eating" },
+            { "term": "Bap", "explanation": "Means 'rice' — the foundation of the dish" }
+          ],
+          "imageSearchQuery": "비빔밥"
+        },
+        {
+          "id": "2",
+          "nameEnglish": "Japchae",
+          "nameLocal": "잡채",
+          "nameLocalCorrected": "잡채",
+          "nameRomanized": "Japchae",
+          "description": "Sweet potato glass noodles stir-fried with colorful vegetables, beef, and seasoned with soy sauce and sesame oil. Often served at celebrations and holidays.",
+          "country": "Korea",
+          "price": "₩12,000",
+          "dietaryType": "non-veg",
+          "allergens": ["soy", "sesame", "gluten"],
+          "ingredients": [
+            { "name": "Sweet potato noodles", "category": "carb", "isUnfamiliar": true, "explanation": "Chewy, translucent noodles made from sweet potato starch — glassy and springy." },
+            { "name": "Beef strips", "category": "protein", "isUnfamiliar": false },
+            { "name": "Spinach", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Carrot", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Shiitake mushrooms", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Soy sauce", "category": "sauce", "isUnfamiliar": false },
+            { "name": "Sesame oil", "category": "sauce", "isUnfamiliar": false }
+          ],
+          "nutrition": { "protein": 18, "carbs": 52, "fat": 14, "fiber": 3, "kcal": 405 },
+          "explanation": "A festive dish traditionally served at Korean celebrations. The glass noodles give it a distinctive chewy texture unlike any Western pasta.",
+          "culturalTerms": [
+            { "term": "Dangmyeon", "explanation": "Sweet potato starch noodles — the translucent, bouncy noodles used in japchae" }
+          ],
+          "imageSearchQuery": "잡채"
+        },
+        {
+          "id": "3",
+          "nameEnglish": "Kimchi Jjigae",
+          "nameLocal": "김치찌개",
+          "nameLocalCorrected": "김치찌개",
+          "nameRomanized": "Kimchi Jjigae",
+          "description": "A hearty, fiery stew made with aged kimchi, pork belly, tofu, and green onions. Served bubbling hot in a stone pot. The longer the kimchi has fermented, the deeper the flavor.",
+          "country": "Korea",
+          "price": "₩8,000",
+          "dietaryType": "non-veg",
+          "allergens": ["soy", "shellfish"],
+          "ingredients": [
+            { "name": "Aged kimchi", "category": "vegetable", "isUnfamiliar": true, "explanation": "Fermented napa cabbage — tangy, funky, and spicy. The backbone of Korean cuisine." },
+            { "name": "Pork belly", "category": "protein", "isUnfamiliar": false },
+            { "name": "Soft tofu", "category": "protein", "isUnfamiliar": false },
+            { "name": "Green onion", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Gochugaru", "category": "spice", "isUnfamiliar": true, "explanation": "Korean red pepper flakes — smoky, slightly sweet heat." },
+            { "name": "Anchovy broth", "category": "other", "isUnfamiliar": false }
+          ],
+          "nutrition": { "protein": 24, "carbs": 12, "fat": 22, "fiber": 4, "kcal": 340 },
+          "explanation": "Korea's ultimate comfort food. Every household has their own recipe, and it's often the first dish Koreans learn to cook.",
+          "culturalTerms": [
+            { "term": "Jjigae", "explanation": "A thick Korean stew, heartier than guk (soup) but thinner than a braise" },
+            { "term": "Mugeunji", "explanation": "Extra-aged kimchi (6+ months), preferred for this stew for its deep, complex sourness" }
+          ],
+          "imageSearchQuery": "김치찌개"
+        }
+      ]
+    },
+    {
+      "type": "batch",
+      "dishes": [
+        {
+          "id": "4",
+          "nameEnglish": "Bulgogi",
+          "nameLocal": "불고기",
+          "nameLocalCorrected": "불고기",
+          "nameRomanized": "Bulgogi",
+          "description": "Thinly sliced beef marinated in a sweet and savory sauce of soy, pear, garlic, and sesame, then grilled or pan-fried. One of the most internationally recognized Korean dishes.",
+          "country": "Korea",
+          "price": "₩15,000",
+          "dietaryType": "non-veg",
+          "allergens": ["soy", "sesame"],
+          "ingredients": [
+            { "name": "Beef sirloin", "category": "protein", "isUnfamiliar": false },
+            { "name": "Asian pear", "category": "other", "isUnfamiliar": true, "explanation": "Used as a natural meat tenderizer — adds subtle sweetness to the marinade." },
+            { "name": "Soy sauce", "category": "sauce", "isUnfamiliar": false },
+            { "name": "Garlic", "category": "spice", "isUnfamiliar": false },
+            { "name": "Sesame oil", "category": "sauce", "isUnfamiliar": false },
+            { "name": "Green onion", "category": "vegetable", "isUnfamiliar": false }
+          ],
+          "nutrition": { "protein": 32, "carbs": 14, "fat": 20, "fiber": 1, "kcal": 370 },
+          "explanation": "Literally 'fire meat' — the sweet soy marinade caramelizes beautifully over heat. Often wrapped in lettuce leaves with rice and ssamjang.",
+          "culturalTerms": [
+            { "term": "Bul", "explanation": "Fire — refers to the grilling method" },
+            { "term": "Ssam", "explanation": "Wrapping meat and rice in lettuce leaves — a common way to eat bulgogi" }
+          ],
+          "imageSearchQuery": "불고기"
+        },
+        {
+          "id": "5",
+          "nameEnglish": "Tteokbokki",
+          "nameLocal": "떡볶이",
+          "nameLocalCorrected": "떡볶이",
+          "nameRomanized": "Tteokbokki",
+          "description": "Chewy cylinder-shaped rice cakes simmered in a fiery, sweet gochujang sauce with fish cakes and boiled eggs. Korea's most beloved street food.",
+          "country": "Korea",
+          "price": "₩7,000",
+          "dietaryType": "non-veg",
+          "allergens": ["gluten", "fish", "egg"],
+          "ingredients": [
+            { "name": "Rice cakes", "category": "carb", "isUnfamiliar": true, "explanation": "Chewy cylinders made from rice flour — dense and satisfyingly bouncy." },
+            { "name": "Gochujang", "category": "sauce", "isUnfamiliar": true, "explanation": "Fermented red chili paste — the base of the fiery, sweet sauce." },
+            { "name": "Fish cake", "category": "protein", "isUnfamiliar": true, "explanation": "Eomuk — pressed fish paste shaped into sheets or tubes, common in Korean street food." },
+            { "name": "Boiled egg", "category": "protein", "isUnfamiliar": false },
+            { "name": "Green onion", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Sugar", "category": "other", "isUnfamiliar": false }
+          ],
+          "nutrition": { "protein": 12, "carbs": 68, "fat": 8, "fiber": 2, "kcal": 395 },
+          "explanation": "The quintessential Korean street food — sweet, spicy, and incredibly addictive. The sauce thickens as it cooks, coating each rice cake in glossy red heat.",
+          "culturalTerms": [
+            { "term": "Tteok", "explanation": "Korean rice cake — chewy, dense, made from pounded rice flour" },
+            { "term": "Eomuk", "explanation": "Fish cake — processed fish paste shaped into sheets, a tteokbokki staple" }
+          ],
+          "imageSearchQuery": "떡볶이"
+        },
+        {
+          "id": "6",
+          "nameEnglish": "Samgyeopsal",
+          "nameLocal": "삼겹살",
+          "nameLocalCorrected": "삼겹살",
+          "nameRomanized": "Samgyeopsal",
+          "description": "Thick slices of unseasoned pork belly grilled at the table on a charcoal or gas grill. Eaten wrapped in lettuce or perilla leaves with garlic, ssamjang, and kimchi.",
+          "country": "Korea",
+          "price": "₩14,000",
+          "dietaryType": "non-veg",
+          "allergens": ["soy"],
+          "ingredients": [
+            { "name": "Pork belly", "category": "protein", "isUnfamiliar": false },
+            { "name": "Lettuce leaves", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Perilla leaves", "category": "vegetable", "isUnfamiliar": true, "explanation": "Kkaennip — aromatic, slightly minty leaf from the sesame family. A classic ssam wrapper." },
+            { "name": "Ssamjang", "category": "sauce", "isUnfamiliar": true, "explanation": "Thick dipping paste — a blend of doenjang (soybean paste) and gochujang. Savory, sweet, spicy." },
+            { "name": "Raw garlic", "category": "spice", "isUnfamiliar": false },
+            { "name": "Kimchi", "category": "vegetable", "isUnfamiliar": false }
+          ],
+          "nutrition": { "protein": 28, "carbs": 4, "fat": 42, "fiber": 1, "kcal": 510 },
+          "explanation": "A communal, interactive dining experience — everyone grills and wraps at the table. The name literally means 'three-layer meat' for the visible layers of meat and fat.",
+          "culturalTerms": [
+            { "term": "Sam", "explanation": "Three — refers to the three visible layers of meat and fat" },
+            { "term": "Gyeopsal", "explanation": "Layered meat — pork belly with alternating lean and fat" }
+          ],
+          "imageSearchQuery": "삼겹살"
+        }
+      ]
+    },
+    {
+      "type": "batch",
+      "dishes": [
+        {
+          "id": "7",
+          "nameEnglish": "Sundubu Jjigae",
+          "nameLocal": "순두부찌개",
+          "nameLocalCorrected": "순두부찌개",
+          "nameRomanized": "Sundubu Jjigae",
+          "description": "A bubbling stew of silky uncurdled soft tofu in a spicy broth with vegetables, seafood or pork, and a raw egg cracked in at the table. Served in a sizzling stone pot.",
+          "country": "Korea",
+          "price": "₩8,500",
+          "dietaryType": "non-veg",
+          "allergens": ["soy", "egg", "shellfish"],
+          "ingredients": [
+            { "name": "Soft tofu", "category": "protein", "isUnfamiliar": false },
+            { "name": "Clams", "category": "protein", "isUnfamiliar": false },
+            { "name": "Shrimp", "category": "protein", "isUnfamiliar": false },
+            { "name": "Gochugaru", "category": "spice", "isUnfamiliar": true, "explanation": "Korean red pepper flakes — adds a smoky, fruity heat to the broth." },
+            { "name": "Raw egg", "category": "protein", "isUnfamiliar": false },
+            { "name": "Green onion", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Anchovy broth", "category": "other", "isUnfamiliar": false }
+          ],
+          "nutrition": { "protein": 26, "carbs": 10, "fat": 16, "fiber": 2, "kcal": 290 },
+          "explanation": "Lighter than kimchi jjigae but equally warming. The raw egg cooks in the bubbling pot at your table — stir it in for a silky, rich broth.",
+          "culturalTerms": [
+            { "term": "Sundubu", "explanation": "Extra-soft, uncurdled tofu — silkier and more delicate than regular tofu" },
+            { "term": "Ttukbaegi", "explanation": "The stone/clay pot it's served in — keeps the stew bubbling at the table" }
+          ],
+          "imageSearchQuery": "순두부찌개"
+        },
+        {
+          "id": "8",
+          "nameEnglish": "Haemul Pajeon",
+          "nameLocal": "해물파전",
+          "nameLocalCorrected": "해물파전",
+          "nameRomanized": "Haemul Pajeon",
+          "description": "A large, crispy savory pancake loaded with green onions, squid, shrimp, and clams. Served with a soy-vinegar dipping sauce. Perfect with makgeolli (rice wine).",
+          "country": "Korea",
+          "price": "₩13,000",
+          "dietaryType": "non-veg",
+          "allergens": ["gluten", "shellfish", "egg"],
+          "ingredients": [
+            { "name": "Green onion", "category": "vegetable", "isUnfamiliar": false },
+            { "name": "Squid", "category": "protein", "isUnfamiliar": false },
+            { "name": "Shrimp", "category": "protein", "isUnfamiliar": false },
+            { "name": "Clams", "category": "protein", "isUnfamiliar": false },
+            { "name": "Wheat flour batter", "category": "carb", "isUnfamiliar": false },
+            { "name": "Egg", "category": "protein", "isUnfamiliar": false }
+          ],
+          "nutrition": { "protein": 20, "carbs": 34, "fat": 16, "fiber": 2, "kcal": 360 },
+          "explanation": "A rainy-day tradition in Korea — the sizzle of the pancake on the griddle is said to sound like rain. Koreans often pair it with makgeolli rice wine.",
+          "culturalTerms": [
+            { "term": "Haemul", "explanation": "Seafood — refers to the mix of squid, shrimp, and shellfish" },
+            { "term": "Pajeon", "explanation": "Green onion pancake — 'pa' means green onion, 'jeon' means pan-fried" }
+          ],
+          "imageSearchQuery": "해물파전"
+        }
+      ]
+    },
+    { "type": "done" }
+  ]
+}
