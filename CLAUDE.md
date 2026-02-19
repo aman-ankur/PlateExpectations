@@ -130,8 +130,10 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - **Inline component definitions**: Never define components inside render functions — they get recreated every render, defeating React reconciliation and causing webpack HMR errors
 
 ### Testing
+- **Demo mode (default for UI work):** Use `npm run demo` to start the dev server with pre-recorded fixture data — no external API calls (no OCR, no Groq, no OpenAI, no Wikipedia image search, no DALL-E). Streams 8 Korean dishes with full enrichment and real Wikipedia images. Use demo mode whenever testing UI changes (cards, layouts, order builder, styling, navigation) that don't touch the scan pipeline, image search, OCR, translation, or enrichment logic. If unsure whether the current changes require real APIs, **ask the user before starting the server**.
+- **Real API mode:** Use `npm run dev -- -p 3001` only when changes touch: `src/lib/openai.ts`, `src/app/api/scan/route.ts` (non-demo paths), `src/app/api/dish-image/route.ts` (non-demo paths), image validation/search logic, OCR, or enrichment prompts.
 - Test images: `/Users/aankur/Downloads/menuapp/korean.jpg` (17 dishes), `/Users/aankur/Downloads/menuapp/korean2.jpg` (8 dishes)
-- Dev server: always use port 3001 — `npm run dev -- -p 3001` (kill existing process on 3001 first if needed)
+- Dev server: always use port 3001 (kill existing process on 3001 first if needed)
 - Curl NDJSON test: `BASE64=$(base64 -i image.jpg | tr -d '\n') && curl -N -X POST localhost:3001/api/scan -H 'Content-Type: application/json' -d "{\"image\":\"data:image/jpeg;base64,${BASE64}\"}"`
 - Always verify with `npm run build` before merging to main
 - React Strict Mode causes double API calls in dev — this is normal, doesn't happen in prod
