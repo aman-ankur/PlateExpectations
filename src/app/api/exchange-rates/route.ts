@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { APPROX_RATES_TO_USD } from '@/lib/constants'
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   // Demo mode: return hardcoded rates
-  if (process.env.DEMO_MODE === 'true') {
+  if (process.env.DEMO_MODE === 'true' || req.cookies.get('pe-demo')?.value === 'true') {
     return NextResponse.json({ rates: APPROX_RATES_TO_USD, timestamp: Date.now() })
   }
 
