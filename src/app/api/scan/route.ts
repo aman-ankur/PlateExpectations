@@ -9,7 +9,7 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 export async function POST(req: NextRequest) {
   try {
     // Demo mode: replay fixture data instead of calling external APIs
-    if (process.env.DEMO_MODE === 'true') {
+    if (process.env.DEMO_MODE === 'true' || req.cookies.get('pe-demo')?.value === 'true') {
       const { events } = (await import('@/fixtures/demo-scan.json'))
       const encoder = new TextEncoder()
       let i = 0

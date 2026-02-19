@@ -52,6 +52,11 @@ function loadOrder(): Record<string, number> {
   }
 }
 
+function loadDemoMode(): boolean {
+  if (typeof window === 'undefined') return false
+  return document.cookie.split('; ').some((c) => c === 'pe-demo=true')
+}
+
 function saveOrder(order: Record<string, number>) {
   if (typeof window === 'undefined') return
   try {
@@ -60,6 +65,10 @@ function saveOrder(order: Record<string, number>) {
 }
 
 interface AppState {
+  // Demo mode
+  demoMode: boolean
+  toggleDemoMode: () => void
+
   // Preferences
   preferences: Preferences
   setPreferences: (prefs: Partial<Preferences>) => void
@@ -106,6 +115,19 @@ interface AppState {
 }
 
 export const useStore = create<AppState>((set, get) => ({
+  // Demo mode
+  demoMode: loadDemoMode(),
+  toggleDemoMode: () => {
+    const next = !get().demoMode
+    if (typeof window !== 'undefined') {
+      if (next) {
+        document.cookie = 'pe-demo=true; path=/; max-age=31536000'
+      } else {
+        document.cookie = 'pe-demo=; path=/; max-age=0'
+      }
+    }
+    set({ demoMode: next })
+  },
   preferences: loadPreferences(),
   setPreferences: (prefs) => {
     const updated = { ...get().preferences, ...prefs }

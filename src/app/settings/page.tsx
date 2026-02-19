@@ -15,6 +15,8 @@ import SpiceMeter from '@/components/SpiceMeter'
 export default function SettingsPage() {
   const router = useRouter()
   const { preferences, setPreferences } = useStore()
+  const demoMode = useStore((s) => s.demoMode)
+  const toggleDemoMode = useStore((s) => s.toggleDemoMode)
 
   const [proteins, setProteins] = useState<string[]>(preferences.proteins)
   const [spice, setSpice] = useState(preferences.spice || 'Medium')
@@ -171,6 +173,28 @@ export default function SettingsPage() {
       >
         Save Preferences
       </button>
+
+      {/* Demo mode toggle */}
+      <section className="mt-10 border-t border-pe-border pt-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm font-medium text-pe-text-secondary">Demo Mode</p>
+            <p className="text-xs text-pe-text-muted">Use fixture data, no API calls</p>
+          </div>
+          <button
+            onClick={toggleDemoMode}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+              demoMode ? 'bg-pe-accent' : 'bg-pe-border'
+            }`}
+          >
+            <span
+              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                demoMode ? 'translate-x-6' : 'translate-x-1'
+              }`}
+            />
+          </button>
+        </div>
+      </section>
     </div>
   )
 }
