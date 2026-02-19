@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import { rankDishes } from '@/lib/ranking'
 import { useLongPress } from '@/lib/useLongPress'
+import { convertPrice } from '@/lib/currency'
 import OrderFab from '@/components/OrderFab'
 import { Dish, ScanEvent } from '@/lib/types'
 
@@ -56,6 +57,8 @@ function DishCard({ dish }: { dish: Dish }) {
   const isGenerated = useStore((s) => s.isGeneratedImage(s.dishImages[dish.id]?.[0] || ''))
   const orderQty = useStore((s) => s.order[dish.id] || 0)
   const addToOrder = useStore((s) => s.addToOrder)
+  const homeCurrency = useStore((s) => s.preferences.homeCurrency)
+  const exchangeRates = useStore((s) => s.exchangeRates)
   const [flash, setFlash] = useState(false)
 
   const longPressHandlers = useLongPress({
@@ -122,7 +125,13 @@ function DishCard({ dish }: { dish: Dish }) {
           </p>
         </div>
         <div className="flex flex-col items-end gap-2 pl-1">
-          <span className="text-sm font-medium text-pe-text-secondary">{dish.price}</span>
+          <div className="text-right">
+            <span className="text-sm font-medium text-pe-text-secondary">{dish.price}</span>
+            {(() => {
+              const converted = convertPrice(dish.price, dish.country, homeCurrency, exchangeRates)
+              return converted ? <p className="text-[11px] text-pe-text-muted">{converted}</p> : null
+            })()}
+          </div>
           <svg className="h-4 w-4 text-pe-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
@@ -141,6 +150,7 @@ export default function ResultsPage() {
     appendEnrichedDishes, fetchDishImagesForBatch, clearScan,
   } = useStore()
   const order = useStore((s) => s.order)
+  const exchangeRates = useStore((s) => s.exchangeRates)
   const hasOrder = Object.keys(order).length > 0
 
   const [phase1Msg, setPhase1Msg] = useState(0)
@@ -164,6 +174,7 @@ export default function ResultsPage() {
 
     if (dishes.length > 0 || scanStarted.current) return
     scanStarted.current = true
+    useStore.getState().clearOrder()
 
     const streamScan = async () => {
       setLoading(true)
@@ -374,7 +385,13 @@ export default function ResultsPage() {
                     <p className="text-sm text-pe-text-muted">{raw.nameLocal}</p>
                     <p className="mt-1 text-sm text-pe-text-secondary">{raw.brief}</p>
                   </div>
-                  <span className="text-sm font-medium text-pe-text-secondary">{raw.price}</span>
+                  <div className="text-right">
+                    <span className="text-sm font-medium text-pe-text-secondary">{raw.price}</span>
+                    {(() => {
+                      const converted = convertPrice(raw.price, raw.country, preferences.homeCurrency, exchangeRates)
+                      return converted ? <p className="text-[11px] text-pe-text-muted">{converted}</p> : null
+                    })()}
+                  </div>
                 </div>
               </div>
             )
