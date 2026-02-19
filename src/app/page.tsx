@@ -46,7 +46,7 @@ export default function HomePage() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center px-6 py-12">
       {/* Settings gear */}
-      {mounted && preferences.hasCompletedOnboarding && (
+      {mounted && (
         <button
           onClick={() => router.push('/settings')}
           className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-pe-surface"
