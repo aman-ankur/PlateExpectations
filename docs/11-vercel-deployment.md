@@ -39,6 +39,8 @@ Set these in the Vercel dashboard under **Settings → Environment Variables**:
 
 **Do not set `DEMO_MODE`** for production — it replaces all API calls with fixture data.
 
+**Runtime demo toggle:** You can also switch between demo and real mode at runtime without changing env vars. Go to **Settings** (gear icon on home page) → scroll to the bottom → toggle **Demo Mode**. This sets a `pe-demo` cookie that API routes check. An amber banner appears at the top of every page when demo mode is active. Useful for testing the UI flow on a deployed Vercel instance without burning API credits.
+
 ### 3. Auto-deploy
 
 - Every push to `main` triggers a production deploy
