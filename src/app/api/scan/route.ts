@@ -4,8 +4,38 @@ import { DEFAULT_PREFERENCES, Preferences } from '@/lib/types'
 
 export const maxDuration = 60
 
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
 export async function POST(req: NextRequest) {
   try {
+    // Demo mode: replay fixture data instead of calling external APIs
+    if (process.env.DEMO_MODE === 'true') {
+      const { events } = (await import('@/fixtures/demo-scan.json'))
+      const encoder = new TextEncoder()
+      let i = 0
+      const stream = new ReadableStream({
+        async pull(controller) {
+          if (i >= events.length) {
+            controller.close()
+            return
+          }
+          controller.enqueue(encoder.encode(JSON.stringify(events[i]) + '\n'))
+          const type = events[i].type
+          i++
+          if (type === 'phase1') await delay(800)
+          else if (type === 'batch') await delay(600)
+          else await delay(200)
+        },
+      })
+      return new Response(stream, {
+        headers: {
+          'Content-Type': 'text/event-stream; charset=utf-8',
+          'Cache-Control': 'no-cache, no-transform',
+          'X-Accel-Buffering': 'no',
+        },
+      })
+    }
+
     const body = await req.json()
     const { image, preferences }: { image: string; preferences?: Preferences } = body
 

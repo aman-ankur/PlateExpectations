@@ -13,6 +13,19 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY
  * Returns { imageUrl, imageUrls[], generated[] }
  */
 export async function GET(req: NextRequest) {
+  // Demo mode: return pre-recorded image URLs
+  if (process.env.DEMO_MODE === 'true') {
+    const images = (await import('@/fixtures/demo-images.json')).default as Record<string, string>
+    const q = req.nextUrl.searchParams.get('q') || ''
+    const dishName = req.nextUrl.searchParams.get('dishName') || ''
+    const url = images[q] || images[dishName] || null
+    return NextResponse.json({
+      imageUrl: url,
+      imageUrls: url ? [url] : [],
+      generated: url ? [false] : [],
+    })
+  }
+
   const query = req.nextUrl.searchParams.get('q')
   const fallback = req.nextUrl.searchParams.get('fallback')
   const dishName = req.nextUrl.searchParams.get('dishName')
