@@ -148,6 +148,13 @@ Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral: di
 - Merge only after `npm run build` passes
 - Small docs/config changes can go directly to main
 
+## Commit / PR Protocol
+
+Before creating any commit or pull request, **always** write a changelog doc first:
+1. Create `docs/XX-<short-name>.md` (next sequential number) describing what changed, why, and which files were touched
+2. Stage the doc along with the code changes
+3. Then commit / open the PR
+
 ## Key Rules
 
 - Never hardcode API keys — use `OPENAI_API_KEY` env var
