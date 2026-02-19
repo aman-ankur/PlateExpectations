@@ -5,27 +5,29 @@ import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import {
   PROTEIN_OPTIONS,
-  SPICE_OPTIONS,
   DIET_OPTIONS,
   RESTRICTION_OPTIONS,
   ALLERGY_OPTIONS,
+  CURRENCY_OPTIONS,
 } from '@/lib/constants'
+import SpiceMeter from '@/components/SpiceMeter'
 
 export default function SettingsPage() {
   const router = useRouter()
   const { preferences, setPreferences } = useStore()
 
   const [proteins, setProteins] = useState<string[]>(preferences.proteins)
-  const [spice, setSpice] = useState(preferences.spice)
+  const [spice, setSpice] = useState(preferences.spice || 'Medium')
   const [diet, setDiet] = useState(preferences.diet)
   const [restrictions, setRestrictions] = useState<string[]>(preferences.restrictions)
   const [allergies, setAllergies] = useState<string[]>(preferences.allergies)
+  const [homeCurrency, setHomeCurrency] = useState(preferences.homeCurrency || '')
 
   const toggleItem = (list: string[], item: string) =>
     list.includes(item) ? list.filter((i) => i !== item) : [...list, item]
 
   const handleSave = () => {
-    setPreferences({ proteins, spice, diet, restrictions, allergies })
+    setPreferences({ proteins, spice, diet, restrictions, allergies, homeCurrency: homeCurrency || undefined })
     router.back()
   }
 
@@ -42,6 +44,29 @@ export default function SettingsPage() {
         </button>
         <h1 className="text-xl font-bold">Settings</h1>
       </div>
+
+      {/* Home Currency */}
+      <section className="mb-6">
+        <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-pe-text-secondary">
+          Home Currency
+        </h2>
+        <p className="mb-2 text-xs text-pe-text-muted">For approximate price conversion</p>
+        <div className="flex flex-wrap gap-2">
+          {CURRENCY_OPTIONS.map((c) => (
+            <button
+              key={c.id}
+              onClick={() => setHomeCurrency(homeCurrency === c.id ? '' : c.id)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                homeCurrency === c.id
+                  ? 'bg-pe-accent text-white'
+                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+              }`}
+            >
+              {c.symbol} {c.id}
+            </button>
+          ))}
+        </div>
+      </section>
 
       {/* Diet Type */}
       <section className="mb-6">
@@ -93,21 +118,7 @@ export default function SettingsPage() {
         <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-pe-text-secondary">
           Spice Tolerance
         </h2>
-        <div className="flex gap-2">
-          {SPICE_OPTIONS.map((s) => (
-            <button
-              key={s}
-              onClick={() => setSpice(s)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                spice === s
-                  ? 'bg-pe-accent text-white'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
-              }`}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
+        <SpiceMeter value={spice} onChange={setSpice} />
       </section>
 
       {/* Restrictions */}

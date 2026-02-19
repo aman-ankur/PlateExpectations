@@ -59,6 +59,7 @@ export interface Preferences {
   diet: string
   restrictions: string[]
   allergies: string[]
+  homeCurrency?: string
   hasCompletedOnboarding: boolean
 }
 
@@ -73,5 +74,6 @@ export const DEFAULT_PREFERENCES: Preferences = {
   diet: '',
   restrictions: [],
   allergies: [],
+  homeCurrency: 'INR',
   hasCompletedOnboarding: false,
 }
