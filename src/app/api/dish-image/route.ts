@@ -16,16 +16,19 @@ export async function GET(req: NextRequest) {
   // Demo mode: return pre-recorded image URLs
   if (process.env.DEMO_MODE === 'true' || req.cookies.get('pe-demo')?.value === 'true') {
     const data = (await import('@/fixtures/demo-images.json')).default as Record<string, unknown>
-    const images = data as Record<string, string>
     const generatedList = (data._generated || []) as string[]
     const q = req.nextUrl.searchParams.get('q') || ''
     const dishName = req.nextUrl.searchParams.get('dishName') || ''
-    const url = (q !== '_generated' ? images[q] : null) || images[dishName] || null
+    const entry = (q !== '_generated' ? data[q] : null) || data[dishName] || null
+    // Support both string and string[] values
+    const urls: string[] = entry
+      ? (Array.isArray(entry) ? entry as string[] : [entry as string])
+      : []
     const isGenerated = generatedList.includes(q) || generatedList.includes(dishName)
     return NextResponse.json({
-      imageUrl: url,
-      imageUrls: url ? [url] : [],
-      generated: url ? [isGenerated] : [],
+      imageUrl: urls[0] || null,
+      imageUrls: urls,
+      generated: urls.map(() => isGenerated),
     })
   }
 

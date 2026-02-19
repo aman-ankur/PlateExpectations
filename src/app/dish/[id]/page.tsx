@@ -117,12 +117,6 @@ export default function DishDetailPage() {
             </div>
             {/* Gradient overlay — lighter to show more food */}
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/60 via-25% to-transparent" />
-            {/* AI Generated tag — above gradient zone, right side */}
-            {isGeneratedImage(images[currentIndex]) && (
-              <span className="absolute bottom-[30%] right-3 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
-                AI Generated
-              </span>
-            )}
             {/* Dot indicators */}
             {images.length > 1 && (
               <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
@@ -203,33 +197,6 @@ export default function DishDetailPage() {
           </div>
         )}
 
-        {/* Generate more button — inside hero when images exist but < 3 */}
-        {images.length > 0 && images.length < 3 && (
-          <button
-            disabled={generating}
-            onClick={async () => {
-              setGenerating(true)
-              try {
-                const res = await fetch('/api/generate-dish-image', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ dishName: dish.nameEnglish, description: dish.description }),
-                })
-                const data = await res.json()
-                if (data.imageUrl) addDishImage(dish.id, data.imageUrl)
-              } catch { /* ignore */ }
-              setGenerating(false)
-            }}
-            className="absolute top-4 right-4 z-20 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm"
-          >
-            {generating ? (
-              <span className="h-3 w-3 animate-spin rounded-full border-2 border-pe-accent/30 border-t-pe-accent" />
-            ) : (
-              <>✨ + AI</>
-            )}
-          </button>
-        )}
-
         {/* Hero overlay content — compact, sits inside gradient zone */}
         <div className="absolute bottom-0 left-0 right-0 z-10 px-5 pb-4">
           {/* Country label */}
@@ -247,7 +214,7 @@ export default function DishDetailPage() {
             </p>
           )}
 
-          {/* Dietary / allergen tags */}
+          {/* Dietary / allergen / AI tags */}
           <div className="mt-2 flex flex-wrap gap-1.5">
             <span className="flex items-center gap-1 rounded-full bg-pe-tag-dietary-bg/80 px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-dietary backdrop-blur-sm">
               {dish.dietaryType === 'veg' ? '🟢' : '🔴'} {dish.dietaryType === 'jain-safe' ? 'Jain Safe' : dish.dietaryType === 'veg' ? 'Veg' : 'Non-Veg'}
@@ -260,11 +227,49 @@ export default function DishDetailPage() {
             <span className="flex items-center gap-1 rounded-full bg-pe-tag-macro-bg/80 px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-macro backdrop-blur-sm">
               ⚡ {dish.nutrition.protein > dish.nutrition.carbs ? 'Protein' : 'Carbs'}
             </span>
+            {isGeneratedImage(images[currentIndex]) && (
+              <span className="flex items-center gap-1 rounded-full bg-pe-accent/20 px-2.5 py-0.5 text-[10px] font-medium text-pe-accent backdrop-blur-sm">
+                ✨ AI Generated
+              </span>
+            )}
           </div>
         </div>
       </div>
 
       <div className="px-5 pt-5">
+        {/* Generate more images — below hero, clean placement */}
+        {images.length > 0 && images.length < 3 && (
+          <button
+            disabled={generating}
+            onClick={async () => {
+              setGenerating(true)
+              try {
+                const res = await fetch('/api/generate-dish-image', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ dishName: dish.nameEnglish, description: dish.description }),
+                })
+                const data = await res.json()
+                if (data.imageUrl) addDishImage(dish.id, data.imageUrl)
+              } catch { /* ignore */ }
+              setGenerating(false)
+            }}
+            className="mb-4 flex w-full items-center justify-center gap-1.5 rounded-xl border border-pe-border bg-pe-surface py-2.5 text-xs font-medium text-pe-text-secondary transition-colors active:bg-pe-elevated"
+          >
+            {generating ? (
+              <>
+                <span className="h-3 w-3 animate-spin rounded-full border-2 border-pe-accent/30 border-t-pe-accent" />
+                Generating image...
+              </>
+            ) : (
+              <>
+                <span className="text-sm text-pe-accent">✨</span>
+                Generate AI Photo
+              </>
+            )}
+          </button>
+        )}
+
         {/* What is this dish? */}
         <div className="mb-5 rounded-xl border border-pe-border bg-pe-surface p-4">
           <h2 className="mb-2 text-sm font-semibold text-pe-text-secondary">What is this dish?</h2>
