@@ -110,16 +110,17 @@ export default function DishDetailPage() {
               {images.map((url, i) => (
                 <div key={url} className="relative h-full w-full flex-shrink-0 snap-start">
                   <img src={url} alt={`${dish.nameEnglish} ${i + 1}`} className="h-full w-full object-cover" />
-                  {isGeneratedImage(url) && (
-                    <span className="absolute bottom-3 right-3 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
-                      AI Generated
-                    </span>
-                  )}
                 </div>
               ))}
             </div>
             {/* Heavy gradient overlay — fades into page background */}
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/70 via-40% to-transparent" />
+            {/* AI Generated tag — above gradient, bottom-right */}
+            {isGeneratedImage(images[currentIndex]) && (
+              <span className="absolute bottom-[45%] right-3 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
+                AI Generated
+              </span>
+            )}
             {/* Dot indicators */}
             {images.length > 1 && (
               <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
