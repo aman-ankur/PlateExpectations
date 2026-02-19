@@ -131,6 +131,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 
 ### Testing
 - **Demo mode (default for UI work):** Use `npm run demo` to start the dev server with pre-recorded fixture data — no external API calls (no OCR, no Groq, no OpenAI, no Wikipedia image search, no DALL-E). Streams 8 Korean dishes with full enrichment and real Wikipedia images. Use demo mode whenever testing UI changes (cards, layouts, order builder, styling, navigation) that don't touch the scan pipeline, image search, OCR, translation, or enrichment logic. If unsure whether the current changes require real APIs, **ask the user before starting the server**.
+- **Runtime demo toggle:** Demo mode can also be toggled at runtime from Settings (bottom of page) without restarting the server. This sets a `pe-demo` cookie that API routes check alongside the `DEMO_MODE` env var. An amber banner appears at the top when demo mode is active. This works on deployed environments (Vercel) too — no env var changes needed.
 - **Real API mode:** Use `npm run dev -- -p 3001` only when changes touch: `src/lib/openai.ts`, `src/app/api/scan/route.ts` (non-demo paths), `src/app/api/dish-image/route.ts` (non-demo paths), image validation/search logic, OCR, or enrichment prompts.
 - Test images: `/Users/aankur/Downloads/menuapp/korean.jpg` (17 dishes), `/Users/aankur/Downloads/menuapp/korean2.jpg` (8 dishes)
 - Dev server: always use port 3001 (kill existing process on 3001 first if needed)
