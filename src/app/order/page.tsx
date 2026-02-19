@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import { buildShowText, getLangCode } from '@/lib/orderTemplates'
+import { convertPrice, convertTotal } from '@/lib/currency'
 
 function parsePrice(price: string): number | null {
   if (!price) return null
@@ -21,6 +22,7 @@ function parsePrice(price: string): number | null {
 export default function OrderPage() {
   const router = useRouter()
   const { dishes, dishImages, order, updateQuantity, removeFromOrder, clearOrder, preferences } = useStore()
+  const exchangeRates = useStore((s) => s.exchangeRates)
   const [audioUrl, setAudioUrl] = useState<string | null>(null)
   const [audioLoading, setAudioLoading] = useState(false)
   const [audioError, setAudioError] = useState<string | null>(null)
@@ -194,7 +196,13 @@ export default function OrderPage() {
                 <p className="text-sm font-semibold text-pe-text truncate">{dish.nameEnglish}</p>
                 <p className="text-xs text-pe-text-muted truncate">{dish.nameLocalCorrected || dish.nameLocal}</p>
                 {price !== null && (
-                  <p className="text-xs font-medium text-pe-accent">{dish.price} x {qty}</p>
+                  <p className="text-xs font-medium text-pe-accent">
+                    {dish.price} x {qty}
+                    {(() => {
+                      const converted = convertPrice(dish.price, dish.country, preferences.homeCurrency, exchangeRates)
+                      return converted ? <span className="text-pe-text-muted font-normal"> ({converted} ea)</span> : null
+                    })()}
+                  </p>
                 )}
               </div>
               <div className="flex items-center gap-2">
@@ -300,6 +308,10 @@ export default function OrderPage() {
             <div className="flex-1">
               <p className="text-[10px] text-pe-text-muted">Estimated Total</p>
               <p className="text-lg font-bold text-pe-text">{currencySymbol}{total.toLocaleString()}</p>
+              {(() => {
+                const converted = convertTotal(total, country, preferences.homeCurrency, exchangeRates)
+                return converted ? <p className="text-xs text-pe-text-muted">{converted}</p> : null
+              })()}
             </div>
           )}
           <button

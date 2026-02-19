@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { Dish, RawDish, Preferences, DEFAULT_PREFERENCES } from './types'
+import { APPROX_RATES_TO_USD } from './constants'
 
 // Shared across all batches — tracks URLs already assigned to prevent duplicates
 const usedImageUrls = new Set<string>()
@@ -90,6 +91,11 @@ interface AppState {
   fetchDishImages: () => void
   fetchDishImagesForBatch: (dishes: Dish[]) => void
   isGeneratedImage: (url: string) => boolean
+
+  // Exchange rates
+  exchangeRates: Record<string, number>
+  lastRatesUpdate: number
+  fetchExchangeRates: () => void
 
   // Order
   order: Record<string, number>
@@ -206,6 +212,23 @@ export const useStore = create<AppState>((set, get) => ({
     })
   },
   isGeneratedImage: (url) => generatedImageUrls.has(url),
+
+  // Exchange rates
+  exchangeRates: APPROX_RATES_TO_USD,
+  lastRatesUpdate: 0,
+  fetchExchangeRates: () => {
+    const { lastRatesUpdate } = get()
+    const sixHours = 6 * 60 * 60 * 1000
+    if (Date.now() - lastRatesUpdate < sixHours) return
+    fetch('/api/exchange-rates')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.rates) {
+          set({ exchangeRates: data.rates, lastRatesUpdate: Date.now() })
+        }
+      })
+      .catch(() => {})
+  },
 
   // Order
   order: loadOrder(),
