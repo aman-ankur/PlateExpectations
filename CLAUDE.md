@@ -18,19 +18,32 @@ PWA for travelers to scan and understand foreign-language menus anywhere. Scan a
 ```
 src/app/
   page.tsx                  — Home / Scan screen (dual camera/gallery buttons)
-  preferences/page.tsx      — Dietary preferences onboarding
+  preferences/page.tsx      — Dietary preferences onboarding (SpiceMeter)
   results/page.tsx          — Menu results list (streaming, progressive loading)
-  dish/[id]/page.tsx        — Dish detail (immersive 55vh hero, infographic badges, nutrition)
-  settings/page.tsx         — Edit preferences
+  dish/[id]/page.tsx        — Dish detail (immersive 55vh hero, toggle badges, nutrition)
+  order/page.tsx            — Order summary with quantity controls + TTS
+  settings/page.tsx         — Edit preferences + demo mode toggle
   api/scan/route.ts         — NDJSON streaming scan pipeline
   api/dish-image/route.ts   — Vision-validated dish image search + DALL-E fallback
+  api/exchange-rates/route.ts — Live exchange rates (open.er-api.com)
+  api/tts/route.ts          — Text-to-speech for ordering phrases
+src/components/
+  OrderFab.tsx              — Compact order pill (floating action button)
+  SpiceMeter.tsx            — Draggable 6-level spice meter with pointer events
+  DemoBanner.tsx            — Amber banner when demo mode is active
+  ExchangeRateLoader.tsx    — Fetches exchange rates on mount
 src/lib/
   openai.ts                 — extractDishes() + scanMenuStreaming() + enrichBatch()
-  store.ts                  — Zustand store (preferences, scan, skeletons, dish image cache)
+  store.ts                  — Zustand store (preferences, scan, skeletons, dish images, order, demo, rates)
   types.ts                  — Dish, RawDish, ScanEvent, Ingredient, CulturalTerm, Preferences
   ranking.ts                — Preference-based dish ranking (top 5 labels, menu order preserved)
+  currency.ts               — Price conversion with live or approximate exchange rates
   compress.ts               — Client-side image compression (max 1200px, 0.7 quality)
   constants.ts              — Design tokens, dietary options
+  useLongPress.ts           — Long-press hook with scroll discrimination
+src/fixtures/
+  demo-scan.json            — 15 Korean dishes with full enrichment data
+  demo-images.json          — Dish images (string or string[] per dish) + _generated list
 docs/
   backlog.md                — Prioritized improvement items
   speed-and-images-plan.md  — Benchmarks and architecture decisions
@@ -105,11 +118,20 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - **Non-food rejection**: Filename heuristic rejects concert/crowd/people/band/stadium images before Vision. Vision prompt explicitly asks "if this is not food at all, answer NO" to catch non-food images that slip through filename filters.
 
 ### Dish Detail Hero
-- Immersive hero: `h-[55vh] min-h-[320px]` with heavy gradient (`from-[#0f0f0f] via-[#0f0f0f]/70 via-40% to-transparent`) blending into page background
-- Dish name, local name, country label, and dietary tags all sit inside the gradient zone at the bottom — no sharp boundary between image and content
-- Ingredient badges use infographic-style scattered positioning across the image (8 fixed positions avoiding back button and text zones), NOT a scrollable row
+- Immersive hero: `h-[55vh] min-h-[320px]` with lighter gradient (`from-[#0f0f0f] via-[#0f0f0f]/60 via-25% to-transparent`) — food image is the star
+- Dish name (compact: romanized + local on one line), country label, and dietary tags sit inside the gradient zone at the bottom
+- **AI Generated tag** is inline in the dietary tags row (not floating on the image)
+- **Ingredient badges** hidden by default — tap image to toggle on/off (300ms fade). "Tap image for ingredients" hint in top-right. Badges use infographic-style scattered positioning (8 fixed positions avoiding back button and text zones)
 - Badge backgrounds are subtle (`bg-black/30`) with muted category-colored dots — food should be the hero, not the badges
 - `IngredientBadge` component supports tap-to-explain for unfamiliar ingredients
+- **Generate AI Photo** button lives below the hero in the content area (not overlaying the image)
+- Gallery dot indicators at top-center for multi-image dishes
+
+### Mobile Touch Interactions
+- **No long-press** — removed because mobile users don't discover hidden gestures. Cards use simple `onClick` for navigation.
+- **Explicit + button** on each dish card for add-to-order (`e.stopPropagation()` prevents navigation)
+- `useLongPress` hook still exists but is no longer used on the results page
+- **Scroll vs tap discrimination**: `useLongPress` tracks finger movement (`didMove` ref) — if finger moves >15px, both click and long-press are suppressed. This prevents scrolling from triggering card clicks.
 
 ### OCR Correction
 - Cloud Vision garbles diacritical marks in Vietnamese/Thai — "GỎI CUỐN" becomes "CÒI CUỐN"
@@ -130,7 +152,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - **Inline component definitions**: Never define components inside render functions — they get recreated every render, defeating React reconciliation and causing webpack HMR errors
 
 ### Testing
-- **Demo mode (default for UI work):** Use `npm run demo` to start the dev server with pre-recorded fixture data — no external API calls (no OCR, no Groq, no OpenAI, no Wikipedia image search, no DALL-E). Streams 8 Korean dishes with full enrichment and real Wikipedia images. Use demo mode whenever testing UI changes (cards, layouts, order builder, styling, navigation) that don't touch the scan pipeline, image search, OCR, translation, or enrichment logic. If unsure whether the current changes require real APIs, **ask the user before starting the server**.
+- **Demo mode (default for UI work):** Use `npm run demo` to start the dev server with pre-recorded fixture data — no external API calls (no OCR, no Groq, no OpenAI, no Wikipedia image search, no DALL-E). Streams 15 Korean dishes (10 common + 5 uncommon) with full enrichment, real Wikipedia images, and 5 AI-generated image flags. Four popular dishes (Bibimbap, Kimchi Jjigae, Bulgogi, Tteokbokki) have 3 gallery images each. Use demo mode whenever testing UI changes (cards, layouts, order builder, styling, navigation) that don't touch the scan pipeline, image search, OCR, translation, or enrichment logic. If unsure whether the current changes require real APIs, **ask the user before starting the server**.
 - **Runtime demo toggle:** Demo mode can also be toggled at runtime from Settings (bottom of page) without restarting the server. This sets a `pe-demo` cookie that API routes check alongside the `DEMO_MODE` env var. An amber banner appears at the top when demo mode is active. This works on deployed environments (Vercel) too — no env var changes needed.
 - **Real API mode:** Use `npm run dev -- -p 3001` only when changes touch: `src/lib/openai.ts`, `src/app/api/scan/route.ts` (non-demo paths), `src/app/api/dish-image/route.ts` (non-demo paths), image validation/search logic, OCR, or enrichment prompts.
 - Test images: `/Users/aankur/Downloads/menuapp/korean.jpg` (17 dishes), `/Users/aankur/Downloads/menuapp/korean2.jpg` (8 dishes)
@@ -142,7 +164,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 
 ## State Management
 
-Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral: dishes, skeletonDishes, scanProgress), **dishImages** (cache with dedup), **generatedDishIds** (module-level Set tracking AI-generated images). Key actions: `appendEnrichedDishes()` for incremental batch merging, `clearScan()` for full reset, `fetchDishImagesForBatch()` for per-batch image loading, `isGeneratedImage()` for checking if a dish image was AI-generated.
+Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral: dishes, skeletonDishes, scanProgress), **dishImages** (cache with dedup), **generatedDishIds** (module-level Set tracking AI-generated images), **order** (dish ID → quantity map), **demoMode** (boolean, synced to `pe-demo` cookie), **exchangeRates** (cached for 6 hours). Key actions: `appendEnrichedDishes()` for incremental batch merging, `clearScan()` for full reset, `fetchDishImagesForBatch()` for per-batch image loading, `isGeneratedImage()` for checking if a dish image was AI-generated, `toggleDemoMode()` for runtime demo/real switching, `fetchExchangeRates()` for live rates.
 
 ## Git Workflow
 

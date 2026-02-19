@@ -16,12 +16,14 @@ Key design decisions:
 - No padding on the card itself — image goes edge-to-edge, text area has its own `py-3 pr-3`
 - Skeleton/streaming cards updated to match the new layout
 
-### 2. Order builder — long-press to add dishes
-- Long-press on any dish card adds it to the order (with a green flash confirmation)
-- Tap still navigates to dish detail
+### 2. Order builder — tap + button to add dishes
+- Explicit "+" button on each dish card adds it to the order (with a green flash confirmation)
+- ~~Long-press removed~~ — was undiscoverable on mobile; scroll gestures conflicted with long-press detection
+- Tap on card navigates to dish detail
 - Order quantity badge shown on the image area
 - Order state managed in Zustand store with `order`, `addToOrder`, `removeFromOrder`, `updateQuantity`, `clearOrder`
 - Dish detail page has a sticky add-to-order bar with quantity controls
+- Order auto-cleared on new menu scan
 
 ### 3. OrderFab — compact centered pill
 **Before:** Full-width accent-green bar spanning edge to edge.
