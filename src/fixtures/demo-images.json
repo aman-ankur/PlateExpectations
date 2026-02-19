@@ -1,14 +1,46 @@
 {
-  "비빔밥": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/500px-Dolsot-bibimbap.jpg",
-  "Bibimbap": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/500px-Dolsot-bibimbap.jpg",
+  "비빔밥": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/500px-Dolsot-bibimbap.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Bibimbap_at_Jeonju.jpg/500px-Bibimbap_at_Jeonju.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/KOCIS_Bibimbap_%284339414992%29.jpg/500px-KOCIS_Bibimbap_%284339414992%29.jpg"
+  ],
+  "Bibimbap": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/500px-Dolsot-bibimbap.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Bibimbap_at_Jeonju.jpg/500px-Bibimbap_at_Jeonju.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/KOCIS_Bibimbap_%284339414992%29.jpg/500px-KOCIS_Bibimbap_%284339414992%29.jpg"
+  ],
   "잡채": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg/500px-Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg",
   "Japchae": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg/500px-Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg",
-  "김치찌개": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg/500px-Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg",
-  "Kimchi Jjigae": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg/500px-Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg",
-  "불고기": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/500px-Bulgogi_2.jpg",
-  "Bulgogi": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/500px-Bulgogi_2.jpg",
-  "떡볶이": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.JPG/500px-Tteokbokki.JPG",
-  "Tteokbokki": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.JPG/500px-Tteokbokki.JPG",
+  "김치찌개": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg/500px-Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Kimchi_Jigae.jpg/500px-Kimchi_Jigae.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/KOCIS_Kimchi_jjigae_%284472377474%29.jpg/500px-KOCIS_Kimchi_jjigae_%284472377474%29.jpg"
+  ],
+  "Kimchi Jjigae": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg/500px-Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Kimchi_Jigae.jpg/500px-Kimchi_Jigae.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/KOCIS_Kimchi_jjigae_%284472377474%29.jpg/500px-KOCIS_Kimchi_jjigae_%284472377474%29.jpg"
+  ],
+  "불고기": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/500px-Bulgogi_2.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Korean_food-Bulgogi-01.jpg/500px-Korean_food-Bulgogi-01.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Korean.food-Bulgogi-02.jpg/500px-Korean.food-Bulgogi-02.jpg"
+  ],
+  "Bulgogi": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/500px-Bulgogi_2.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Korean_food-Bulgogi-01.jpg/500px-Korean_food-Bulgogi-01.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Korean.food-Bulgogi-02.jpg/500px-Korean.food-Bulgogi-02.jpg"
+  ],
+  "떡볶이": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.JPG/500px-Tteokbokki.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Tteok-bokki_20170521.jpg/500px-Tteok-bokki_20170521.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Korean.snack-Tteokbokki-01.jpg/500px-Korean.snack-Tteokbokki-01.jpg"
+  ],
+  "Tteokbokki": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.JPG/500px-Tteokbokki.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Tteok-bokki_20170521.jpg/500px-Tteok-bokki_20170521.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Korean.snack-Tteokbokki-01.jpg/500px-Korean.snack-Tteokbokki-01.jpg"
+  ],
   "삼겹살": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Samgyeopsal-gui.jpg/500px-Samgyeopsal-gui.jpg",
   "Samgyeopsal": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Samgyeopsal-gui.jpg/500px-Samgyeopsal-gui.jpg",
   "순두부찌개": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Sundubu-jjigae.jpg/500px-Sundubu-jjigae.jpg",
