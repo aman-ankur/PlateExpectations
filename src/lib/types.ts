@@ -14,6 +14,7 @@ export interface Dish {
   id: string
   nameEnglish: string
   nameLocal: string
+  nameLocalCorrected?: string
   nameRomanized?: string
   description: string
   country: string
