@@ -111,7 +111,7 @@ export default function DishDetailPage() {
                 <div key={url} className="relative h-full w-full flex-shrink-0 snap-start">
                   <img src={url} alt={`${dish.nameEnglish} ${i + 1}`} className="h-full w-full object-cover" />
                   {isGeneratedImage(url) && (
-                    <span className="absolute top-3 right-16 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
+                    <span className="absolute bottom-3 right-3 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
                       AI Generated
                     </span>
                   )}
@@ -122,7 +122,7 @@ export default function DishDetailPage() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/70 via-40% to-transparent" />
             {/* Dot indicators */}
             {images.length > 1 && (
-              <div className="absolute top-3 right-16 z-20 flex gap-1.5">
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
                 {images.map((_, i) => (
                   <span
                     key={i}
@@ -207,7 +207,7 @@ export default function DishDetailPage() {
               } catch { /* ignore */ }
               setGenerating(false)
             }}
-            className="absolute top-4 right-28 z-20 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm"
+            className="absolute top-4 right-4 z-20 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm"
           >
             {generating ? (
               <span className="h-3 w-3 animate-spin rounded-full border-2 border-pe-accent/30 border-t-pe-accent" />
