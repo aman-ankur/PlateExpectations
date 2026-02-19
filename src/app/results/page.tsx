@@ -4,7 +4,6 @@ import { useEffect, useState, useMemo, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import { rankDishes } from '@/lib/ranking'
-import { useLongPress } from '@/lib/useLongPress'
 import { convertPrice } from '@/lib/currency'
 import OrderFab from '@/components/OrderFab'
 import { Dish, ScanEvent } from '@/lib/types'
@@ -61,18 +60,9 @@ function DishCard({ dish }: { dish: Dish }) {
   const exchangeRates = useStore((s) => s.exchangeRates)
   const [flash, setFlash] = useState(false)
 
-  const longPressHandlers = useLongPress({
-    onLongPress: () => {
-      addToOrder(dish.id)
-      setFlash(true)
-      setTimeout(() => setFlash(false), 400)
-    },
-    onClick: () => router.push(`/dish/${dish.id}`),
-  })
-
   return (
     <div
-      {...longPressHandlers}
+      onClick={() => router.push(`/dish/${dish.id}`)}
       role="button"
       tabIndex={0}
       className={`relative flex w-full items-stretch overflow-hidden rounded-2xl bg-pe-surface text-left transition-all cursor-pointer ${
@@ -87,7 +77,7 @@ function DishCard({ dish }: { dish: Dish }) {
           <>
             <img src={imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
             {isGenerated && (
-              <span className="absolute bottom-1.5 left-1.5 z-10 rounded bg-black/60 px-1 py-0.5 text-[8px] font-bold text-pe-accent backdrop-blur-sm">
+              <span className="absolute bottom-1.5 right-1.5 z-10 rounded bg-black/60 px-1 py-0.5 text-[8px] font-bold text-pe-accent backdrop-blur-sm">
                 AI
               </span>
             )}

@@ -15,14 +15,17 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 export async function GET(req: NextRequest) {
   // Demo mode: return pre-recorded image URLs
   if (process.env.DEMO_MODE === 'true' || req.cookies.get('pe-demo')?.value === 'true') {
-    const images = (await import('@/fixtures/demo-images.json')).default as Record<string, string>
+    const data = (await import('@/fixtures/demo-images.json')).default as Record<string, unknown>
+    const images = data as Record<string, string>
+    const generatedList = (data._generated || []) as string[]
     const q = req.nextUrl.searchParams.get('q') || ''
     const dishName = req.nextUrl.searchParams.get('dishName') || ''
-    const url = images[q] || images[dishName] || null
+    const url = (q !== '_generated' ? images[q] : null) || images[dishName] || null
+    const isGenerated = generatedList.includes(q) || generatedList.includes(dishName)
     return NextResponse.json({
       imageUrl: url,
       imageUrls: url ? [url] : [],
-      generated: url ? [false] : [],
+      generated: url ? [isGenerated] : [],
     })
   }
 
