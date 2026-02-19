@@ -61,6 +61,7 @@ export default function DishDetailPage() {
   const [expandedBadge, setExpandedBadge] = useState<string | null>(null)
   const [generating, setGenerating] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [showBadges, setShowBadges] = useState(false)
   const galleryRef = useRef<HTMLDivElement>(null)
 
   const dish = dishes.find((d) => String(d.id) === String(params.id))
@@ -104,6 +105,7 @@ export default function DishDetailPage() {
             <div
               ref={galleryRef}
               onScroll={handleScroll}
+              onClick={() => setShowBadges((v) => !v)}
               className="flex h-full w-full snap-x snap-mandatory overflow-x-auto scrollbar-hide"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
             >
@@ -113,11 +115,11 @@ export default function DishDetailPage() {
                 </div>
               ))}
             </div>
-            {/* Heavy gradient overlay — fades into page background */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/70 via-40% to-transparent" />
-            {/* AI Generated tag — above gradient, bottom-right */}
+            {/* Gradient overlay — lighter to show more food */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/60 via-25% to-transparent" />
+            {/* AI Generated tag — above gradient zone, right side */}
             {isGeneratedImage(images[currentIndex]) && (
-              <span className="absolute bottom-[45%] right-3 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
+              <span className="absolute bottom-[30%] right-3 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-pe-accent backdrop-blur-sm">
                 AI Generated
               </span>
             )}
@@ -180,16 +182,26 @@ export default function DishDetailPage() {
           </svg>
         </button>
 
-        {/* Scattered ingredient badges — infographic style (first image only) */}
-        {images.length > 0 && currentIndex === 0 && dish.ingredients.length > 0 && dish.ingredients.slice(0, 8).map((ing, i) => (
-          <IngredientBadge
-            key={ing.name}
-            ing={ing}
-            position={BADGE_POSITIONS[i]}
-            expanded={expandedBadge === ing.name}
-            onTap={() => toggleBadge(ing.name)}
-          />
-        ))}
+        {/* Scattered ingredient badges — hidden by default, tap image to toggle */}
+        {images.length > 0 && currentIndex === 0 && dish.ingredients.length > 0 && (
+          <div className={`transition-opacity duration-300 ${showBadges ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            {dish.ingredients.slice(0, 8).map((ing, i) => (
+              <IngredientBadge
+                key={ing.name}
+                ing={ing}
+                position={BADGE_POSITIONS[i]}
+                expanded={expandedBadge === ing.name}
+                onTap={() => toggleBadge(ing.name)}
+              />
+            ))}
+          </div>
+        )}
+        {/* Hint to tap for ingredients — shown briefly when badges hidden */}
+        {images.length > 0 && !showBadges && dish.ingredients.length > 0 && (
+          <div className="absolute top-4 right-4 z-20 rounded-full bg-black/40 px-2.5 py-1 text-[10px] text-white/70 backdrop-blur-sm">
+            Tap image for ingredients
+          </div>
+        )}
 
         {/* Generate more button — inside hero when images exist but < 3 */}
         {images.length > 0 && images.length < 3 && (
@@ -218,33 +230,34 @@ export default function DishDetailPage() {
           </button>
         )}
 
-        {/* Hero overlay content — sits inside gradient zone */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 px-5 pb-5">
+        {/* Hero overlay content — compact, sits inside gradient zone */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 px-5 pb-4">
           {/* Country label */}
-          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-pe-accent">
+          <p className="mb-0.5 text-[10px] font-bold uppercase tracking-widest text-pe-accent">
             {dish.country}
           </p>
 
           {/* Dish name */}
-          <h1 className="text-3xl font-bold text-white">{dish.nameEnglish}</h1>
-          {dish.nameRomanized && (
-            <p className="mt-0.5 text-lg font-semibold text-white/90">{dish.nameRomanized}</p>
-          )}
-          {(dish.nameLocalCorrected || dish.nameLocal) && (
-            <p className="mt-0.5 text-xl font-medium text-white/70">{dish.nameLocalCorrected || dish.nameLocal}</p>
+          <h1 className="text-2xl font-bold text-white">{dish.nameEnglish}</h1>
+          {(dish.nameRomanized || dish.nameLocalCorrected || dish.nameLocal) && (
+            <p className="mt-0.5 text-sm text-white/70">
+              {dish.nameRomanized && <span className="font-medium text-white/80">{dish.nameRomanized}</span>}
+              {dish.nameRomanized && (dish.nameLocalCorrected || dish.nameLocal) && ' · '}
+              {dish.nameLocalCorrected || dish.nameLocal}
+            </p>
           )}
 
           {/* Dietary / allergen tags */}
-          <div className="mt-3 flex flex-wrap gap-2">
-            <span className="flex items-center gap-1 rounded-full bg-pe-tag-dietary-bg/80 px-3 py-1 text-xs font-medium text-pe-tag-dietary backdrop-blur-sm">
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            <span className="flex items-center gap-1 rounded-full bg-pe-tag-dietary-bg/80 px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-dietary backdrop-blur-sm">
               {dish.dietaryType === 'veg' ? '🟢' : '🔴'} {dish.dietaryType === 'jain-safe' ? 'Jain Safe' : dish.dietaryType === 'veg' ? 'Veg' : 'Non-Veg'}
             </span>
             {dish.allergens.length > 0 && (
-              <span className="flex items-center gap-1 rounded-full bg-pe-tag-allergen-bg/80 px-3 py-1 text-xs font-medium text-pe-tag-allergen backdrop-blur-sm">
+              <span className="flex items-center gap-1 rounded-full bg-pe-tag-allergen-bg/80 px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-allergen backdrop-blur-sm">
                 ⚠️ {dish.allergens.join(', ')}
               </span>
             )}
-            <span className="flex items-center gap-1 rounded-full bg-pe-tag-macro-bg/80 px-3 py-1 text-xs font-medium text-pe-tag-macro backdrop-blur-sm">
+            <span className="flex items-center gap-1 rounded-full bg-pe-tag-macro-bg/80 px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-macro backdrop-blur-sm">
               ⚡ {dish.nutrition.protein > dish.nutrition.carbs ? 'Protein' : 'Carbs'}
             </span>
           </div>
