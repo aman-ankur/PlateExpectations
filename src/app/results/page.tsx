@@ -124,7 +124,7 @@ function DishCard({ dish }: { dish: Dish }) {
             {dish.description}
           </p>
         </div>
-        <div className="flex flex-col items-end gap-2 pl-1">
+        <div className="flex flex-col items-end gap-1.5 pl-1">
           <div className="text-right">
             <span className="text-sm font-medium text-pe-text-secondary">{dish.price}</span>
             {(() => {
@@ -132,9 +132,19 @@ function DishCard({ dish }: { dish: Dish }) {
               return converted ? <p className="text-[11px] text-pe-text-muted">{converted}</p> : null
             })()}
           </div>
-          <svg className="h-4 w-4 text-pe-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              addToOrder(dish.id)
+              setFlash(true)
+              setTimeout(() => setFlash(false), 400)
+            }}
+            className="flex h-7 w-7 items-center justify-center rounded-lg bg-pe-accent/15 text-pe-accent transition-colors active:bg-pe-accent/30"
+          >
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -415,10 +425,10 @@ export default function ResultsPage() {
         </p>
       )}
 
-      {/* Long-press hint */}
+      {/* Add-to-order hint */}
       {scanDone && !hasOrder && (
         <p className="mt-2 text-center text-[10px] text-pe-text-muted">
-          Long-press a dish to add it to your order.
+          Tap + to add dishes to your order.
         </p>
       )}
 
