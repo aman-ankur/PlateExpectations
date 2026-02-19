@@ -68,7 +68,7 @@
 - **What**: Show prices in user's home currency alongside original
 - **Why**: Travelers don't know exchange rates off the top of their head
 - **How**: Auto-detect currency from menu country, use a free exchange rate API, let user set home currency in preferences
-- **Status**: TODO
+- **Status**: DONE (live rates via open.er-api.com with 6-hour cache, fallback to approximate rates, default INR)
 
 ### 2.3 Scan history
 - **What**: Save past scans to localStorage so users can revisit previous restaurants
@@ -86,7 +86,7 @@
 - **What**: Select dishes from results into an "order", view order summary with local-script text, and generate a spoken ordering phrase in the local language to play for restaurant staff
 - **Why**: Closes the gap between understanding a menu and actually ordering. Travelers can't pronounce foreign dish names — a voice message eliminates the language barrier entirely.
 - **How**:
-  - Add-to-order toggle on each dish card (Zustand state, badge with count)
+  - Explicit + button on each dish card to add to order (long-press removed — undiscoverable on mobile)
   - Order summary page: selected dishes with quantities (+/- controls), local-script names, prices, total
   - **Text display**: Full order shown in local script as a "show your phone" fallback — works offline, no API needed
   - **Voice generation**: Construct a polite ordering phrase from per-language templates (e.g., "안녕하세요, [dish1] 하나, [dish2] 두 개 주세요. 감사합니다") → generate audio via ElevenLabs TTS API (multilingual v2 model supports Korean/Thai/Vietnamese/Japanese/etc.)
@@ -94,7 +94,7 @@
   - Browser `speechSynthesis` as free fallback when ElevenLabs unavailable
   - `ELEVENLABS_API_KEY` env var, API route `/api/tts` to keep key server-side
 - **Cost**: ElevenLabs ~$0.30/1K chars, typical order phrase ~100-200 chars = ~$0.03-0.06 per order
-- **Status**: TODO
+- **Status**: DONE (order builder with + button, order page with quantity controls, TTS endpoint, order auto-cleared on new scan)
 
 ### 2.6 Allergen/dietary alerts on order
 - **What**: When user adds a dish that conflicts with their dietary preferences, show a warning on the order page
@@ -134,7 +134,7 @@
 - **What**: Compare each screen against design mockups, fix spacing/sizing/colors
 - **Why**: Current UI is functional but not polished
 - **How**: Screen-by-screen comparison with mockups
-- **Status**: IN PROGRESS — Dish detail hero redesigned (immersive 55vh hero, infographic badges, gradient overlay with text)
+- **Status**: IN PROGRESS — Dish detail hero decluttered (toggle badges, lighter gradient, compact text overlay, AI tag inline with dietary tags). Mobile touch fixes (scroll vs tap discrimination, explicit + button). Spice meter with draggable slider. Results cards use simple tap navigation.
 
 ### 4.2 Camera integration
 - **What**: Direct camera capture instead of file upload picker
