@@ -56,7 +56,7 @@ function IngredientBadge({ ing, position, expanded, onTap }: { ing: Ingredient; 
 export default function DishDetailPage() {
   const router = useRouter()
   const params = useParams()
-  const { dishes, dishImages, addDishImage, isGeneratedImage } = useStore()
+  const { dishes, dishImages, addDishImage, isGeneratedImage, order, addToOrder, removeFromOrder, updateQuantity } = useStore()
   const [expandedTerm, setExpandedTerm] = useState<string | null>(null)
   const [expandedBadge, setExpandedBadge] = useState<string | null>(null)
   const [generating, setGenerating] = useState(false)
@@ -96,7 +96,7 @@ export default function DishDetailPage() {
     setExpandedBadge(expandedBadge === name ? null : name)
 
   return (
-    <div className="min-h-screen pb-10">
+    <div className="min-h-screen pb-28">
       {/* Immersive Hero */}
       <div className="relative h-[55vh] min-h-[320px] w-full bg-pe-elevated">
         {images.length > 0 ? (
@@ -349,6 +349,56 @@ export default function DishDetailPage() {
         <p className="text-center text-[10px] text-pe-text-muted">
           AI-estimated. Verify with restaurant staff.
         </p>
+      </div>
+
+      {/* Sticky add-to-order bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-pe-border/50 bg-[#0f0f0f]/95 px-5 py-4 backdrop-blur-md">
+        {order[dish.id] ? (
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => order[dish.id] <= 1 ? removeFromOrder(dish.id) : updateQuantity(dish.id, order[dish.id] - 1)}
+                className="flex h-10 w-10 items-center justify-center rounded-lg bg-pe-elevated text-pe-text"
+              >
+                {order[dish.id] <= 1 ? (
+                  <svg className="h-4 w-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                ) : (
+                  <span className="text-lg font-bold">−</span>
+                )}
+              </button>
+              <span className="w-8 text-center text-lg font-bold text-pe-text">{order[dish.id]}</span>
+              <button
+                onClick={() => updateQuantity(dish.id, order[dish.id] + 1)}
+                className="flex h-10 w-10 items-center justify-center rounded-lg bg-pe-elevated text-pe-text"
+              >
+                <span className="text-lg font-bold">+</span>
+              </button>
+            </div>
+            <button
+              onClick={() => addToOrder(dish.id)}
+              className="flex-1 rounded-2xl bg-pe-accent py-3 text-sm font-semibold text-white"
+            >
+              Add Another
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => addToOrder(dish.id)}
+            className="w-full rounded-2xl bg-pe-accent py-3 text-sm font-semibold text-white"
+          >
+            Add to Order
+          </button>
+        )}
+        {Object.values(order).reduce((sum, qty) => sum + qty, 0) > 0 && (
+          <button
+            onClick={() => router.push('/order')}
+            className="mt-2 w-full text-center text-xs font-medium text-pe-accent"
+          >
+            View Order →
+          </button>
+        )}
       </div>
     </div>
   )

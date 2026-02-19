@@ -4,6 +4,8 @@ import { useEffect, useState, useMemo, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import { rankDishes } from '@/lib/ranking'
+import { useLongPress } from '@/lib/useLongPress'
+import OrderFab from '@/components/OrderFab'
 import { Dish, ScanEvent } from '@/lib/types'
 
 const PHASE1_MESSAGES = [
@@ -52,51 +54,81 @@ function DishCard({ dish }: { dish: Dish }) {
   const router = useRouter()
   const imageUrl = useStore((s) => s.dishImages[dish.id]?.[0])
   const isGenerated = useStore((s) => s.isGeneratedImage(s.dishImages[dish.id]?.[0] || ''))
+  const orderQty = useStore((s) => s.order[dish.id] || 0)
+  const addToOrder = useStore((s) => s.addToOrder)
+  const [flash, setFlash] = useState(false)
+
+  const longPressHandlers = useLongPress({
+    onLongPress: () => {
+      addToOrder(dish.id)
+      setFlash(true)
+      setTimeout(() => setFlash(false), 400)
+    },
+    onClick: () => router.push(`/dish/${dish.id}`),
+  })
 
   return (
-    <button
-      onClick={() => router.push(`/dish/${dish.id}`)}
-      className="flex w-full items-center gap-4 rounded-xl border border-pe-border bg-pe-surface p-4 text-left transition-colors hover:border-pe-accent"
+    <div
+      {...longPressHandlers}
+      role="button"
+      tabIndex={0}
+      className={`relative flex w-full items-stretch overflow-hidden rounded-2xl bg-pe-surface text-left transition-all cursor-pointer ${
+        flash
+          ? 'ring-2 ring-pe-accent shadow-lg shadow-pe-accent/20'
+          : 'ring-1 ring-white/[0.06] shadow-md shadow-black/25 hover:shadow-lg hover:shadow-black/35'
+      }`}
     >
-      <div className="group relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-pe-elevated">
+      {/* Image — full card height, gradient-fades into surface */}
+      <div className="group relative w-28 flex-shrink-0">
         {imageUrl ? (
           <>
             <img src={imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
             {isGenerated && (
-              <span className="absolute bottom-0.5 right-0.5 rounded bg-black/60 px-1 py-0.5 text-[8px] font-bold text-pe-accent backdrop-blur-sm">
-                ✨ AI
+              <span className="absolute bottom-1.5 left-1.5 z-10 rounded bg-black/60 px-1 py-0.5 text-[8px] font-bold text-pe-accent backdrop-blur-sm">
+                AI
               </span>
             )}
           </>
         ) : (
           <>
-            <div className="flex h-full items-center justify-center text-2xl">🍽️</div>
+            <div className="flex h-full min-h-[100px] items-center justify-center bg-pe-elevated text-3xl">🍽️</div>
             <GenerateButton dish={dish} />
           </>
         )}
-      </div>
-      <div className="flex-1 min-w-0">
-        {dish.rankLabel && (
-          <span className="mb-1 inline-block rounded-full bg-pe-tag-rank-bg px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-pe-tag-rank">
-            {dish.rankLabel}
+        {/* Gradient fade — image dissolves into card */}
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-r from-transparent to-pe-surface" />
+        {orderQty > 0 && (
+          <span className="absolute top-2 left-2 z-10 flex h-5 min-w-5 items-center justify-center rounded-md bg-pe-accent px-1 text-[10px] font-bold text-white shadow-sm">
+            {orderQty}
           </span>
         )}
-        <h3 className="font-semibold text-pe-text">{dish.nameEnglish}</h3>
-        <p className="text-sm text-pe-text-muted">
-          {dish.nameRomanized && <span className="font-medium text-pe-text-secondary">{dish.nameRomanized} · </span>}
-          {dish.nameLocalCorrected || dish.nameLocal}
-        </p>
-        <p className="mt-1 line-clamp-2 text-sm text-pe-text-secondary">
-          {dish.description}
-        </p>
       </div>
-      <div className="flex flex-col items-end gap-2">
-        <span className="text-sm font-medium text-pe-text-secondary">{dish.price}</span>
-        <svg className="h-4 w-4 text-pe-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
+
+      {/* Content */}
+      <div className="flex flex-1 min-w-0 items-center gap-2 py-3 pr-3">
+        <div className="flex-1 min-w-0">
+          {dish.rankLabel && (
+            <span className="mb-1 inline-block rounded-full bg-pe-tag-rank-bg px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-pe-tag-rank">
+              {dish.rankLabel}
+            </span>
+          )}
+          <h3 className="font-semibold text-pe-text">{dish.nameEnglish}</h3>
+          <p className="text-sm text-pe-text-muted">
+            {dish.nameRomanized && <span className="font-medium text-pe-text-secondary">{dish.nameRomanized} · </span>}
+            {dish.nameLocalCorrected || dish.nameLocal}
+          </p>
+          <p className="mt-1 line-clamp-2 text-sm text-pe-text-secondary">
+            {dish.description}
+          </p>
+        </div>
+        <div className="flex flex-col items-end gap-2 pl-1">
+          <span className="text-sm font-medium text-pe-text-secondary">{dish.price}</span>
+          <svg className="h-4 w-4 text-pe-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
       </div>
-    </button>
+    </div>
   )
 }
 
@@ -108,6 +140,8 @@ export default function ResultsPage() {
     setDishes, setLoading, setError, setScanProgress, setSkeletonDishes,
     appendEnrichedDishes, fetchDishImagesForBatch, clearScan,
   } = useStore()
+  const order = useStore((s) => s.order)
+  const hasOrder = Object.keys(order).length > 0
 
   const [phase1Msg, setPhase1Msg] = useState(0)
   const [sortByReco, setSortByReco] = useState(false)
@@ -215,7 +249,7 @@ export default function ResultsPage() {
   }, [dishes, sortByReco])
 
   return (
-    <div className="min-h-screen px-4 py-6">
+    <div className={`min-h-screen px-4 py-6 ${hasOrder ? 'pb-20' : ''}`}>
       {/* Header */}
       <div className="mb-6 flex items-center gap-3">
         <button
@@ -327,19 +361,21 @@ export default function ResultsPage() {
             return (
               <div
                 key={raw.id}
-                className="flex w-full items-center gap-4 rounded-xl border border-pe-border bg-pe-surface p-4 opacity-50"
+                className="flex w-full items-stretch overflow-hidden rounded-2xl bg-pe-surface opacity-50 ring-1 ring-white/[0.06] shadow-md shadow-black/25"
               >
-                <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-pe-elevated">
-                  <div className="flex h-full items-center justify-center">
+                <div className="w-28 flex-shrink-0 bg-pe-elevated">
+                  <div className="flex h-full min-h-[100px] items-center justify-center">
                     <div className="h-8 w-8 animate-pulse rounded-full bg-pe-border" />
                   </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-pe-text">{raw.nameEnglish}</h3>
-                  <p className="text-sm text-pe-text-muted">{raw.nameLocal}</p>
-                  <p className="mt-1 text-sm text-pe-text-secondary">{raw.brief}</p>
+                <div className="flex flex-1 min-w-0 items-center gap-2 py-3 pr-3 pl-2">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-pe-text">{raw.nameEnglish}</h3>
+                    <p className="text-sm text-pe-text-muted">{raw.nameLocal}</p>
+                    <p className="mt-1 text-sm text-pe-text-secondary">{raw.brief}</p>
+                  </div>
+                  <span className="text-sm font-medium text-pe-text-secondary">{raw.price}</span>
                 </div>
-                <span className="text-sm font-medium text-pe-text-secondary">{raw.price}</span>
               </div>
             )
           })}
@@ -361,6 +397,15 @@ export default function ResultsPage() {
           AI-estimated. Verify with restaurant staff.
         </p>
       )}
+
+      {/* Long-press hint */}
+      {scanDone && !hasOrder && (
+        <p className="mt-2 text-center text-[10px] text-pe-text-muted">
+          Long-press a dish to add it to your order.
+        </p>
+      )}
+
+      <OrderFab />
     </div>
   )
 }

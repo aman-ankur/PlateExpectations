@@ -62,6 +62,11 @@ export interface Preferences {
   hasCompletedOnboarding: boolean
 }
 
+export interface OrderItem {
+  dishId: string
+  quantity: number
+}
+
 export const DEFAULT_PREFERENCES: Preferences = {
   proteins: [],
   spice: '',

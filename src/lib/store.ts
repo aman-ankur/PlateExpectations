@@ -41,6 +41,23 @@ function loadPreferences(): Preferences {
   }
 }
 
+function loadOrder(): Record<string, number> {
+  if (typeof window === 'undefined') return {}
+  try {
+    const stored = localStorage.getItem('pe-order')
+    return stored ? JSON.parse(stored) : {}
+  } catch {
+    return {}
+  }
+}
+
+function saveOrder(order: Record<string, number>) {
+  if (typeof window === 'undefined') return
+  try {
+    localStorage.setItem('pe-order', JSON.stringify(order))
+  } catch { /* ignore */ }
+}
+
 interface AppState {
   // Preferences
   preferences: Preferences
@@ -73,6 +90,13 @@ interface AppState {
   fetchDishImages: () => void
   fetchDishImagesForBatch: (dishes: Dish[]) => void
   isGeneratedImage: (url: string) => boolean
+
+  // Order
+  order: Record<string, number>
+  addToOrder: (dishId: string) => void
+  removeFromOrder: (dishId: string) => void
+  updateQuantity: (dishId: string, quantity: number) => void
+  clearOrder: () => void
 }
 
 export const useStore = create<AppState>((set, get) => ({
@@ -111,6 +135,7 @@ export const useStore = create<AppState>((set, get) => ({
   clearScan: () => {
     usedImageUrls.clear()
     generatedImageUrls.clear()
+    saveOrder({})
     set({
     dishes: [],
     skeletonDishes: [],
@@ -118,6 +143,7 @@ export const useStore = create<AppState>((set, get) => ({
     menuImage: null,
     scanProgress: null,
     error: null,
+    order: {},
   })
   },
 
@@ -180,4 +206,33 @@ export const useStore = create<AppState>((set, get) => ({
     })
   },
   isGeneratedImage: (url) => generatedImageUrls.has(url),
+
+  // Order
+  order: loadOrder(),
+  addToOrder: (dishId) => {
+    const order = { ...get().order }
+    order[dishId] = (order[dishId] || 0) + 1
+    saveOrder(order)
+    set({ order })
+  },
+  removeFromOrder: (dishId) => {
+    const order = { ...get().order }
+    delete order[dishId]
+    saveOrder(order)
+    set({ order })
+  },
+  updateQuantity: (dishId, quantity) => {
+    const order = { ...get().order }
+    if (quantity <= 0) {
+      delete order[dishId]
+    } else {
+      order[dishId] = quantity
+    }
+    saveOrder(order)
+    set({ order })
+  },
+  clearOrder: () => {
+    saveOrder({})
+    set({ order: {} })
+  },
 }))
