@@ -1,0 +1,2168 @@
+{
+  "version": 1,
+  "cuisine": "Malaysian",
+  "country": "Malaysia",
+  "generatedAt": "2026-02-20",
+  "dishes": [
+    {
+      "id": "cache-malaysian-1",
+      "nameEnglish": "Nasi Lemak",
+      "nameLocal": "Nasi Lemak",
+      "nameLocalCorrected": "Nasi Lemak",
+      "nameRomanized": "Nasi Lemak",
+      "description": "Malaysia's undisputed national dish — fragrant coconut rice served with spicy sambal, crispy anchovies, roasted peanuts, boiled egg, and cucumber slices. Found everywhere from five-star hotels to roadside banana-leaf stalls. The rice is steamed with coconut milk and pandan leaf, giving it a rich aroma that hits you before you even see the plate.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "peanut",
+        "fish",
+        "egg",
+        "coconut"
+      ],
+      "ingredients": [
+        {
+          "name": "Coconut rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Sambal",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Spicy chili paste made from ground chilies, shallots, and shrimp paste — the soul of Malaysian cooking. Ranges from sweet to fiery."
+        },
+        {
+          "name": "Ikan bilis",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Tiny dried anchovies, deep-fried until crispy. Adds a salty, crunchy contrast to the soft rice."
+        },
+        {
+          "name": "Roasted peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Hard-boiled egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cucumber",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pandan leaf",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A fragrant tropical leaf used like bay leaf — adds a sweet, grassy vanilla-like aroma to the rice."
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 65,
+        "fat": 28,
+        "fiber": 3,
+        "kcal": 580
+      },
+      "explanation": "The quintessential Malaysian breakfast, though eaten at all hours. The coconut rice is mild and creamy, while the sambal brings the heat. You can add extra sides like fried chicken (ayam goreng) or curry to make it a full meal.",
+      "culturalTerms": [
+        {
+          "term": "Nasi",
+          "explanation": "Means 'rice' in Malay — the staple of every Malaysian meal"
+        },
+        {
+          "term": "Lemak",
+          "explanation": "Means 'rich' or 'fatty' — refers to the coconut milk that enriches the rice"
+        },
+        {
+          "term": "Sambal",
+          "explanation": "Chili-based condiment found on every Malaysian table, similar to how chutney accompanies Indian meals"
+        }
+      ],
+      "imageSearchQuery": "Nasi Lemak",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Nasi_Lemak.jpg/500px-Nasi_Lemak.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Nasi_Lemak.jpg/500px-Nasi_Lemak.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "nasi lemak",
+        "coconut rice"
+      ]
+    },
+    {
+      "id": "cache-malaysian-2",
+      "nameEnglish": "Char Kway Teow",
+      "nameLocal": "Char Kuey Teow",
+      "nameLocalCorrected": "Char Kuey Teow",
+      "nameRomanized": "Char Kway Teow",
+      "description": "Smoky stir-fried flat rice noodles tossed in dark soy sauce with prawns, cockles, Chinese sausage, bean sprouts, and chives. The secret is 'wok hei' — the breath of the wok — that intense charred flavor from cooking over extreme heat. A hawker classic from Penang that's become Malaysia's most beloved noodle dish.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "soy",
+        "egg",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "Flat rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Prawns",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cockles",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Small blood clams with a briny, iron-rich taste. Briefly blanched so they stay tender. A signature Penang addition."
+        },
+        {
+          "name": "Chinese sausage",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Lap cheong — sweet, cured pork sausage with a waxy texture. Sliced thin and rendered in the wok."
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chives",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Dark soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chili paste",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 58,
+        "fat": 24,
+        "fiber": 2,
+        "kcal": 540
+      },
+      "explanation": "The smoky, slightly sweet, slightly spicy noodles are best enjoyed at hawker stalls where the wok has been seasoned over decades. Ask for 'pedas' if you want extra chili. Some stalls offer a no-cockle version.",
+      "culturalTerms": [
+        {
+          "term": "Char",
+          "explanation": "Means 'stir-fried' in Hokkien Chinese dialect"
+        },
+        {
+          "term": "Kway Teow",
+          "explanation": "Flat rice noodles — 'kway' means cake/pastry, 'teow' means strip"
+        },
+        {
+          "term": "Wok hei",
+          "explanation": "The smoky 'breath of the wok' flavor from cooking over very high heat — a hallmark of great hawker cooking"
+        }
+      ],
+      "imageSearchQuery": "Char Kuey Teow",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Char_kway_teow.jpg/500px-Char_kway_teow.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Char_kway_teow.jpg/500px-Char_kway_teow.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "char kway teow",
+        "char kuey teow",
+        "fried flat noodles"
+      ]
+    },
+    {
+      "id": "cache-malaysian-3",
+      "nameEnglish": "Laksa",
+      "nameLocal": "Laksa",
+      "nameLocalCorrected": "Laksa",
+      "nameRomanized": "Laksa",
+      "description": "A rich, spicy coconut curry noodle soup loaded with prawns, tofu puffs, fish cake, and bean sprouts. The broth is a complex blend of lemongrass, galangal, turmeric, and coconut milk that's both creamy and fiery. There are many regional versions across Malaysia — curry laksa (coconut-based) is the most common in Kuala Lumpur.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "fish",
+        "coconut",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice vermicelli",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Coconut milk broth",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Laksa paste",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Aromatic paste of dried chilies, lemongrass, galangal, turmeric, and belacan (shrimp paste) — the flavor base of the entire dish."
+        },
+        {
+          "name": "Prawns",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tofu puffs",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Deep-fried tofu that puffs up into spongy cubes, soaking up the curry broth like little flavor sponges."
+        },
+        {
+          "name": "Fish cake",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Laksa leaf",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Vietnamese mint/daun kesum — a peppery herb that gives laksa its distinctive sharp, minty note."
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 52,
+        "fat": 32,
+        "fiber": 3,
+        "kcal": 600
+      },
+      "explanation": "One of Southeast Asia's great noodle soups. The coconut broth is deeply spiced but not overwhelmingly hot. If you enjoy Thai curry, you'll love laksa. It's a complete meal in a bowl — protein, carbs, vegetables, and bold flavor.",
+      "culturalTerms": [
+        {
+          "term": "Laksa",
+          "explanation": "Possibly derived from Sanskrit 'lakhsha' meaning many — referring to the many ingredients in the dish"
+        },
+        {
+          "term": "Belacan",
+          "explanation": "Fermented shrimp paste — pungent when raw but adds deep umami when cooked. Essential to Malaysian cooking."
+        },
+        {
+          "term": "Daun kesum",
+          "explanation": "Laksa leaf / Vietnamese mint — the fresh herb garnish that defines authentic laksa"
+        }
+      ],
+      "imageSearchQuery": "Laksa",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Nyonya_Laksa.jpg/500px-Nyonya_Laksa.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Nyonya_Laksa.jpg/500px-Nyonya_Laksa.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "laksa",
+        "curry laksa",
+        "nyonya laksa"
+      ]
+    },
+    {
+      "id": "cache-malaysian-4",
+      "nameEnglish": "Satay",
+      "nameLocal": "Satay",
+      "nameLocalCorrected": "Satay",
+      "nameRomanized": "Satay",
+      "description": "Skewers of marinated meat grilled over charcoal and served with thick peanut dipping sauce, compressed rice cakes (ketupat), and fresh onion-cucumber relish. The marinade of turmeric, lemongrass, and cumin gives the meat a golden color and fragrant crust. Chicken and beef are most common, but lamb and even rabbit versions exist.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "peanut",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "Chicken or beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Turmeric marinade",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lemongrass",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Peanut sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Ketupat",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Compressed rice cooked in woven palm leaf pouches — dense, chewy rice cubes perfect for dipping in peanut sauce."
+        },
+        {
+          "name": "Cucumber",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Red onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 30,
+        "fat": 22,
+        "fiber": 2,
+        "kcal": 430
+      },
+      "explanation": "Malaysia's most famous street food and a must-try for any visitor. Typically sold in sets of 10 sticks. The peanut sauce is the star — sweet, spicy, and nutty. Best enjoyed fresh off the grill at night markets.",
+      "culturalTerms": [
+        {
+          "term": "Satay",
+          "explanation": "Grilled skewered meat — one of Southeast Asia's most iconic street foods, with roots in Javanese cuisine"
+        },
+        {
+          "term": "Ketupat",
+          "explanation": "Rice compressed in palm leaf — the traditional accompaniment, giving you something starchy to balance the rich peanut sauce"
+        },
+        {
+          "term": "Kuah kacang",
+          "explanation": "Peanut sauce — literally 'nut gravy', the essential dipping sauce for satay"
+        }
+      ],
+      "imageSearchQuery": "Satay Malaysia",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Sate_Udang.jpg/500px-Sate_Udang.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Sate_Udang.jpg/500px-Sate_Udang.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "satay",
+        "sate",
+        "satay ayam",
+        "satay daging"
+      ]
+    },
+    {
+      "id": "cache-malaysian-5",
+      "nameEnglish": "Roti Canai",
+      "nameLocal": "Roti Canai",
+      "nameLocalCorrected": "Roti Canai",
+      "nameRomanized": "Roti Canai",
+      "description": "Flaky, buttery flatbread stretched paper-thin by hand and cooked on a hot griddle until crisp and layered. Served with dhal (lentil curry) and sometimes fish or chicken curry for dipping. Watching the mamak stall cook flip and twirl the dough is half the experience. Malaysia's most popular breakfast, affordable and satisfying at any hour.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [
+        "gluten",
+        "dairy"
+      ],
+      "ingredients": [
+        {
+          "name": "Wheat flour dough",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Ghee",
+          "category": "dairy",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Condensed milk",
+          "category": "dairy",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Dhal curry",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 8,
+        "carbs": 52,
+        "fat": 18,
+        "fiber": 2,
+        "kcal": 400
+      },
+      "explanation": "A beloved mamak (Indian-Muslim) staple found at 24-hour stalls across Malaysia. The plain version is vegetarian, but variations include roti telur (with egg), roti sardin (sardine filling), and roti tisu (crispy cone with condensed milk). The flaky layers come from stretching the dough tissue-thin.",
+      "culturalTerms": [
+        {
+          "term": "Roti",
+          "explanation": "Means 'bread' — same word as in Hindi/Urdu, reflecting the Indian-Muslim heritage of this dish"
+        },
+        {
+          "term": "Canai",
+          "explanation": "Likely from Chennai (the Indian city) — reflecting the South Indian origins of the mamak community"
+        },
+        {
+          "term": "Mamak",
+          "explanation": "Indian-Muslim community in Malaysia — their 24-hour stalls serve roti canai, teh tarik, and nasi kandar"
+        }
+      ],
+      "imageSearchQuery": "Roti Canai",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Canai.jpg/500px-Canai.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Canai.jpg/500px-Canai.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "roti canai",
+        "roti chanai",
+        "roti prata"
+      ]
+    },
+    {
+      "id": "cache-malaysian-6",
+      "nameEnglish": "Rendang",
+      "nameLocal": "Rendang",
+      "nameLocalCorrected": "Rendang",
+      "nameRomanized": "Rendang",
+      "description": "A slow-cooked dry curry where beef (or chicken) is simmered for hours in coconut milk and a complex spice paste until the sauce reduces into a thick, dark, intensely flavorful coating. The meat becomes fork-tender and deeply caramelized. Often called one of the world's best dishes, rendang is a labor of love traditionally prepared for festivals and celebrations.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "coconut"
+      ],
+      "ingredients": [
+        {
+          "name": "Beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Coconut milk",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Kerisik",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Toasted grated coconut ground into a paste — adds a nutty, caramelized depth unique to rendang."
+        },
+        {
+          "name": "Lemongrass",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Galangal",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A root related to ginger but sharper and more citrusy. Key to Southeast Asian curries."
+        },
+        {
+          "name": "Turmeric",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Dried chilies",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Kaffir lime leaves",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Aromatic double-lobed leaves that release a bright citrus fragrance — used like bay leaves but more floral."
+        }
+      ],
+      "nutrition": {
+        "protein": 35,
+        "carbs": 8,
+        "fat": 30,
+        "fiber": 2,
+        "kcal": 450
+      },
+      "explanation": "Rendang is not a curry — it's a dry-braised dish. The long cooking time concentrates all the flavors into the meat itself. It gets better the next day as the spices deepen. A must-try with nasi lemak or plain steamed rice.",
+      "culturalTerms": [
+        {
+          "term": "Rendang",
+          "explanation": "A Minangkabau (West Sumatran) slow-cooking technique that spread across Malaysia — the sauce reduces completely into the meat"
+        },
+        {
+          "term": "Kerisik",
+          "explanation": "Dry-roasted coconut paste — a uniquely Malay ingredient that gives rendang its rich, nutty finish"
+        },
+        {
+          "term": "Rendang kering",
+          "explanation": "Dry rendang — the fully reduced version where no sauce remains, considered the traditional style"
+        }
+      ],
+      "imageSearchQuery": "Rendang",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Rendang_daging.jpg/500px-Rendang_daging.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Rendang_daging.jpg/500px-Rendang_daging.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "rendang",
+        "rendang daging",
+        "beef rendang"
+      ]
+    },
+    {
+      "id": "cache-malaysian-7",
+      "nameEnglish": "Nasi Goreng",
+      "nameLocal": "Nasi Goreng",
+      "nameLocalCorrected": "Nasi Goreng",
+      "nameRomanized": "Nasi Goreng",
+      "description": "Malaysian-style fried rice cooked with sweet soy sauce (kecap manis), chili paste, garlic, and shallots, topped with a fried egg and served with prawn crackers and pickled vegetables. Unlike Chinese fried rice, the Malaysian version is darker, sweeter, and spicier. Every hawker has their own version, from simple kampung (village) style to seafood-loaded versions.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "egg",
+        "shellfish"
+      ],
+      "ingredients": [
+        {
+          "name": "Day-old rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Kecap manis",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Sweet thick soy sauce from Indonesia — gives the rice its signature dark color and caramel sweetness."
+        },
+        {
+          "name": "Sambal",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fried egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Shallots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Prawn crackers",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chicken or prawns",
+          "category": "protein",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 68,
+        "fat": 22,
+        "fiber": 2,
+        "kcal": 550
+      },
+      "explanation": "A versatile comfort food that appears on every Malaysian menu from street stalls to hotel restaurants. 'Kampung' style uses anchovies and is simpler; 'USA' style (named for its generous portions, not the country) is topped with extra protein. Best with a side of sambal and a cold drink.",
+      "culturalTerms": [
+        {
+          "term": "Nasi Goreng",
+          "explanation": "Literally 'fried rice' — the Malay/Indonesian staple that varies from region to region"
+        },
+        {
+          "term": "Kampung",
+          "explanation": "Means 'village' — kampung-style dishes are simpler, homestyle versions"
+        },
+        {
+          "term": "Kecap manis",
+          "explanation": "Indonesian sweet soy sauce that gives Malaysian nasi goreng its distinctive dark, sweet character"
+        }
+      ],
+      "imageSearchQuery": "Nasi Goreng Kampung",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Nasi_Goreng_Kampung.jpg/500px-Nasi_Goreng_Kampung.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Nasi_Goreng_Kampung.jpg/500px-Nasi_Goreng_Kampung.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "nasi goreng",
+        "fried rice",
+        "nasi goreng kampung"
+      ]
+    },
+    {
+      "id": "cache-malaysian-8",
+      "nameEnglish": "Mee Goreng",
+      "nameLocal": "Mee Goreng",
+      "nameLocalCorrected": "Mee Goreng",
+      "nameRomanized": "Mee Goreng",
+      "description": "Stir-fried yellow noodles in a spicy-sweet tomato and chili sauce with tofu, potato, bean sprouts, and egg. The mamak (Indian-Muslim) version is the most iconic, using thick yellow wheat noodles that get slightly charred in the wok. A hawker staple that's sweet, sour, spicy, and savory all at once.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy",
+        "egg"
+      ],
+      "ingredients": [
+        {
+          "name": "Yellow wheat noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tomato sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chili paste",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Potato",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Kecap manis",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lime",
+          "category": "other",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 62,
+        "fat": 20,
+        "fiber": 3,
+        "kcal": 500
+      },
+      "explanation": "The mamak stall version is distinctly different from Chinese mee goreng — it's tangier from the tomato, sweeter from kecap manis, and comes with unique additions like fried potato cubes. Squeeze fresh lime over it for a bright finish.",
+      "culturalTerms": [
+        {
+          "term": "Mee",
+          "explanation": "Means 'noodles' in Malay (from Hokkien Chinese 'mi')"
+        },
+        {
+          "term": "Goreng",
+          "explanation": "Means 'fried' — one of the most common words on Malaysian menus"
+        },
+        {
+          "term": "Mamak",
+          "explanation": "Indian-Muslim hawker stalls open 24 hours — a uniquely Malaysian institution"
+        }
+      ],
+      "imageSearchQuery": "Mee Goreng Mamak",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Kampung_Bukit_Jagong%2C_Pendang_20240917_172701.jpg/500px-Kampung_Bukit_Jagong%2C_Pendang_20240917_172701.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Kampung_Bukit_Jagong%2C_Pendang_20240917_172701.jpg/500px-Kampung_Bukit_Jagong%2C_Pendang_20240917_172701.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "mee goreng",
+        "mi goreng",
+        "fried noodles"
+      ]
+    },
+    {
+      "id": "cache-malaysian-9",
+      "nameEnglish": "Hainanese Chicken Rice",
+      "nameLocal": "Nasi Ayam Hainan",
+      "nameLocalCorrected": "Nasi Ayam Hainan",
+      "nameRomanized": "Nasi Ayam Hainan",
+      "description": "Poached chicken with silky skin served over fragrant rice cooked in chicken fat and broth, with chili sauce, ginger paste, and dark soy on the side. The chicken is cooked gently to keep the flesh impossibly tender and the skin gelatinous. A Chinese-Malaysian classic that looks simple but demands precise technique.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "name": "Poached chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chicken-fat rice",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Rice cooked in chicken stock and chicken fat with ginger and garlic — each grain is savory and aromatic."
+        },
+        {
+          "name": "Chili sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Ginger paste",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Dark soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cucumber",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 32,
+        "carbs": 55,
+        "fat": 20,
+        "fiber": 1,
+        "kcal": 530
+      },
+      "explanation": "A comfort food that both Malaysia and Singapore claim as their own. The quality depends on the chicken and the rice — both should be deeply flavorful. Roasted chicken rice (nasi ayam panggang) offers a crispier alternative to the poached version.",
+      "culturalTerms": [
+        {
+          "term": "Hainan",
+          "explanation": "A Chinese island province — Hainanese immigrants brought this dish to Southeast Asia"
+        },
+        {
+          "term": "Nasi ayam",
+          "explanation": "Literally 'chicken rice' in Malay — the everyday name for this dish"
+        }
+      ],
+      "imageSearchQuery": "Hainanese chicken rice",
+      "imageUrl": "https://images.unsplash.com/photo-1630383249896-424e482df921?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1630383249896-424e482df921?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "chicken rice",
+        "nasi ayam",
+        "hainanese chicken rice"
+      ]
+    },
+    {
+      "id": "cache-malaysian-10",
+      "nameEnglish": "Bak Kut Teh",
+      "nameLocal": "Bak Kut Teh",
+      "nameLocalCorrected": "Bak Kut Teh",
+      "nameRomanized": "Bak Kut Teh",
+      "description": "A hearty pork rib soup simmered with a complex blend of Chinese herbs and spices including star anise, cinnamon, cloves, and white pepper. The Malaysian version (especially from Klang) is darker and more herbal than the Singapore peppery style. Served with rice, you-tiao (fried dough sticks), and strong Chinese tea to cut through the richness.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "Pork ribs",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Star anise",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cinnamon",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "White pepper",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Dong quai",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A Chinese medicinal herb (angelica root) that adds a warm, bittersweet earthy note to the broth."
+        },
+        {
+          "name": "Dark soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "You-tiao",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Chinese fried dough sticks — crispy on the outside, airy inside. Perfect for soaking up the herbal broth."
+        }
+      ],
+      "nutrition": {
+        "protein": 30,
+        "carbs": 15,
+        "fat": 25,
+        "fiber": 1,
+        "kcal": 400
+      },
+      "explanation": "A pork dish, so not available at halal stalls. The town of Klang (near KL) is famous for bak kut teh — locals drive there specifically for breakfast bowls. The broth is meant to be medicinal and nourishing. You can usually request refills of soup.",
+      "culturalTerms": [
+        {
+          "term": "Bak Kut Teh",
+          "explanation": "Hokkien for 'meat bone tea' — the 'tea' refers to the strong Chinese tea served alongside, not a tea-based broth"
+        },
+        {
+          "term": "Klang",
+          "explanation": "A town near Kuala Lumpur famous as the birthplace of Malaysian bak kut teh"
+        }
+      ],
+      "imageSearchQuery": "Bak Kut Teh pork rib soup",
+      "imageUrl": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "bak kut teh",
+        "pork rib soup",
+        "meat bone tea"
+      ]
+    },
+    {
+      "id": "cache-malaysian-11",
+      "nameEnglish": "Hokkien Mee",
+      "nameLocal": "Mee Hokkien",
+      "nameLocalCorrected": "Mee Hokkien",
+      "nameRomanized": "Hokkien Mee",
+      "description": "Thick yellow noodles braised in a rich, dark soy-based prawn stock until they absorb all the smoky, savory flavor. KL-style Hokkien mee is dark, thick, and intense — cooked with pork lard, prawns, and pork slices. Topped with crispy fried lard bits and served with sambal and lime. Very different from Singapore's soupy or Penang's prawn-based versions.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "soy",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "Thick yellow noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Dark soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork lard",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Prawns",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork slices",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Crispy lard bits",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Deep-fried cubes of pork fat rendered until golden and crunchy — adds an addictive crunch and richness."
+        }
+      ],
+      "nutrition": {
+        "protein": 25,
+        "carbs": 55,
+        "fat": 28,
+        "fiber": 2,
+        "kcal": 570
+      },
+      "explanation": "A non-halal dish due to pork and lard. The dark, glistening noodles look heavy but are deeply satisfying. The best versions are cooked in seasoned woks that are decades old. A squeeze of lime and a dollop of sambal transform each bite.",
+      "culturalTerms": [
+        {
+          "term": "Hokkien",
+          "explanation": "A Chinese dialect group from Fujian province — major influence on Malaysian-Chinese cuisine"
+        },
+        {
+          "term": "Mee",
+          "explanation": "Noodles — from Hokkien 'mi'"
+        }
+      ],
+      "imageSearchQuery": "Hokkien Mee KL",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Newton_HokkienMee.jpg/500px-Newton_HokkienMee.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Newton_HokkienMee.jpg/500px-Newton_HokkienMee.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "hokkien mee",
+        "mee hokkien",
+        "fried hokkien noodles"
+      ]
+    },
+    {
+      "id": "cache-malaysian-12",
+      "nameEnglish": "Rojak",
+      "nameLocal": "Rojak",
+      "nameLocalCorrected": "Rojak",
+      "nameRomanized": "Rojak",
+      "description": "A tangy-sweet fruit and vegetable salad dressed in thick, dark shrimp paste sauce with crushed peanuts. Combines crunchy jicama, cucumber, pineapple, green mango, fried tofu, and you-tiao (fried dough) in a sticky, pungent dressing. The word 'rojak' literally means 'mixture' and has become Malaysian slang for anything eclectic or mixed up.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "peanut",
+        "shellfish",
+        "gluten",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "Jicama",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "A crunchy root vegetable (sengkuang) — crisp like water chestnut with a mild, slightly sweet flavor."
+        },
+        {
+          "name": "Cucumber",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pineapple",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Green mango",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fried tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "You-tiao",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Rojak sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A thick sauce of shrimp paste (hae ko), tamarind, sugar, and chili — dark, sticky, pungent, and addictive."
+        },
+        {
+          "name": "Crushed peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 10,
+        "carbs": 35,
+        "fat": 15,
+        "fiber": 5,
+        "kcal": 320
+      },
+      "explanation": "An acquired taste for some due to the pungent shrimp paste, but beloved by locals. The contrast of textures — crunchy, chewy, crispy — and flavors — sweet, sour, salty, spicy — makes it a uniquely Malaysian experience. Vegetarian versions without shrimp paste exist but are less common.",
+      "culturalTerms": [
+        {
+          "term": "Rojak",
+          "explanation": "Means 'mixture' or 'eclectic mix' in Malay — used colloquially to describe Malaysia's multicultural society"
+        },
+        {
+          "term": "Hae ko",
+          "explanation": "Thick black shrimp paste — the defining sauce ingredient, different from the fermented belacan"
+        }
+      ],
+      "imageSearchQuery": "Rojak fruit salad",
+      "imageUrl": "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "rojak",
+        "fruit rojak",
+        "pasembur"
+      ]
+    },
+    {
+      "id": "cache-malaysian-13",
+      "nameEnglish": "Cendol",
+      "nameLocal": "Cendol",
+      "nameLocalCorrected": "Cendol",
+      "nameRomanized": "Cendol",
+      "description": "A refreshing iced dessert of green pandan-flavored rice flour jelly worms swimming in coconut milk with shaved ice and rich palm sugar (gula melaka) syrup. The green worms are soft and slippery, the coconut milk is creamy, and the dark palm sugar adds a deep caramel sweetness. Malaysia's favorite way to beat the tropical heat.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [
+        "coconut"
+      ],
+      "ingredients": [
+        {
+          "name": "Pandan jelly noodles",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Green worm-shaped jelly made from rice flour and pandan leaf extract — soft, slippery, and mildly fragrant."
+        },
+        {
+          "name": "Coconut milk",
+          "category": "dairy",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Gula melaka",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Palm sugar from the coconut palm — dark, smoky, and intensely caramel-flavored. The soul of cendol."
+        },
+        {
+          "name": "Shaved ice",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Red beans",
+          "category": "other",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 3,
+        "carbs": 55,
+        "fat": 12,
+        "fiber": 2,
+        "kcal": 330
+      },
+      "explanation": "Found at roadside stalls and hawker centers across Malaysia. Penang and Melaka are famous for their cendol. Some versions add sweet corn or durian. Best eaten quickly before the ice melts and dilutes the coconut milk.",
+      "culturalTerms": [
+        {
+          "term": "Cendol",
+          "explanation": "Named after the green jelly strands — possibly from the Javanese word for the pressing technique used to make them"
+        },
+        {
+          "term": "Gula melaka",
+          "explanation": "Palm sugar from Melaka — considered the best quality, with a deep smoky caramel flavor"
+        }
+      ],
+      "imageSearchQuery": "Cendol dessert",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Kampung_Paya_Jaras_Tengah%2C_Selangor_20250112_111330.jpg/500px-Kampung_Paya_Jaras_Tengah%2C_Selangor_20250112_111330.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Kampung_Paya_Jaras_Tengah%2C_Selangor_20250112_111330.jpg/500px-Kampung_Paya_Jaras_Tengah%2C_Selangor_20250112_111330.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "cendol",
+        "chendol",
+        "ais cendol"
+      ]
+    },
+    {
+      "id": "cache-malaysian-14",
+      "nameEnglish": "Murtabak",
+      "nameLocal": "Murtabak",
+      "nameLocalCorrected": "Murtabak",
+      "nameRomanized": "Murtabak",
+      "description": "A stuffed pan-fried flatbread filled with spiced minced meat (mutton, chicken, or beef), onions, egg, and garlic. The dough is stretched thin like roti canai, then folded around the savory filling and cooked on a griddle until crisp and golden. Served cut into squares with pickled onions and curry dipping sauce. A substantial mamak snack or meal.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "egg"
+      ],
+      "ingredients": [
+        {
+          "name": "Roti dough",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Minced mutton or chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Curry powder",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Curry dipping sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 25,
+        "carbs": 48,
+        "fat": 24,
+        "fiber": 2,
+        "kcal": 510
+      },
+      "explanation": "Think of it as a Malaysian meat-stuffed paratha. The mamak stalls cook them on large flat griddles, flipping the heavy, stuffed bread with practiced ease. Mutton murtabak is the classic choice. Vegetarian versions with cheese or egg-only are available at some stalls.",
+      "culturalTerms": [
+        {
+          "term": "Murtabak",
+          "explanation": "From Arabic 'mutabbaq' meaning 'folded' — reflecting the Middle Eastern origins of this stuffed bread"
+        },
+        {
+          "term": "Mamak",
+          "explanation": "Indian-Muslim stalls — murtabak is one of their signature dishes alongside roti canai"
+        }
+      ],
+      "imageSearchQuery": "Murtabak Malaysia",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Murtabak.jpg/500px-Murtabak.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Murtabak.jpg/500px-Murtabak.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "murtabak",
+        "martabak",
+        "mutabbaq"
+      ]
+    },
+    {
+      "id": "cache-malaysian-15",
+      "nameEnglish": "Nasi Kandar",
+      "nameLocal": "Nasi Kandar",
+      "nameLocalCorrected": "Nasi Kandar",
+      "nameRomanized": "Nasi Kandar",
+      "description": "A Penang-born rice meal where you choose from a colorful spread of curries, fried chicken, vegetables, and condiments ladled over steamed rice. The magic is in the 'banjir' — flooding the rice with multiple curry gravies that mingle together into something greater than the sum of their parts. Every plate is unique depending on what you point at.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "coconut",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "Steamed rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Assorted curries",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fried chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fish curry",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Okra",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Hard-boiled egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Papadum",
+          "category": "carb",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 30,
+        "carbs": 70,
+        "fat": 28,
+        "fiber": 4,
+        "kcal": 650
+      },
+      "explanation": "Not a single dish but a whole dining experience. Point at what you want from the counter and it gets piled onto your rice. Regulars know to ask for 'kuah campur' (mixed curries) — the blend of different gravies is the secret. Famous chains include Line Clear and Nasi Kandar Pelita.",
+      "culturalTerms": [
+        {
+          "term": "Kandar",
+          "explanation": "A shoulder pole used by Tamil-Muslim traders to carry rice and curries for sale — the original food delivery system"
+        },
+        {
+          "term": "Banjir",
+          "explanation": "Means 'flood' — asking for your rice to be flooded with multiple curry sauces for maximum flavor"
+        },
+        {
+          "term": "Kuah campur",
+          "explanation": "Mixed gravy — the art of combining different curry sauces on one plate"
+        }
+      ],
+      "imageSearchQuery": "Nasi Kandar",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Nasi_Kandar.jpg/500px-Nasi_Kandar.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Nasi_Kandar.jpg/500px-Nasi_Kandar.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "nasi kandar",
+        "kandar rice"
+      ]
+    },
+    {
+      "id": "cache-malaysian-16",
+      "nameEnglish": "Curry Mee",
+      "nameLocal": "Mee Kari",
+      "nameLocalCorrected": "Mee Kari",
+      "nameRomanized": "Curry Mee",
+      "description": "A spicy coconut curry noodle soup with yellow noodles and rice vermicelli in a fragrant, chili-red broth. Topped with tofu puffs, cockles, cuttlefish, bean sprouts, and a spoonful of sambal. Different from laksa in that it's lighter and the curry flavor is more forward. A Penang and KL hawker favorite, especially for breakfast.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "coconut",
+        "soy",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "Yellow noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Rice vermicelli",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Coconut curry broth",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tofu puffs",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cockles",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cuttlefish",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Sambal",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Mint leaves",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 50,
+        "fat": 26,
+        "fiber": 2,
+        "kcal": 520
+      },
+      "explanation": "Often confused with laksa, but curry mee has its own character — typically using two types of noodles and a mint garnish. The sambal stirred into the soup adds another dimension. Some versions include pig blood cubes (not halal) — ask if unsure.",
+      "culturalTerms": [
+        {
+          "term": "Mee Kari",
+          "explanation": "Curry noodles — 'kari' is the Malay spelling of curry, from Tamil 'kari'"
+        },
+        {
+          "term": "Bihun",
+          "explanation": "Rice vermicelli — often paired with yellow noodles in curry mee for contrasting textures"
+        }
+      ],
+      "imageSearchQuery": "Curry Mee Penang",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Malaysian_noodles-Curry_Mee-01.jpg/500px-Malaysian_noodles-Curry_Mee-01.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Malaysian_noodles-Curry_Mee-01.jpg/500px-Malaysian_noodles-Curry_Mee-01.jpg"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "curry mee",
+        "mee kari",
+        "curry noodles"
+      ]
+    },
+    {
+      "id": "cache-malaysian-17",
+      "nameEnglish": "Wonton Mee",
+      "nameLocal": "Wan Tan Mee",
+      "nameLocalCorrected": "Wan Tan Mee",
+      "nameRomanized": "Wonton Mee",
+      "description": "Springy egg noodles tossed in dark soy sauce and chili sauce, topped with char siu (barbecued pork) slices and served with a side bowl of wonton dumplings in clear broth. The Malaysian version is darker and more savory than the Hong Kong style. The wontons are silky pork parcels that burst with flavor in the hot soup.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy",
+        "egg",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "name": "Egg noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Dark soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Char siu",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Cantonese barbecued pork — marinated in honey, five spice, and red fermented tofu, then roasted until caramelized."
+        },
+        {
+          "name": "Wonton dumplings",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chili sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Choy sum",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "A tender Chinese green vegetable — mild, slightly sweet, and quick-blanched."
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 58,
+        "fat": 16,
+        "fiber": 2,
+        "kcal": 470
+      },
+      "explanation": "A Chinese-Malaysian comfort classic. The dry version (tossed noodles with soup on the side) is more popular in Malaysia than the soup version. Look for stalls that make their own wontons and char siu for the best experience.",
+      "culturalTerms": [
+        {
+          "term": "Wan Tan",
+          "explanation": "Cantonese for 'cloud swallow' — poetic name for the delicate dumplings that look like floating clouds"
+        },
+        {
+          "term": "Char siu",
+          "explanation": "Cantonese BBQ pork — the red-glazed roast meat hanging in Chinese restaurant windows"
+        }
+      ],
+      "imageSearchQuery": "Wonton noodles",
+      "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "wonton mee",
+        "wan tan mee",
+        "wonton noodles"
+      ]
+    },
+    {
+      "id": "cache-malaysian-18",
+      "nameEnglish": "Asam Laksa",
+      "nameLocal": "Asam Laksa",
+      "nameLocalCorrected": "Asam Laksa",
+      "nameRomanized": "Asam Laksa",
+      "description": "Penang's signature sour fish soup with thick rice noodles — tangy, fishy, and utterly addictive. The broth is made from mackerel simmered with tamarind, lemongrass, torch ginger flower, and chili, then the fish is flaked back in. Topped with shredded cucumber, onion, pineapple, mint, and a thick sweet shrimp paste. Completely different from curry laksa.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "shellfish"
+      ],
+      "ingredients": [
+        {
+          "name": "Thick rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Mackerel",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tamarind",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Torch ginger flower",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Bunga kantan — a stunning pink flower bud with a sharp, citrusy flavor. Essential to asam laksa's unique taste."
+        },
+        {
+          "name": "Lemongrass",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Hae ko",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Thick sweet prawn paste — dark and pungent, dolloped on top as a finishing condiment."
+        },
+        {
+          "name": "Pineapple",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Mint",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 48,
+        "fat": 10,
+        "fiber": 3,
+        "kcal": 370
+      },
+      "explanation": "Ranked among the world's best foods by CNN Travel. The intense sourness from tamarind combined with the fish broth creates a flavor that's polarizing — most people either love it or find it too pungent. If you enjoy sour soups like tom yum or rasam, give asam laksa a try.",
+      "culturalTerms": [
+        {
+          "term": "Asam",
+          "explanation": "Means 'sour' or 'tamarind' in Malay — the defining characteristic of this laksa variant"
+        },
+        {
+          "term": "Bunga kantan",
+          "explanation": "Torch ginger flower — the secret ingredient that gives asam laksa its distinctive floral sourness"
+        }
+      ],
+      "imageSearchQuery": "Penang Asam Laksa",
+      "imageUrl": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "asam laksa",
+        "penang laksa",
+        "sour laksa"
+      ]
+    },
+    {
+      "id": "cache-malaysian-19",
+      "nameEnglish": "Ayam Percik",
+      "nameLocal": "Ayam Percik",
+      "nameLocalCorrected": "Ayam Percik",
+      "nameRomanized": "Ayam Percik",
+      "description": "Grilled chicken basted in a rich, creamy coconut and turmeric sauce, cooked over charcoal until the edges char and the sauce caramelizes. A specialty of Malaysia's east coast (Kelantan and Terengganu), the chicken is marinated for hours in a spiced coconut paste before grilling. The result is smoky, sweet, mildly spicy, and irresistibly juicy.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "coconut"
+      ],
+      "ingredients": [
+        {
+          "name": "Chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Coconut milk",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Turmeric",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lemongrass",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Galangal",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chili",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Shallots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 35,
+        "carbs": 10,
+        "fat": 22,
+        "fiber": 1,
+        "kcal": 380
+      },
+      "explanation": "A halal dish popular during Ramadan bazaars and festive occasions. The repeated basting during grilling builds up layers of flavor. Best eaten with nasi kerabu (herb rice) or glutinous rice. The east coast version is considered the most authentic.",
+      "culturalTerms": [
+        {
+          "term": "Percik",
+          "explanation": "Means 'to splash' or 'to baste' — referring to the technique of splashing coconut sauce onto the chicken as it grills"
+        },
+        {
+          "term": "Ayam",
+          "explanation": "Means 'chicken' in Malay — one of the most common menu words you'll encounter"
+        }
+      ],
+      "imageSearchQuery": "Ayam Percik grilled chicken",
+      "imageUrl": "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "ayam percik",
+        "grilled chicken",
+        "coconut chicken"
+      ]
+    },
+    {
+      "id": "cache-malaysian-20",
+      "nameEnglish": "Ikan Bakar",
+      "nameLocal": "Ikan Bakar",
+      "nameLocalCorrected": "Ikan Bakar",
+      "nameRomanized": "Ikan Bakar",
+      "description": "Whole fish marinated in turmeric and chili paste, wrapped in banana leaves, and grilled over charcoal until smoky and tender. Served with sambal, rice, and ulam (raw herbs and vegetables). The banana leaf keeps the fish moist while imparting a subtle grassy flavor. Stingray, tilapia, and mackerel are popular choices.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "Whole fish",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Turmeric paste",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chili paste",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Banana leaf",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Used as a natural wrapper for grilling — keeps the fish moist and adds a mild, earthy aroma."
+        },
+        {
+          "name": "Sambal",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lemongrass",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lime",
+          "category": "other",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 32,
+        "carbs": 5,
+        "fat": 14,
+        "fiber": 1,
+        "kcal": 280
+      },
+      "explanation": "A seafood lover's dream — best enjoyed at coastal towns and night markets. The fish is often displayed raw for you to choose before grilling. Pair with a fiery sambal belacan and squeeze of lime. The banana leaf wrapping is not eaten — just unwrap and dig in.",
+      "culturalTerms": [
+        {
+          "term": "Ikan",
+          "explanation": "Means 'fish' in Malay"
+        },
+        {
+          "term": "Bakar",
+          "explanation": "Means 'grilled' or 'burned' — refers to charcoal grilling"
+        },
+        {
+          "term": "Ulam",
+          "explanation": "Traditional Malay herb and vegetable platter eaten raw — similar to a fresh salad accompaniment"
+        }
+      ],
+      "imageSearchQuery": "Ikan Bakar",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Gurame_bakar.jpg/500px-Gurame_bakar.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Gurame_bakar.jpg/500px-Gurame_bakar.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "ikan bakar",
+        "grilled fish",
+        "barbecued fish"
+      ]
+    },
+    {
+      "id": "cache-malaysian-21",
+      "nameEnglish": "Nasi Kerabu",
+      "nameLocal": "Nasi Kerabu",
+      "nameLocalCorrected": "Nasi Kerabu",
+      "nameRomanized": "Nasi Kerabu",
+      "description": "Striking blue-tinted rice colored with butterfly pea flowers, served with fresh herbs, bean sprouts, shredded coconut, fish crackers, and salted egg. An east coast Kelantanese specialty that's as beautiful as it is flavorful. The herb-heavy accompaniments make it one of Malaysia's freshest and most aromatic rice dishes.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "egg",
+        "coconut"
+      ],
+      "ingredients": [
+        {
+          "name": "Blue butterfly pea rice",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Rice tinted blue with butterfly pea flowers (bunga telang) — natural coloring with a mild, earthy taste."
+        },
+        {
+          "name": "Fresh herbs",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Kerisik",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Salted egg",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Duck egg cured in salt brine — the yolk becomes rich, orange, and creamy while the white stays firm and salty."
+        },
+        {
+          "name": "Fish crackers",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Sambal",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Grilled chicken or fish",
+          "category": "protein",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 65,
+        "fat": 18,
+        "fiber": 4,
+        "kcal": 510
+      },
+      "explanation": "The vivid blue color makes this one of Malaysia's most Instagram-worthy dishes, but the flavor is what keeps locals coming back. The combination of raw herbs, crunchy coconut, and rich sambal with the fragrant rice is unique to Kelantan. Often served with ayam percik.",
+      "culturalTerms": [
+        {
+          "term": "Kerabu",
+          "explanation": "A Malay-style herb salad with shredded vegetables — the fresh accompaniment that defines this dish"
+        },
+        {
+          "term": "Bunga telang",
+          "explanation": "Butterfly pea flower — the natural blue dye used for the rice, common in Southeast Asian cooking"
+        },
+        {
+          "term": "Kelantan",
+          "explanation": "A northeastern Malaysian state famous for its distinctive cuisine and cultural traditions"
+        }
+      ],
+      "imageSearchQuery": "Nasi Kerabu blue rice",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Nasi_kerabu.jpg/500px-Nasi_kerabu.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Nasi_kerabu.jpg/500px-Nasi_kerabu.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "nasi kerabu",
+        "blue rice",
+        "kelantan rice"
+      ]
+    },
+    {
+      "id": "cache-malaysian-22",
+      "nameEnglish": "Apam Balik",
+      "nameLocal": "Apam Balik",
+      "nameLocalCorrected": "Apam Balik",
+      "nameRomanized": "Apam Balik",
+      "description": "A crispy Malaysian peanut pancake turnover filled with roasted crushed peanuts, sugar, and creamed corn, then folded in half. The thin version (apam balik nipis) is paper-crisp and shatters when you bite it, while the thick version (apam balik tebal) is fluffy and cake-like. A beloved tea-time snack and night market staple.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [
+        "peanut",
+        "gluten",
+        "egg"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice flour batter",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Crushed peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Creamed corn",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Butter",
+          "category": "dairy",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 8,
+        "carbs": 52,
+        "fat": 16,
+        "fiber": 2,
+        "kcal": 380
+      },
+      "explanation": "A nostalgic treat for Malaysians, found at pasar malam (night markets) across the country. The thin crispy version is more popular and cooks in about 30 seconds on a round griddle. Best eaten hot when the peanuts are still warm and the edges are crunchy.",
+      "culturalTerms": [
+        {
+          "term": "Apam",
+          "explanation": "A type of Malay pancake or cake"
+        },
+        {
+          "term": "Balik",
+          "explanation": "Means 'turn over' or 'flip' — referring to the folding of the pancake"
+        },
+        {
+          "term": "Pasar malam",
+          "explanation": "Night market — the best place to find fresh apam balik and other Malaysian street snacks"
+        }
+      ],
+      "imageSearchQuery": "Apam Balik peanut pancake",
+      "imageUrl": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "apam balik",
+        "ban jian kuih",
+        "peanut pancake"
+      ]
+    },
+    {
+      "id": "cache-malaysian-23",
+      "nameEnglish": "Kuih",
+      "nameLocal": "Kuih",
+      "nameLocalCorrected": "Kuih",
+      "nameRomanized": "Kuih",
+      "description": "Colorful bite-sized Malay cakes and desserts made from rice flour, coconut milk, palm sugar, and pandan. Dozens of varieties exist — soft, chewy, layered, steamed, or baked — in vivid greens, pinks, and whites. Common types include kuih lapis (layered cake), ondeh-ondeh (pandan balls with liquid palm sugar), and kuih talam (two-toned coconut cake).",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [
+        "coconut"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice flour",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Coconut milk",
+          "category": "dairy",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Gula melaka",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pandan extract",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tapioca flour",
+          "category": "carb",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 2,
+        "carbs": 35,
+        "fat": 8,
+        "fiber": 1,
+        "kcal": 220
+      },
+      "explanation": "Kuih is a whole category of traditional sweets, not a single dish. They're typically sold by the piece at morning markets, tea stalls, and Malay restaurants. Try ondeh-ondeh for the fun experience of biting into a ball and having liquid palm sugar burst out. Most are naturally gluten-free since they use rice flour.",
+      "culturalTerms": [
+        {
+          "term": "Kuih",
+          "explanation": "General term for Malay/Nyonya traditional cakes and sweets — from the Chinese word 'kueh' (粿)"
+        },
+        {
+          "term": "Ondeh-ondeh",
+          "explanation": "Pandan-flavored glutinous rice balls filled with liquid palm sugar, rolled in fresh grated coconut"
+        },
+        {
+          "term": "Kuih lapis",
+          "explanation": "Rainbow-layered steamed cake — each thin layer is individually steamed for a chewy, striped dessert"
+        }
+      ],
+      "imageSearchQuery": "Kuih Malaysian dessert",
+      "imageUrl": "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "kuih",
+        "kueh",
+        "nyonya kuih",
+        "malay cake"
+      ]
+    },
+    {
+      "id": "cache-malaysian-24",
+      "nameEnglish": "Prawn Mee",
+      "nameLocal": "Mee Udang",
+      "nameLocalCorrected": "Mee Udang",
+      "nameRomanized": "Prawn Mee",
+      "description": "A bold, orange-red soup noodle made from an intensely flavored prawn head and shell stock. The broth is simmered for hours with prawn shells, pork bones (in non-halal versions), and spices until deeply savory and sweet. Served with yellow noodles, rice vermicelli, prawns, pork slices, kangkung (water spinach), and a hard-boiled egg.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "gluten",
+        "egg",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "Yellow noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Rice vermicelli",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Prawn shell broth",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Hours of simmered prawn heads, shells, and pork bones create an intensely sweet, savory, umami-rich stock."
+        },
+        {
+          "name": "Prawns",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork slices",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Kangkung",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Water spinach — a hollow-stemmed leafy green that's crunchy and mild. Very common across Southeast Asia."
+        },
+        {
+          "name": "Hard-boiled egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fried shallots",
+          "category": "other",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 26,
+        "carbs": 52,
+        "fat": 18,
+        "fiber": 2,
+        "kcal": 480
+      },
+      "explanation": "Penang's prawn mee (hokkien prawn mee) is considered the gold standard. The broth's intense prawn flavor comes from a painstaking process of roasting and grinding prawn shells. Add sambal and lime to taste. Some versions come dry (tossed in dark sauce) with soup on the side.",
+      "culturalTerms": [
+        {
+          "term": "Hae mee",
+          "explanation": "Hokkien for 'prawn noodles' — the original name used in Penang hawker stalls"
+        },
+        {
+          "term": "Kangkung",
+          "explanation": "Water spinach — a ubiquitous Southeast Asian green, often stir-fried with belacan"
+        }
+      ],
+      "imageSearchQuery": "Prawn Mee Penang",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Prawn_hae_mee.jpg/500px-Prawn_hae_mee.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Prawn_hae_mee.jpg/500px-Prawn_hae_mee.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "prawn mee",
+        "hae mee",
+        "mee udang"
+      ]
+    },
+    {
+      "id": "cache-malaysian-25",
+      "nameEnglish": "Tosai",
+      "nameLocal": "Tosai",
+      "nameLocalCorrected": "Tosai",
+      "nameRomanized": "Tosai",
+      "description": "A crispy, lacy fermented rice and lentil crepe from the Malaysian-Indian community. Thinner and crispier than South Indian dosa, the Malaysian version is served with coconut chutney, sambar, and sometimes dhal. The batter ferments overnight, giving the crepe a subtle tanginess. A popular breakfast at mamak stalls alongside roti canai.",
+      "country": "Malaysia",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [],
+      "ingredients": [
+        {
+          "name": "Rice flour batter",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Urad dal",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Black gram lentil — ground and fermented with rice to create the batter. Gives the crepe its protein and crisp texture."
+        },
+        {
+          "name": "Coconut chutney",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Sambar",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A tangy lentil and vegetable stew with tamarind and spices — the classic South Indian accompaniment."
+        },
+        {
+          "name": "Dhal",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 8,
+        "carbs": 42,
+        "fat": 6,
+        "fiber": 3,
+        "kcal": 250
+      },
+      "explanation": "The Malaysian-Indian take on South Indian dosa. Mamak stalls have adapted it for local tastes — sometimes filling it with onion, egg, or cheese. A light, healthy breakfast option that's naturally vegan (without egg additions). Perfect with a cup of teh tarik (pulled tea).",
+      "culturalTerms": [
+        {
+          "term": "Tosai",
+          "explanation": "Malaysian spelling of 'dosa/dosai' — a South Indian fermented crepe brought by Tamil immigrants"
+        },
+        {
+          "term": "Teh tarik",
+          "explanation": "Pulled tea — frothy sweet milk tea 'pulled' between two cups, the classic drink pairing for tosai"
+        }
+      ],
+      "imageSearchQuery": "Tosai dosa Malaysian",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dosa-chutney-sambhar.jpg/500px-Dosa-chutney-sambhar.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dosa-chutney-sambhar.jpg/500px-Dosa-chutney-sambhar.jpg"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "tosai",
+        "thosai",
+        "dosa"
+      ]
+    }
+  ]
+}

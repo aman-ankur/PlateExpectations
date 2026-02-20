@@ -1,0 +1,2313 @@
+{
+  "version": 1,
+  "cuisine": "Thai",
+  "country": "Thailand",
+  "generatedAt": "2026-02-20",
+  "dishes": [
+    {
+      "id": "cache-thai-1",
+      "nameEnglish": "Pad Thai",
+      "nameLocal": "ผัดไทย",
+      "nameLocalCorrected": "ผัดไทย",
+      "nameRomanized": "Phat Thai",
+      "description": "Thailand's iconic stir-fried rice noodles with shrimp, tofu, egg, bean sprouts, and crushed peanuts in a tamarind-based sauce. Served with a lime wedge and chili flakes on the side. A must-try street food found at virtually every market and restaurant in the country.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "peanuts",
+        "shellfish",
+        "eggs",
+        "soy",
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shrimp",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tamarind paste",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A sweet-sour paste made from tamarind fruit pulp, essential to Pad Thai's signature flavor."
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A pungent fermented fish condiment called nam pla, used like salt in Thai cooking."
+        },
+        {
+          "name": "crushed peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic chives",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A caramel-flavored sugar derived from palm tree sap, less sweet than cane sugar."
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 58,
+        "fat": 14,
+        "fiber": 3,
+        "kcal": 440
+      },
+      "explanation": "The national dish of Thailand—sweet, sour, and savory all at once. Street vendors often let you customize the spice level. Contains peanuts and shellfish.",
+      "culturalTerms": [
+        {
+          "term": "ผัด",
+          "explanation": "Stir-fried — one of the most common Thai cooking methods using a wok over high heat."
+        },
+        {
+          "term": "น้ำปลา",
+          "explanation": "Fish sauce (nam pla) — the backbone seasoning of Thai cuisine, used in place of salt."
+        }
+      ],
+      "imageSearchQuery": "ผัดไทย",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Phat_Thai_kung_Chang_Khien_bw_street_stall.jpg/640px-Phat_Thai_kung_Chang_Khien_bw_street_stall.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Phat_Thai_kung_Chang_Khien_bw_street_stall.jpg/640px-Phat_Thai_kung_Chang_Khien_bw_street_stall.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "pad thai",
+        "phat thai",
+        "ผัดไทย"
+      ]
+    },
+    {
+      "id": "cache-thai-2",
+      "nameEnglish": "Green Curry",
+      "nameLocal": "แกงเขียวหวาน",
+      "nameLocalCorrected": "แกงเขียวหวาน",
+      "nameRomanized": "Kaeng Khiao Wan",
+      "description": "A fragrant coconut milk curry with green chili paste, Thai basil, bamboo shoots, and your choice of protein. The sweetness of coconut balances the heat from fresh green chilies. Typically served over steamed jasmine rice.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish (shrimp paste)",
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "coconut milk",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green curry paste",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A pounded paste of green chilies, lemongrass, galangal, shallots, garlic, and shrimp paste — the aromatic foundation of this curry."
+        },
+        {
+          "name": "chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai basil",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A variety of basil with a slight anise/licorice flavor, sturdier than sweet basil. Added at the end for freshness."
+        },
+        {
+          "name": "bamboo shoots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai eggplant",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Small, round, green-and-white eggplants about the size of a golf ball. Slightly bitter with a firm, crunchy texture."
+        },
+        {
+          "name": "kaffir lime leaves",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Aromatic double-lobed leaves that impart a distinctive citrusy fragrance. Used like bay leaves — for aroma, not typically eaten."
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Fermented fish condiment (nam pla) that provides the salty umami backbone."
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 26,
+        "carbs": 12,
+        "fat": 28,
+        "fiber": 3,
+        "kcal": 400
+      },
+      "explanation": "One of Thailand's most beloved curries. Despite the name 'sweet' (หวาน), it can be quite spicy. The green color comes from fresh green chilies in the paste.",
+      "culturalTerms": [
+        {
+          "term": "แกง",
+          "explanation": "Curry — a broad Thai term for any soupy or saucy dish, not limited to Indian-style curries."
+        },
+        {
+          "term": "เขียวหวาน",
+          "explanation": "Literally 'sweet green,' referring to the color of the curry paste and the sweetness from coconut milk."
+        }
+      ],
+      "imageSearchQuery": "แกงเขียวหวาน",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Thai_green_chicken_curry_and_target_roti.jpg/640px-Thai_green_chicken_curry_and_target_roti.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Thai_green_chicken_curry_and_target_roti.jpg/640px-Thai_green_chicken_curry_and_target_roti.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "green curry",
+        "kaeng khiao wan",
+        "แกงเขียวหวาน"
+      ]
+    },
+    {
+      "id": "cache-thai-3",
+      "nameEnglish": "Tom Yum Goong",
+      "nameLocal": "ต้มยำกุ้ง",
+      "nameLocalCorrected": "ต้มยำกุ้ง",
+      "nameRomanized": "Tom Yam Kung",
+      "description": "A hot and sour soup bursting with shrimp, mushrooms, lemongrass, galangal, and kaffir lime leaves. The broth is simultaneously spicy, sour, and aromatic. One of Thailand's most famous exports, often called the world's greatest soup.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "shrimp",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "lemongrass",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A tall, citrusy grass stalk that gives Thai soups their distinctive lemony aroma. The tough outer layers are removed; the tender core is bruised to release flavor."
+        },
+        {
+          "name": "galangal",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A rhizome related to ginger but with a sharper, piney, almost medicinal flavor. Sliced into coins and simmered in the broth."
+        },
+        {
+          "name": "kaffir lime leaves",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Aromatic double-lobed leaves with an intense citrus fragrance."
+        },
+        {
+          "name": "straw mushrooms",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Small, egg-shaped mushrooms with a slippery texture, commonly used in Southeast Asian soups."
+        },
+        {
+          "name": "bird's eye chili",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Tiny but extremely hot chilies (50,000–100,000 Scoville). A few go a long way."
+        },
+        {
+          "name": "lime juice",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "nam prik pao",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Roasted chili jam — a sweet-savory-spicy paste that gives the creamy red version (tom yum nam khon) its color and richness."
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 8,
+        "fat": 6,
+        "fiber": 2,
+        "kcal": 160
+      },
+      "explanation": "Comes in two styles: clear broth (nam sai) or creamy with chili oil (nam khon). The creamy version is more popular in restaurants. Very spicy by default—ask for 'mai phet' if you want mild.",
+      "culturalTerms": [
+        {
+          "term": "ต้มยำ",
+          "explanation": "A sour-spicy soup method: 'tom' means boiled, 'yam' means mixed/spicy salad — together they describe a hot-and-sour broth."
+        },
+        {
+          "term": "กุ้ง",
+          "explanation": "Shrimp. Tom yum can be made with other proteins — 'pla' (fish), 'gai' (chicken), or 'talay' (seafood mix)."
+        }
+      ],
+      "imageSearchQuery": "ต้มยำกุ้ง",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Tom_yam_kung_mae_nam.jpg/640px-Tom_yam_kung_mae_nam.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Tom_yam_kung_mae_nam.jpg/640px-Tom_yam_kung_mae_nam.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "tom yum goong",
+        "tom yam kung",
+        "ต้มยำกุ้ง"
+      ]
+    },
+    {
+      "id": "cache-thai-4",
+      "nameEnglish": "Som Tum",
+      "nameLocal": "ส้มตำ",
+      "nameLocalCorrected": "ส้มตำ",
+      "nameRomanized": "Som Tam",
+      "description": "A vibrant green papaya salad pounded in a mortar with tomatoes, long beans, peanuts, dried shrimp, and a fiery lime-chili-fish sauce dressing. Crunchy, sour, spicy, and sweet all at once. Thailand's most popular salad, found everywhere from street carts to fine dining.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "peanuts",
+        "shellfish (dried shrimp)",
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "green papaya",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Unripe papaya shredded into crunchy strips. Neutral in flavor, it absorbs the dressing while providing satisfying crunch."
+        },
+        {
+          "name": "tomatoes",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "long beans",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Thin, flexible beans up to 18 inches long, cut into short pieces. Slightly less sweet than green beans."
+        },
+        {
+          "name": "dried shrimp",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Tiny sun-dried shrimp that add a salty, umami crunch."
+        },
+        {
+          "name": "peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bird's eye chili",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "lime juice",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 8,
+        "carbs": 18,
+        "fat": 7,
+        "fiber": 4,
+        "kcal": 160
+      },
+      "explanation": "Traditionally very spicy. Street vendors will ask how many chilies you want—hold up fingers to indicate. 'Som tum thai' is the milder tourist-friendly version; 'som tum poo pla ra' has fermented crab and fish and is extremely pungent.",
+      "culturalTerms": [
+        {
+          "term": "ส้ม",
+          "explanation": "Sour — refers to the dominant sour flavor from lime juice."
+        },
+        {
+          "term": "ตำ",
+          "explanation": "Pounded — the dish is made by pounding ingredients in a clay mortar (khrok) with a wooden pestle."
+        }
+      ],
+      "imageSearchQuery": "ส้มตำ",
+      "imageUrl": "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?w=640&q=80",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?w=640&q=80"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "som tum",
+        "som tam",
+        "ส้มตำ",
+        "green papaya salad"
+      ]
+    },
+    {
+      "id": "cache-thai-5",
+      "nameEnglish": "Massaman Curry",
+      "nameLocal": "แกงมัสมั่น",
+      "nameLocalCorrected": "แกงมัสมั่น",
+      "nameRomanized": "Kaeng Matsaman",
+      "description": "A rich, mild coconut curry with Persian and Indian influences, featuring tender beef or chicken, potatoes, onions, and roasted peanuts. Warm spices like cinnamon, cardamom, and star anise give it a uniquely aromatic character unlike other Thai curries.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "peanuts",
+        "fish sauce",
+        "shellfish (shrimp paste)"
+      ],
+      "ingredients": [
+        {
+          "name": "beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "coconut milk",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "potatoes",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onions",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "roasted peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "massaman curry paste",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A complex paste with dried chilies, lemongrass, galangal, and Indian spices like cardamom, cinnamon, cloves, and cumin — a fusion of Thai and South Asian flavors."
+        },
+        {
+          "name": "tamarind paste",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bay leaves",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 22,
+        "fat": 32,
+        "fiber": 3,
+        "kcal": 480
+      },
+      "explanation": "Rated the world's best food by CNN Travel. The mildest of all Thai curries, making it a safe choice if you're sensitive to spice. The name likely derives from 'Muslim,' reflecting its Malay-Indian origins.",
+      "culturalTerms": [
+        {
+          "term": "มัสมั่น",
+          "explanation": "Derived from 'Musulman' (Muslim) — this curry has roots in the Muslim communities of southern Thailand and reflects Persian-Indian spice trade influences."
+        }
+      ],
+      "imageSearchQuery": "แกงมัสมั่น",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Kaeng_matsaman_kai.jpg/640px-Kaeng_matsaman_kai.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Kaeng_matsaman_kai.jpg/640px-Kaeng_matsaman_kai.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "massaman curry",
+        "kaeng matsaman",
+        "แกงมัสมั่น"
+      ]
+    },
+    {
+      "id": "cache-thai-6",
+      "nameEnglish": "Pad See Ew",
+      "nameLocal": "ผัดซีอิ๊ว",
+      "nameLocalCorrected": "ผัดซีอิ๊ว",
+      "nameRomanized": "Phat Si Io",
+      "description": "Wide, flat rice noodles stir-fried with dark soy sauce, Chinese broccoli, egg, and your choice of meat. The noodles get a wonderful smoky char from the wok. A comforting, slightly sweet noodle dish that's less tangy than Pad Thai.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "eggs"
+      ],
+      "ingredients": [
+        {
+          "name": "wide rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "dark soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A thicker, sweeter soy sauce that gives the noodles their deep brown color and caramel-like sweetness."
+        },
+        {
+          "name": "Chinese broccoli",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Called 'khana' in Thai — a leafy green with thick stems and a slight bitterness. Different from Western broccoli."
+        },
+        {
+          "name": "chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "oyster sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "white pepper",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 52,
+        "fat": 16,
+        "fiber": 2,
+        "kcal": 450
+      },
+      "explanation": "The name literally means 'fried with soy sauce.' A great choice for those who find Thai food too spicy — this dish is savory and mild. Best from street vendors with powerful wok burners that give the noodles 'wok hei' (breath of the wok).",
+      "culturalTerms": [
+        {
+          "term": "ซีอิ๊ว",
+          "explanation": "Soy sauce — borrowed from the Teochew Chinese word 'si-iu,' reflecting the Chinese influence on this dish."
+        },
+        {
+          "term": "ผัด",
+          "explanation": "Stir-fried — cooked quickly in a very hot wok."
+        }
+      ],
+      "imageSearchQuery": "ผัดซีอิ๊ว",
+      "imageUrl": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=640&q=80",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=640&q=80"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "pad see ew",
+        "phat si io",
+        "ผัดซีอิ๊ว"
+      ]
+    },
+    {
+      "id": "cache-thai-7",
+      "nameEnglish": "Khao Pad",
+      "nameLocal": "ข้าวผัด",
+      "nameLocalCorrected": "ข้าวผัด",
+      "nameRomanized": "Khao Phat",
+      "description": "Thai-style fried rice wok-tossed with egg, onion, tomato, and your choice of protein, seasoned with fish sauce and a squeeze of lime. Simple, satisfying, and available everywhere from street stalls to hotel restaurants. Often served with cucumber slices and a lime wedge.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "eggs",
+        "fish sauce",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "jasmine rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tomato",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "scallions",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "white pepper",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 56,
+        "fat": 12,
+        "fiber": 2,
+        "kcal": 420
+      },
+      "explanation": "Thailand's everyday comfort food and a safe bet for picky eaters. You can order it with shrimp (kung), chicken (gai), pork (moo), or crab (poo). Always comes with fresh cucumber and lime on the side.",
+      "culturalTerms": [
+        {
+          "term": "ข้าว",
+          "explanation": "Rice — the word also means 'food' or 'meal' colloquially, reflecting rice's central role in Thai culture."
+        },
+        {
+          "term": "ผัด",
+          "explanation": "Stir-fried — khao pad literally means 'fried rice.'"
+        }
+      ],
+      "imageSearchQuery": "ข้าวผัด",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg/500px-Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg/500px-Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "khao pad",
+        "khao phat",
+        "ข้าวผัด",
+        "thai fried rice"
+      ]
+    },
+    {
+      "id": "cache-thai-8",
+      "nameEnglish": "Larb",
+      "nameLocal": "ลาบ",
+      "nameLocalCorrected": "ลาบ",
+      "nameRomanized": "Lap",
+      "description": "A zesty minced meat salad from Isaan (northeastern Thailand) seasoned with lime juice, fish sauce, chili flakes, and toasted rice powder. Served at room temperature with fresh herbs and raw vegetables. Considered the national dish of Laos, but hugely popular across Thailand.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "minced pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "toasted rice powder",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Uncooked sticky rice dry-toasted in a pan until golden, then ground into a coarse powder. Adds a nutty, toasty crunch that's essential to larb's texture."
+        },
+        {
+          "name": "shallots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "scallions",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mint",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cilantro",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bird's eye chili",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "lime juice",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 6,
+        "fat": 10,
+        "fiber": 2,
+        "kcal": 210
+      },
+      "explanation": "Typically eaten with sticky rice and raw cabbage leaves, which you use to scoop the larb. Available with chicken (gai), pork (moo), beef (neua), or duck (pet). Some Isaan versions use raw meat — if that concerns you, confirm it's cooked ('suk').",
+      "culturalTerms": [
+        {
+          "term": "ลาบ",
+          "explanation": "Minced meat salad — the word may derive from a Lao word meaning 'luck' or 'fortune,' making it a celebratory dish."
+        },
+        {
+          "term": "ข้าวเหนียว",
+          "explanation": "Sticky rice — the traditional accompaniment in Isaan cuisine, eaten by pinching off small balls with your fingers."
+        }
+      ],
+      "imageSearchQuery": "ลาบ",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/LaoFood_LarbNeua.jpg/640px-LaoFood_LarbNeua.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/LaoFood_LarbNeua.jpg/640px-LaoFood_LarbNeua.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "larb",
+        "lap",
+        "laab",
+        "ลาบ"
+      ]
+    },
+    {
+      "id": "cache-thai-9",
+      "nameEnglish": "Pad Kra Pao",
+      "nameLocal": "ผัดกระเพรา",
+      "nameLocalCorrected": "ผัดกระเพรา",
+      "nameRomanized": "Phat Kraphao",
+      "description": "Stir-fried minced meat with holy basil, garlic, chilies, and a savory sauce, served over rice with a crispy fried egg on top. Thailand's quintessential lunch dish — quick, punchy, and deeply satisfying. The aroma of holy basil hitting a screaming-hot wok is unmistakable.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "eggs",
+        "fish sauce",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "minced pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "holy basil",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Called 'kraphao' — a peppery, clove-like basil distinct from sweet basil or Thai basil. The defining herb of this dish; there's no real substitute."
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bird's eye chili",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "long beans",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fried egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "oyster sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "jasmine rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 26,
+        "carbs": 48,
+        "fat": 18,
+        "fiber": 2,
+        "kcal": 460
+      },
+      "explanation": "Arguably the most-ordered dish in Thailand. Say 'khai dao' to add a fried egg on top (highly recommended). Available with chicken, pork, beef, or seafood. The holy basil gives it a spicy, peppery kick even before the chilies.",
+      "culturalTerms": [
+        {
+          "term": "กระเพรา",
+          "explanation": "Holy basil (Ocimum tenuiflorum) — sacred in Hinduism, but in Thai cooking it's prized for its peppery, clove-like flavor."
+        },
+        {
+          "term": "ไข่ดาว",
+          "explanation": "Fried egg ('star egg') — a crispy-edged fried egg placed on top, standard accompaniment to this dish."
+        }
+      ],
+      "imageSearchQuery": "ผัดกระเพรา",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Basil_fried_crispy_pork_with_rice_-_Chiang_Mai_-_2017-07-11_%28002%29.jpg/500px-Basil_fried_crispy_pork_with_rice_-_Chiang_Mai_-_2017-07-11_%28002%29.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Basil_fried_crispy_pork_with_rice_-_Chiang_Mai_-_2017-07-11_%28002%29.jpg/500px-Basil_fried_crispy_pork_with_rice_-_Chiang_Mai_-_2017-07-11_%28002%29.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "pad kra pao",
+        "phat kraphao",
+        "ผัดกระเพรา",
+        "holy basil stir fry"
+      ]
+    },
+    {
+      "id": "cache-thai-10",
+      "nameEnglish": "Tom Kha Gai",
+      "nameLocal": "ต้มข่าไก่",
+      "nameLocalCorrected": "ต้มข่าไก่",
+      "nameRomanized": "Tom Kha Kai",
+      "description": "A creamy coconut soup with chicken, galangal, lemongrass, and kaffir lime leaves. Milder and richer than tom yum, with a velvety coconut broth that's sour from lime and gently spiced. A comforting, aromatic bowl that's gentler on the palate.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish sauce",
+        "shellfish (shrimp paste)"
+      ],
+      "ingredients": [
+        {
+          "name": "chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "coconut milk",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "galangal",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "The star ingredient — 'kha' means galangal. A ginger relative with a sharper, piney flavor that defines this soup."
+        },
+        {
+          "name": "lemongrass",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "kaffir lime leaves",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mushrooms",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bird's eye chili",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "lime juice",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cilantro",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 10,
+        "fat": 24,
+        "fiber": 1,
+        "kcal": 340
+      },
+      "explanation": "A milder alternative to tom yum for those who want Thai soup flavors without the intense heat. The coconut milk tempers the spice. The galangal, lemongrass, and lime leaves are aromatics — you can push them aside rather than eat them.",
+      "culturalTerms": [
+        {
+          "term": "ข่า",
+          "explanation": "Galangal — a key aromatic rhizome in Thai cooking. The soup is named after it: 'tom kha' means 'boiled with galangal.'"
+        },
+        {
+          "term": "ไก่",
+          "explanation": "Chicken — the most common protein in this soup."
+        }
+      ],
+      "imageSearchQuery": "ต้มข่าไก่",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Tom_kha_gai.jpg/640px-Tom_kha_gai.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Tom_kha_gai.jpg/640px-Tom_kha_gai.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "tom kha gai",
+        "tom kha kai",
+        "ต้มข่าไก่"
+      ]
+    },
+    {
+      "id": "cache-thai-11",
+      "nameEnglish": "Red Curry",
+      "nameLocal": "แกงเผ็ด",
+      "nameLocalCorrected": "แกงเผ็ด",
+      "nameRomanized": "Kaeng Phet",
+      "description": "A vibrant coconut curry made with red chili paste, bamboo shoots, Thai basil, and your choice of meat. Spicier than green curry with a deeper, roasted chili flavor. The red color comes from dried red spur chilies in the paste.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish sauce",
+        "shellfish (shrimp paste)"
+      ],
+      "ingredients": [
+        {
+          "name": "coconut milk",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "red curry paste",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A paste of dried red chilies, lemongrass, galangal, shallots, garlic, coriander root, and shrimp paste. More straightforwardly spicy than the complex green paste."
+        },
+        {
+          "name": "chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bamboo shoots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai basil",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "kaffir lime leaves",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai eggplant",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 14,
+        "fat": 26,
+        "fiber": 3,
+        "kcal": 380
+      },
+      "explanation": "The name 'kaeng phet' literally means 'spicy curry.' More heat-forward than green or yellow curry. Often served with duck (pet) or roast duck (pet yang) as a premium option. Great with steamed jasmine rice.",
+      "culturalTerms": [
+        {
+          "term": "เผ็ด",
+          "explanation": "Spicy/hot — the defining characteristic of this curry compared to the 'sweet' green curry."
+        }
+      ],
+      "imageSearchQuery": "แกงเผ็ด",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Kaeng_phet_mu.jpg/500px-Kaeng_phet_mu.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Kaeng_phet_mu.jpg/500px-Kaeng_phet_mu.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "red curry",
+        "kaeng phet",
+        "แกงเผ็ด"
+      ]
+    },
+    {
+      "id": "cache-thai-12",
+      "nameEnglish": "Mango Sticky Rice",
+      "nameLocal": "ข้าวเหนียวมะม่วง",
+      "nameLocalCorrected": "ข้าวเหนียวมะม่วง",
+      "nameRomanized": "Khao Niao Mamuang",
+      "description": "Thailand's beloved dessert of sweet sticky rice soaked in coconut cream, served alongside slices of ripe mango and drizzled with more coconut sauce. Best during mango season (April–June) when the Nam Dok Mai mangoes are at their sweetest and most fragrant.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [],
+      "ingredients": [
+        {
+          "name": "sticky rice",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Glutinous rice (no actual gluten) steamed until chewy and sticky, then soaked in sweetened coconut cream. The grains cling together."
+        },
+        {
+          "name": "ripe mango",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "coconut cream",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "salt",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mung beans",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Crispy fried split mung beans sprinkled on top for a crunchy contrast."
+        }
+      ],
+      "nutrition": {
+        "protein": 5,
+        "carbs": 68,
+        "fat": 14,
+        "fiber": 2,
+        "kcal": 420
+      },
+      "explanation": "The quintessential Thai dessert. The warm, salty-sweet coconut rice paired with cold, sweet mango is a perfect combination. Available year-round but truly special in mango season. Some places add a scoop of coconut ice cream.",
+      "culturalTerms": [
+        {
+          "term": "ข้าวเหนียว",
+          "explanation": "Sticky rice (glutinous rice) — the staple carb of Isaan and Lao cuisine, here used as a sweet dessert base."
+        },
+        {
+          "term": "มะม่วง",
+          "explanation": "Mango — the Nam Dok Mai variety is prized for its smooth, fiber-free flesh and honey-like sweetness."
+        }
+      ],
+      "imageSearchQuery": "ข้าวเหนียวมะม่วง",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mango_sticy_rice.jpg/640px-Mango_sticy_rice.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mango_sticy_rice.jpg/640px-Mango_sticy_rice.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "mango sticky rice",
+        "khao niao mamuang",
+        "ข้าวเหนียวมะม่วง"
+      ]
+    },
+    {
+      "id": "cache-thai-13",
+      "nameEnglish": "Satay",
+      "nameLocal": "สะเต๊ะ",
+      "nameLocalCorrected": "สะเต๊ะ",
+      "nameRomanized": "Sate",
+      "description": "Grilled marinated meat skewers served with a rich peanut dipping sauce and a tangy cucumber relish. The meat is marinated in turmeric, coconut milk, and spices, giving it a golden color. A popular street food and appetizer found throughout Thailand.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "peanuts",
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "coconut milk",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "turmeric",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "lemongrass",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "peanut sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cucumber relish",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "A sweet-sour dipping sauce with sliced cucumber, shallots, and chili in vinegar — called 'ajat,' it cuts through the richness of the peanut sauce."
+        },
+        {
+          "name": "coriander root",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "The root of the cilantro plant, with a deeper, earthier flavor than the leaves. A distinctive Thai ingredient not commonly used elsewhere."
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 14,
+        "fat": 16,
+        "fiber": 2,
+        "kcal": 290
+      },
+      "explanation": "Thai satay is usually chicken or pork, grilled over charcoal. Sold in sets of 5–10 skewers. The peanut sauce is richer and spicier than Malaysian/Indonesian versions. A great snack between meals or a shared appetizer.",
+      "culturalTerms": [
+        {
+          "term": "สะเต๊ะ",
+          "explanation": "Satay — grilled skewered meat, adapted from Malay-Indonesian origins and given Thai flavors with local spices and peanut sauce."
+        }
+      ],
+      "imageSearchQuery": "สะเต๊ะ",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Sate_Udang.jpg/640px-Sate_Udang.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Sate_Udang.jpg/640px-Sate_Udang.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "satay",
+        "sate",
+        "สะเต๊ะ"
+      ]
+    },
+    {
+      "id": "cache-thai-14",
+      "nameEnglish": "Panang Curry",
+      "nameLocal": "พะแนง",
+      "nameLocalCorrected": "พะแนง",
+      "nameRomanized": "Phanaeng",
+      "description": "A thick, creamy red curry with a concentrated coconut sauce, ground peanuts, and kaffir lime leaves, typically made with beef. Richer and less soupy than other Thai curries, with a velvety texture. The sauce clings to the meat rather than pooling around it.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "peanuts",
+        "fish sauce",
+        "shellfish (shrimp paste)"
+      ],
+      "ingredients": [
+        {
+          "name": "beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "coconut cream",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "panang curry paste",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Similar to red curry paste but with ground roasted peanuts and extra kaffir lime zest blended in, giving it a nuttier, more aromatic profile."
+        },
+        {
+          "name": "kaffir lime leaves",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ground peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai basil",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 10,
+        "fat": 30,
+        "fiber": 2,
+        "kcal": 420
+      },
+      "explanation": "Panang is distinguished from other Thai curries by its thick, almost dry consistency and nutty flavor from ground peanuts. Traditionally garnished with finely shredded kaffir lime leaves and a drizzle of coconut cream on top. The name may come from Penang, Malaysia.",
+      "culturalTerms": [
+        {
+          "term": "พะแนง",
+          "explanation": "Possibly named after Penang island in Malaysia, reflecting the cross-cultural culinary exchange between Thailand and its southern neighbor."
+        }
+      ],
+      "imageSearchQuery": "พะแนง",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Panang_curry.jpg/640px-Panang_curry.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Panang_curry.jpg/640px-Panang_curry.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "panang curry",
+        "phanaeng",
+        "พะแนง"
+      ]
+    },
+    {
+      "id": "cache-thai-15",
+      "nameEnglish": "Kai Med Ma Muang",
+      "nameLocal": "ไก่เม็ดมะม่วง",
+      "nameLocalCorrected": "ไก่เม็ดมะม่วงหิมพานต์",
+      "nameRomanized": "Kai Met Mamuang Himaphan",
+      "description": "Stir-fried chicken with roasted cashew nuts, dried chilies, onions, and bell peppers in a sweet-savory sauce. A Chinese-Thai fusion dish that's mildly spiced and crowd-pleasing. The cashews add a buttery crunch against the tender chicken pieces.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "tree nuts (cashews)",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "roasted cashews",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "dried chilies",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bell peppers",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "scallions",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "oyster sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 26,
+        "carbs": 16,
+        "fat": 20,
+        "fiber": 2,
+        "kcal": 350
+      },
+      "explanation": "A safe, approachable dish for those new to Thai food — more sweet than spicy. The dried chilies are mainly for aroma and are not meant to be eaten (though you can if you dare). Popular in Thai-Chinese restaurants.",
+      "culturalTerms": [
+        {
+          "term": "เม็ดมะม่วงหิมพานต์",
+          "explanation": "Cashew nut — literally 'Himalayan mango seed,' the Thai name for cashews. Thailand is a major cashew producer."
+        }
+      ],
+      "imageSearchQuery": "ไก่เม็ดมะม่วงหิมพานต์",
+      "imageUrl": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=640&q=80",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=640&q=80"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "kai med ma muang",
+        "cashew chicken",
+        "ไก่เม็ดมะม่วง"
+      ]
+    },
+    {
+      "id": "cache-thai-16",
+      "nameEnglish": "Gaeng Som",
+      "nameLocal": "แกงส้ม",
+      "nameLocalCorrected": "แกงส้ม",
+      "nameRomanized": "Kaeng Som",
+      "description": "A tangy, spicy sour curry without coconut milk, typically made with fish or shrimp and vegetables like morning glory, green papaya, or cabbage. The broth is thin and intensely flavored with tamarind and shrimp paste. A home-style comfort dish popular in central and southern Thailand.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "shellfish (shrimp paste)"
+      ],
+      "ingredients": [
+        {
+          "name": "fish",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tamarind paste",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shrimp paste",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Called 'kapi' — a pungent, salty paste of fermented ground shrimp. Intensely funky raw but mellows into rich umami when cooked."
+        },
+        {
+          "name": "dried chilies",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shallots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "morning glory",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "A semi-aquatic vegetable (pak bung) with hollow stems and tender leaves. Very common in Southeast Asian cooking."
+        },
+        {
+          "name": "green papaya",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 12,
+        "fat": 4,
+        "fiber": 3,
+        "kcal": 155
+      },
+      "explanation": "A lighter, brighter curry for those who find coconut curries too rich. The sourness from tamarind is the star. Southern Thai versions are spicier. Eaten over rice, it's a refreshing everyday meal that locals love but tourists often overlook.",
+      "culturalTerms": [
+        {
+          "term": "ส้ม",
+          "explanation": "Sour — same word as in som tum. The dominant flavor of this curry comes from tamarind."
+        },
+        {
+          "term": "กะปิ",
+          "explanation": "Shrimp paste (kapi) — a fundamental building block of Thai curry pastes, providing deep umami."
+        }
+      ],
+      "imageSearchQuery": "แกงส้ม",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Kaeng_som-marum63.JPG/500px-Kaeng_som-marum63.JPG",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Kaeng_som-marum63.JPG/500px-Kaeng_som-marum63.JPG"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "gaeng som",
+        "kaeng som",
+        "แกงส้ม",
+        "sour curry"
+      ]
+    },
+    {
+      "id": "cache-thai-17",
+      "nameEnglish": "Pad Pak Ruam",
+      "nameLocal": "ผัดผักรวม",
+      "nameLocalCorrected": "ผัดผักรวม",
+      "nameRomanized": "Phat Phak Ruam",
+      "description": "A colorful stir-fry of mixed vegetables — typically broccoli, carrots, baby corn, mushrooms, and cabbage — in a light oyster sauce. The go-to vegetable dish on every Thai restaurant menu. Simple, healthy, and easy to order vegetarian by requesting no oyster sauce.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [
+        "soy",
+        "oyster sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "broccoli",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "carrots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "baby corn",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mushrooms",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "snow peas",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "oyster sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 6,
+        "carbs": 14,
+        "fat": 6,
+        "fiber": 5,
+        "kcal": 130
+      },
+      "explanation": "The safest vegetarian option on most Thai menus (though oyster sauce technically contains shellfish). Ask for 'jay' (เจ) preparation for fully vegan, or 'mai sai nam man hoy' to skip oyster sauce. A good side dish to balance richer, spicier mains.",
+      "culturalTerms": [
+        {
+          "term": "ผักรวม",
+          "explanation": "Mixed vegetables — 'phak' means vegetables, 'ruam' means mixed/combined."
+        },
+        {
+          "term": "เจ",
+          "explanation": "Vegan/vegetarian Buddhist preparation — no meat, no eggs, no alliums (garlic, onion). Look for yellow flags with เจ written in red."
+        }
+      ],
+      "imageSearchQuery": "ผัดผักรวม",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Making_Stir-Fry_%283286445383%29.jpg/500px-Making_Stir-Fry_%283286445383%29.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Making_Stir-Fry_%283286445383%29.jpg/500px-Making_Stir-Fry_%283286445383%29.jpg"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "pad pak ruam",
+        "phat phak ruam",
+        "ผัดผักรวม",
+        "mixed vegetable stir fry"
+      ]
+    },
+    {
+      "id": "cache-thai-18",
+      "nameEnglish": "Khao Soi",
+      "nameLocal": "ข้าวซอย",
+      "nameLocalCorrected": "ข้าวซอย",
+      "nameRomanized": "Khao Soi",
+      "description": "A signature northern Thai curry noodle soup with egg noodles in a rich, mildly spicy coconut curry broth, topped with crispy fried noodles and pickled mustard greens. A specialty of Chiang Mai that beautifully combines Burmese and Thai flavors. The contrast of soft and crispy noodles is addictive.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "eggs",
+        "soy",
+        "fish sauce",
+        "wheat (egg noodles)"
+      ],
+      "ingredients": [
+        {
+          "name": "egg noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "crispy fried noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "chicken leg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "coconut milk",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "khao soi curry paste",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A curry paste unique to northern Thailand, with dried chilies, turmeric, coriander, and sometimes curry powder — showing Burmese and Indian influences."
+        },
+        {
+          "name": "pickled mustard greens",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Tangy fermented mustard greens served on the side. Their sourness cuts through the rich curry broth."
+        },
+        {
+          "name": "shallots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "lime",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 48,
+        "fat": 24,
+        "fiber": 3,
+        "kcal": 520
+      },
+      "explanation": "The must-eat dish if you visit Chiang Mai. Served with shallots, lime, and pickled greens on the side that you add to taste. The crispy noodle topping provides a wonderful textural contrast. Traditionally made with chicken on the bone for more flavor.",
+      "culturalTerms": [
+        {
+          "term": "ข้าวซอย",
+          "explanation": "Literally 'cut rice' — the name refers to the original method of slicing rice dough into noodles. Now uses wheat egg noodles."
+        }
+      ],
+      "imageSearchQuery": "ข้าวซอย",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Khao_Soi_Northern_Thai_food.jpg/640px-Khao_Soi_Northern_Thai_food.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Khao_Soi_Northern_Thai_food.jpg/640px-Khao_Soi_Northern_Thai_food.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "khao soi",
+        "ข้าวซอย"
+      ]
+    },
+    {
+      "id": "cache-thai-19",
+      "nameEnglish": "Tod Mun Pla",
+      "nameLocal": "ทอดมันปลา",
+      "nameLocalCorrected": "ทอดมันปลา",
+      "nameRomanized": "Thot Man Pla",
+      "description": "Spicy Thai fish cakes made from pounded fish paste mixed with red curry paste, kaffir lime leaves, and long beans, then deep-fried until golden and bouncy. Served with a sweet chili cucumber dipping sauce. A beloved appetizer and street snack throughout Thailand.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "shellfish (shrimp paste in curry paste)"
+      ],
+      "ingredients": [
+        {
+          "name": "fish paste",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "White fish pounded to a smooth, springy paste. The pounding process creates a bouncy, almost rubbery texture that's prized in Thai fish cakes."
+        },
+        {
+          "name": "red curry paste",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "long beans",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "kaffir lime leaves",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cucumber relish",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "A sweet-sour dipping sauce (ajat) with sliced cucumber, shallots, and crushed peanuts in vinegar."
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 12,
+        "fat": 14,
+        "fiber": 1,
+        "kcal": 245
+      },
+      "explanation": "Best when freshly fried — look for vendors making them to order. The bouncy texture comes from the pounding technique. The cucumber relish is essential — its sweetness and crunch balance the spicy, savory cakes. Usually sold in sets of 4–5 pieces.",
+      "culturalTerms": [
+        {
+          "term": "ทอดมัน",
+          "explanation": "Fried cake — 'thot' means deep-fried, 'man' refers to the paste/cake. Also used for shrimp cakes (thot man kung)."
+        }
+      ],
+      "imageSearchQuery": "ทอดมันปลา",
+      "imageUrl": "",
+      "imageUrls": [],
+      "imageSource": "",
+      "imageVerified": false,
+      "matchKeys": [
+        "tod mun pla",
+        "thot man pla",
+        "ทอดมันปลา",
+        "thai fish cake"
+      ]
+    },
+    {
+      "id": "cache-thai-20",
+      "nameEnglish": "Pla Rad Prik",
+      "nameLocal": "ปลาราดพริก",
+      "nameLocalCorrected": "ปลาราดพริก",
+      "nameRomanized": "Pla Rat Phrik",
+      "description": "A whole deep-fried fish topped with a sweet, sour, and spicy chili sauce made with garlic, tamarind, and fish sauce. The fish is fried until the skin is shatteringly crispy while the flesh stays moist. A showstopping dish often ordered for sharing at Thai restaurants.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "whole fish (tilapia or sea bass)",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bird's eye chili",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tamarind paste",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cilantro",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 32,
+        "carbs": 14,
+        "fat": 18,
+        "fiber": 1,
+        "kcal": 345
+      },
+      "explanation": "The sauce hits every Thai flavor note: sweet, sour, salty, and spicy. Usually served whole — the crispy skin and cheeks are the best parts. Great for sharing with 2–3 people. Ask for the sauce on the side ('yak sot tang hak') if you want to control the spice.",
+      "culturalTerms": [
+        {
+          "term": "ราด",
+          "explanation": "To pour over — describes the method of ladling the sauce over the fried fish."
+        },
+        {
+          "term": "พริก",
+          "explanation": "Chili — the chili sauce is the defining element of this dish."
+        }
+      ],
+      "imageSearchQuery": "ปลาราดพริก",
+      "imageUrl": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=640&q=80",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=640&q=80"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "pla rad prik",
+        "pla rat phrik",
+        "ปลาราดพริก",
+        "fried fish chili sauce"
+      ]
+    },
+    {
+      "id": "cache-thai-21",
+      "nameEnglish": "Gaeng Keow Wan Gai",
+      "nameLocal": "แกงเขียวหวานไก่",
+      "nameLocalCorrected": "แกงเขียวหวานไก่",
+      "nameRomanized": "Kaeng Khiao Wan Kai",
+      "description": "Green curry specifically with chicken — tender pieces of chicken thigh simmered in a fragrant green curry coconut broth with Thai eggplant, bamboo shoots, and sweet basil. The most common way green curry is served in Thailand, and the version most visitors encounter first.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish sauce",
+        "shellfish (shrimp paste)"
+      ],
+      "ingredients": [
+        {
+          "name": "chicken thigh",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "coconut milk",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green curry paste",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai eggplant",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bamboo shoots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "pea eggplant",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Tiny, pea-sized green eggplants (makheua phuang) that pop in your mouth with a slightly bitter flavor. Optional but traditional."
+        },
+        {
+          "name": "Thai basil",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "kaffir lime leaves",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "palm sugar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 26,
+        "carbs": 12,
+        "fat": 28,
+        "fiber": 3,
+        "kcal": 400
+      },
+      "explanation": "This is the specific chicken variant of green curry (dish #2 is the general version). Chicken thigh is preferred over breast for its tenderness in the long simmer. The pea eggplants add a pop of texture and slight bitterness that balances the sweet coconut.",
+      "culturalTerms": [
+        {
+          "term": "ไก่",
+          "explanation": "Chicken — the most popular protein choice for green curry."
+        },
+        {
+          "term": "มะเขือพวง",
+          "explanation": "Pea eggplant — tiny round eggplants that add texture and mild bitterness to curries."
+        }
+      ],
+      "imageSearchQuery": "แกงเขียวหวานไก่",
+      "imageUrl": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=640&q=80",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=640&q=80"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "gaeng keow wan gai",
+        "green curry chicken",
+        "แกงเขียวหวานไก่"
+      ]
+    },
+    {
+      "id": "cache-thai-22",
+      "nameEnglish": "Yam Woon Sen",
+      "nameLocal": "ยำวุ้นเส้น",
+      "nameLocalCorrected": "ยำวุ้นเส้น",
+      "nameRomanized": "Yam Wunsen",
+      "description": "A tangy Thai glass noodle salad tossed with minced pork, shrimp, celery, onions, tomatoes, and a bold lime-chili-fish sauce dressing. Served at room temperature with a refreshing, zingy kick. A popular appetizer that showcases the Thai balance of sour, spicy, and salty.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "glass noodles",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Clear, slippery noodles made from mung bean starch. They become translucent when cooked and absorb the dressing beautifully."
+        },
+        {
+          "name": "minced pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shrimp",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "celery",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tomato",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bird's eye chili",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "lime juice",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cilantro",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 28,
+        "fat": 6,
+        "fiber": 2,
+        "kcal": 240
+      },
+      "explanation": "A 'yam' is a Thai spicy salad — not to be confused with the sweet potato. This one features glass noodles that soak up the intense dressing. Usually quite spicy and sour. The combination of pork and shrimp gives it layers of umami.",
+      "culturalTerms": [
+        {
+          "term": "ยำ",
+          "explanation": "Thai spicy salad — a category of dishes dressed with lime, chili, and fish sauce. Not a leafy salad but a tossed, dressed mixture."
+        },
+        {
+          "term": "วุ้นเส้น",
+          "explanation": "Glass noodles (cellophane noodles) — made from mung bean starch, they're gluten-free and nearly flavorless, acting as a vehicle for the dressing."
+        }
+      ],
+      "imageSearchQuery": "ยำวุ้นเส้น",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Yam_wunsen.jpg/640px-Yam_wunsen.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Yam_wunsen.jpg/640px-Yam_wunsen.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "yam woon sen",
+        "yam wunsen",
+        "ยำวุ้นเส้น",
+        "glass noodle salad"
+      ]
+    },
+    {
+      "id": "cache-thai-23",
+      "nameEnglish": "Pad Woon Sen",
+      "nameLocal": "ผัดวุ้นเส้น",
+      "nameLocalCorrected": "ผัดวุ้นเส้น",
+      "nameRomanized": "Phat Wunsen",
+      "description": "Stir-fried glass noodles with egg, vegetables, and your choice of protein in a light soy-based sauce. A mild, comforting noodle dish that's less bold than other Thai noodles. The slippery glass noodles pick up the savory sauce while staying pleasantly chewy.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "eggs",
+        "soy",
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "glass noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "carrots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tomato",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "oyster sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "white pepper",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 36,
+        "fat": 10,
+        "fiber": 2,
+        "kcal": 310
+      },
+      "explanation": "A gentler alternative to Pad Thai or Pad See Ew — less sweet, less tangy, just savory and satisfying. Popular with Thai families as a quick home meal. Glass noodles are naturally gluten-free (made from mung bean starch).",
+      "culturalTerms": [
+        {
+          "term": "ผัด",
+          "explanation": "Stir-fried — quick wok cooking."
+        },
+        {
+          "term": "วุ้นเส้น",
+          "explanation": "Glass noodles — transparent mung bean noodles."
+        }
+      ],
+      "imageSearchQuery": "ผัดวุ้นเส้น",
+      "imageUrl": "https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=640&q=80",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=640&q=80"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "pad woon sen",
+        "phat wunsen",
+        "ผัดวุ้นเส้น",
+        "stir fried glass noodles"
+      ]
+    },
+    {
+      "id": "cache-thai-24",
+      "nameEnglish": "Kai Jeow",
+      "nameLocal": "ไข่เจียว",
+      "nameLocalCorrected": "ไข่เจียว",
+      "nameRomanized": "Khai Chiao",
+      "description": "A Thai-style crispy omelet deep-fried in oil until puffy and golden brown, served over steamed rice with chili sauce. Far from a Western omelet — it's cooked in generous oil so the edges become lacy and shatteringly crisp. Thailand's ultimate comfort food and late-night snack.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "eggs",
+        "fish sauce"
+      ],
+      "ingredients": [
+        {
+          "name": "eggs",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "vegetable oil",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "white pepper",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "jasmine rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sriracha sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 16,
+        "carbs": 42,
+        "fat": 22,
+        "fiber": 1,
+        "kcal": 420
+      },
+      "explanation": "The cheapest dish at any Thai restaurant — often under 40 baht ($1). Don't let the simplicity fool you; when done right with crispy edges and a fluffy center, it's deeply satisfying. Can be upgraded with minced pork (moo sap), crab meat, or topped with holy basil stir-fry.",
+      "culturalTerms": [
+        {
+          "term": "ไข่เจียว",
+          "explanation": "Thai omelet — 'khai' means egg, 'chiao' means fried in oil. Distinctly different from Western omelets due to the generous amount of oil used."
+        }
+      ],
+      "imageSearchQuery": "ไข่เจียว",
+      "imageUrl": "",
+      "imageUrls": [],
+      "imageSource": "",
+      "imageVerified": false,
+      "matchKeys": [
+        "kai jeow",
+        "khai chiao",
+        "ไข่เจียว",
+        "thai omelet"
+      ]
+    },
+    {
+      "id": "cache-thai-25",
+      "nameEnglish": "Boat Noodles",
+      "nameLocal": "ก๋วยเตี๋ยวเรือ",
+      "nameLocalCorrected": "ก๋วยเตี๋ยวเรือ",
+      "nameRomanized": "Kuai Tiao Ruea",
+      "description": "A dark, intensely flavored noodle soup originally sold from boats along Bangkok's canals. The rich broth is made with pork or beef blood, star anise, cinnamon, and herbs, giving it a deep brown color and complex flavor. Traditionally served in small bowls, meant to be ordered in multiples.",
+      "country": "Thailand",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish sauce",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "pork blood",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Cubes of coagulated pork blood that add a rich, iron-y depth and velvety texture to the broth. Can be omitted on request."
+        },
+        {
+          "name": "dark broth",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A slow-simmered broth darkened with soy sauce, five-spice, star anise, and cinnamon. Intensely savory and aromatic."
+        },
+        {
+          "name": "morning glory",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "pork crackling",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fried garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "star anise",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cinnamon",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 32,
+        "fat": 12,
+        "fiber": 2,
+        "kcal": 310
+      },
+      "explanation": "A Bangkok specialty originally served from floating boats. The small portions (about 1/3 of a normal bowl) are intentional — locals order 3–5 bowls. The best spots are at Victory Monument or the boat noodle alley in Rangsit. Ask for 'mai sai leuat' if you want no blood.",
+      "culturalTerms": [
+        {
+          "term": "ก๋วยเตี๋ยว",
+          "explanation": "Noodle soup — the general Thai term for rice noodle soups, borrowed from Teochew Chinese (kway teow)."
+        },
+        {
+          "term": "เรือ",
+          "explanation": "Boat — referring to the canal boats where this dish was originally sold, vendors paddling through Bangkok's waterways."
+        }
+      ],
+      "imageSearchQuery": "ก๋วยเตี๋ยวเรือ",
+      "imageUrl": "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?w=640&q=80",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?w=640&q=80"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "boat noodles",
+        "kuai tiao ruea",
+        "ก๋วยเตี๋ยวเรือ"
+      ]
+    }
+  ]
+}

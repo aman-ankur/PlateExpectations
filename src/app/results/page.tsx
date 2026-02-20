@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import { rankDishes } from '@/lib/ranking'
 import { convertPrice } from '@/lib/currency'
+import { matchFromCache } from '@/lib/cuisine-cache'
 import OrderFab from '@/components/OrderFab'
 import { Dish, ScanEvent } from '@/lib/types'
 
@@ -213,6 +214,17 @@ export default function ResultsPage() {
                   break
                 case 'phase1':
                   setSkeletonDishes(event.dishes)
+                  // Check offline cache for instant enrichment
+                  matchFromCache(event.dishes).then(({ hits, hitImages }) => {
+                    if (hits.length > 0) {
+                      appendEnrichedDishes(hits)
+                      // Set cached images directly (no API call needed)
+                      const store = useStore.getState()
+                      for (const [dishId, urls] of Object.entries(hitImages)) {
+                        store.setDishImages(dishId, urls)
+                      }
+                    }
+                  }).catch(() => {})
                   break
                 case 'batch':
                   appendEnrichedDishes(event.dishes)

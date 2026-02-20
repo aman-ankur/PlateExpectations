@@ -38,6 +38,7 @@ src/lib/
   types.ts                  — Dish, RawDish, ScanEvent, Ingredient, CulturalTerm, Preferences
   ranking.ts                — Preference-based dish ranking (top 5 labels, menu order preserved)
   currency.ts               — Price conversion with live or approximate exchange rates
+  cuisine-cache.ts          — Offline cuisine cache: IndexedDB + CDN fetch + fuzzy matching
   compress.ts               — Client-side image compression (max 1200px, 0.7 quality)
   constants.ts              — Design tokens, dietary options
   useLongPress.ts           — Long-press hook with scroll discrimination
@@ -45,6 +46,8 @@ src/fixtures/
   demo-scan.json            — 15 Korean dishes with full enrichment data
   demo-images.json          — Dish images (string or string[] per dish) + _generated list
 public/demo-images/         — 9 DALL-E generated JPEGs for AI demo dishes (500px, ~80KB each)
+public/cache/               — Pre-generated cuisine JSON (5 cuisines × 25 dishes) + _manifest.json
+scripts/cache-gen/          — Cache generation scripts (image search, patching, verification)
 docs/
   backlog.md                — Prioritized improvement items
   speed-and-images-plan.md  — Benchmarks and architecture decisions

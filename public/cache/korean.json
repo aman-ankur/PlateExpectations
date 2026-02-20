@@ -1,0 +1,2321 @@
+{
+  "version": 1,
+  "cuisine": "Korean",
+  "country": "South Korea",
+  "generatedAt": "2026-02-20",
+  "dishes": [
+    {
+      "id": "cache-korean-1",
+      "nameEnglish": "Bibimbap",
+      "nameLocal": "비빔밥",
+      "nameLocalCorrected": "비빔밥",
+      "nameRomanized": "Bibimbap",
+      "description": "A colorful rice bowl topped with sauteed vegetables, gochujang chili paste, and often a fried egg or sliced beef. Bibimbap means 'mixed rice' and is one of Korea's most iconic comfort foods. The dolsot (stone pot) version arrives sizzling, creating a crispy rice crust on the bottom.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "sesame",
+        "soy",
+        "egg",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "steamed rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gochujang",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Fermented red chili paste, sweet-spicy and umami-rich, the backbone of Korean cooking"
+        },
+        {
+          "name": "spinach",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "carrot",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "zucchini",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fried egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gim",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Dried roasted seaweed sheets, adds a savory ocean flavor"
+        }
+      ],
+      "nutrition": {
+        "protein": 25,
+        "carbs": 75,
+        "fat": 15,
+        "fiber": 5,
+        "kcal": 550
+      },
+      "explanation": "A hearty mixed rice bowl with vegetables, meat, and chili paste. Mix everything together before eating for the best flavor.",
+      "culturalTerms": [
+        {
+          "term": "비비다 (bibida)",
+          "explanation": "To mix or stir — you must thoroughly mix all the toppings with the rice and sauce"
+        },
+        {
+          "term": "돌솥 (dolsot)",
+          "explanation": "A hot stone pot that keeps cooking the rice, creating a prized crispy bottom layer called nurungji"
+        },
+        {
+          "term": "고추장 (gochujang)",
+          "explanation": "Fermented red chili paste made from chili, glutinous rice, and soybeans — sweet, spicy, and deeply savory"
+        }
+      ],
+      "imageSearchQuery": "비빔밥",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/500px-Dolsot-bibimbap.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/500px-Dolsot-bibimbap.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "bibimbap",
+        "비빔밥",
+        "bibimbap"
+      ]
+    },
+    {
+      "id": "cache-korean-2",
+      "nameEnglish": "Kimchi Jjigae",
+      "nameLocal": "김치찌개",
+      "nameLocalCorrected": "김치찌개",
+      "nameRomanized": "Kimchi Jjigae",
+      "description": "A bubbling stew made with fermented kimchi, pork belly, and tofu, served in a stone pot. This is Korean soul food — the older and more sour the kimchi, the richer the stew. Every Korean household has their own recipe passed down through generations.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "shellfish",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "aged kimchi",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Fermented napa cabbage with chili, garlic, and fish sauce — tangy, spicy, and deeply umami"
+        },
+        {
+          "name": "pork belly",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gochugaru",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Korean red chili flakes, smoky and moderately spicy"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "doenjang",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Korean fermented soybean paste, similar to miso but stronger and earthier"
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 12,
+        "fat": 18,
+        "fiber": 4,
+        "kcal": 300
+      },
+      "explanation": "A spicy, tangy kimchi stew with pork and tofu. Comes boiling hot — eat with rice to balance the heat.",
+      "culturalTerms": [
+        {
+          "term": "찌개 (jjigae)",
+          "explanation": "A thick Korean stew, heartier than soup (guk), always served bubbling in a shared pot"
+        },
+        {
+          "term": "묵은지 (mugeun-ji)",
+          "explanation": "Over-ripened kimchi aged for months — prized for its intense sour depth in stews"
+        },
+        {
+          "term": "밥도둑 (bap-doduk)",
+          "explanation": "Literally 'rice thief' — a side dish so delicious it makes you eat more rice than intended"
+        }
+      ],
+      "imageSearchQuery": "김치찌개",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Kimchi-jjigae-01.jpg/500px-Kimchi-jjigae-01.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Kimchi-jjigae-01.jpg/500px-Kimchi-jjigae-01.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "kimchi jjigae",
+        "김치찌개",
+        "kimchi jjigae"
+      ]
+    },
+    {
+      "id": "cache-korean-3",
+      "nameEnglish": "Bulgogi",
+      "nameLocal": "불고기",
+      "nameLocalCorrected": "불고기",
+      "nameRomanized": "Bulgogi",
+      "description": "Thinly sliced beef marinated in a sweet soy-pear sauce, then grilled or pan-fried. Bulgogi means 'fire meat' and has been a Korean favorite for centuries. The pear in the marinade tenderizes the meat and adds subtle sweetness.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "beef sirloin",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Asian pear",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "A crisp, juicy pear used in marinades to tenderize meat naturally with its enzymes"
+        },
+        {
+          "name": "sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sesame seeds",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 30,
+        "carbs": 15,
+        "fat": 14,
+        "fiber": 1,
+        "kcal": 310
+      },
+      "explanation": "Sweet and savory marinated beef, grilled at your table or served pre-cooked. Wrap in lettuce leaves with garlic and ssamjang for the full experience.",
+      "culturalTerms": [
+        {
+          "term": "불 (bul)",
+          "explanation": "Fire — refers to the grilling method"
+        },
+        {
+          "term": "쌈 (ssam)",
+          "explanation": "The practice of wrapping grilled meat in lettuce or perilla leaves with condiments"
+        },
+        {
+          "term": "쌈장 (ssamjang)",
+          "explanation": "A thick, savory dipping paste made from doenjang and gochujang, the perfect companion for grilled meats"
+        }
+      ],
+      "imageSearchQuery": "불고기",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/500px-Bulgogi_2.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/500px-Bulgogi_2.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "bulgogi",
+        "불고기",
+        "bulgogi"
+      ]
+    },
+    {
+      "id": "cache-korean-4",
+      "nameEnglish": "Japchae",
+      "nameLocal": "잡채",
+      "nameLocalCorrected": "잡채",
+      "nameRomanized": "Japchae",
+      "description": "Glass noodles made from sweet potato starch, stir-fried with colorful vegetables, beef, and a sweet soy-sesame sauce. Originally a royal court dish, japchae is now a celebration staple served at birthdays, weddings, and holidays across Korea.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "dangmyeon",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Chewy, translucent glass noodles made from sweet potato starch — glassy and springy in texture"
+        },
+        {
+          "name": "beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "spinach",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "carrot",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shiitake mushroom",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "bell pepper",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 12,
+        "carbs": 55,
+        "fat": 10,
+        "fiber": 3,
+        "kcal": 360
+      },
+      "explanation": "Sweet and savory glass noodles with vegetables and beef. A festive dish that's mildly flavored and loved by all ages.",
+      "culturalTerms": [
+        {
+          "term": "당면 (dangmyeon)",
+          "explanation": "Sweet potato glass noodles — chewy and translucent, they absorb the sauce beautifully"
+        },
+        {
+          "term": "잔치 (janchi)",
+          "explanation": "A feast or celebration — japchae is the signature dish at Korean celebrations"
+        },
+        {
+          "term": "궁중 (gungjung)",
+          "explanation": "Royal court cuisine — japchae originated as a dish for Korean kings"
+        }
+      ],
+      "imageSearchQuery": "잡채",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg/500px-Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg/500px-Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "japchae",
+        "잡채",
+        "japchae"
+      ]
+    },
+    {
+      "id": "cache-korean-5",
+      "nameEnglish": "Tteokbokki",
+      "nameLocal": "떡볶이",
+      "nameLocalCorrected": "떡볶이",
+      "nameRomanized": "Tteokbokki",
+      "description": "Chewy cylinder-shaped rice cakes simmered in a fiery-sweet gochujang sauce, often with fish cakes and boiled eggs. This iconic street food is found at every Korean market and pojangmacha (street stall). The chewy texture and addictive sauce make it Korea's most popular snack.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "fish",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "garaetteok",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Cylinder-shaped rice cakes with a dense, chewy texture — the star of this dish"
+        },
+        {
+          "name": "gochujang",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Fermented red chili paste — sweet, spicy, and umami-rich"
+        },
+        {
+          "name": "eomuk",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Korean fish cake made from pureed fish, served in flat sheets or on skewers"
+        },
+        {
+          "name": "boiled egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gochugaru",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Korean red chili flakes with a smoky heat"
+        }
+      ],
+      "nutrition": {
+        "protein": 10,
+        "carbs": 65,
+        "fat": 5,
+        "fiber": 2,
+        "kcal": 350
+      },
+      "explanation": "Spicy-sweet chewy rice cakes in red chili sauce. A beloved Korean street food snack — expect moderate to high spice.",
+      "culturalTerms": [
+        {
+          "term": "떡 (tteok)",
+          "explanation": "Korean rice cake — comes in many shapes and is central to Korean cuisine and celebrations"
+        },
+        {
+          "term": "포장마차 (pojangmacha)",
+          "explanation": "A Korean street food tent/stall, often orange-tented, serving tteokbokki, sundae, and eomuk"
+        },
+        {
+          "term": "분식 (bunsik)",
+          "explanation": "Casual Korean flour-based snack foods — tteokbokki is the king of bunsik"
+        }
+      ],
+      "imageSearchQuery": "떡볶이",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.jpg/500px-Tteokbokki.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.jpg/500px-Tteokbokki.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "tteokbokki",
+        "떡볶이",
+        "tteokbokki"
+      ]
+    },
+    {
+      "id": "cache-korean-6",
+      "nameEnglish": "Samgyeopsal",
+      "nameLocal": "삼겹살",
+      "nameLocalCorrected": "삼겹살",
+      "nameRomanized": "Samgyeopsal",
+      "description": "Thick slices of unseasoned pork belly grilled at your table, wrapped in lettuce with garlic, green chili, and ssamjang. Samgyeopsal means 'three-layer meat' referring to the alternating layers of fat and lean. This is Korea's favorite social dining experience, always enjoyed with soju.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "name": "pork belly",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "lettuce leaves",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "perilla leaves",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Aromatic herb leaves (kkaennip) with a minty-basil flavor, used to wrap grilled meats"
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green chili",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ssamjang",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A thick dipping paste blending doenjang and gochujang — savory, slightly sweet, slightly spicy"
+        },
+        {
+          "name": "sesame oil with salt",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 2,
+        "fat": 38,
+        "fiber": 1,
+        "kcal": 470
+      },
+      "explanation": "Grilled pork belly you cook yourself at the table. Wrap slices in lettuce with garlic and dipping sauce. A social, interactive meal.",
+      "culturalTerms": [
+        {
+          "term": "삼겹 (samgyeop)",
+          "explanation": "Three layers — the prized alternating bands of fat and meat in pork belly"
+        },
+        {
+          "term": "쌈 (ssam)",
+          "explanation": "Wrapping meat in leaves — an essential Korean dining practice for grilled meats"
+        },
+        {
+          "term": "소주 (soju)",
+          "explanation": "Korea's iconic clear spirit, the traditional pairing with samgyeopsal"
+        }
+      ],
+      "imageSearchQuery": "삼겹살",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Samgyeopsal-gui.jpg/500px-Samgyeopsal-gui.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Samgyeopsal-gui.jpg/500px-Samgyeopsal-gui.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "samgyeopsal",
+        "삼겹살",
+        "samgyeopsal"
+      ]
+    },
+    {
+      "id": "cache-korean-7",
+      "nameEnglish": "Sundubu Jjigae",
+      "nameLocal": "순두부찌개",
+      "nameLocalCorrected": "순두부찌개",
+      "nameRomanized": "Sundubu Jjigae",
+      "description": "A fiery stew built around silky uncurdled tofu, with vegetables, sometimes seafood or pork, and a raw egg cracked in at the table. The tofu is incredibly soft — almost custard-like — and the broth is deeply spicy. A popular comfort meal especially on cold days.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "shellfish",
+        "egg"
+      ],
+      "ingredients": [
+        {
+          "name": "sundubu",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Extra-soft uncurdled tofu with a silky, custard-like texture — much softer than regular tofu"
+        },
+        {
+          "name": "gochugaru",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Korean red chili flakes that give the stew its fiery red color"
+        },
+        {
+          "name": "clams",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "zucchini",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 10,
+        "fat": 12,
+        "fiber": 2,
+        "kcal": 230
+      },
+      "explanation": "A spicy soft tofu stew, often with seafood. Crack the raw egg into the boiling pot at the table and stir it in. Served with rice.",
+      "culturalTerms": [
+        {
+          "term": "순두부 (sundubu)",
+          "explanation": "Pure, uncurdled soft tofu — much silkier than the firm tofu found in Western stores"
+        },
+        {
+          "term": "뚝배기 (ttukbaegi)",
+          "explanation": "An earthenware pot that retains heat, keeping the stew bubbling at your table"
+        },
+        {
+          "term": "찌개 (jjigae)",
+          "explanation": "A thick, hearty Korean stew meant to be shared and eaten with rice"
+        }
+      ],
+      "imageSearchQuery": "순두부찌개",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Sundubu-jjigae.jpg/500px-Sundubu-jjigae.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Sundubu-jjigae.jpg/500px-Sundubu-jjigae.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "sundubu jjigae",
+        "순두부찌개",
+        "sundubu jjigae"
+      ]
+    },
+    {
+      "id": "cache-korean-8",
+      "nameEnglish": "Haemul Pajeon",
+      "nameLocal": "해물파전",
+      "nameLocalCorrected": "해물파전",
+      "nameRomanized": "Haemul Pajeon",
+      "description": "A crispy seafood pancake loaded with green onions, shrimp, squid, and clams, pan-fried until golden. This savory pancake is traditionally eaten on rainy days with makgeolli rice wine. The exterior is crispy while the inside stays soft and loaded with seafood.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "shellfish",
+        "egg",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "squid",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shrimp",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "clams",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "wheat flour",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy dipping sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 35,
+        "fat": 14,
+        "fiber": 2,
+        "kcal": 340
+      },
+      "explanation": "A crispy seafood and green onion pancake. Cut into wedges and dip in soy-vinegar sauce. Traditionally paired with rice wine on rainy days.",
+      "culturalTerms": [
+        {
+          "term": "파전 (pajeon)",
+          "explanation": "Green onion pancake — 'pa' means green onion, 'jeon' means pan-fried batter dish"
+        },
+        {
+          "term": "막걸리 (makgeolli)",
+          "explanation": "Milky, slightly sweet rice wine — the classic pairing with pajeon"
+        },
+        {
+          "term": "비 오는 날 (bi oneun nal)",
+          "explanation": "Rainy day — Koreans crave pajeon and makgeolli when it rains, a beloved cultural tradition"
+        }
+      ],
+      "imageSearchQuery": "해물파전",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Haemul-pajeon.jpg/500px-Haemul-pajeon.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Haemul-pajeon.jpg/500px-Haemul-pajeon.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "haemul pajeon",
+        "해물파전",
+        "haemul pajeon"
+      ]
+    },
+    {
+      "id": "cache-korean-9",
+      "nameEnglish": "Dakgalbi",
+      "nameLocal": "닭갈비",
+      "nameLocalCorrected": "닭갈비",
+      "nameRomanized": "Dakgalbi",
+      "description": "Spicy stir-fried chicken with cabbage, sweet potato, rice cakes, and gochujang sauce, cooked on a large flat pan at your table. Originating from Chuncheon city, it is a popular group meal. Many diners add fried rice to the leftover sauce at the end.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gochujang",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Fermented red chili paste — provides the spicy-sweet base sauce"
+        },
+        {
+          "name": "cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sweet potato",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tteok",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Chewy Korean rice cakes that soak up the spicy sauce"
+        },
+        {
+          "name": "perilla leaves",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Aromatic herb with a minty-basil flavor"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mozzarella",
+          "category": "dairy",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 32,
+        "carbs": 40,
+        "fat": 16,
+        "fiber": 4,
+        "kcal": 430
+      },
+      "explanation": "Spicy chicken stir-fry cooked at your table with vegetables and rice cakes. Often topped with melted cheese. Ask for bokkeumbap (fried rice) with leftover sauce.",
+      "culturalTerms": [
+        {
+          "term": "닭 (dak)",
+          "explanation": "Chicken — dakgalbi literally means 'chicken ribs' though it uses thigh and breast meat"
+        },
+        {
+          "term": "춘천 (Chuncheon)",
+          "explanation": "The city in Gangwon province famous as the birthplace of dakgalbi"
+        },
+        {
+          "term": "볶음밥 (bokkeumbap)",
+          "explanation": "Fried rice — commonly ordered to be stir-fried in the remaining dakgalbi sauce"
+        }
+      ],
+      "imageSearchQuery": "닭갈비",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Dakgalbi.jpg/500px-Dakgalbi.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Dakgalbi.jpg/500px-Dakgalbi.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "dakgalbi",
+        "닭갈비",
+        "dakgalbi"
+      ]
+    },
+    {
+      "id": "cache-korean-10",
+      "nameEnglish": "Kalguksu",
+      "nameLocal": "칼국수",
+      "nameLocalCorrected": "칼국수",
+      "nameRomanized": "Kalguksu",
+      "description": "Hand-cut wheat noodles in a milky, savory broth often made from anchovies, clams, or chicken. 'Kal' means knife, referring to how the dough is sliced by hand. The noodles are thick, chewy, and satisfyingly rustic — a comforting bowl popular year-round.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "shellfish",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "wheat flour noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "anchovy broth",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A savory stock made by simmering dried anchovies and kelp — the base of many Korean soups"
+        },
+        {
+          "name": "clams",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "zucchini",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "potato",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 15,
+        "carbs": 55,
+        "fat": 5,
+        "fiber": 3,
+        "kcal": 330
+      },
+      "explanation": "Hand-cut noodles in a clear, savory broth. A simple, comforting dish with chewy noodles. Not spicy.",
+      "culturalTerms": [
+        {
+          "term": "칼 (kal)",
+          "explanation": "Knife — the noodles are hand-cut with a knife, giving them their characteristic thick, uneven shape"
+        },
+        {
+          "term": "국수 (guksu)",
+          "explanation": "Noodles — guksu is also served at weddings as a symbol of longevity"
+        },
+        {
+          "term": "멸치 (myeolchi)",
+          "explanation": "Dried anchovies — the secret behind many Korean soup broths"
+        }
+      ],
+      "imageSearchQuery": "칼국수",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Haemul-kal-guksu.jpg/500px-Haemul-kal-guksu.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Haemul-kal-guksu.jpg/500px-Haemul-kal-guksu.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "kalguksu",
+        "칼국수",
+        "kalguksu"
+      ]
+    },
+    {
+      "id": "cache-korean-11",
+      "nameEnglish": "Jajangmyeon",
+      "nameLocal": "짜장면",
+      "nameLocalCorrected": "짜장면",
+      "nameRomanized": "Jajangmyeon",
+      "description": "Thick wheat noodles smothered in a glossy black bean sauce with diced pork and vegetables. A Korean-Chinese fusion dish, jajangmyeon is the go-to delivery food and the traditional meal eaten on Black Day (April 14) by single people in Korea.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "wheat noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "chunjang",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Korean black bean paste made from fermented soybeans and caramel — savory, slightly sweet, and deeply dark"
+        },
+        {
+          "name": "pork belly",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "zucchini",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "potato",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 70,
+        "fat": 12,
+        "fiber": 3,
+        "kcal": 460
+      },
+      "explanation": "Noodles in a rich black bean sauce with pork and vegetables. Not spicy at all — savory and comforting. Korea's most popular delivery food.",
+      "culturalTerms": [
+        {
+          "term": "춘장 (chunjang)",
+          "explanation": "Korean black bean paste — the soul of this dish, made from caramelized fermented soybeans"
+        },
+        {
+          "term": "블랙데이 (Black Day)",
+          "explanation": "April 14 — single Koreans who didn't receive gifts on Valentine's Day eat jajangmyeon together"
+        },
+        {
+          "term": "배달 (baedal)",
+          "explanation": "Delivery — jajangmyeon is synonymous with Korean food delivery culture"
+        }
+      ],
+      "imageSearchQuery": "짜장면",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Jajangmyeon_by_stu_spivack.jpg/500px-Jajangmyeon_by_stu_spivack.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Jajangmyeon_by_stu_spivack.jpg/500px-Jajangmyeon_by_stu_spivack.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "jajangmyeon",
+        "짜장면",
+        "jajangmyeon"
+      ]
+    },
+    {
+      "id": "cache-korean-12",
+      "nameEnglish": "Galbitang",
+      "nameLocal": "갈비탕",
+      "nameLocalCorrected": "갈비탕",
+      "nameRomanized": "Galbitang",
+      "description": "A clear, nourishing soup made by slowly simmering beef short ribs until the meat falls off the bone. The broth is clean, beefy, and deeply satisfying. Often served with glass noodles, radish, and egg garnish. A restorative meal perfect after a night out.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "egg",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "name": "beef short ribs",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Korean radish",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Mu — a large, mild white radish that sweetens soups as it cooks"
+        },
+        {
+          "name": "glass noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 15,
+        "fat": 16,
+        "fiber": 1,
+        "kcal": 320
+      },
+      "explanation": "A rich beef short rib soup with tender meat falling off the bone. Clear, non-spicy broth. Great hangover cure.",
+      "culturalTerms": [
+        {
+          "term": "갈비 (galbi)",
+          "explanation": "Short ribs — one of the most prized cuts in Korean cuisine"
+        },
+        {
+          "term": "탕 (tang)",
+          "explanation": "A hot soup, typically served in a large individual bowl — heartier than guk (everyday soup)"
+        },
+        {
+          "term": "해장 (haejang)",
+          "explanation": "Hangover cure — rich bone-broth soups like galbitang are the Korean remedy for a night of soju"
+        }
+      ],
+      "imageSearchQuery": "갈비탕",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Galbitang.jpg/500px-Galbitang.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Galbitang.jpg/500px-Galbitang.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "galbitang",
+        "갈비탕",
+        "galbitang"
+      ]
+    },
+    {
+      "id": "cache-korean-13",
+      "nameEnglish": "Bossam",
+      "nameLocal": "보쌈",
+      "nameLocalCorrected": "보쌈",
+      "nameRomanized": "Bossam",
+      "description": "Tender slices of boiled pork belly served with fresh napa cabbage or lettuce wraps, accompanied by fermented radish, raw garlic, and saeujeot (salted shrimp). The pork is simmered with aromatics until meltingly tender, then sliced thin for wrapping.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "pork belly",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "napa cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "saeujeot",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Salted fermented baby shrimp paste — intensely salty and umami, a key Korean condiment"
+        },
+        {
+          "name": "kimchi",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ssam vegetables",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 30,
+        "carbs": 5,
+        "fat": 28,
+        "fiber": 2,
+        "kcal": 400
+      },
+      "explanation": "Boiled pork belly slices wrapped in cabbage leaves with kimchi and salted shrimp. Rich but balanced by the fresh crunchy wraps.",
+      "culturalTerms": [
+        {
+          "term": "보 (bo)",
+          "explanation": "To wrap — bossam literally means 'wrapped' in a bundle"
+        },
+        {
+          "term": "새우젓 (saeujeot)",
+          "explanation": "Fermented salted shrimp — the traditional dipping condiment that gives bossam its signature salty kick"
+        },
+        {
+          "term": "족발 (jokbal)",
+          "explanation": "Braised pig's feet — often served alongside bossam at the same restaurants"
+        }
+      ],
+      "imageSearchQuery": "보쌈",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/BOSSAM.jpg/500px-BOSSAM.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/BOSSAM.jpg/500px-BOSSAM.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "bossam",
+        "보쌈",
+        "bossam"
+      ]
+    },
+    {
+      "id": "cache-korean-14",
+      "nameEnglish": "Sundae",
+      "nameLocal": "순대",
+      "nameLocalCorrected": "순대",
+      "nameRomanized": "Sundae",
+      "description": "Korean blood sausage made by stuffing pig intestines with glass noodles, rice, pork blood, and vegetables, then steaming. Despite the unusual description, sundae has a mild, savory taste and chewy texture. A classic street food often served with salt or tteokbokki sauce.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "pig intestine casing",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Natural sausage casing — cleaned and used as the outer shell"
+        },
+        {
+          "name": "pork blood",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Coagulated pig blood that gives the sausage its dark color and iron-rich flavor"
+        },
+        {
+          "name": "glass noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "glutinous rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "barley",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "perilla leaves",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Aromatic Korean herb with a mint-basil flavor"
+        }
+      ],
+      "nutrition": {
+        "protein": 16,
+        "carbs": 30,
+        "fat": 12,
+        "fiber": 1,
+        "kcal": 290
+      },
+      "explanation": "Korean blood sausage — milder than it sounds. Sliced and served with salt or spicy sauce. A popular street food snack.",
+      "culturalTerms": [
+        {
+          "term": "순대 (sundae)",
+          "explanation": "Not related to ice cream sundae — this is Korean blood sausage with a long culinary history"
+        },
+        {
+          "term": "순대국 (sundaeguk)",
+          "explanation": "A hearty soup made with sundae, offal, and pork broth — a working-class comfort food"
+        },
+        {
+          "term": "소금 (sogeum)",
+          "explanation": "Salt — the traditional and simplest dipping method for sundae"
+        }
+      ],
+      "imageSearchQuery": "순대",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Korean.food-Sundae-01.jpg/500px-Korean.food-Sundae-01.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Korean.food-Sundae-01.jpg/500px-Korean.food-Sundae-01.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "sundae",
+        "순대",
+        "sundae"
+      ]
+    },
+    {
+      "id": "cache-korean-15",
+      "nameEnglish": "Hotteok",
+      "nameLocal": "호떡",
+      "nameLocalCorrected": "호떡",
+      "nameRomanized": "Hotteok",
+      "description": "A sweet Korean street pancake filled with brown sugar, cinnamon, and crushed nuts, pressed flat on a griddle until golden and crispy outside with a gooey molten center. Best eaten in winter from a street vendor's cart. Be careful — the filling is extremely hot.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [
+        "gluten",
+        "nuts"
+      ],
+      "ingredients": [
+        {
+          "name": "wheat flour dough",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "brown sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cinnamon",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "crushed peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sunflower seeds",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "yeast",
+          "category": "other",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 5,
+        "carbs": 50,
+        "fat": 10,
+        "fiber": 1,
+        "kcal": 310
+      },
+      "explanation": "A sweet filled pancake with molten brown sugar inside. Crispy outside, gooey inside. Korea's favorite winter street snack.",
+      "culturalTerms": [
+        {
+          "term": "호 (ho)",
+          "explanation": "Derived from 'Hoju' meaning foreign/Chinese — hotteok was inspired by Chinese sesame pancakes"
+        },
+        {
+          "term": "떡 (tteok)",
+          "explanation": "Rice cake or dough-based food — though hotteok uses wheat, the name links to the doughy category"
+        },
+        {
+          "term": "길거리 음식 (gilgeori eumsik)",
+          "explanation": "Street food — hotteok is one of Korea's most iconic winter street foods"
+        }
+      ],
+      "imageSearchQuery": "호떡",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Hotteok.jpg/500px-Hotteok.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Hotteok.jpg/500px-Hotteok.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "hotteok",
+        "호떡",
+        "hotteok"
+      ]
+    },
+    {
+      "id": "cache-korean-16",
+      "nameEnglish": "Naengmyeon",
+      "nameLocal": "냉면",
+      "nameLocalCorrected": "냉면",
+      "nameRomanized": "Naengmyeon",
+      "description": "Icy cold buckwheat noodles served in a tangy chilled beef broth (mul-naengmyeon) or with spicy gochujang sauce (bibim-naengmyeon). The noodles are extremely chewy and traditionally served with sliced beef, pickled radish, cucumber, and a halved boiled egg. A refreshing summer staple.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "egg",
+        "soy",
+        "buckwheat"
+      ],
+      "ingredients": [
+        {
+          "name": "buckwheat noodles",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Thin, very chewy noodles made from buckwheat and potato starch — use scissors to cut them"
+        },
+        {
+          "name": "beef broth",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "dongchimi",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Water-based radish kimchi with a clean, tangy flavor — the broth base for mul-naengmyeon"
+        },
+        {
+          "name": "boiled egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sliced beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cucumber",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "pickled radish",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "vinegar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mustard",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 60,
+        "fat": 5,
+        "fiber": 3,
+        "kcal": 360
+      },
+      "explanation": "Cold noodles in icy broth — refreshing in summer. Ask for scissors to cut the chewy noodles. Add vinegar and mustard to taste.",
+      "culturalTerms": [
+        {
+          "term": "냉 (naeng)",
+          "explanation": "Cold — this dish is served ice-cold, often with ice crystals in the broth"
+        },
+        {
+          "term": "물냉면 (mul-naengmyeon)",
+          "explanation": "The broth version — tangy, icy, and refreshing"
+        },
+        {
+          "term": "비빔냉면 (bibim-naengmyeon)",
+          "explanation": "The spicy version — noodles tossed in gochujang sauce without broth"
+        }
+      ],
+      "imageSearchQuery": "냉면",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Naengmyeon.jpg/500px-Naengmyeon.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Naengmyeon.jpg/500px-Naengmyeon.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "naengmyeon",
+        "냉면",
+        "naengmyeon"
+      ]
+    },
+    {
+      "id": "cache-korean-17",
+      "nameEnglish": "Samgyetang",
+      "nameLocal": "삼계탕",
+      "nameLocalCorrected": "삼계탕",
+      "nameRomanized": "Samgyetang",
+      "description": "A whole young chicken stuffed with glutinous rice, ginseng, jujubes, and garlic, simmered into a milky, restorative soup. Koreans traditionally eat samgyetang on the three hottest days of summer (boknal) to fight heat with heat. The ginseng gives it a mildly bitter, earthy flavor.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [],
+      "ingredients": [
+        {
+          "name": "whole young chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "glutinous rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ginseng",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Korean ginseng root — prized for centuries as a health tonic, adds an earthy, slightly bitter note"
+        },
+        {
+          "name": "jujube",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Korean red dates (daechu) — sweet and chewy, believed to aid digestion and calm the mind"
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ginkgo nuts",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Small yellowish nuts with a mild, slightly bitter taste — used in traditional Korean medicine"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 35,
+        "carbs": 30,
+        "fat": 12,
+        "fiber": 1,
+        "kcal": 370
+      },
+      "explanation": "A whole chicken stuffed with rice and ginseng in a milky broth. Mild, not spicy. Considered a health food. Season with salt and pepper at the table.",
+      "culturalTerms": [
+        {
+          "term": "삼 (sam)",
+          "explanation": "Ginseng — the defining ingredient and one of Korea's most valued medicinal herbs"
+        },
+        {
+          "term": "복날 (boknal)",
+          "explanation": "The three hottest summer days — Koreans eat samgyetang to replenish energy (fighting heat with heat)"
+        },
+        {
+          "term": "보양식 (boyangsik)",
+          "explanation": "Stamina food — dishes believed to boost energy and health, of which samgyetang is the most famous"
+        }
+      ],
+      "imageSearchQuery": "삼계탕",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Samgye-tang.jpg/500px-Samgye-tang.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Samgye-tang.jpg/500px-Samgye-tang.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "samgyetang",
+        "삼계탕",
+        "samgyetang"
+      ]
+    },
+    {
+      "id": "cache-korean-18",
+      "nameEnglish": "Doenjang Jjigae",
+      "nameLocal": "된장찌개",
+      "nameLocalCorrected": "된장찌개",
+      "nameRomanized": "Doenjang Jjigae",
+      "description": "A hearty fermented soybean paste stew with tofu, zucchini, mushrooms, and green chili. Often considered Korea's most humble and essential home-cooked dish. The deep, earthy umami of aged doenjang makes this stew incredibly savory and comforting.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "shellfish"
+      ],
+      "ingredients": [
+        {
+          "name": "doenjang",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Korean fermented soybean paste — earthier and more pungent than Japanese miso"
+        },
+        {
+          "name": "tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "zucchini",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mushrooms",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green chili",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "anchovy broth",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Savory stock from dried anchovies and kelp"
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 14,
+        "carbs": 12,
+        "fat": 8,
+        "fiber": 3,
+        "kcal": 180
+      },
+      "explanation": "A savory fermented soybean stew with tofu and vegetables. Not very spicy. Korea's everyday comfort food, served with rice.",
+      "culturalTerms": [
+        {
+          "term": "된장 (doenjang)",
+          "explanation": "Fermented soybean paste — one of Korea's essential 'jang' (fermented sauces), aged in clay pots for months"
+        },
+        {
+          "term": "장독대 (jangdokdae)",
+          "explanation": "The terrace of clay fermentation pots found behind traditional Korean homes"
+        },
+        {
+          "term": "집밥 (jipbap)",
+          "explanation": "Home-cooked meal — doenjang jjigae is the quintessential Korean home-cooked dish"
+        }
+      ],
+      "imageSearchQuery": "된장찌개",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Doenjang-jjigae.jpg/500px-Doenjang-jjigae.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Doenjang-jjigae.jpg/500px-Doenjang-jjigae.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "doenjang jjigae",
+        "된장찌개",
+        "doenjang jjigae"
+      ]
+    },
+    {
+      "id": "cache-korean-19",
+      "nameEnglish": "Galbi",
+      "nameLocal": "갈비",
+      "nameLocalCorrected": "갈비",
+      "nameRomanized": "Galbi",
+      "description": "Beef short ribs marinated in a sweet soy-fruit sauce, grilled over charcoal. The marinade typically includes pear, garlic, soy sauce, and sesame oil, creating a caramelized, smoky-sweet crust. Galbi is the premium Korean BBQ experience, often reserved for special occasions.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "beef short ribs",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Asian pear",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "A crisp, juicy pear used in marinades to tenderize meat"
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sesame seeds",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 32,
+        "carbs": 12,
+        "fat": 22,
+        "fiber": 0,
+        "kcal": 380
+      },
+      "explanation": "Marinated grilled beef short ribs — sweet, smoky, and tender. Korea's premium BBQ dish. Use scissors to cut the meat off the bone.",
+      "culturalTerms": [
+        {
+          "term": "갈비 (galbi)",
+          "explanation": "Ribs — can refer to both beef (sogalbi) and pork (dwaeji galbi)"
+        },
+        {
+          "term": "양념 (yangnyeom)",
+          "explanation": "Seasoned/marinated — yangnyeom galbi is the marinated version vs. plain salt-grilled"
+        },
+        {
+          "term": "숯불 (sutbul)",
+          "explanation": "Charcoal fire — the traditional grilling method that adds smoky depth"
+        }
+      ],
+      "imageSearchQuery": "갈비",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Galbi.jpg/500px-Galbi.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Galbi.jpg/500px-Galbi.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "galbi",
+        "갈비",
+        "galbi"
+      ]
+    },
+    {
+      "id": "cache-korean-20",
+      "nameEnglish": "Kimchi Bokkeumbap",
+      "nameLocal": "김치볶음밥",
+      "nameLocalCorrected": "김치볶음밥",
+      "nameRomanized": "Kimchi Bokkeumbap",
+      "description": "Fried rice stir-fried with chopped aged kimchi, pork or spam, and vegetables, topped with a sunny-side-up egg. A beloved home-cooked dish that transforms leftover rice and old kimchi into something deeply satisfying. The slightly charred, tangy rice is irresistible.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame",
+        "egg"
+      ],
+      "ingredients": [
+        {
+          "name": "steamed rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "aged kimchi",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "pork or spam",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fried egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gochugaru",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Korean red chili flakes"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "seaweed flakes",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 60,
+        "fat": 14,
+        "fiber": 3,
+        "kcal": 440
+      },
+      "explanation": "Fried rice with kimchi and a fried egg on top. Tangy, savory, slightly spicy. Break the egg yolk and mix it in.",
+      "culturalTerms": [
+        {
+          "term": "볶음밥 (bokkeumbap)",
+          "explanation": "Fried rice — 'bokk' means to stir-fry, 'bap' means rice"
+        },
+        {
+          "term": "남은 밥 (nameun bap)",
+          "explanation": "Leftover rice — kimchi fried rice was born from making the most of yesterday's rice and overripe kimchi"
+        },
+        {
+          "term": "스팸 (spam)",
+          "explanation": "Spam is hugely popular in Korea, a legacy of the Korean War, and a common kimchi fried rice ingredient"
+        }
+      ],
+      "imageSearchQuery": "김치볶음밥",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Kimchi_fried_rice.jpg/500px-Kimchi_fried_rice.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Kimchi_fried_rice.jpg/500px-Kimchi_fried_rice.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "kimchi bokkeumbap",
+        "김치볶음밥",
+        "kimchi bokkeumbap"
+      ]
+    },
+    {
+      "id": "cache-korean-21",
+      "nameEnglish": "Mandu",
+      "nameLocal": "만두",
+      "nameLocalCorrected": "만두",
+      "nameRomanized": "Mandu",
+      "description": "Korean dumplings filled with a savory mix of pork, tofu, kimchi, and glass noodles, then steamed, pan-fried, or boiled. Each region has its own style — from the large, round mandu of the north to the crescent-shaped ones of the south. A beloved snack and side dish.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "name": "dumpling wrapper",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ground pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "kimchi",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "glass noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy dipping sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 14,
+        "carbs": 30,
+        "fat": 10,
+        "fiber": 2,
+        "kcal": 270
+      },
+      "explanation": "Korean dumplings with pork, kimchi, and tofu filling. Can be steamed, fried, or boiled. Dip in soy-vinegar sauce.",
+      "culturalTerms": [
+        {
+          "term": "만두 (mandu)",
+          "explanation": "Korean dumplings — descended from Chinese jiaozi but with distinct Korean fillings like kimchi"
+        },
+        {
+          "term": "군만두 (gunmandu)",
+          "explanation": "Pan-fried dumplings — crispy on the bottom, juicy inside"
+        },
+        {
+          "term": "만둣국 (manduguk)",
+          "explanation": "Dumpling soup — traditionally eaten on Lunar New Year morning"
+        }
+      ],
+      "imageSearchQuery": "만두",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/%EB%A7%8C%EB%91%90.jpg/500px-%EB%A7%8C%EB%91%90.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/%EB%A7%8C%EB%91%90.jpg/500px-%EB%A7%8C%EB%91%90.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "mandu",
+        "만두",
+        "mandu"
+      ]
+    },
+    {
+      "id": "cache-korean-22",
+      "nameEnglish": "Budae Jjigae",
+      "nameLocal": "부대찌개",
+      "nameLocalCorrected": "부대찌개",
+      "nameRomanized": "Budae Jjigae",
+      "description": "A spicy stew combining Korean ingredients (kimchi, gochugaru, tofu) with American processed foods (spam, hot dogs, baked beans, cheese). Born near US military bases after the Korean War, 'army stew' is a fusion comfort food that embodies Korea's modern culinary history.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy",
+        "dairy"
+      ],
+      "ingredients": [
+        {
+          "name": "spam",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "hot dogs",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "kimchi",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "baked beans",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ramyeon noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gochugaru",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Korean red chili flakes"
+        },
+        {
+          "name": "American cheese",
+          "category": "dairy",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 35,
+        "fat": 22,
+        "fiber": 4,
+        "kcal": 430
+      },
+      "explanation": "Spicy 'army stew' with spam, hot dogs, kimchi, and ramen noodles. A Korean War-era fusion dish. Shared from a big pot at the table.",
+      "culturalTerms": [
+        {
+          "term": "부대 (budae)",
+          "explanation": "Military base — the stew originated near US Army bases in Uijeongbu and Songtan"
+        },
+        {
+          "term": "의정부 (Uijeongbu)",
+          "explanation": "The city north of Seoul most famous for budae jjigae, with an entire street dedicated to it"
+        },
+        {
+          "term": "라면사리 (ramyeon sari)",
+          "explanation": "Extra ramen noodles added to a stew — a common add-on to budae jjigae"
+        }
+      ],
+      "imageSearchQuery": "부대찌개",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Budae_jjigae.jpg/500px-Budae_jjigae.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Budae_jjigae.jpg/500px-Budae_jjigae.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "budae jjigae",
+        "부대찌개",
+        "budae jjigae"
+      ]
+    },
+    {
+      "id": "cache-korean-23",
+      "nameEnglish": "Gamjatang",
+      "nameLocal": "감자탕",
+      "nameLocalCorrected": "감자탕",
+      "nameRomanized": "Gamjatang",
+      "description": "A hearty, spicy stew made with pork spine bones, potatoes, perilla leaves, and cabbage simmered in a rich, peppery broth. Despite the name containing 'gamja' (potato), the name may actually derive from the word for pork spine. A popular late-night comfort food.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "name": "pork spine bones",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Meaty pork neck/spine bones — the meat is tender and falls off the bone after long simmering"
+        },
+        {
+          "name": "potato",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "perilla leaves",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Aromatic Korean herb leaves (kkaennip) with a distinctive minty-basil flavor"
+        },
+        {
+          "name": "napa cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gochugaru",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Korean red chili flakes"
+        },
+        {
+          "name": "doenjang",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Korean fermented soybean paste"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "perilla seeds",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Ground perilla seeds add a nutty, earthy aroma to the broth"
+        }
+      ],
+      "nutrition": {
+        "protein": 26,
+        "carbs": 20,
+        "fat": 18,
+        "fiber": 3,
+        "kcal": 350
+      },
+      "explanation": "A rich pork bone and potato stew with a spicy, peppery broth. Hearty and warming. Popular as a late-night group meal.",
+      "culturalTerms": [
+        {
+          "term": "감자 (gamja)",
+          "explanation": "Potato — though some scholars say the name refers to the pork spine, not the potato"
+        },
+        {
+          "term": "뼈해장국 (ppyeo-haejangguk)",
+          "explanation": "Bone hangover soup — gamjatang is one of Korea's go-to late-night recovery meals"
+        },
+        {
+          "term": "들깨 (deulkkae)",
+          "explanation": "Perilla seeds — ground into powder to thicken and flavor the broth"
+        }
+      ],
+      "imageSearchQuery": "감자탕",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Korean.food-Gamjatang-01.jpg/500px-Korean.food-Gamjatang-01.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Korean.food-Gamjatang-01.jpg/500px-Korean.food-Gamjatang-01.jpg"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "gamjatang",
+        "감자탕",
+        "gamjatang"
+      ]
+    },
+    {
+      "id": "cache-korean-24",
+      "nameEnglish": "Gimbap",
+      "nameLocal": "김밥",
+      "nameLocalCorrected": "김밥",
+      "nameRomanized": "Gimbap",
+      "description": "Seaweed rice rolls filled with seasoned vegetables, egg, pickled radish, and protein (often ham, beef, or tuna), sliced into bite-sized rounds. Often called 'Korean sushi' but the rice is seasoned with sesame oil instead of vinegar. Korea's most popular picnic and lunchbox food.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "sesame",
+        "soy",
+        "egg",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "steamed rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gim",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Dried roasted seaweed sheets — 'gim' is the Korean word for this type of laver seaweed"
+        },
+        {
+          "name": "danmuji",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Yellow pickled radish — sweet, crunchy, and tangy, essential in gimbap"
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ham",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "spinach",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "carrot",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "burdock root",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Crunchy, slightly sweet root vegetable (ueong) braised in soy sauce"
+        }
+      ],
+      "nutrition": {
+        "protein": 12,
+        "carbs": 50,
+        "fat": 8,
+        "fiber": 2,
+        "kcal": 320
+      },
+      "explanation": "Korean seaweed rice rolls with vegetables and protein. Portable, affordable, and everywhere. Not to be confused with Japanese sushi — the rice is sesame-seasoned.",
+      "culturalTerms": [
+        {
+          "term": "김 (gim)",
+          "explanation": "Roasted seaweed sheets — Korea produces some of the world's best seaweed"
+        },
+        {
+          "term": "소풍 (sopung)",
+          "explanation": "Picnic or field trip — gimbap is the classic Korean picnic food, rolled fresh in the morning"
+        },
+        {
+          "term": "분식점 (bunsikjeom)",
+          "explanation": "Casual Korean snack restaurant — gimbap is always on the menu alongside tteokbokki and ramen"
+        }
+      ],
+      "imageSearchQuery": "김밥",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Gimbap_%28pixabay%29.jpg/500px-Gimbap_%28pixabay%29.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Gimbap_%28pixabay%29.jpg/500px-Gimbap_%28pixabay%29.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "gimbap",
+        "김밥",
+        "gimbap"
+      ]
+    },
+    {
+      "id": "cache-korean-25",
+      "nameEnglish": "Ojingeo Bokkeum",
+      "nameLocal": "오징어볶음",
+      "nameLocalCorrected": "오징어볶음",
+      "nameRomanized": "Ojingeo Bokkeum",
+      "description": "Spicy stir-fried squid with vegetables in a fiery gochujang sauce. The squid is sliced into rings or strips and cooked quickly at high heat with onions, cabbage, and scallions. Known for its intense spice level, this is a popular anju (drinking snack) dish.",
+      "country": "South Korea",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame",
+        "shellfish"
+      ],
+      "ingredients": [
+        {
+          "name": "squid",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gochujang",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Fermented red chili paste — sweet, spicy, and umami"
+        },
+        {
+          "name": "gochugaru",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Korean red chili flakes"
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "carrot",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 15,
+        "fat": 8,
+        "fiber": 2,
+        "kcal": 220
+      },
+      "explanation": "Spicy stir-fried squid with vegetables. Quite hot — the gochujang sauce packs serious heat. Great with a bowl of rice and a cold beer.",
+      "culturalTerms": [
+        {
+          "term": "오징어 (ojingeo)",
+          "explanation": "Squid — Korea is one of the world's largest consumers of squid"
+        },
+        {
+          "term": "볶음 (bokkeum)",
+          "explanation": "Stir-fry — a quick, high-heat cooking method common in Korean cuisine"
+        },
+        {
+          "term": "안주 (anju)",
+          "explanation": "Food eaten while drinking — ojingeo bokkeum is a classic anju paired with soju or beer"
+        }
+      ],
+      "imageSearchQuery": "오징어볶음",
+      "imageUrl": "https://images.unsplash.com/photo-korean-squid-bokkeum",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-korean-squid-bokkeum"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "ojingeo bokkeum",
+        "오징어볶음",
+        "ojingeo bokkeum"
+      ]
+    }
+  ]
+}
