@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "cuisines": {
+    "korean": { "country": "South Korea", "dishCount": 25 },
+    "japanese": { "country": "Japan", "dishCount": 25 },
+    "thai": { "country": "Thailand", "dishCount": 25 },
+    "vietnamese": { "country": "Vietnam", "dishCount": 25 },
+    "malaysian": { "country": "Malaysia", "dishCount": 25 }
+  }
+}

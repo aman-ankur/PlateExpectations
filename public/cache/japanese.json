@@ -1,0 +1,2216 @@
+{
+  "version": 1,
+  "cuisine": "Japanese",
+  "country": "Japan",
+  "generatedAt": "2026-02-20",
+  "dishes": [
+    {
+      "id": "cache-japanese-1",
+      "nameEnglish": "Ramen",
+      "nameLocal": "ラーメン",
+      "nameLocalCorrected": "ラーメン",
+      "nameRomanized": "Ramen",
+      "description": "A deeply satisfying noodle soup with wheat noodles in a rich broth that can take hours or even days to prepare. The four main styles are shoyu (soy sauce), shio (salt), miso, and tonkotsu (pork bone). Each region of Japan has its own signature variation, from Hakata's creamy tonkotsu to Sapporo's hearty miso.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy",
+        "egg",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "name": "wheat noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "pork broth",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "chashu pork",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Braised and rolled pork belly, slow-cooked until meltingly tender, sliced thin as a topping"
+        },
+        {
+          "name": "ajitama",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Soft-boiled egg marinated in soy sauce and mirin, with a jammy orange yolk"
+        },
+        {
+          "name": "nori",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Dried seaweed sheet, adds umami and a briny ocean note"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "menma",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Fermented bamboo shoots with a crunchy texture and tangy flavor"
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 65,
+        "fat": 22,
+        "fiber": 3,
+        "kcal": 570
+      },
+      "explanation": "Japan's beloved noodle soup — slurping is not just acceptable, it's encouraged as it cools the noodles and enhances flavor.",
+      "culturalTerms": [
+        {
+          "term": "替え玉 (kaedama)",
+          "explanation": "An extra serving of noodles added to your remaining broth — common at tonkotsu ramen shops"
+        },
+        {
+          "term": "麺の硬さ (men no katasa)",
+          "explanation": "Noodle firmness — you can request from barikata (very firm) to yawarakai (soft)"
+        },
+        {
+          "term": "スープ (suupu)",
+          "explanation": "The broth is the soul of ramen — chefs spend years perfecting their signature recipe"
+        }
+      ],
+      "imageSearchQuery": "ラーメン",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Shoyu_ramen%2C_at_Kasukabe_Station_%282014.05.05%29_1.jpg/500px-Shoyu_ramen%2C_at_Kasukabe_Station_%282014.05.05%29_1.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Shoyu_ramen%2C_at_Kasukabe_Station_%282014.05.05%29_1.jpg/500px-Shoyu_ramen%2C_at_Kasukabe_Station_%282014.05.05%29_1.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "ramen",
+        "ラーメン",
+        "raamen"
+      ]
+    },
+    {
+      "id": "cache-japanese-2",
+      "nameEnglish": "Tonkatsu",
+      "nameLocal": "とんかつ",
+      "nameLocalCorrected": "とんかつ",
+      "nameRomanized": "Tonkatsu",
+      "description": "A thick pork cutlet breaded with panko breadcrumbs and deep-fried to a golden, shatteringly crisp exterior while staying juicy inside. Served with shredded cabbage, tangy tonkatsu sauce, and karashi mustard. Specialized tonkatsu restaurants let you choose between lean hire (fillet) and fatty rosu (loin).",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "egg",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "pork loin",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "panko breadcrumbs",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Japanese-style flaky breadcrumbs that create an extra-light, airy, crispy coating"
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "flour",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tonkatsu sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A thick, fruity, tangy brown sauce similar to Worcestershire but sweeter"
+        },
+        {
+          "name": "karashi",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Japanese hot mustard, much spicier than yellow mustard — use sparingly"
+        }
+      ],
+      "nutrition": {
+        "protein": 35,
+        "carbs": 30,
+        "fat": 28,
+        "fiber": 2,
+        "kcal": 520
+      },
+      "explanation": "A crispy fried pork cutlet — a Western-inspired dish that Japan perfected. The panko coating makes it lighter than Western fried cutlets.",
+      "culturalTerms": [
+        {
+          "term": "ロース (roosu)",
+          "explanation": "Loin cut with a ribbon of fat — more flavorful and juicy than fillet"
+        },
+        {
+          "term": "ヒレ (hire)",
+          "explanation": "Fillet cut — leaner and more tender, slightly more expensive"
+        },
+        {
+          "term": "勝つ (katsu)",
+          "explanation": "A pun — 'katsu' sounds like 'to win,' so students eat tonkatsu before exams for good luck"
+        }
+      ],
+      "imageSearchQuery": "とんかつ",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tonkatsu_by_ayustety_in_Tokyo.jpg/500px-Tonkatsu_by_ayustety_in_Tokyo.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tonkatsu_by_ayustety_in_Tokyo.jpg/500px-Tonkatsu_by_ayustety_in_Tokyo.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "tonkatsu",
+        "とんかつ",
+        "pork cutlet"
+      ]
+    },
+    {
+      "id": "cache-japanese-3",
+      "nameEnglish": "Sushi",
+      "nameLocal": "寿司",
+      "nameLocalCorrected": "寿司",
+      "nameRomanized": "Sushi",
+      "description": "Vinegared rice paired with fresh seafood, vegetables, or egg — the world's most famous Japanese dish. Nigiri (hand-pressed rice with fish on top) is the classic form, while maki (rolls) and chirashi (scattered bowl) are also popular. At conveyor belt sushi shops, plates are color-coded by price.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "shellfish",
+        "soy",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "sushi rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "rice vinegar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fresh fish",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "nori",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Dried seaweed sheet used to wrap rolls and garnish nigiri"
+        },
+        {
+          "name": "wasabi",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "pickled ginger",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 45,
+        "fat": 5,
+        "fiber": 1,
+        "kcal": 310
+      },
+      "explanation": "Vinegared rice with fresh toppings. Dip fish-side down in soy sauce (not the rice). Eat ginger between pieces to cleanse your palate.",
+      "culturalTerms": [
+        {
+          "term": "にぎり (nigiri)",
+          "explanation": "Hand-pressed sushi — a small mound of rice topped with a slice of fish, the most traditional form"
+        },
+        {
+          "term": "回転寿司 (kaiten-zushi)",
+          "explanation": "Conveyor belt sushi — affordable and fun, grab plates as they pass by"
+        },
+        {
+          "term": "おまかせ (omakase)",
+          "explanation": "'I'll leave it to you' — the chef selects the best seasonal fish for your meal"
+        }
+      ],
+      "imageSearchQuery": "寿司",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/500px-Sushi_platter.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/500px-Sushi_platter.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "sushi",
+        "寿司",
+        "すし"
+      ]
+    },
+    {
+      "id": "cache-japanese-4",
+      "nameEnglish": "Tempura",
+      "nameLocal": "天ぷら",
+      "nameLocalCorrected": "天ぷら",
+      "nameRomanized": "Tenpura",
+      "description": "Seafood and vegetables dipped in a light, cold batter and flash-fried to a delicate crispness. The batter is deliberately under-mixed to stay lumpy, creating that signature lacy, crunchy texture. Dipped in tentsuyu sauce with grated daikon, tempura is surprisingly light despite being fried.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "egg",
+        "shellfish",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "shrimp",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sweet potato",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shiso leaf",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "A fragrant Japanese herb with a minty-basil flavor, often battered and fried whole"
+        },
+        {
+          "name": "eggplant",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tempura batter",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tentsuyu",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A light dipping sauce made from dashi, soy sauce, and mirin"
+        },
+        {
+          "name": "daikon",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "A large, mild white radish — grated and added to tentsuyu for a refreshing bite"
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 35,
+        "fat": 20,
+        "fiber": 3,
+        "kcal": 400
+      },
+      "explanation": "Lightly battered and fried seafood and vegetables. Eat each piece immediately after frying for maximum crispness — don't let them sit.",
+      "culturalTerms": [
+        {
+          "term": "天つゆ (tentsuyu)",
+          "explanation": "The dipping sauce for tempura — a light blend of dashi broth, soy sauce, and mirin"
+        },
+        {
+          "term": "天丼 (tendon)",
+          "explanation": "Tempura served over a bowl of rice with sweet soy sauce — a popular lunch option"
+        },
+        {
+          "term": "揚げたて (agetate)",
+          "explanation": "'Freshly fried' — the best tempura is eaten seconds after leaving the oil"
+        }
+      ],
+      "imageSearchQuery": "天ぷら",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Tempura_01.jpg/500px-Tempura_01.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Tempura_01.jpg/500px-Tempura_01.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "tempura",
+        "天ぷら",
+        "tenpura"
+      ]
+    },
+    {
+      "id": "cache-japanese-5",
+      "nameEnglish": "Okonomiyaki",
+      "nameLocal": "お好み焼き",
+      "nameLocalCorrected": "お好み焼き",
+      "nameRomanized": "Okonomiyaki",
+      "description": "A savory Japanese pancake packed with cabbage, protein, and toppings, cooked on a hot griddle. 'Okonomi' means 'what you like' — you choose your fillings. Osaka-style mixes everything into the batter, while Hiroshima-style layers ingredients with yakisoba noodles. Topped with sweet-savory sauce, mayo, bonito flakes, and seaweed.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "egg",
+        "soy",
+        "shellfish"
+      ],
+      "ingredients": [
+        {
+          "name": "cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "flour batter",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "pork belly",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tenkasu",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Crispy tempura batter bits that add crunch and richness"
+        },
+        {
+          "name": "okonomiyaki sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A thick, fruity, tangy sauce similar to Worcestershire — the signature topping"
+        },
+        {
+          "name": "katsuobushi",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Shaved dried bonito flakes that dance and wave from the heat of the pancake"
+        },
+        {
+          "name": "aonori",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Green seaweed flakes sprinkled on top for color and ocean flavor"
+        },
+        {
+          "name": "Japanese mayonnaise",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 50,
+        "fat": 25,
+        "fiber": 4,
+        "kcal": 520
+      },
+      "explanation": "A hearty savory pancake you can customize with your favorite fillings. Often cooked at your table on a teppan grill — fun and interactive.",
+      "culturalTerms": [
+        {
+          "term": "お好み (okonomi)",
+          "explanation": "'As you like it' — reflects the customizable nature of this dish"
+        },
+        {
+          "term": "鉄板 (teppan)",
+          "explanation": "The flat iron griddle built into restaurant tables where you cook and eat directly"
+        },
+        {
+          "term": "広島風 (Hiroshima-fuu)",
+          "explanation": "Hiroshima style — layered with noodles and a fried egg on top, distinct from Osaka's mixed style"
+        }
+      ],
+      "imageSearchQuery": "お好み焼き",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Okonomiyaki_001.jpg/500px-Okonomiyaki_001.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Okonomiyaki_001.jpg/500px-Okonomiyaki_001.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "okonomiyaki",
+        "お好み焼き"
+      ]
+    },
+    {
+      "id": "cache-japanese-6",
+      "nameEnglish": "Gyudon",
+      "nameLocal": "牛丼",
+      "nameLocalCorrected": "牛丼",
+      "nameRomanized": "Gyuudon",
+      "description": "Thinly sliced beef and onions simmered in a sweet soy-based sauce, served over a steaming bowl of rice. Japan's quintessential fast food — chains like Yoshinoya and Sukiya serve millions of bowls daily. Often topped with a raw egg, pickled ginger, and shichimi chili flakes for extra flavor.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "gluten",
+        "egg"
+      ],
+      "ingredients": [
+        {
+          "name": "thinly sliced beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "steamed rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "dashi",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Japanese stock made from kombu seaweed and bonito flakes — the foundation of Japanese flavor"
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mirin",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Sweet rice wine used in cooking, adds a gentle sweetness and gloss"
+        },
+        {
+          "name": "raw egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "benishoga",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Red pickled ginger — tangy and refreshing, cuts through the richness of the beef"
+        }
+      ],
+      "nutrition": {
+        "protein": 26,
+        "carbs": 70,
+        "fat": 18,
+        "fiber": 2,
+        "kcal": 550
+      },
+      "explanation": "A comforting beef rice bowl — Japan's answer to fast food. Cheap, filling, and available 24/7 at chain restaurants.",
+      "culturalTerms": [
+        {
+          "term": "丼 (don/donburi)",
+          "explanation": "A deep bowl of rice with toppings — a whole category of Japanese comfort food"
+        },
+        {
+          "term": "つゆだく (tsuyudaku)",
+          "explanation": "Extra broth — ask for this if you like your rice soaked in the sweet soy sauce"
+        },
+        {
+          "term": "七味 (shichimi)",
+          "explanation": "Seven-spice chili blend sprinkled on top — adds heat and complexity"
+        }
+      ],
+      "imageSearchQuery": "牛丼",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Gyuu-don_001.jpg/500px-Gyuu-don_001.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Gyuu-don_001.jpg/500px-Gyuu-don_001.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "gyudon",
+        "牛丼",
+        "beef bowl"
+      ]
+    },
+    {
+      "id": "cache-japanese-7",
+      "nameEnglish": "Udon",
+      "nameLocal": "うどん",
+      "nameLocalCorrected": "うどん",
+      "nameRomanized": "Udon",
+      "description": "Thick, chewy wheat noodles served in a light dashi broth or chilled with a dipping sauce. The noodles are the star — at the best shops they're handmade fresh daily with a satisfyingly bouncy texture. Kagawa Prefecture on Shikoku island is considered the udon capital of Japan.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy",
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "udon noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "dashi broth",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A delicate stock made from kombu kelp and katsuobushi bonito flakes"
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "kamaboko",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Steamed fish cake with a pink and white swirl pattern — mild and slightly chewy"
+        },
+        {
+          "name": "tenkasu",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Crispy tempura batter bits added for crunch"
+        }
+      ],
+      "nutrition": {
+        "protein": 14,
+        "carbs": 60,
+        "fat": 4,
+        "fiber": 2,
+        "kcal": 340
+      },
+      "explanation": "Thick, satisfying noodles in a gentle broth. A warming everyday meal that's gentle on the stomach and easy to eat.",
+      "culturalTerms": [
+        {
+          "term": "かけうどん (kake udon)",
+          "explanation": "The simplest form — plain noodles in hot broth, letting the noodle quality shine"
+        },
+        {
+          "term": "讃岐うどん (Sanuki udon)",
+          "explanation": "The most famous regional style from Kagawa, known for firm, elastic noodles"
+        },
+        {
+          "term": "コシ (koshi)",
+          "explanation": "The bounce and chewiness of the noodle — the mark of quality udon"
+        }
+      ],
+      "imageSearchQuery": "うどん",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Kakeudon.jpg/500px-Kakeudon.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Kakeudon.jpg/500px-Kakeudon.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "udon",
+        "うどん"
+      ]
+    },
+    {
+      "id": "cache-japanese-8",
+      "nameEnglish": "Soba",
+      "nameLocal": "そば",
+      "nameLocalCorrected": "そば",
+      "nameRomanized": "Soba",
+      "description": "Thin buckwheat noodles with a nutty flavor, served chilled with a dipping sauce (zaru soba) or hot in a broth. Soba has a long history in Japan and eating toshikoshi soba on New Year's Eve symbolizes crossing into the new year. The best soba is made with a high ratio of buckwheat flour.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "buckwheat",
+        "gluten",
+        "soy",
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "buckwheat noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tsuyu dipping sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Concentrated soy-dashi sauce for dipping cold soba — intensely savory"
+        },
+        {
+          "name": "wasabi",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "nori",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Shredded dried seaweed sprinkled on top"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 14,
+        "carbs": 48,
+        "fat": 3,
+        "fiber": 5,
+        "kcal": 280
+      },
+      "explanation": "Nutty buckwheat noodles — a healthier option with more fiber and protein than wheat noodles. Cold soba is especially refreshing in summer.",
+      "culturalTerms": [
+        {
+          "term": "ざるそば (zaru soba)",
+          "explanation": "Cold soba served on a bamboo tray with dipping sauce — the purest way to enjoy soba"
+        },
+        {
+          "term": "そば湯 (soba-yu)",
+          "explanation": "The starchy water the soba was boiled in — poured into leftover dipping sauce to drink as a warm finish"
+        },
+        {
+          "term": "年越しそば (toshikoshi soba)",
+          "explanation": "Soba eaten on New Year's Eve — the long noodles symbolize longevity and a clean break into the new year"
+        }
+      ],
+      "imageSearchQuery": "そば",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Dried_soba_noodles_by_Emily_Barney.jpg/500px-Dried_soba_noodles_by_Emily_Barney.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Dried_soba_noodles_by_Emily_Barney.jpg/500px-Dried_soba_noodles_by_Emily_Barney.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "soba",
+        "そば",
+        "buckwheat noodles"
+      ]
+    },
+    {
+      "id": "cache-japanese-9",
+      "nameEnglish": "Takoyaki",
+      "nameLocal": "たこ焼き",
+      "nameLocalCorrected": "たこ焼き",
+      "nameRomanized": "Takoyaki",
+      "description": "Golden ball-shaped snacks filled with diced octopus, pickled ginger, and green onion, cooked in a special molded pan. A beloved Osaka street food, they're crispy on the outside and creamy-molten on the inside. Topped with takoyaki sauce, mayo, bonito flakes, and aonori seaweed.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "egg",
+        "shellfish",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "octopus",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "flour batter",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "benishoga",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Red pickled ginger, adds a sharp tang inside each ball"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tenkasu",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Crispy tempura bits mixed into the batter for extra crunch"
+        },
+        {
+          "name": "takoyaki sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A thick, sweet-savory sauce similar to Worcestershire"
+        },
+        {
+          "name": "katsuobushi",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Shaved bonito flakes that wave and dance from the heat"
+        }
+      ],
+      "nutrition": {
+        "protein": 16,
+        "carbs": 35,
+        "fat": 12,
+        "fiber": 1,
+        "kcal": 320
+      },
+      "explanation": "Osaka's famous octopus balls — the ultimate Japanese street food. Be careful, the inside stays molten hot even when the outside looks done.",
+      "culturalTerms": [
+        {
+          "term": "たこ (tako)",
+          "explanation": "Octopus — each ball contains a chunk of chewy, tender octopus"
+        },
+        {
+          "term": "大阪名物 (Osaka meibutsu)",
+          "explanation": "An Osaka specialty — the city is considered the takoyaki capital of Japan"
+        },
+        {
+          "term": "屋台 (yatai)",
+          "explanation": "Street food stalls where you can watch vendors expertly flip takoyaki with picks"
+        }
+      ],
+      "imageSearchQuery": "たこ焼き",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Takoyaki.jpg/500px-Takoyaki.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Takoyaki.jpg/500px-Takoyaki.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "takoyaki",
+        "たこ焼き",
+        "octopus balls"
+      ]
+    },
+    {
+      "id": "cache-japanese-10",
+      "nameEnglish": "Katsu Curry",
+      "nameLocal": "カツカレー",
+      "nameLocalCorrected": "カツカレー",
+      "nameRomanized": "Katsu Karee",
+      "description": "A crispy breaded pork or chicken cutlet served over rice and smothered in thick, mildly sweet Japanese curry sauce. Japanese curry is milder and sweeter than Indian curry, with a velvety smooth texture. This fusion dish combines Western-influenced cutlets with Japan's beloved curry — pure comfort food.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "egg",
+        "soy",
+        "dairy"
+      ],
+      "ingredients": [
+        {
+          "name": "pork cutlet",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "panko breadcrumbs",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Light, flaky Japanese breadcrumbs for a crispy coating"
+        },
+        {
+          "name": "Japanese curry roux",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A thick, mildly sweet curry sauce — milder than Indian curry, with fruit and spice undertones"
+        },
+        {
+          "name": "steamed rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "potato",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "carrot",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fukujinzuke",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Sweet pickled vegetable relish in red or brown, served as a crunchy condiment with curry"
+        }
+      ],
+      "nutrition": {
+        "protein": 32,
+        "carbs": 80,
+        "fat": 30,
+        "fiber": 4,
+        "kcal": 720
+      },
+      "explanation": "Crispy cutlet meets sweet curry over rice — one of Japan's most popular comfort meals. Japanese curry is family-friendly and not very spicy.",
+      "culturalTerms": [
+        {
+          "term": "カレーライス (karee raisu)",
+          "explanation": "Curry rice — introduced by the British Navy in the Meiji era, now one of Japan's most popular dishes"
+        },
+        {
+          "term": "辛さ (karasa)",
+          "explanation": "Spice level — most shops offer mild (甘口), medium (中辛), and hot (辛口)"
+        },
+        {
+          "term": "ルー (ruu)",
+          "explanation": "Curry roux — sold in blocks at every Japanese grocery store for easy home cooking"
+        }
+      ],
+      "imageSearchQuery": "カツカレー",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/%E3%81%8B%E3%81%A4%E3%82%AB%E3%83%AC%E3%83%BC.jpg/500px-%E3%81%8B%E3%81%A4%E3%82%AB%E3%83%AC%E3%83%BC.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/%E3%81%8B%E3%81%A4%E3%82%AB%E3%83%AC%E3%83%BC.jpg/500px-%E3%81%8B%E3%81%A4%E3%82%AB%E3%83%AC%E3%83%BC.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "katsu curry",
+        "カツカレー",
+        "katsu karee"
+      ]
+    },
+    {
+      "id": "cache-japanese-11",
+      "nameEnglish": "Yakitori",
+      "nameLocal": "焼き鳥",
+      "nameLocalCorrected": "焼き鳥",
+      "nameRomanized": "Yakitori",
+      "description": "Bite-sized pieces of chicken skewered on bamboo sticks and grilled over charcoal, seasoned with either tare (sweet soy glaze) or shio (salt). A yakitori master uses every part of the chicken — from tender thigh meat to crunchy cartilage and rich liver. Best enjoyed at smoky, atmospheric yakitori-ya with a cold beer.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "chicken thigh",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "chicken skin",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "tare sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A sweet-savory glaze of soy sauce, mirin, and sugar, built up over years of use"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shichimi togarashi",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Seven-spice chili blend with sesame, citrus peel, and Sichuan pepper"
+        },
+        {
+          "name": "salt",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 8,
+        "fat": 14,
+        "fiber": 0,
+        "kcal": 260
+      },
+      "explanation": "Charcoal-grilled chicken skewers — perfect with drinks. Order a mix of tare (glazed) and shio (salted) to compare flavors.",
+      "culturalTerms": [
+        {
+          "term": "タレ (tare)",
+          "explanation": "The sweet soy glaze — some shops keep the same tare pot for decades, deepening the flavor"
+        },
+        {
+          "term": "塩 (shio)",
+          "explanation": "Salt seasoning — purists prefer this to let the chicken flavor shine"
+        },
+        {
+          "term": "もも (momo)",
+          "explanation": "Chicken thigh — the most popular cut, juicy and flavorful from the charcoal"
+        }
+      ],
+      "imageSearchQuery": "焼き鳥",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Cooking_yakitori.jpg/500px-Cooking_yakitori.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Cooking_yakitori.jpg/500px-Cooking_yakitori.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "yakitori",
+        "焼き鳥",
+        "chicken skewers"
+      ]
+    },
+    {
+      "id": "cache-japanese-12",
+      "nameEnglish": "Gyoza",
+      "nameLocal": "餃子",
+      "nameLocalCorrected": "餃子",
+      "nameRomanized": "Gyouza",
+      "description": "Pan-fried dumplings with a thin wrapper encasing a juicy filling of ground pork, cabbage, garlic, and ginger. The bottoms are crisped golden in oil while the tops are steamed tender — this contrast is what makes Japanese gyoza special. Dipped in a mixture of soy sauce, rice vinegar, and chili oil.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "name": "ground pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ginger",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "gyoza wrapper",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "nira",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Garlic chives — a pungent, flat-leafed herb that gives gyoza its signature aroma"
+        },
+        {
+          "name": "sesame oil",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "rice vinegar",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 16,
+        "carbs": 30,
+        "fat": 14,
+        "fiber": 2,
+        "kcal": 310
+      },
+      "explanation": "Crispy-bottomed pan-fried dumplings — a beloved side dish or beer snack. The crispy-steamed contrast is addictive.",
+      "culturalTerms": [
+        {
+          "term": "焼き餃子 (yaki gyoza)",
+          "explanation": "Pan-fried style — the Japanese standard, with a crispy golden bottom"
+        },
+        {
+          "term": "羽根つき (hanetsuki)",
+          "explanation": "'With wings' — a lacy, crispy skirt connecting all the gyoza in the pan, a sign of skill"
+        },
+        {
+          "term": "ビールのつまみ (biiru no tsumami)",
+          "explanation": "A snack to go with beer — gyoza is the quintessential Japanese drinking food"
+        }
+      ],
+      "imageSearchQuery": "餃子",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Missgyoza_production_gyoza_dumpling_Manufacturer.jpg/500px-Missgyoza_production_gyoza_dumpling_Manufacturer.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Missgyoza_production_gyoza_dumpling_Manufacturer.jpg/500px-Missgyoza_production_gyoza_dumpling_Manufacturer.jpg"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "gyoza",
+        "餃子",
+        "dumplings"
+      ]
+    },
+    {
+      "id": "cache-japanese-13",
+      "nameEnglish": "Sashimi",
+      "nameLocal": "刺身",
+      "nameLocalCorrected": "刺身",
+      "nameRomanized": "Sashimi",
+      "description": "Pristinely fresh raw fish sliced with precision and served without rice, allowing the pure flavor and texture of the seafood to shine. A sashimi platter (moriawase) showcases the day's best catch — typically salmon, tuna, yellowtail, and squid. Accompanied by soy sauce, wasabi, and shredded daikon radish.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "shellfish",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "fresh tuna",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "salmon",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "yellowtail",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "wasabi",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "daikon",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Shredded white radish served as a bed for the fish — cleanses the palate"
+        },
+        {
+          "name": "shiso leaf",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "An aromatic Japanese herb used as a garnish, with a minty-basil flavor"
+        }
+      ],
+      "nutrition": {
+        "protein": 30,
+        "carbs": 2,
+        "fat": 8,
+        "fiber": 0,
+        "kcal": 200
+      },
+      "explanation": "The purest expression of Japanese cuisine — raw fish at its freshest. Mix a tiny amount of wasabi into soy sauce, or place wasabi directly on the fish.",
+      "culturalTerms": [
+        {
+          "term": "盛り合わせ (moriawase)",
+          "explanation": "An assorted platter — the chef selects the best seasonal fish available that day"
+        },
+        {
+          "term": "旬 (shun)",
+          "explanation": "Peak season — Japanese cuisine prizes eating ingredients at their seasonal best"
+        },
+        {
+          "term": "大トロ (ootoro)",
+          "explanation": "The fattiest, most prized cut of tuna belly — meltingly rich and the most expensive"
+        }
+      ],
+      "imageSearchQuery": "刺身",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Sashimi_of_S%C3%A3o_Paulo.jpg/500px-Sashimi_of_S%C3%A3o_Paulo.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Sashimi_of_S%C3%A3o_Paulo.jpg/500px-Sashimi_of_S%C3%A3o_Paulo.jpg"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "sashimi",
+        "刺身",
+        "raw fish"
+      ]
+    },
+    {
+      "id": "cache-japanese-14",
+      "nameEnglish": "Miso Soup",
+      "nameLocal": "味噌汁",
+      "nameLocalCorrected": "味噌汁",
+      "nameRomanized": "Misoshiru",
+      "description": "A warm, soothing soup made by dissolving miso paste into dashi broth, served with every traditional Japanese meal. Common additions include tofu cubes, wakame seaweed, and green onion. Despite its simplicity, the balance of miso type (white, red, or mixed) and dashi quality makes every household's version unique.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "fish",
+        "shellfish"
+      ],
+      "ingredients": [
+        {
+          "name": "miso paste",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Fermented soybean paste — white miso is mild and sweet, red miso is stronger and saltier"
+        },
+        {
+          "name": "dashi",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Stock made from kombu kelp and bonito flakes — provides the umami foundation"
+        },
+        {
+          "name": "tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "wakame",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Thin, tender seaweed that rehydrates and unfurls in the hot broth"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 6,
+        "carbs": 8,
+        "fat": 3,
+        "fiber": 1,
+        "kcal": 80
+      },
+      "explanation": "A gentle, umami-rich soup served with nearly every Japanese meal. Drink it directly from the bowl — no spoon needed.",
+      "culturalTerms": [
+        {
+          "term": "味噌 (miso)",
+          "explanation": "Fermented soybean paste — a cornerstone of Japanese cooking aged for months or years"
+        },
+        {
+          "term": "出汁 (dashi)",
+          "explanation": "The foundational stock of Japanese cuisine — its umami is what makes Japanese food distinctive"
+        },
+        {
+          "term": "一汁三菜 (ichijuu sansai)",
+          "explanation": "'One soup, three dishes' — the traditional structure of a Japanese meal, with miso soup as the constant"
+        }
+      ],
+      "imageSearchQuery": "味噌汁",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Miso_Soup_001.jpg/500px-Miso_Soup_001.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Miso_Soup_001.jpg/500px-Miso_Soup_001.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "miso soup",
+        "味噌汁",
+        "misoshiru"
+      ]
+    },
+    {
+      "id": "cache-japanese-15",
+      "nameEnglish": "Onigiri",
+      "nameLocal": "おにぎり",
+      "nameLocalCorrected": "おにぎり",
+      "nameRomanized": "Onigiri",
+      "description": "Triangular or cylindrical rice balls wrapped in nori seaweed, filled with savory ingredients like salted salmon, pickled plum, tuna mayo, or seasoned kelp. Japan's ultimate portable snack — convenience stores sell millions daily with dozens of creative fillings. The special packaging keeps the nori crisp until you unwrap it.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "soy",
+        "sesame"
+      ],
+      "ingredients": [
+        {
+          "name": "Japanese rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "nori",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Crisp dried seaweed sheet wrapped around the rice"
+        },
+        {
+          "name": "salted salmon",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "umeboshi",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Pickled plum — intensely sour and salty, a traditional filling with natural preservative properties"
+        },
+        {
+          "name": "salt",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 8,
+        "carbs": 40,
+        "fat": 2,
+        "fiber": 1,
+        "kcal": 215
+      },
+      "explanation": "Rice balls — Japan's most convenient snack. Available at every konbini (convenience store) for about 100-200 yen. Perfect for eating on the go.",
+      "culturalTerms": [
+        {
+          "term": "コンビニ (konbini)",
+          "explanation": "Convenience store — 7-Eleven, Lawson, and FamilyMart sell fresh onigiri 24/7"
+        },
+        {
+          "term": "梅干し (umeboshi)",
+          "explanation": "Pickled plum — the most traditional filling, extremely sour but beloved"
+        },
+        {
+          "term": "おむすび (omusubi)",
+          "explanation": "An alternate name for onigiri — both words mean 'shaped rice' and are used interchangeably"
+        }
+      ],
+      "imageSearchQuery": "おにぎり",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Onigiri.jpg/500px-Onigiri.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Onigiri.jpg/500px-Onigiri.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "onigiri",
+        "おにぎり",
+        "rice ball"
+      ]
+    },
+    {
+      "id": "cache-japanese-16",
+      "nameEnglish": "Karaage",
+      "nameLocal": "唐揚げ",
+      "nameLocalCorrected": "唐揚げ",
+      "nameRomanized": "Karaage",
+      "description": "Bite-sized pieces of chicken marinated in soy sauce, ginger, and garlic, then coated in potato starch and deep-fried to a juicy, ultra-crispy finish. Often considered the best fried chicken in the world — the potato starch creates a thinner, crunchier crust than flour. Served with a lemon wedge and mayo.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "chicken thigh",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ginger",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "potato starch",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "lemon",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Japanese mayonnaise",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 26,
+        "carbs": 15,
+        "fat": 20,
+        "fiber": 0,
+        "kcal": 350
+      },
+      "explanation": "Japanese fried chicken — arguably the world's crunchiest. Squeeze lemon over the pieces and dip in mayo. A must-try at any izakaya.",
+      "culturalTerms": [
+        {
+          "term": "居酒屋 (izakaya)",
+          "explanation": "A Japanese pub — karaage is one of the most popular izakaya dishes to share with drinks"
+        },
+        {
+          "term": "片栗粉 (katakuriko)",
+          "explanation": "Potato starch used for coating — creates a lighter, crispier crust than Western flour-based batters"
+        },
+        {
+          "term": "おつまみ (otsumami)",
+          "explanation": "Drinking snacks — small dishes ordered to accompany beer and sake at izakaya"
+        }
+      ],
+      "imageSearchQuery": "唐揚げ",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Chicken_karaage_003.jpg/500px-Chicken_karaage_003.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Chicken_karaage_003.jpg/500px-Chicken_karaage_003.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "karaage",
+        "唐揚げ",
+        "japanese fried chicken"
+      ]
+    },
+    {
+      "id": "cache-japanese-17",
+      "nameEnglish": "Sukiyaki",
+      "nameLocal": "すき焼き",
+      "nameLocalCorrected": "すき焼き",
+      "nameRomanized": "Sukiyaki",
+      "description": "Thinly sliced beef simmered tableside in a sweet soy broth called warishita, along with tofu, vegetables, and noodles. Each piece is traditionally dipped in a bowl of beaten raw egg before eating — the egg coats the hot ingredients in a rich, silky glaze. A celebratory dish often enjoyed in winter.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "gluten",
+        "egg"
+      ],
+      "ingredients": [
+        {
+          "name": "thinly sliced beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "warishita",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A sweet-savory cooking broth of soy sauce, sugar, mirin, and sake"
+        },
+        {
+          "name": "tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "napa cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shirataki noodles",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Translucent, low-calorie noodles made from konjac yam — chewy with almost no flavor, they absorb the broth"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shiitake mushroom",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "raw egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 35,
+        "carbs": 25,
+        "fat": 28,
+        "fiber": 3,
+        "kcal": 500
+      },
+      "explanation": "A luxurious hot pot cooked at your table. Dipping each piece in raw egg is traditional — the egg cools and enriches the bite.",
+      "culturalTerms": [
+        {
+          "term": "割り下 (warishita)",
+          "explanation": "The sweet soy cooking sauce unique to sukiyaki — sweeter than most Japanese seasonings"
+        },
+        {
+          "term": "すき焼き鍋 (sukiyaki nabe)",
+          "explanation": "The shallow iron pot used for sukiyaki — retains heat and develops flavor over time"
+        },
+        {
+          "term": "しめ (shime)",
+          "explanation": "The finishing course — udon noodles or rice added to the remaining broth to soak up all the flavor"
+        }
+      ],
+      "imageSearchQuery": "すき焼き",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Sukiyaki_01.jpg/500px-Sukiyaki_01.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Sukiyaki_01.jpg/500px-Sukiyaki_01.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "sukiyaki",
+        "すき焼き"
+      ]
+    },
+    {
+      "id": "cache-japanese-18",
+      "nameEnglish": "Shabu-shabu",
+      "nameLocal": "しゃぶしゃぶ",
+      "nameLocalCorrected": "しゃぶしゃぶ",
+      "nameRomanized": "Shabu-shabu",
+      "description": "Paper-thin slices of premium beef swished briefly in simmering kombu broth at your table — the name mimics the 'swish swish' sound. Lighter than sukiyaki, the delicate broth lets the beef quality shine. Dipped in either ponzu (citrus soy) or creamy sesame sauce, with vegetables and tofu cooked in the same pot.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "sesame",
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "thinly sliced beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "kombu",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Dried kelp used to make the simmering broth — provides deep umami without heaviness"
+        },
+        {
+          "name": "tofu",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "napa cabbage",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "ponzu",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A tangy citrus soy dipping sauce made with yuzu or sudachi — bright and refreshing"
+        },
+        {
+          "name": "sesame dipping sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "enoki mushroom",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Thin, long white mushrooms with a mild, slightly crunchy texture"
+        },
+        {
+          "name": "green onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 32,
+        "carbs": 15,
+        "fat": 22,
+        "fiber": 3,
+        "kcal": 390
+      },
+      "explanation": "An interactive hot pot where you cook your own beef. Just a few seconds in the broth is enough — overcooking makes the beef tough.",
+      "culturalTerms": [
+        {
+          "term": "しゃぶしゃぶ (shabu-shabu)",
+          "explanation": "Onomatopoeia for the swishing sound of meat being swirled in hot broth"
+        },
+        {
+          "term": "ポン酢 (ponzu)",
+          "explanation": "Citrus-soy dipping sauce — the lighter of the two sauce options"
+        },
+        {
+          "term": "食べ放題 (tabehoudai)",
+          "explanation": "'All you can eat' — many shabu-shabu restaurants offer unlimited meat and vegetable courses"
+        }
+      ],
+      "imageSearchQuery": "しゃぶしゃぶ",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Shabu-shabu-01.jpg/500px-Shabu-shabu-01.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Shabu-shabu-01.jpg/500px-Shabu-shabu-01.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "shabu-shabu",
+        "しゃぶしゃぶ"
+      ]
+    },
+    {
+      "id": "cache-japanese-19",
+      "nameEnglish": "Unagi Don",
+      "nameLocal": "うな丼",
+      "nameLocalCorrected": "うな丼",
+      "nameRomanized": "Unadon",
+      "description": "Grilled freshwater eel glazed with a sweet soy-based tare sauce, served over steamed rice. The eel is butterflied, skewered, and grilled over charcoal, basted repeatedly with tare until caramelized and glossy. Traditionally eaten during the hottest days of summer (doyo no ushi no hi) for stamina and energy.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "gluten",
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "freshwater eel",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Unagi — a rich, fatty fish with a soft, melt-in-your-mouth texture when grilled"
+        },
+        {
+          "name": "tare sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A thick, sweet glaze of soy sauce, mirin, sugar, and sake, caramelized on the eel"
+        },
+        {
+          "name": "steamed rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "sansho pepper",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Japanese pepper with a unique tingling, citrusy buzz — cuts through the eel's richness"
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 65,
+        "fat": 20,
+        "fiber": 1,
+        "kcal": 560
+      },
+      "explanation": "Rich grilled eel over rice — a Japanese delicacy. Sprinkle sansho pepper on top for a tingling citrus kick that balances the sweetness.",
+      "culturalTerms": [
+        {
+          "term": "うなぎ (unagi)",
+          "explanation": "Freshwater eel — considered a stamina food, especially prized in summer"
+        },
+        {
+          "term": "土用の丑の日 (doyo no ushi no hi)",
+          "explanation": "The midsummer Day of the Ox — tradition says eating eel gives strength to endure the heat"
+        },
+        {
+          "term": "山椒 (sansho)",
+          "explanation": "Japanese pepper — its tingling, numbing sensation pairs perfectly with fatty eel"
+        }
+      ],
+      "imageSearchQuery": "うな丼",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Chikuyotei_Unadon.jpg/500px-Chikuyotei_Unadon.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Chikuyotei_Unadon.jpg/500px-Chikuyotei_Unadon.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "unagi don",
+        "うな丼",
+        "unadon",
+        "eel rice bowl"
+      ]
+    },
+    {
+      "id": "cache-japanese-20",
+      "nameEnglish": "Oyakodon",
+      "nameLocal": "親子丼",
+      "nameLocalCorrected": "親子丼",
+      "nameRomanized": "Oyakodon",
+      "description": "Chicken and egg simmered together in a sweet dashi-soy sauce and served over rice. The name means 'parent and child bowl' — a poetic (some say dark-humored) reference to the chicken and egg combination. The egg is intentionally left half-set, creating a silky, custard-like coating over the chicken and rice.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "egg",
+        "soy",
+        "gluten",
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "chicken thigh",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "dashi",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Japanese stock from kombu and bonito — provides the savory base"
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mirin",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Sweet rice wine that adds gentle sweetness and gloss"
+        },
+        {
+          "name": "steamed rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mitsuba",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Japanese wild parsley — a delicate herb garnish with a subtle celery-like flavor"
+        }
+      ],
+      "nutrition": {
+        "protein": 30,
+        "carbs": 65,
+        "fat": 14,
+        "fiber": 2,
+        "kcal": 510
+      },
+      "explanation": "A comforting chicken and egg rice bowl. The half-cooked egg creates a luscious, creamy texture — this is intentional, not undercooked.",
+      "culturalTerms": [
+        {
+          "term": "親子 (oyako)",
+          "explanation": "'Parent and child' — chicken (parent) and egg (child) in the same bowl"
+        },
+        {
+          "term": "丼 (don)",
+          "explanation": "A bowl of rice with toppings — one of Japan's most practical everyday meal formats"
+        },
+        {
+          "term": "とろとろ (torotoro)",
+          "explanation": "The desired silky, half-set texture of the egg — too firm means overcooked"
+        }
+      ],
+      "imageSearchQuery": "親子丼",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Oyakodon_003.jpg/500px-Oyakodon_003.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Oyakodon_003.jpg/500px-Oyakodon_003.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "oyakodon",
+        "親子丼",
+        "chicken egg bowl"
+      ]
+    },
+    {
+      "id": "cache-japanese-21",
+      "nameEnglish": "Curry Rice",
+      "nameLocal": "カレーライス",
+      "nameLocalCorrected": "カレーライス",
+      "nameRomanized": "Karee Raisu",
+      "description": "Japan's most popular comfort food — a thick, mildly sweet curry sauce with tender chunks of meat, potato, carrot, and onion served alongside steamed rice. Introduced via the British Navy in the 1800s, Japanese curry evolved into something entirely its own — sweeter, thicker, and milder than Indian curry. A staple in homes, schools, and military mess halls.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy",
+        "dairy"
+      ],
+      "ingredients": [
+        {
+          "name": "beef or pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "potato",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "carrot",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "curry roux",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Pre-made curry blocks containing flour, oil, curry powder, and fruit — just add water and simmer"
+        },
+        {
+          "name": "steamed rice",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "fukujinzuke",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Sweet red pickled vegetables served alongside — adds crunch and tang"
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 75,
+        "fat": 18,
+        "fiber": 4,
+        "kcal": 550
+      },
+      "explanation": "Japanese curry is mild and sweet — nothing like Indian curry. Japan's #1 home-cooked meal, loved by kids and adults alike.",
+      "culturalTerms": [
+        {
+          "term": "ルー (ruu)",
+          "explanation": "Curry roux blocks — sold in every supermarket, making Japanese curry easy to cook at home"
+        },
+        {
+          "term": "甘口 (amakuchi)",
+          "explanation": "Mild/sweet level — the mildest option, popular with children"
+        },
+        {
+          "term": "海軍カレー (kaigun karee)",
+          "explanation": "Navy curry — the Japanese Navy standardized curry as a Friday meal, spreading it nationwide"
+        }
+      ],
+      "imageSearchQuery": "カレーライス",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Beef_curry_rice_003.jpg/500px-Beef_curry_rice_003.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Beef_curry_rice_003.jpg/500px-Beef_curry_rice_003.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "curry rice",
+        "カレーライス",
+        "karee raisu",
+        "japanese curry"
+      ]
+    },
+    {
+      "id": "cache-japanese-22",
+      "nameEnglish": "Edamame",
+      "nameLocal": "枝豆",
+      "nameLocalCorrected": "枝豆",
+      "nameRomanized": "Edamame",
+      "description": "Young soybeans boiled in salted water and served in their pods as a snack. You squeeze the beans out of the pod directly into your mouth — the pod itself is not eaten. A ubiquitous starter at izakaya pubs, edamame is the default snack that arrives with your first round of drinks.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "soybeans",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "salt",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 12,
+        "carbs": 10,
+        "fat": 5,
+        "fiber": 5,
+        "kcal": 130
+      },
+      "explanation": "Salted soybeans in the pod — squeeze the beans out to eat. A healthy, protein-rich snack that pairs perfectly with beer.",
+      "culturalTerms": [
+        {
+          "term": "枝豆 (edamame)",
+          "explanation": "'Branch beans' — named because they were originally sold still attached to the stem"
+        },
+        {
+          "term": "とりあえず (toriaezu)",
+          "explanation": "'For now' — the phrase used when ordering edamame and beer as the first thing at an izakaya"
+        },
+        {
+          "term": "つまみ (tsumami)",
+          "explanation": "Drinking snack — edamame is the quintessential tsumami in Japan"
+        }
+      ],
+      "imageSearchQuery": "枝豆",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edamame_by_Zesmerelda_in_Chicago.jpg/500px-Edamame_by_Zesmerelda_in_Chicago.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edamame_by_Zesmerelda_in_Chicago.jpg/500px-Edamame_by_Zesmerelda_in_Chicago.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "edamame",
+        "枝豆",
+        "soybeans"
+      ]
+    },
+    {
+      "id": "cache-japanese-23",
+      "nameEnglish": "Nikujaga",
+      "nameLocal": "肉じゃが",
+      "nameLocalCorrected": "肉じゃが",
+      "nameRomanized": "Nikujaga",
+      "description": "A homestyle stew of thinly sliced beef, potatoes, onions, and carrots simmered in a sweet soy-dashi broth. Often called the taste of home — it's the dish Japanese mothers are most proud of perfecting. Simple and comforting, nikujaga embodies the gentle, balanced flavors of everyday Japanese home cooking.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "gluten",
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "thinly sliced beef",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "potato",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "carrot",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "shirataki noodles",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Translucent konjac noodles that absorb the sweet broth flavor"
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mirin",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Sweet rice wine used for gentle sweetness"
+        },
+        {
+          "name": "dashi",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Japanese stock providing the savory base"
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 35,
+        "fat": 12,
+        "fiber": 4,
+        "kcal": 330
+      },
+      "explanation": "Japan's ultimate comfort food — a sweet and savory beef-potato stew. Simple ingredients, but the gentle flavors are deeply satisfying.",
+      "culturalTerms": [
+        {
+          "term": "肉 (niku)",
+          "explanation": "Meat — in Kanto (Tokyo area) it's beef, in Kansai (Osaka area) it's pork"
+        },
+        {
+          "term": "おふくろの味 (ofukuro no aji)",
+          "explanation": "'Mother's flavor' — nikujaga is the iconic dish of Japanese home cooking"
+        },
+        {
+          "term": "煮物 (nimono)",
+          "explanation": "Simmered dishes — a fundamental category of Japanese cooking where ingredients absorb a seasoned broth"
+        }
+      ],
+      "imageSearchQuery": "肉じゃが",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Braised_pork_and_potatoes_%282017.05.06%29.jpg/500px-Braised_pork_and_potatoes_%282017.05.06%29.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Braised_pork_and_potatoes_%282017.05.06%29.jpg/500px-Braised_pork_and_potatoes_%282017.05.06%29.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "nikujaga",
+        "肉じゃが",
+        "meat and potatoes"
+      ]
+    },
+    {
+      "id": "cache-japanese-24",
+      "nameEnglish": "Tamagoyaki",
+      "nameLocal": "卵焼き",
+      "nameLocalCorrected": "卵焼き",
+      "nameRomanized": "Tamagoyaki",
+      "description": "A sweet, layered Japanese omelet made by rolling thin layers of seasoned egg in a rectangular pan. Each layer is cooked and rolled on top of the previous one, creating a log with a beautiful spiral cross-section. Can be slightly sweet (for bento) or savory with dashi (dashimaki tamago). A staple in bento boxes and at sushi counters.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [
+        "egg",
+        "soy",
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "dashi",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Japanese stock added for a moist, savory version called dashimaki tamago"
+        },
+        {
+          "name": "sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "mirin",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Sweet rice wine that adds subtle sweetness and helps the layers caramelize"
+        }
+      ],
+      "nutrition": {
+        "protein": 12,
+        "carbs": 5,
+        "fat": 10,
+        "fiber": 0,
+        "kcal": 160
+      },
+      "explanation": "A delicately layered Japanese omelet — sweet or savory. Look for the beautiful spiral pattern when sliced. A test of a sushi chef's skill.",
+      "culturalTerms": [
+        {
+          "term": "卵焼き器 (tamagoyaki-ki)",
+          "explanation": "The special rectangular pan used to make tamagoyaki — a common tool in Japanese kitchens"
+        },
+        {
+          "term": "だし巻き (dashimaki)",
+          "explanation": "The dashi-enriched savory version — juicier and more delicate, served at higher-end restaurants"
+        },
+        {
+          "term": "弁当 (bentou)",
+          "explanation": "A packed lunch box — tamagoyaki is one of the most classic bento components"
+        }
+      ],
+      "imageSearchQuery": "卵焼き",
+      "imageUrl": "",
+      "imageUrls": [],
+      "imageSource": "",
+      "imageVerified": false,
+      "matchKeys": [
+        "tamagoyaki",
+        "卵焼き",
+        "japanese omelet",
+        "egg roll"
+      ]
+    },
+    {
+      "id": "cache-japanese-25",
+      "nameEnglish": "Matcha Parfait",
+      "nameLocal": "抹茶パフェ",
+      "nameLocalCorrected": "抹茶パフェ",
+      "nameRomanized": "Matcha Pafe",
+      "description": "A towering layered dessert combining matcha green tea ice cream, whipped cream, red bean paste, mochi rice cakes, cornflakes, and sometimes matcha jelly in a tall glass. A signature sweet in Kyoto and Uji, where the finest matcha is grown. The layers offer contrasting textures and a balance of bitter, sweet, and creamy.",
+      "country": "Japan",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [
+        "dairy",
+        "gluten",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "matcha ice cream",
+          "category": "dairy",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "matcha powder",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Finely ground green tea — bitter, earthy, and intensely green, the backbone of this dessert"
+        },
+        {
+          "name": "whipped cream",
+          "category": "dairy",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "anko",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Sweet red bean paste made from azuki beans — Japan's most traditional sweet filling"
+        },
+        {
+          "name": "mochi",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Chewy rice cakes made from pounded glutinous rice — soft and stretchy"
+        },
+        {
+          "name": "shiratama dango",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Small, soft rice flour dumplings with a pleasantly chewy, bouncy texture"
+        },
+        {
+          "name": "cornflakes",
+          "category": "carb",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 8,
+        "carbs": 60,
+        "fat": 18,
+        "fiber": 3,
+        "kcal": 430
+      },
+      "explanation": "A stunning matcha dessert tower — layers of ice cream, cream, mochi, and red beans. Best enjoyed at a traditional tea house in Kyoto.",
+      "culturalTerms": [
+        {
+          "term": "抹茶 (matcha)",
+          "explanation": "Powdered green tea — ceremonial grade is whisked in tea ceremonies, culinary grade flavors desserts"
+        },
+        {
+          "term": "宇治 (Uji)",
+          "explanation": "A city near Kyoto famous for producing Japan's finest matcha — many parfait shops line its streets"
+        },
+        {
+          "term": "あんこ (anko)",
+          "explanation": "Sweet red bean paste — the most fundamental ingredient in Japanese traditional sweets (wagashi)"
+        }
+      ],
+      "imageSearchQuery": "matcha green tea parfait",
+      "imageUrl": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "matcha parfait",
+        "抹茶パフェ",
+        "green tea parfait"
+      ]
+    }
+  ]
+}
