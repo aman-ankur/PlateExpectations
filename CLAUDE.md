@@ -44,6 +44,7 @@ src/lib/
 src/fixtures/
   demo-scan.json            — 15 Korean dishes with full enrichment data
   demo-images.json          — Dish images (string or string[] per dish) + _generated list
+public/demo-images/         — 9 DALL-E generated JPEGs for AI demo dishes (500px, ~80KB each)
 docs/
   backlog.md                — Prioritized improvement items
   speed-and-images-plan.md  — Benchmarks and architecture decisions
@@ -116,6 +117,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - Food-related filenames (soup, kimchi, ramen) can skip Vision — high confidence from filename alone
 - Unsplash returns generic food photos — must be Vision-validated too
 - **Non-food rejection**: Filename heuristic rejects concert/crowd/people/band/stadium images before Vision. Vision prompt explicitly asks "if this is not food at all, answer NO" to catch non-food images that slip through filename filters.
+- **Don't hallucinate Wikimedia URLs**: Constructing plausible-looking Wikimedia Commons thumb URLs by guessing filenames results in 404s. Always use the Wikipedia API (`action=query&prop=images` or `action=query&prop=pageimages`) to discover real filenames, then construct thumb URLs from those.
 
 ### Dish Detail Hero
 - Immersive hero: `h-[55vh] min-h-[320px]` with lighter gradient (`from-[#0f0f0f] via-[#0f0f0f]/60 via-25% to-transparent`) — food image is the star
@@ -152,7 +154,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 - **Inline component definitions**: Never define components inside render functions — they get recreated every render, defeating React reconciliation and causing webpack HMR errors
 
 ### Testing
-- **Demo mode (default for UI work):** Use `npm run demo` to start the dev server with pre-recorded fixture data — no external API calls (no OCR, no Groq, no OpenAI, no Wikipedia image search, no DALL-E). Streams 15 Korean dishes (10 common + 5 uncommon) with full enrichment, real Wikipedia images, and 5 AI-generated image flags. Four popular dishes (Bibimbap, Kimchi Jjigae, Bulgogi, Tteokbokki) have 3 gallery images each. Use demo mode whenever testing UI changes (cards, layouts, order builder, styling, navigation) that don't touch the scan pipeline, image search, OCR, translation, or enrichment logic. If unsure whether the current changes require real APIs, **ask the user before starting the server**.
+- **Demo mode (default for UI work):** Use `npm run demo` to start the dev server with pre-recorded fixture data — no external API calls (no OCR, no Groq, no OpenAI, no Wikipedia image search, no DALL-E). Streams 15 Korean dishes (10 common + 5 uncommon) with full enrichment, real Wikipedia images, and 5 AI-generated image flags. Four popular dishes (Bibimbap, Kimchi Jjigae, Bulgogi, Tteokbokki) have 3 gallery images each but **only the first image works** — the 2nd and 3rd Wikimedia URLs are broken (404). Five AI dishes have DALL-E generated images stored as static assets in `public/demo-images/`. Use demo mode whenever testing UI changes (cards, layouts, order builder, styling, navigation) that don't touch the scan pipeline, image search, OCR, translation, or enrichment logic. If unsure whether the current changes require real APIs, **ask the user before starting the server**.
 - **Runtime demo toggle:** Demo mode can also be toggled at runtime from Settings (bottom of page) without restarting the server. This sets a `pe-demo` cookie that API routes check alongside the `DEMO_MODE` env var. An amber banner appears at the top when demo mode is active. This works on deployed environments (Vercel) too — no env var changes needed.
 - **Real API mode:** Use `npm run dev -- -p 3001` only when changes touch: `src/lib/openai.ts`, `src/app/api/scan/route.ts` (non-demo paths), `src/app/api/dish-image/route.ts` (non-demo paths), image validation/search logic, OCR, or enrichment prompts.
 - Test images: `/Users/aankur/Downloads/menuapp/korean.jpg` (17 dishes), `/Users/aankur/Downloads/menuapp/korean2.jpg` (8 dishes)
