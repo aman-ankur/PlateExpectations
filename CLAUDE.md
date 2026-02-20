@@ -86,7 +86,7 @@ Pre-generated enrichment data for 125 dishes (25 each: Korean, Japanese, Thai, V
 4. Cache hits → instant enriched Dish objects with pre-verified Wikipedia image URLs (no LLM, no image search)
 5. Cache misses → normal Phase 2 LLM enrichment (unchanged)
 6. If LLM later returns a dish that cache already provided, LLM version overwrites (merge by ID)
-- 122/125 dishes have verified image URLs; 3 (Tamagoyaki, Tod Mun Pla, Kai Jeow) use runtime fallback
+- 121/125 dishes have verified image URLs; 4 missing (Kalguksu, Bossam, Tod Mun Pla, Kai Jeow) use runtime fallback
 - Full architecture: `docs/15-offline-cuisine-cache.md` | Integration: `docs/16-cuisine-cache-integration.md`
 - Cache generation scripts: `scripts/cache-gen/` (run manually, not part of build)
 
