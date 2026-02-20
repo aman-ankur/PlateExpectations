@@ -34,4 +34,4 @@ Integrated the offline cuisine cache (125 pre-generated dishes across 5 Asian cu
 ### Image Handling
 - Cache hits set dish images directly from pre-verified Wikipedia URLs
 - No `/api/dish-image` calls needed for cache hits (saves ~25 API calls per cached menu)
-- 122/125 dishes have verified image URLs; 3 dishes (Tamagoyaki, Tod Mun Pla, Kai Jeow) fall back to runtime image search
+- 121/125 dishes have verified image URLs; 4 missing (Kalguksu, Bossam, Tod Mun Pla, Kai Jeow) fall back to runtime image search
