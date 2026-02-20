@@ -1,0 +1,2122 @@
+{
+  "version": 1,
+  "cuisine": "Vietnamese",
+  "country": "Vietnam",
+  "generatedAt": "2026-02-20",
+  "dishes": [
+    {
+      "id": "cache-vietnamese-1",
+      "nameEnglish": "Pho",
+      "nameLocal": "Phở",
+      "nameLocalCorrected": "Phở",
+      "nameRomanized": "Pho",
+      "description": "Vietnam's iconic beef or chicken noodle soup with a fragrant star anise and cinnamon broth, served with fresh rice noodles. Diners customize their bowl tableside with Thai basil, bean sprouts, lime, and chili. A staple breakfast and comfort food found on virtually every street corner.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Beef bone broth",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Beef slices",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Star anise",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cinnamon",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai basil",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Scallions",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false,
+          "explanation": "Fermented anchovy condiment, salty and umami-rich"
+        }
+      ],
+      "nutrition": {
+        "protein": 25,
+        "carbs": 45,
+        "fat": 8,
+        "fiber": 2,
+        "kcal": 350
+      },
+      "explanation": "The national dish of Vietnam. The clear broth is simmered for hours with charred onion and ginger. Street vendors specialize in either pho bo (beef) or pho ga (chicken).",
+      "culturalTerms": [
+        {
+          "term": "Phở",
+          "explanation": "Believed to derive from the French 'pot-au-feu' or the Cantonese word for rice noodles"
+        },
+        {
+          "term": "Nước mắm",
+          "explanation": "Fish sauce, the essential Vietnamese condiment"
+        }
+      ],
+      "imageSearchQuery": "Phở",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg/500px-Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg/500px-Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "pho",
+        "phở"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-2",
+      "nameEnglish": "Banh Mi",
+      "nameLocal": "Bánh mì",
+      "nameLocalCorrected": "Bánh mì",
+      "nameRomanized": "Banh Mi",
+      "description": "A crispy baguette sandwich that perfectly fuses French colonial baking with Vietnamese flavors. Filled with pate, cold cuts, pickled daikon and carrot, cilantro, and jalapeno. Light, crunchy, and endlessly customizable from street carts everywhere.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "eggs"
+      ],
+      "ingredients": [
+        {
+          "name": "Baguette",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork pate",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Vietnamese cold cuts",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Chả lụa — smooth pork sausage steamed in banana leaf"
+        },
+        {
+          "name": "Pickled daikon & carrot",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cilantro",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Jalapeno",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Mayonnaise",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Maggi sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Soy-based seasoning sauce, widely used in Vietnamese street food"
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 50,
+        "fat": 14,
+        "fiber": 3,
+        "kcal": 410
+      },
+      "explanation": "Vietnam's answer to the sandwich. The baguette uses rice flour blended with wheat, making it lighter and crispier than French originals. Every region has its own signature fillings.",
+      "culturalTerms": [
+        {
+          "term": "Bánh mì",
+          "explanation": "Literally means 'wheat cake' — refers both to bread and the sandwich"
+        },
+        {
+          "term": "Đồ chua",
+          "explanation": "The pickled vegetable garnish (literally 'sour things')"
+        }
+      ],
+      "imageSearchQuery": "Bánh mì thịt nướng",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.jpg/500px-B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.jpg/500px-B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "banh mi",
+        "bánh mì",
+        "banh my"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-3",
+      "nameEnglish": "Bun Cha",
+      "nameLocal": "Bún chả",
+      "nameLocalCorrected": "Bún chả",
+      "nameRomanized": "Bun Cha",
+      "description": "Hanoi's signature dish of smoky charcoal-grilled pork patties and sliced pork belly served in a bowl of sweet-sour fish sauce broth alongside cold rice vermicelli. Fresh herbs and pickled green papaya round out the meal. This is the dish Obama famously ate with Anthony Bourdain.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "Grilled pork patties",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork belly slices",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Rice vermicelli",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Nước chấm",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Dipping sauce made from fish sauce, sugar, lime, garlic, and chili"
+        },
+        {
+          "name": "Pickled green papaya",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lettuce",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fresh herbs",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 40,
+        "fat": 16,
+        "fiber": 2,
+        "kcal": 420
+      },
+      "explanation": "A Hanoi specialty rarely found in the south. The pork is grilled over charcoal right on the sidewalk, and diners assemble each bite by dipping noodles and herbs into the broth bowl.",
+      "culturalTerms": [
+        {
+          "term": "Bún",
+          "explanation": "Round rice vermicelli noodles, thinner than pho noodles"
+        },
+        {
+          "term": "Chả",
+          "explanation": "Grilled or fried meat patty/cake"
+        }
+      ],
+      "imageSearchQuery": "Bún chả Vietnamese food",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/B%C3%BAn_ch%E1%BA%A3_Vietnamese_food.jpg/500px-B%C3%BAn_ch%E1%BA%A3_Vietnamese_food.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/B%C3%BAn_ch%E1%BA%A3_Vietnamese_food.jpg/500px-B%C3%BAn_ch%E1%BA%A3_Vietnamese_food.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "bun cha",
+        "bún chả"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-4",
+      "nameEnglish": "Fresh Spring Rolls",
+      "nameLocal": "Gỏi cuốn",
+      "nameLocalCorrected": "Gỏi cuốn",
+      "nameRomanized": "Goi Cuon",
+      "description": "Translucent rice paper rolls filled with shrimp, pork, rice vermicelli, and fresh herbs — a refreshing appetizer or snack. Served unfried and cold with a rich hoisin-peanut dipping sauce. One of the most approachable Vietnamese dishes for first-time visitors.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "peanuts",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice paper",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Thin, translucent wrappers made from rice flour and water, softened by dipping in warm water"
+        },
+        {
+          "name": "Shrimp",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork slices",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Rice vermicelli",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lettuce",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Mint",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai basil",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Hoisin-peanut sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 14,
+        "carbs": 28,
+        "fat": 5,
+        "fiber": 2,
+        "kcal": 210
+      },
+      "explanation": "Called 'summer rolls' in some Western restaurants. Unlike nem ran (fried spring rolls), these are fresh and uncooked. The transparent wrapper lets you see all the colorful fillings inside.",
+      "culturalTerms": [
+        {
+          "term": "Gỏi",
+          "explanation": "Salad or fresh preparation"
+        },
+        {
+          "term": "Cuốn",
+          "explanation": "Rolled — refers to the wrapping technique"
+        }
+      ],
+      "imageSearchQuery": "Vietnamese fresh spring rolls goi cuon",
+      "imageUrl": "https://images.unsplash.com/photo-1562967916-eb82221dfb44?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1562967916-eb82221dfb44?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "goi cuon",
+        "gỏi cuốn",
+        "spring rolls",
+        "summer rolls"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-5",
+      "nameEnglish": "Broken Rice",
+      "nameLocal": "Cơm tấm",
+      "nameLocalCorrected": "Cơm tấm",
+      "nameRomanized": "Com Tam",
+      "description": "Saigon's beloved broken rice plate, typically topped with a grilled pork chop, shredded pork skin, a steamed egg meatloaf, and a fried egg. Served with pickled vegetables, cucumber, and fish sauce. An essential southern Vietnamese comfort meal available from early morning.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "eggs"
+      ],
+      "ingredients": [
+        {
+          "name": "Broken rice",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Fractured rice grains — originally a byproduct, now prized for their unique texture"
+        },
+        {
+          "name": "Grilled pork chop",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bì",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Shredded pork skin mixed with toasted rice powder — chewy and fragrant"
+        },
+        {
+          "name": "Chả trứng",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Steamed pork and egg meatloaf, dense and savory"
+        },
+        {
+          "name": "Fried egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pickled vegetables",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Nước mắm pha",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Diluted fish sauce with sugar, lime, garlic, and chili — the universal Vietnamese table sauce"
+        }
+      ],
+      "nutrition": {
+        "protein": 35,
+        "carbs": 60,
+        "fat": 18,
+        "fiber": 2,
+        "kcal": 550
+      },
+      "explanation": "Broken rice was once considered inferior and eaten only by the poor. It became a Saigon street food icon and now commands premium prices. The dish is all about the variety of toppings.",
+      "culturalTerms": [
+        {
+          "term": "Cơm",
+          "explanation": "Cooked rice — also means 'meal' in Vietnamese"
+        },
+        {
+          "term": "Tấm",
+          "explanation": "Broken or fractured rice grains"
+        }
+      ],
+      "imageSearchQuery": "Cơm tấm",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg/500px-C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg/500px-C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "com tam",
+        "cơm tấm",
+        "broken rice"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-6",
+      "nameEnglish": "Hue Spicy Beef Noodle Soup",
+      "nameLocal": "Bún bò Huế",
+      "nameLocalCorrected": "Bún bò Huế",
+      "nameRomanized": "Bun Bo Hue",
+      "description": "A bold, spicy noodle soup from the former imperial capital of Hue. The lemongrass-infused broth has a deep red hue from annatto oil and chili, with thick round noodles, beef shank, and pork knuckle. More complex and fiery than pho.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "Thick round rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Beef shank",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork knuckle",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lemongrass",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Annatto oil",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Oil colored and flavored with annatto seeds — gives the broth its distinctive red-orange color"
+        },
+        {
+          "name": "Shrimp paste",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Mắm ruốc — fermented shrimp paste, intensely pungent, adds deep umami"
+        },
+        {
+          "name": "Chili flakes",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Banana blossom",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "The purple flower of the banana plant, shredded raw as a crunchy garnish"
+        }
+      ],
+      "nutrition": {
+        "protein": 30,
+        "carbs": 48,
+        "fat": 14,
+        "fiber": 3,
+        "kcal": 440
+      },
+      "explanation": "Considered by many Vietnamese to be superior to pho in complexity. The broth takes hours to prepare and balances spicy, sour, salty, and sweet. Hue cuisine is the spiciest in Vietnam.",
+      "culturalTerms": [
+        {
+          "term": "Huế",
+          "explanation": "Vietnam's former imperial capital, known for refined and spicy cuisine"
+        },
+        {
+          "term": "Mắm ruốc",
+          "explanation": "Fermented shrimp paste — a central Vietnamese condiment"
+        }
+      ],
+      "imageSearchQuery": "Bún bò Huế",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/B%C3%BAn_b%C3%B2_Hu%E1%BA%BF.jpg/500px-B%C3%BAn_b%C3%B2_Hu%E1%BA%BF.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/B%C3%BAn_b%C3%B2_Hu%E1%BA%BF.jpg/500px-B%C3%BAn_b%C3%B2_Hu%E1%BA%BF.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "bun bo hue",
+        "bún bò huế"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-7",
+      "nameEnglish": "Vietnamese Crepe",
+      "nameLocal": "Bánh xèo",
+      "nameLocalCorrected": "Bánh xèo",
+      "nameRomanized": "Banh Xeo",
+      "description": "A sizzling crispy crepe made from rice flour and turmeric, stuffed with shrimp, pork, and bean sprouts. Named for the 'xèo' sizzling sound the batter makes when hitting the hot pan. Eaten by wrapping pieces in lettuce and herbs, then dipping in sauce.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice flour batter",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Turmeric",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Coconut milk",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Shrimp",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork slices",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lettuce wraps",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Nước chấm",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Sweet-sour fish sauce dip with garlic, chili, and lime"
+        }
+      ],
+      "nutrition": {
+        "protein": 20,
+        "carbs": 35,
+        "fat": 18,
+        "fiber": 3,
+        "kcal": 380
+      },
+      "explanation": "Southern versions are large and crispy; central Vietnamese versions are smaller and chewier. The turmeric gives the crepe its bright yellow color. Always eaten with a mountain of fresh greens.",
+      "culturalTerms": [
+        {
+          "term": "Xèo",
+          "explanation": "Onomatopoeia for the sizzling sound of batter hitting hot oil"
+        },
+        {
+          "term": "Bánh",
+          "explanation": "A broad term for cakes, pastries, and flour-based preparations"
+        }
+      ],
+      "imageSearchQuery": "Bánh xèo fish sauce",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Banh_Xeo_with_fish_sauce.jpg/500px-Banh_Xeo_with_fish_sauce.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Banh_Xeo_with_fish_sauce.jpg/500px-Banh_Xeo_with_fish_sauce.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "banh xeo",
+        "bánh xèo"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-8",
+      "nameEnglish": "Cao Lau",
+      "nameLocal": "Cao lầu",
+      "nameLocalCorrected": "Cao lầu",
+      "nameRomanized": "Cao Lau",
+      "description": "A unique noodle dish found only in Hoi An, with thick chewy noodles, sliced pork, herbs, and crispy croutons in a small amount of rich broth. Legend says the noodles must be made with water from a specific ancient well. Unlike any other Vietnamese noodle dish.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "Cao lau noodles",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Thick, chewy rice noodles made with lye water from Hoi An's Ba Le well — gives them a unique yellow-brown color"
+        },
+        {
+          "name": "Sliced pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Crispy croutons",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fresh herbs",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Soy-based sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 42,
+        "fat": 10,
+        "fiber": 2,
+        "kcal": 350
+      },
+      "explanation": "One of Vietnam's most geographically specific dishes. The noodles have Japanese udon-like chewiness, reflecting Hoi An's history as a Japanese trading port. Authenticity debates center on the water source.",
+      "culturalTerms": [
+        {
+          "term": "Hội An",
+          "explanation": "Ancient port town and UNESCO World Heritage site, known for unique local cuisine"
+        },
+        {
+          "term": "Cao lầu",
+          "explanation": "Possibly derived from Chinese 'gao lou' (high floor) — referring to upper-floor restaurants"
+        }
+      ],
+      "imageSearchQuery": "Cao lầu Hội An",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Cao_l%E1%BA%A7u_H%E1%BB%99i_An.jpg/500px-Cao_l%E1%BA%A7u_H%E1%BB%99i_An.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Cao_l%E1%BA%A7u_H%E1%BB%99i_An.jpg/500px-Cao_l%E1%BA%A7u_H%E1%BB%99i_An.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "cao lau",
+        "cao lầu"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-9",
+      "nameEnglish": "Quang Noodles",
+      "nameLocal": "Mì Quảng",
+      "nameLocalCorrected": "Mì Quảng",
+      "nameRomanized": "Mi Quang",
+      "description": "A central Vietnamese noodle dish from Da Nang with wide turmeric-yellow rice noodles in a small amount of rich, concentrated broth. Topped with shrimp, pork, quail eggs, peanuts, and rice crackers. Intensely flavorful with less liquid than typical noodle soups.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "peanuts",
+        "eggs"
+      ],
+      "ingredients": [
+        {
+          "name": "Wide turmeric rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Shrimp",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Quail eggs",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Rice crackers",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Turmeric",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fresh herbs",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Banana blossom",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Shredded purple banana flower, adds crunch and mild flavor"
+        }
+      ],
+      "nutrition": {
+        "protein": 26,
+        "carbs": 45,
+        "fat": 14,
+        "fiber": 3,
+        "kcal": 410
+      },
+      "explanation": "The pride of Quang Nam province. Unlike pho, which is a brothy soup, mi quang has just enough liquid to coat the noodles. The crushed rice crackers add a satisfying crunch.",
+      "culturalTerms": [
+        {
+          "term": "Quảng",
+          "explanation": "Short for Quảng Nam province in central Vietnam"
+        },
+        {
+          "term": "Bánh tráng",
+          "explanation": "Rice crackers/papers, crumbled on top for texture"
+        }
+      ],
+      "imageSearchQuery": "Mì Quảng",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg/500px-M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg/500px-M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "mi quang",
+        "mì quảng",
+        "my quang"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-10",
+      "nameEnglish": "Crab Noodle Soup",
+      "nameLocal": "Bún riêu",
+      "nameLocalCorrected": "Bún riêu",
+      "nameRomanized": "Bun Rieu",
+      "description": "A tangy tomato-based noodle soup with a fluffy crab and egg paste that floats in clouds on the surface. Rice vermicelli, fried tofu puffs, and fresh herbs complete this bright and comforting bowl. The tomato broth makes it lighter than many Vietnamese soups.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "eggs",
+        "soy"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice vermicelli",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Crab paste",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Pounded freshwater crab mixed with egg, forming a fluffy custard-like topping"
+        },
+        {
+          "name": "Tomatoes",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fried tofu puffs",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Shrimp paste",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Mắm tôm — fermented shrimp paste, optional but traditional. Very pungent."
+        },
+        {
+          "name": "Fresh herbs",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Water spinach",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Rau muống — a hollow-stemmed aquatic vegetable, crisp and mild"
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 38,
+        "fat": 12,
+        "fiber": 3,
+        "kcal": 350
+      },
+      "explanation": "The tomato base makes this unusual among Vietnamese soups. Originally made with tiny paddy field crabs, modern versions use crab paste or crab meat. The floating crab-egg mixture is the signature element.",
+      "culturalTerms": [
+        {
+          "term": "Riêu",
+          "explanation": "Refers to the sour crab broth — the defining element of this soup"
+        },
+        {
+          "term": "Mắm tôm",
+          "explanation": "Purple fermented shrimp paste — stirred in at the table by those who dare"
+        }
+      ],
+      "imageSearchQuery": "Bún riêu đặc biệt",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg/500px-B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg/500px-B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "bun rieu",
+        "bún riêu"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-11",
+      "nameEnglish": "Shaking Beef",
+      "nameLocal": "Bò lúc lắc",
+      "nameLocalCorrected": "Bò lúc lắc",
+      "nameRomanized": "Bo Luc Lac",
+      "description": "Tender cubes of beef wok-tossed ('shaken') at high heat with garlic, soy sauce, and butter, served on a bed of watercress and tomatoes with a lime-pepper dipping salt. A French-Vietnamese fusion dish popular in upscale restaurants and home kitchens alike.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "soy",
+        "dairy"
+      ],
+      "ingredients": [
+        {
+          "name": "Beef tenderloin cubes",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Soy sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Butter",
+          "category": "dairy",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Watercress",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tomatoes",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lime-pepper salt",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "Muối tiêu chanh — a tangy dipping salt of salt, black pepper, and lime juice"
+        }
+      ],
+      "nutrition": {
+        "protein": 32,
+        "carbs": 8,
+        "fat": 22,
+        "fiber": 1,
+        "kcal": 360
+      },
+      "explanation": "The name 'luc lac' mimics the shaking sound of beef cubes tumbling in a hot wok. The French influence shows in the butter and watercress. Best enjoyed with white rice and the lime-pepper salt.",
+      "culturalTerms": [
+        {
+          "term": "Lúc lắc",
+          "explanation": "Onomatopoeia for rattling/shaking — describes the wok-tossing technique"
+        },
+        {
+          "term": "Muối tiêu chanh",
+          "explanation": "Lime-pepper dipping salt, a quintessential Vietnamese condiment"
+        }
+      ],
+      "imageSearchQuery": "Bò lúc lắc",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Product_Shots_of_Food-Bo_Luc_Lac.jpg/500px-Product_Shots_of_Food-Bo_Luc_Lac.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Product_Shots_of_Food-Bo_Luc_Lac.jpg/500px-Product_Shots_of_Food-Bo_Luc_Lac.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "bo luc lac",
+        "bò lúc lắc",
+        "shaking beef"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-12",
+      "nameEnglish": "Turmeric Fish with Dill",
+      "nameLocal": "Chả cá",
+      "nameLocalCorrected": "Chả cá",
+      "nameRomanized": "Cha Ca",
+      "description": "Hanoi's legendary turmeric-marinated fish fillets pan-fried with fresh dill and scallions, served sizzling at the table with rice noodles, peanuts, and shrimp paste. So famous that an entire street in Hanoi is named after it.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "peanuts",
+        "shellfish"
+      ],
+      "ingredients": [
+        {
+          "name": "White fish fillets",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Turmeric",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fresh dill",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Scallions",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Mắm tôm",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Fermented shrimp paste — pungent and salty, essential for this dish"
+        },
+        {
+          "name": "Galangal",
+          "category": "spice",
+          "isUnfamiliar": true,
+          "explanation": "A rhizome related to ginger, more citrusy and piney in flavor"
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 32,
+        "fat": 14,
+        "fiber": 2,
+        "kcal": 370
+      },
+      "explanation": "The full name is Chả Cá Lã Vọng, after the 100-year-old restaurant that made it famous. The street it's on — Chả Cá Street — is the only street in Hanoi named after a dish.",
+      "culturalTerms": [
+        {
+          "term": "Chả cá",
+          "explanation": "Literally 'fish cake/patty' but refers specifically to this Hanoi preparation"
+        },
+        {
+          "term": "Lã Vọng",
+          "explanation": "The original restaurant, named after a legendary Chinese fisherman"
+        }
+      ],
+      "imageSearchQuery": "Chả cá Lã Vọng",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Cha_ca_La_Vong.jpg/500px-Cha_ca_La_Vong.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Cha_ca_La_Vong.jpg/500px-Cha_ca_La_Vong.jpg"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "cha ca",
+        "chả cá",
+        "cha ca la vong"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-13",
+      "nameEnglish": "Fried Spring Rolls",
+      "nameLocal": "Nem rán",
+      "nameLocalCorrected": "Nem rán",
+      "nameRomanized": "Nem Ran",
+      "description": "Crispy deep-fried spring rolls filled with minced pork, mushrooms, glass noodles, and vegetables. Wrapped in rice paper and fried until golden and shatteringly crunchy. Served with lettuce wraps, herbs, and sweet fish sauce for dipping.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice paper wrapper",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Ground pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Wood ear mushrooms",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Mộc nhĩ — a dark, crunchy tree fungus prized for texture rather than flavor"
+        },
+        {
+          "name": "Glass noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Carrots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Taro",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Nước chấm",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Sweet-sour dipping sauce of fish sauce, sugar, lime, garlic, and chili"
+        }
+      ],
+      "nutrition": {
+        "protein": 16,
+        "carbs": 30,
+        "fat": 20,
+        "fiber": 2,
+        "kcal": 360
+      },
+      "explanation": "Called 'nem rán' in the north and 'chả giò' in the south — same dish, different names. The rice paper wrapper creates a uniquely bubbly, crackly texture unlike Chinese spring rolls. Every family has their own recipe.",
+      "culturalTerms": [
+        {
+          "term": "Nem rán",
+          "explanation": "Northern Vietnamese name — 'nem' is the roll, 'rán' means fried"
+        },
+        {
+          "term": "Chả giò",
+          "explanation": "Southern Vietnamese name for the same dish"
+        }
+      ],
+      "imageSearchQuery": "Nem rán Vietnamese fried spring rolls",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Tu_binh.JPG/500px-Tu_binh.JPG",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Tu_binh.JPG/500px-Tu_binh.JPG"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "nem ran",
+        "nem rán",
+        "cha gio",
+        "chả giò",
+        "fried spring rolls"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-14",
+      "nameEnglish": "Sticky Rice",
+      "nameLocal": "Xôi",
+      "nameLocalCorrected": "Xôi",
+      "nameRomanized": "Xoi",
+      "description": "Steamed glutinous sticky rice served as a base for countless sweet and savory toppings — from mung bean and fried shallots to chicken, pork floss, or pandan and coconut. A ubiquitous Vietnamese breakfast and snack food sold by street vendors everywhere.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [],
+      "ingredients": [
+        {
+          "name": "Glutinous rice",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "A starchy, sticky rice variety that clumps together — does not actually contain gluten"
+        },
+        {
+          "name": "Mung beans",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fried shallots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork floss",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Ruốc — dried shredded pork with a fluffy, cotton-like texture"
+        },
+        {
+          "name": "Pate",
+          "category": "protein",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 12,
+        "carbs": 55,
+        "fat": 10,
+        "fiber": 2,
+        "kcal": 360
+      },
+      "explanation": "There are dozens of xoi varieties. Xoi xeo (turmeric with mung bean) is the classic Hanoi breakfast. Xoi gac (with gac fruit) is bright red and served at celebrations. Vendors scoop portions from large banana-leaf-lined baskets.",
+      "culturalTerms": [
+        {
+          "term": "Xôi",
+          "explanation": "Glutinous/sticky rice preparation — a whole category of Vietnamese food"
+        },
+        {
+          "term": "Gấc",
+          "explanation": "A spiny red fruit used to color sticky rice for festive occasions"
+        }
+      ],
+      "imageSearchQuery": "Xôi sắn",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/X%C3%B4i_s%E1%BA%AFn.jpg/500px-X%C3%B4i_s%E1%BA%AFn.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/X%C3%B4i_s%E1%BA%AFn.jpg/500px-X%C3%B4i_s%E1%BA%AFn.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "xoi",
+        "xôi"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-15",
+      "nameEnglish": "Southern Noodle Soup",
+      "nameLocal": "Hủ tiếu",
+      "nameLocalCorrected": "Hủ tiếu",
+      "nameRomanized": "Hu Tieu",
+      "description": "A clear pork-bone broth noodle soup popular in southern Vietnam, with thin rice noodles or chewy tapioca noodles, pork, shrimp, and minced pork. The Cambodian-Chinese-influenced broth is sweeter and lighter than pho. Can be served dry (mixed) or in soup.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork slices",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Shrimp",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Minced pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork bone broth",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fried garlic",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chinese celery",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Thinner and more intensely flavored than Western celery"
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 42,
+        "fat": 10,
+        "fiber": 2,
+        "kcal": 360
+      },
+      "explanation": "Hu tieu came to Vietnam from Cambodia's Teochew Chinese community. The Saigon version (hu tieu Nam Vang) is the most popular. It's a breakfast dish, typically sold from early morning until around noon.",
+      "culturalTerms": [
+        {
+          "term": "Hủ tiếu",
+          "explanation": "Derived from Teochew Chinese 'kway teow' — rice noodle strips"
+        },
+        {
+          "term": "Nam Vang",
+          "explanation": "Vietnamese name for Phnom Penh — the most popular hu tieu variant"
+        }
+      ],
+      "imageSearchQuery": "Hủ tiếu",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Hu_Tieu_Nam_Vang.jpg/500px-Hu_Tieu_Nam_Vang.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Hu_Tieu_Nam_Vang.jpg/500px-Hu_Tieu_Nam_Vang.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "hu tieu",
+        "hủ tiếu",
+        "hu tiu"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-16",
+      "nameEnglish": "Steamed Rice Rolls",
+      "nameLocal": "Bánh cuốn",
+      "nameLocalCorrected": "Bánh cuốn",
+      "nameRomanized": "Banh Cuon",
+      "description": "Delicate steamed rice flour sheets rolled around seasoned pork and wood ear mushrooms, topped with crispy fried shallots and served with Vietnamese deli meats and dipping sauce. A beloved Hanoi breakfast with a silky, slippery texture unlike anything else.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice flour sheets",
+          "category": "carb",
+          "isUnfamiliar": true,
+          "explanation": "Paper-thin steamed rice batter sheets, incredibly soft and silky"
+        },
+        {
+          "name": "Ground pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Wood ear mushrooms",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Mộc nhĩ — dark, crunchy tree fungus used for texture"
+        },
+        {
+          "name": "Fried shallots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chả lụa",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Vietnamese pork sausage steamed in banana leaf — smooth, bouncy texture"
+        },
+        {
+          "name": "Nước chấm",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Fish sauce-based dipping sauce"
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 35,
+        "fat": 8,
+        "fiber": 1,
+        "kcal": 290
+      },
+      "explanation": "Watching a banh cuon vendor steam each sheet on a cloth stretched over boiling water, then peel it off and fill it, is mesmerizing. The sheets are made to order and eaten immediately.",
+      "culturalTerms": [
+        {
+          "term": "Cuốn",
+          "explanation": "To roll — describes the wrapping technique"
+        },
+        {
+          "term": "Chả lụa",
+          "explanation": "Smooth Vietnamese pork sausage, a standard accompaniment"
+        }
+      ],
+      "imageSearchQuery": "Bánh cuốn",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/B%C3%A1nh_cu%E1%BB%91n_Thanh_Tr%C3%AC.jpg/500px-B%C3%A1nh_cu%E1%BB%91n_Thanh_Tr%C3%AC.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/B%C3%A1nh_cu%E1%BB%91n_Thanh_Tr%C3%AC.jpg/500px-B%C3%A1nh_cu%E1%BB%91n_Thanh_Tr%C3%AC.jpg"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "banh cuon",
+        "bánh cuốn"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-17",
+      "nameEnglish": "Beef Pho",
+      "nameLocal": "Phở bò",
+      "nameLocalCorrected": "Phở bò",
+      "nameRomanized": "Pho Bo",
+      "description": "The beef version of Vietnam's national noodle soup, with a rich broth simmered from beef bones, star anise, and cinnamon. Served with rare beef slices that cook in the hot broth, along with rice noodles and fresh herbs. The most iconic Vietnamese dish worldwide.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Beef bone broth",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Rare beef slices",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Beef brisket",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Star anise",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cinnamon stick",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Charred ginger",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai basil",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 28,
+        "carbs": 46,
+        "fat": 10,
+        "fiber": 2,
+        "kcal": 390
+      },
+      "explanation": "Pho bo is the original — pho ga (chicken) came later. In Hanoi, pho is simpler and the broth is clearer. In Saigon, it comes with a bigger herb plate and more garnishes. The broth takes 12-24 hours to prepare properly.",
+      "culturalTerms": [
+        {
+          "term": "Bò",
+          "explanation": "Beef"
+        },
+        {
+          "term": "Tái",
+          "explanation": "Rare beef — sliced paper-thin and cooked by the hot broth at the table"
+        }
+      ],
+      "imageSearchQuery": "Phở bò",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg/500px-Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg/500px-Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "pho bo",
+        "phở bò",
+        "beef pho"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-18",
+      "nameEnglish": "Chicken Pho",
+      "nameLocal": "Phở gà",
+      "nameLocalCorrected": "Phở gà",
+      "nameRomanized": "Pho Ga",
+      "description": "The lighter, more delicate sibling of beef pho, with a clear chicken broth, shredded or sliced poached chicken, and rice noodles. Topped with shredded onion, cilantro, and a squeeze of lime. A gentler option for those who find beef pho too heavy.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [],
+      "ingredients": [
+        {
+          "name": "Rice noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chicken broth",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Poached chicken",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Onion",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cilantro",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Ginger",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 44,
+        "fat": 6,
+        "fiber": 1,
+        "kcal": 330
+      },
+      "explanation": "Pho ga became popular as a cheaper alternative to pho bo. Some versions feature chicken organs (heart, liver, gizzard) as optional toppings. The broth is faster to prepare and has a cleaner, more subtle flavor.",
+      "culturalTerms": [
+        {
+          "term": "Gà",
+          "explanation": "Chicken"
+        },
+        {
+          "term": "Phở gà trộn",
+          "explanation": "Dry-tossed version without broth, a modern Hanoi trend"
+        }
+      ],
+      "imageSearchQuery": "Phở gà",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg/500px-Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg/500px-Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "pho ga",
+        "phở gà",
+        "chicken pho"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-19",
+      "nameEnglish": "Caramelized Fish in Clay Pot",
+      "nameLocal": "Cá kho tộ",
+      "nameLocalCorrected": "Cá kho tộ",
+      "nameRomanized": "Ca Kho To",
+      "description": "Catfish braised in a clay pot with a deeply savory caramel sauce made from coconut water, fish sauce, and palm sugar. The fish becomes rich and intensely flavored, with a dark, sticky glaze. A quintessential southern Vietnamese home-cooked dish served with plain rice.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "Catfish steaks",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Caramel sauce",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Nước màu — sugar cooked until dark amber, then deglazed with fish sauce. Savory, not sweet."
+        },
+        {
+          "name": "Coconut water",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fish sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Black pepper",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Shallots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Chili",
+          "category": "spice",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 30,
+        "carbs": 15,
+        "fat": 12,
+        "fiber": 0,
+        "kcal": 290
+      },
+      "explanation": "The clay pot (tộ) retains heat and creates the sticky caramelized crust. This dish epitomizes the Mekong Delta's cuisine — freshwater fish, coconut, and bold flavors. Best when the sauce is reduced to a thick, dark glaze.",
+      "culturalTerms": [
+        {
+          "term": "Kho",
+          "explanation": "A braising/caramelizing technique unique to Vietnamese cooking"
+        },
+        {
+          "term": "Tộ",
+          "explanation": "Clay pot — retains heat and creates the characteristic crust"
+        },
+        {
+          "term": "Nước màu",
+          "explanation": "Caramel sauce — literally 'color water' — the base of all kho dishes"
+        }
+      ],
+      "imageSearchQuery": "Cá kho tộ",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/C%C3%A1_kho_t%E1%BB%99.JPG/500px-C%C3%A1_kho_t%E1%BB%99.JPG",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/C%C3%A1_kho_t%E1%BB%99.JPG/500px-C%C3%A1_kho_t%E1%BB%99.JPG"
+      ],
+      "imageSource": "commons",
+      "imageVerified": true,
+      "matchKeys": [
+        "ca kho to",
+        "cá kho tộ"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-20",
+      "nameEnglish": "Grilled Pork Vermicelli",
+      "nameLocal": "Bún thịt nướng",
+      "nameLocalCorrected": "Bún thịt nướng",
+      "nameRomanized": "Bun Thit Nuong",
+      "description": "Cold rice vermicelli noodles topped with charcoal-grilled pork, fresh herbs, pickled carrots, crushed peanuts, and fried shallots, all dressed with sweet fish sauce. A refreshing no-broth noodle bowl that balances smoky, sweet, sour, and fresh flavors in every bite.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish",
+        "peanuts"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice vermicelli",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Grilled pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Crushed peanuts",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fried shallots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pickled carrots & daikon",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Fresh herbs",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lettuce",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Nước chấm",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Sweet fish sauce dressing — the dressing that ties everything together"
+        }
+      ],
+      "nutrition": {
+        "protein": 24,
+        "carbs": 45,
+        "fat": 12,
+        "fiber": 3,
+        "kcal": 390
+      },
+      "explanation": "A perfect hot-weather dish since it's served at room temperature or cold. The pork is marinated in lemongrass and fish sauce before grilling. Southern versions often add a fried spring roll (chả giò) on top.",
+      "culturalTerms": [
+        {
+          "term": "Thịt nướng",
+          "explanation": "Grilled meat — usually pork marinated in lemongrass and garlic"
+        },
+        {
+          "term": "Bún",
+          "explanation": "Round rice vermicelli noodles"
+        }
+      ],
+      "imageSearchQuery": "Bún thịt nướng",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Bun_thit_nuong.jpg/500px-Bun_thit_nuong.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Bun_thit_nuong.jpg/500px-Bun_thit_nuong.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "bun thit nuong",
+        "bún thịt nướng"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-21",
+      "nameEnglish": "Vietnamese Sweet Dessert Soup",
+      "nameLocal": "Chè",
+      "nameLocalCorrected": "Chè",
+      "nameRomanized": "Che",
+      "description": "A whole category of Vietnamese sweet soups and puddings served warm or over ice. Popular versions include mung bean, black-eyed pea, taro, and coconut with tapioca pearls. Vendors display dozens of colorful varieties in glass jars for you to mix and match.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "veg",
+      "allergens": [],
+      "ingredients": [
+        {
+          "name": "Mung beans",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Coconut milk",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tapioca pearls",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Palm sugar",
+          "category": "other",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Taro",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pandan leaves",
+          "category": "other",
+          "isUnfamiliar": true,
+          "explanation": "Fragrant tropical leaves that add a vanilla-like aroma and green color"
+        }
+      ],
+      "nutrition": {
+        "protein": 6,
+        "carbs": 45,
+        "fat": 8,
+        "fiber": 3,
+        "kcal": 280
+      },
+      "explanation": "Che is not one dish but an entire dessert universe. Che ba mau (three-color) is the most photogenic. Che troi nuoc (glutinous rice balls in ginger syrup) is served during Lunar New Year. Every region has its specialties.",
+      "culturalTerms": [
+        {
+          "term": "Chè",
+          "explanation": "Generic term for sweet soup/pudding desserts — also means 'tea' in a different context"
+        },
+        {
+          "term": "Chè ba màu",
+          "explanation": "Three-color dessert — layers of beans, jelly, and coconut milk over ice"
+        }
+      ],
+      "imageSearchQuery": "Chè Vietnamese dessert",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Ch%C3%A8_xo%C3%A0i.jpg/500px-Ch%C3%A8_xo%C3%A0i.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Ch%C3%A8_xo%C3%A0i.jpg/500px-Ch%C3%A8_xo%C3%A0i.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "che",
+        "chè"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-22",
+      "nameEnglish": "Steamed Bun",
+      "nameLocal": "Bánh bao",
+      "nameLocalCorrected": "Bánh bao",
+      "nameRomanized": "Banh Bao",
+      "description": "A fluffy white steamed bun filled with seasoned pork, quail egg, Chinese sausage, and mushrooms. Vietnam's version of Chinese bao, sold as a grab-and-go snack from glass-topped steam cabinets on the street. Soft, pillowy, and satisfying.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten",
+        "eggs"
+      ],
+      "ingredients": [
+        {
+          "name": "Wheat flour dough",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Ground pork",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Quail egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lap xuong",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Vietnamese-Chinese dried sausage — sweet, fatty, and cured"
+        },
+        {
+          "name": "Wood ear mushrooms",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Dark, crunchy tree fungus used for texture"
+        },
+        {
+          "name": "Glass noodles",
+          "category": "carb",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 18,
+        "carbs": 40,
+        "fat": 14,
+        "fiber": 1,
+        "kcal": 360
+      },
+      "explanation": "Adapted from Chinese baozi, Vietnamese banh bao are typically larger and have a wider variety of fillings. Sweet versions filled with mung bean paste are also popular. They're a perfect on-the-go breakfast.",
+      "culturalTerms": [
+        {
+          "term": "Bánh bao",
+          "explanation": "Literally 'wrapping cake' — Vietnam's take on Chinese steamed buns"
+        },
+        {
+          "term": "Lạp xưởng",
+          "explanation": "Chinese-style dried sausage, common in southern Vietnamese cooking"
+        }
+      ],
+      "imageSearchQuery": "Bánh bao",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Banhbao.jpg/500px-Banhbao.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Banhbao.jpg/500px-Banhbao.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "banh bao",
+        "bánh bao"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-23",
+      "nameEnglish": "Vietnamese Beef Stew",
+      "nameLocal": "Bò kho",
+      "nameLocalCorrected": "Bò kho",
+      "nameRomanized": "Bo Kho",
+      "description": "A hearty, aromatic beef stew fragrant with lemongrass, star anise, and cinnamon, with tender beef chunks, carrots, and a rich reddish-brown broth. Served with a crusty baguette for dipping or over rice noodles. A French-Vietnamese fusion comfort food.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "gluten"
+      ],
+      "ingredients": [
+        {
+          "name": "Beef chuck",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Carrots",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Lemongrass",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Star anise",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Cinnamon",
+          "category": "spice",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Annatto oil",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "Oil infused with annatto seeds for color and mild peppery flavor"
+        },
+        {
+          "name": "Baguette",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Thai basil",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 30,
+        "carbs": 25,
+        "fat": 16,
+        "fiber": 3,
+        "kcal": 370
+      },
+      "explanation": "Think of it as Vietnam's take on French boeuf bourguignon, tropicalized with lemongrass and star anise. It's a popular breakfast — grab a stool at a street stall and tear baguette into the stew.",
+      "culturalTerms": [
+        {
+          "term": "Kho",
+          "explanation": "In this context means 'stew' (different from the caramelizing kho technique)"
+        },
+        {
+          "term": "Bò",
+          "explanation": "Beef"
+        }
+      ],
+      "imageSearchQuery": "Bò kho",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Kho.jpg/500px-Kho.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Kho.jpg/500px-Kho.jpg"
+      ],
+      "imageSource": "wikipedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "bo kho",
+        "bò kho",
+        "beef stew"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-24",
+      "nameEnglish": "Sweet and Sour Fish Soup",
+      "nameLocal": "Canh chua",
+      "nameLocalCorrected": "Canh chua",
+      "nameRomanized": "Canh Chua",
+      "description": "A tangy, sweet soup from the Mekong Delta with fish, tomatoes, pineapple, okra, bean sprouts, and taro stem in a tamarind-soured broth. Fragrant with rice paddy herb and saw-leaf herb. Light, refreshing, and packed with vegetables — a staple home-cooked dish.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "fish"
+      ],
+      "ingredients": [
+        {
+          "name": "White fish",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tamarind",
+          "category": "sauce",
+          "isUnfamiliar": true,
+          "explanation": "A sour tropical fruit paste used as the main souring agent"
+        },
+        {
+          "name": "Pineapple",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Tomatoes",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Okra",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bean sprouts",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Bạc hà",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Taro stem — spongy, absorbs broth flavors, adds unique texture"
+        },
+        {
+          "name": "Rice paddy herb",
+          "category": "vegetable",
+          "isUnfamiliar": true,
+          "explanation": "Ngò om — a citrusy herb that grows in rice paddies, essential for this soup"
+        }
+      ],
+      "nutrition": {
+        "protein": 22,
+        "carbs": 18,
+        "fat": 4,
+        "fiber": 4,
+        "kcal": 200
+      },
+      "explanation": "This is Vietnam's everyday home soup, served alongside rice and other dishes family-style. The Mekong Delta's abundance of freshwater fish and tropical fruits makes this a natural combination. Light enough for the hot southern climate.",
+      "culturalTerms": [
+        {
+          "term": "Canh",
+          "explanation": "Soup — specifically the light brothy soups served with rice meals"
+        },
+        {
+          "term": "Chua",
+          "explanation": "Sour — the defining characteristic of this dish"
+        }
+      ],
+      "imageSearchQuery": "Canh chua cá",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Canhchua2.jpg/500px-Canhchua2.jpg",
+      "imageUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Canhchua2.jpg/500px-Canhchua2.jpg"
+      ],
+      "imageSource": "wikimedia",
+      "imageVerified": true,
+      "matchKeys": [
+        "canh chua",
+        "sour soup"
+      ]
+    },
+    {
+      "id": "cache-vietnamese-25",
+      "nameEnglish": "Vietnamese Grilled Rice Paper",
+      "nameLocal": "Bánh tráng nướng",
+      "nameLocalCorrected": "Bánh tráng nướng",
+      "nameRomanized": "Banh Trang Nuong",
+      "description": "Often called 'Vietnamese pizza,' this is a rice paper sheet grilled over charcoal and topped with egg, dried shrimp, scallions, pork floss, chili sauce, and mayonnaise. A beloved Dalat street snack that's crispy, savory, and utterly addictive. Cheap and fun to watch being made.",
+      "country": "Vietnam",
+      "price": "",
+      "dietaryType": "non-veg",
+      "allergens": [
+        "shellfish",
+        "eggs"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice paper",
+          "category": "carb",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Quail egg",
+          "category": "protein",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Dried shrimp",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Tôm khô — tiny dehydrated shrimp, intensely savory and chewy"
+        },
+        {
+          "name": "Scallions",
+          "category": "vegetable",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Pork floss",
+          "category": "protein",
+          "isUnfamiliar": true,
+          "explanation": "Ruốc — dried shredded pork with a cotton candy-like texture"
+        },
+        {
+          "name": "Chili sauce",
+          "category": "sauce",
+          "isUnfamiliar": false
+        },
+        {
+          "name": "Mayonnaise",
+          "category": "sauce",
+          "isUnfamiliar": false
+        }
+      ],
+      "nutrition": {
+        "protein": 12,
+        "carbs": 28,
+        "fat": 10,
+        "fiber": 1,
+        "kcal": 250
+      },
+      "explanation": "Originally from Dalat in the Central Highlands, this snack has spread to street corners across Vietnam. Vendors grill them on small charcoal braziers, and you eat it by breaking off crispy pieces. The 'Vietnamese pizza' nickname comes from its round shape and mixed toppings.",
+      "culturalTerms": [
+        {
+          "term": "Bánh tráng",
+          "explanation": "Rice paper — the same wrapper used for spring rolls, but here grilled crispy"
+        },
+        {
+          "term": "Nướng",
+          "explanation": "Grilled — over charcoal in this case"
+        },
+        {
+          "term": "Đà Lạt",
+          "explanation": "Mountain town where this snack originated, known for cool weather and street food"
+        }
+      ],
+      "imageSearchQuery": "Vietnamese grilled rice paper banh trang nuong",
+      "imageUrl": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500",
+      "imageUrls": [
+        "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500"
+      ],
+      "imageSource": "unsplash",
+      "imageVerified": true,
+      "matchKeys": [
+        "banh trang nuong",
+        "bánh tráng nướng",
+        "vietnamese pizza"
+      ]
+    }
+  ]
+}
