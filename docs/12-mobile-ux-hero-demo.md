@@ -27,7 +27,7 @@ The hero image was barely visible — ingredient badges covered the top 40% and 
 - 5 dishes flagged as AI-generated images (Jajangmyeon, Galbitang, Hotteok, Sundae, Bossam)
 
 ### 5. Multi-image gallery for demo dishes
-4 popular dishes (Bibimbap, Kimchi Jjigae, Bulgogi, Tteokbokki) now have 3 Wikimedia Commons images each, enabling the gallery swipe + dot indicators in demo mode. The `dish-image` API route was updated to handle both string and string[] values from `demo-images.json`.
+4 popular dishes (Bibimbap, Kimchi Jjigae, Bulgogi, Tteokbokki) have 3-image arrays in `demo-images.json`, but **only the first URL per dish works** — the 2nd and 3rd Wikimedia Commons URLs return 404 (incorrectly constructed). The `dish-image` API route was updated to handle both string and string[] values from `demo-images.json`. See backlog item 3.4 for fix options.
 
 ### 6. AI tag on result cards
 Moved from bottom-left to bottom-right of the card thumbnail for consistency.
