@@ -378,7 +378,7 @@
   - Update cache periodically (quarterly) or let users trigger a cache refresh
   - Phase 1 (OCR + parsing) still requires network — but Phase 2 enrichment (the slow part) can be fully offline for cached dishes
 - **Dependencies**: None (static data, no backend)
-- **Status**: TODO
+- **Status**: DONE (Phase 1: 5 Asian cuisines × 25 dishes = 125 dishes cached with IndexedDB + CDN, see docs/13-offline-cuisine-cache.md and docs/14-cuisine-cache-integration.md)
 
 ### 10.2 Show to staff — full-screen kiosk mode
 - **What**: A dedicated full-screen view of the order in the local script, optimized for handing your phone to a waiter. Large text, high contrast, minimal UI chrome, prominent audio playback button.
