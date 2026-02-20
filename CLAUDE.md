@@ -78,6 +78,18 @@ scripts/
 4. Batches yielded in completion order (first-finished-first-shown)
 5. Client ranks dishes on `done` event (top 5 get labels, menu order preserved)
 
+### Offline Cuisine Cache (`src/lib/cuisine-cache.ts`)
+Pre-generated enrichment data for 125 dishes (25 each: Korean, Japanese, Thai, Vietnamese, Malaysian) stored as static JSON in `public/cache/{cuisine}.json`. Client-side flow:
+1. After Phase 1 returns dish names + country, `matchFromCache()` detects cuisine
+2. Loads cached dishes from IndexedDB (7-day TTL) or fetches from `/cache/{cuisine}.json` via CDN
+3. Fuzzy-matches Phase 1 names against cache (4 passes: matchKeys → exact name → substring → local script)
+4. Cache hits → instant enriched Dish objects with pre-verified Wikipedia image URLs (no LLM, no image search)
+5. Cache misses → normal Phase 2 LLM enrichment (unchanged)
+6. If LLM later returns a dish that cache already provided, LLM version overwrites (merge by ID)
+- 122/125 dishes have verified image URLs; 3 (Tamagoyaki, Tod Mun Pla, Kai Jeow) use runtime fallback
+- Full architecture: `docs/15-offline-cuisine-cache.md` | Integration: `docs/16-cuisine-cache-integration.md`
+- Cache generation scripts: `scripts/cache-gen/` (run manually, not part of build)
+
 ### GET `/api/dish-image?q=<query>` — Dish photo search
 Wikipedia opensearch → article lead image (pageimages) → Commons fallback → Unsplash fallback. Uses local script names (Korean/Thai) for best matching. Parenthetical suffixes (weights like `(150g)`) are stripped before search.
 
