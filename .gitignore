@@ -37,3 +37,6 @@ next-env.d.ts
 .env.local
 .env
 scripts/cache-gen/candidates/
+.playwright-mcp/
+menu_images/
+test-*.png
