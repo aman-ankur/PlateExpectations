@@ -119,12 +119,13 @@ export function detectCuisine(countries: string[]): string | null {
 
 // ─── Fuzzy matching ──────────────────────────────────────────────────
 
-/** Normalize text for comparison: lowercase, strip diacritics, trim. */
+/** Normalize text for comparison: lowercase, strip Latin diacritics, trim. */
 function normalize(s: string): string {
   return s
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')  // strip Latin combining diacritics
+    .normalize('NFC')                  // recompose (Korean Jamo back to Hangul)
     .replace(/[^a-z0-9\u3000-\u9fff\uac00-\ud7af\u0e00-\u0e7f]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
