@@ -65,7 +65,7 @@ export default function PreferencesPage() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 homeCurrency === c.id
                   ? 'bg-pe-accent text-white'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               {c.symbol} {c.id}
@@ -87,7 +87,7 @@ export default function PreferencesPage() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 diet === d
                   ? 'bg-pe-accent text-white'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               {d}
@@ -109,7 +109,7 @@ export default function PreferencesPage() {
               className={`flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
                 proteins.includes(p.id)
                   ? 'bg-pe-accent text-white'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               <span className="text-xl">{p.emoji}</span>
@@ -140,7 +140,7 @@ export default function PreferencesPage() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 restrictions.includes(r)
                   ? 'bg-pe-tag-dietary-bg text-pe-tag-dietary'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               {r}
@@ -162,7 +162,7 @@ export default function PreferencesPage() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 allergies.includes(a)
                   ? 'bg-pe-tag-allergen-bg text-pe-tag-allergen'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               {a}
@@ -173,7 +173,7 @@ export default function PreferencesPage() {
 
       <button
         onClick={handleContinue}
-        className="mb-3 w-full rounded-full bg-pe-accent px-6 py-3.5 font-semibold text-white transition-colors hover:bg-pe-accent-hover"
+        className="mb-3 w-full rounded-full bg-pe-text px-6 py-3.5 font-semibold text-pe-bg transition-colors hover:opacity-90"
       >
         Continue
       </button>
