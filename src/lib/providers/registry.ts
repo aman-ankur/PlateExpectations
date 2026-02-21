@@ -17,7 +17,7 @@ const enrichmentProviders: Record<string, EnrichmentProvider> = {
 }
 
 export function getPhase1Provider(): Phase1Provider {
-  const name = process.env.SCAN_PHASE1_PROVIDER || 'gemini'
+  const name = process.env.SCAN_PHASE1_PROVIDER || 'cloud-vision-groq'
   const provider = phase1Providers[name]
   if (!provider) {
     console.warn(`[providers] Unknown phase1 provider "${name}", falling back to cloud-vision-groq`)

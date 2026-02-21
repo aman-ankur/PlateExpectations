@@ -15,7 +15,26 @@ export async function scanMenu(imageBase64: string, preferences: Preferences): P
 
   console.log(`[openai] Phase 1 (${phase1.name}) starting...`)
   const t1 = Date.now()
-  const rawDishes = await phase1.extractDishes(imageBase64)
+  let rawDishes: RawDish[]
+  try {
+    rawDishes = await phase1.extractDishes(imageBase64)
+  } catch {
+    if (phase1.name !== 'cloud-vision-groq') {
+      console.log(`[openai] ${phase1.name} failed, falling back to cloud-vision-groq`)
+      const { cloudVisionGroqProvider } = await import('./providers/cloud-vision-groq')
+      try {
+        rawDishes = await cloudVisionGroqProvider.extractDishes(imageBase64)
+      } catch {
+        console.log('[openai] cloud-vision-groq also failed, falling back to gpt-vision')
+        const { gptVisionProvider } = await import('./providers/gpt-vision')
+        rawDishes = await gptVisionProvider.extractDishes(imageBase64)
+      }
+    } else {
+      console.log('[openai] cloud-vision-groq failed, falling back to gpt-vision')
+      const { gptVisionProvider } = await import('./providers/gpt-vision')
+      rawDishes = await gptVisionProvider.extractDishes(imageBase64)
+    }
+  }
   console.log(`[openai] Phase 1 done: ${rawDishes.length} dishes in ${Date.now() - t1}ms`)
 
   if (rawDishes.length === 0) return []
@@ -52,14 +71,22 @@ export async function* scanMenuStreaming(imageBase64: string, preferences: Prefe
   let rawDishes: RawDish[]
   try {
     rawDishes = await phase1.extractDishes(imageBase64, signal)
-  } catch (err) {
-    // If primary provider fails, try fallback
-    if (phase1.name !== 'gpt-vision') {
-      console.log(`[scan] ${phase1.name} failed, falling back to gpt-vision`)
+  } catch {
+    // Fallback chain: primary → cloud-vision-groq → gpt-vision
+    if (phase1.name !== 'cloud-vision-groq') {
+      console.log(`[scan] ${phase1.name} failed, falling back to cloud-vision-groq`)
+      try {
+        const { cloudVisionGroqProvider } = await import('./providers/cloud-vision-groq')
+        rawDishes = await cloudVisionGroqProvider.extractDishes(imageBase64, signal)
+      } catch {
+        console.log('[scan] cloud-vision-groq also failed, falling back to gpt-vision')
+        const { gptVisionProvider } = await import('./providers/gpt-vision')
+        rawDishes = await gptVisionProvider.extractDishes(imageBase64, signal)
+      }
+    } else {
+      console.log('[scan] cloud-vision-groq failed, falling back to gpt-vision')
       const { gptVisionProvider } = await import('./providers/gpt-vision')
       rawDishes = await gptVisionProvider.extractDishes(imageBase64, signal)
-    } else {
-      throw err
     }
   }
 
