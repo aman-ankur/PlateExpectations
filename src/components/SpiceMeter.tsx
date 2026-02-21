@@ -64,7 +64,7 @@ export default function SpiceMeter({ value, onChange }: SpiceMeterProps) {
         ))}
         {/* Thumb */}
         <div
-          className="absolute top-1/2 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg shadow-black/30 transition-[left] duration-100"
+          className="absolute top-1/2 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-pe-lg transition-[left] duration-100"
           style={{ left: `${thumbPct}%` }}
         >
           <span className="text-sm leading-none">{SPICE_LEVELS[currentIndex].emoji}</span>

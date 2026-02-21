@@ -14,7 +14,7 @@ export default function OrderFab() {
 
   return (
     <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center animate-slide-up">
-      <div className="flex items-center gap-1 rounded-full border border-pe-border bg-pe-surface/95 px-4 py-2.5 shadow-lg backdrop-blur">
+      <div className="flex items-center gap-1 rounded-full bg-pe-surface/95 px-4 py-2.5 shadow-pe-lg backdrop-blur">
         <button
           onClick={() => router.push('/order')}
           className="flex items-center gap-2 text-sm font-semibold text-pe-text"

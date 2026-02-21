@@ -144,8 +144,13 @@ export default function DishDetailPage() {
                 </div>
               ))}
             </div>
-            {/* Gradient overlay — lighter to show more food */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/60 via-25% to-transparent" />
+            {/* Gradient overlay — uses theme-aware hero base */}
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background: `linear-gradient(to top, var(--pe-hero-base) 0%, color-mix(in srgb, var(--pe-hero-base) 40%, transparent) 18%, transparent 40%)`,
+              }}
+            />
             {/* Dot indicators */}
             {images.length > 1 && (
               <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
@@ -234,10 +239,10 @@ export default function DishDetailPage() {
           </p>
 
           {/* Dish name */}
-          <h1 className="text-2xl font-bold text-white">{dish.nameEnglish}</h1>
+          <h1 className="text-2xl font-bold text-pe-text">{dish.nameEnglish}</h1>
           {(dish.nameRomanized || dish.nameLocalCorrected || dish.nameLocal) && (
-            <p className="mt-0.5 text-sm text-white/70">
-              {dish.nameRomanized && <span className="font-medium text-white/80">{dish.nameRomanized}</span>}
+            <p className="mt-0.5 text-sm text-pe-text-muted">
+              {dish.nameRomanized && <span className="font-medium text-pe-text-secondary">{dish.nameRomanized}</span>}
               {dish.nameRomanized && (dish.nameLocalCorrected || dish.nameLocal) && ' · '}
               {dish.nameLocalCorrected || dish.nameLocal}
             </p>
@@ -303,7 +308,7 @@ export default function DishDetailPage() {
               } catch { /* ignore */ }
               setGenerating(false)
             }}
-            className="mb-4 flex w-full items-center justify-center gap-1.5 rounded-xl border border-pe-border bg-pe-surface py-2.5 text-xs font-medium text-pe-text-secondary transition-colors active:bg-pe-elevated"
+            className="mb-4 flex w-full items-center justify-center gap-1.5 rounded-xl bg-pe-surface py-2.5 text-xs font-medium text-pe-text-secondary shadow-pe-card transition-colors active:bg-pe-elevated"
           >
             {generating ? (
               <>
@@ -320,7 +325,7 @@ export default function DishDetailPage() {
         )}
 
         {/* What is this dish? */}
-        <div className="mb-5 rounded-xl border border-pe-border bg-pe-surface p-4">
+        <div className="mb-5 rounded-xl bg-pe-surface p-4 shadow-pe-card">
           <h2 className="mb-2 text-sm font-semibold text-pe-text-secondary">What is this dish?</h2>
           {dish.explanation ? (
             <p className="text-sm leading-relaxed text-pe-text">{dish.explanation}</p>
@@ -338,7 +343,7 @@ export default function DishDetailPage() {
         {dish.tasteProfile && dish.tasteProfile.length > 0 && (
           <div className="mb-5 flex flex-wrap gap-2">
             {dish.tasteProfile.map((taste) => (
-              <span key={taste} className="rounded-full border border-pe-border bg-pe-surface px-3 py-1 text-xs text-pe-text-secondary capitalize">
+              <span key={taste} className="rounded-full bg-pe-surface px-3 py-1 text-xs text-pe-text-secondary capitalize shadow-pe-card">
                 {taste}
               </span>
             ))}
@@ -346,7 +351,7 @@ export default function DishDetailPage() {
         )}
 
         {/* Nutrition */}
-        <div className="mb-5 rounded-xl border border-pe-border bg-pe-surface p-4">
+        <div className="mb-5 rounded-xl bg-pe-surface p-4 shadow-pe-card">
           <h2 className="mb-3 text-sm font-semibold text-pe-text-secondary">Approx. Nutrition</h2>
           {dish.nutrition.kcal > 0 ? (
             <>
@@ -364,7 +369,7 @@ export default function DishDetailPage() {
                   <p className="text-[10px] text-pe-text-muted">Fat</p>
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-blue-400">{dish.nutrition.fiber}g</p>
+                  <p className="text-lg font-bold text-pe-teal">{dish.nutrition.fiber}g</p>
                   <p className="text-[10px] text-pe-text-muted">Fiber</p>
                 </div>
               </div>
@@ -395,7 +400,7 @@ export default function DishDetailPage() {
               {dish.ingredients.map((ing) => (
               <span
                 key={ing.name}
-                className="flex items-center gap-1 rounded-full bg-pe-surface border border-pe-border px-3 py-1.5 text-xs text-pe-text"
+                className="flex items-center gap-1 rounded-full bg-pe-surface px-3 py-1.5 text-xs text-pe-text shadow-pe-card"
               >
                 {ing.name}
                 {ing.isUnfamiliar && (
@@ -436,10 +441,10 @@ export default function DishDetailPage() {
                 <button
                   key={ct.term}
                   onClick={() => toggleTerm(ct.term)}
-                  className={`flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs transition-colors ${
+                  className={`flex items-center gap-1 rounded-full px-3 py-1.5 text-xs transition-colors ${
                     expandedTerm === ct.term
-                      ? 'border-pe-accent bg-pe-accent/10 text-pe-accent'
-                      : 'border-pe-border bg-pe-surface text-pe-text'
+                      ? 'bg-pe-accent/10 text-pe-accent shadow-pe-card'
+                      : 'bg-pe-surface text-pe-text shadow-pe-card'
                   }`}
                 >
                   {ct.term}
@@ -464,7 +469,10 @@ export default function DishDetailPage() {
       </div>
 
       {/* Sticky add-to-order bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-pe-border/50 bg-[#0f0f0f]/95 px-5 py-4 backdrop-blur-md">
+      <div
+        className="fixed bottom-0 left-0 right-0 z-50 border-t border-pe-border/50 px-5 py-4 backdrop-blur-md"
+        style={{ backgroundColor: 'var(--pe-sticky-bg)' }}
+      >
         {order[dish.id] ? (
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">

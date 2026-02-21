@@ -9,6 +9,30 @@ import { matchFromCache } from '@/lib/cuisine-cache'
 import OrderFab from '@/components/OrderFab'
 import { Dish, ScanEvent } from '@/lib/types'
 
+const ALLERGEN_ICONS: Record<string, { icon: string; label: string }> = {
+  egg: { icon: '🥚', label: 'Egg' },
+  soy: { icon: '🫘', label: 'Soy' },
+  sesame: { icon: '⚪', label: 'Sesame' },
+  peanut: { icon: '🥜', label: 'Peanut' },
+  shellfish: { icon: '🦐', label: 'Shellfish' },
+  gluten: { icon: '🌾', label: 'Gluten' },
+  dairy: { icon: '🥛', label: 'Dairy' },
+  beef: { icon: '🐄', label: 'Beef' },
+  pork: { icon: '🐷', label: 'Pork' },
+}
+
+function conflictBadge(conflict: string): { icon: string; label: string } {
+  if (conflict.startsWith('Non-veg')) return { icon: '🔴', label: 'Non-Veg' }
+  if (conflict.includes('Not Jain')) return { icon: '🔴', label: 'Not Jain' }
+  const match = conflict.match(/^Contains (.+)$/i)
+  if (match) {
+    const key = match[1].toLowerCase()
+    if (ALLERGEN_ICONS[key]) return ALLERGEN_ICONS[key]
+    return { icon: '⚠', label: match[1] }
+  }
+  return { icon: '⚠', label: conflict }
+}
+
 const PHASE1_MESSAGES = [
   'Reading menu...',
   'Scanning for dishes...',
@@ -68,10 +92,10 @@ function DishCard({ dish }: { dish: Dish }) {
       onClick={() => router.push(`/dish/${dish.id}`)}
       role="button"
       tabIndex={0}
-      className={`relative flex w-full items-stretch overflow-hidden rounded-2xl bg-pe-surface text-left transition-all cursor-pointer ${
+      className={`relative flex w-full items-stretch overflow-hidden rounded-3xl bg-pe-surface text-left transition-all cursor-pointer ${
         flash
           ? 'ring-2 ring-pe-accent shadow-lg shadow-pe-accent/20'
-          : 'ring-1 ring-white/[0.06] shadow-md shadow-black/25 hover:shadow-lg hover:shadow-black/35'
+          : 'shadow-pe-card hover:shadow-pe-lg'
       }`}
     >
       {/* Image — full card height, gradient-fades into surface */}
@@ -92,7 +116,7 @@ function DishCard({ dish }: { dish: Dish }) {
           </>
         )}
         {/* Gradient fade — image dissolves into card */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-r from-transparent to-pe-surface" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-r from-transparent to-pe-surface" />
         {orderQty > 0 && (
           <span className="absolute top-2 left-2 z-10 flex h-5 min-w-5 items-center justify-center rounded-md bg-pe-accent px-1 text-[10px] font-bold text-white shadow-sm">
             {orderQty}
@@ -130,11 +154,14 @@ function DishCard({ dish }: { dish: Dish }) {
                 {dish.tasteProfile.join(' · ')}
               </span>
             )}
-            {conflicts.length > 0 && (
-              <span className="rounded bg-pe-tag-allergen-bg px-1.5 py-0.5 text-[10px] font-medium text-pe-tag-allergen" title={conflicts.join(', ')}>
-                ⚠️
-              </span>
-            )}
+            {conflicts.map((c, i) => {
+              const badge = conflictBadge(c)
+              return (
+                <span key={i} className="inline-flex items-center gap-0.5 rounded bg-pe-tag-allergen-bg px-1.5 py-0.5 text-[10px] font-medium text-pe-tag-allergen" title={c}>
+                  <span className="text-[9px]">{badge.icon}</span> {badge.label}
+                </span>
+              )
+            })}
           </div>
         </div>
         <div className="flex flex-col items-end gap-1.5 pl-1">
@@ -259,6 +286,7 @@ export default function ResultsPage() {
                   setSkeletonDishes([])
                   setScanProgress(null)
                   setLoading(false)
+                  useStore.getState().saveScan()  // fire-and-forget
                   break
                 }
                 case 'error':
@@ -299,7 +327,7 @@ export default function ResultsPage() {
       <div className="mb-6 flex items-center gap-3">
         <button
           onClick={() => router.push('/')}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-pe-surface"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-pe-surface shadow-pe-card"
         >
           <svg className="h-5 w-5 text-pe-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -314,7 +342,7 @@ export default function ResultsPage() {
         {scanDone && (
           <button
             onClick={() => { clearScan(); router.push('/') }}
-            className="rounded-full bg-pe-accent px-4 py-2 text-sm font-semibold text-white"
+            className="rounded-full bg-pe-accent px-4 py-2 text-sm font-semibold text-white shadow-pe-card"
           >
             Scan New Menu
           </button>
@@ -328,8 +356,8 @@ export default function ResultsPage() {
             onClick={() => setSortByReco(false)}
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
               !sortByReco
-                ? 'bg-pe-accent text-white'
-                : 'bg-pe-surface text-pe-text-secondary hover:text-pe-text'
+                ? 'bg-pe-text text-pe-bg'
+                : 'bg-pe-surface text-pe-text-secondary shadow-pe-card hover:text-pe-text'
             }`}
           >
             Menu Order
@@ -338,8 +366,8 @@ export default function ResultsPage() {
             onClick={() => setSortByReco(true)}
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
               sortByReco
-                ? 'bg-pe-accent text-white'
-                : 'bg-pe-surface text-pe-text-secondary hover:text-pe-text'
+                ? 'bg-pe-text text-pe-bg'
+                : 'bg-pe-surface text-pe-text-secondary shadow-pe-card hover:text-pe-text'
             }`}
           >
             Recommended
@@ -349,7 +377,7 @@ export default function ResultsPage() {
 
       {/* Progress indicator */}
       {scanProgress && (
-        <div className="mb-4 flex items-center gap-2 rounded-full bg-pe-surface px-4 py-2">
+        <div className="mb-4 flex items-center gap-2 rounded-full bg-pe-surface px-4 py-2 shadow-pe-card">
           <span className="relative flex h-2.5 w-2.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pe-accent opacity-75" />
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pe-accent" />
@@ -365,7 +393,7 @@ export default function ResultsPage() {
       {inPhase1 && !error && (
         <div className="space-y-4">
           {menuImage && (
-            <div className="overflow-hidden rounded-xl border border-pe-border opacity-60">
+            <div className="overflow-hidden rounded-xl opacity-60 shadow-pe-card">
               <img
                 src={menuImage}
                 alt="Your menu"
@@ -374,7 +402,7 @@ export default function ResultsPage() {
             </div>
           )}
           {[1, 2, 3].map((i) => (
-            <div key={i} className="animate-pulse rounded-xl border border-pe-border bg-pe-surface p-4">
+            <div key={i} className="animate-pulse rounded-xl bg-pe-surface p-4 shadow-pe-card">
               <div className="mb-2 h-4 w-24 rounded bg-pe-elevated" />
               <div className="mb-2 h-5 w-48 rounded bg-pe-elevated" />
               <div className="h-3 w-32 rounded bg-pe-elevated" />
@@ -385,8 +413,8 @@ export default function ResultsPage() {
 
       {/* Error */}
       {error && (
-        <div className="rounded-xl border border-red-800 bg-red-950/30 p-6 text-center">
-          <p className="mb-3 text-red-400">{error}</p>
+        <div className="rounded-xl bg-red-50 p-6 text-center dark:bg-red-950/30">
+          <p className="mb-3 text-red-600 dark:text-red-400">{error}</p>
           <button
             onClick={() => router.push('/')}
             className="rounded-full bg-pe-accent px-6 py-2 text-sm font-semibold text-white"
@@ -406,7 +434,7 @@ export default function ResultsPage() {
             return (
               <div
                 key={raw.id}
-                className="flex w-full items-stretch overflow-hidden rounded-2xl bg-pe-surface opacity-50 ring-1 ring-white/[0.06] shadow-md shadow-black/25"
+                className="flex w-full items-stretch overflow-hidden rounded-3xl bg-pe-surface opacity-50 shadow-pe-card"
               >
                 <div className="w-28 flex-shrink-0 bg-pe-elevated">
                   <div className="flex h-full min-h-[100px] items-center justify-center">

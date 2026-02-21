@@ -62,5 +62,5 @@
   "보쌈": ["/demo-images/Bossam.jpg", "/demo-images/Bossam2.jpg"],
   "Bossam": ["/demo-images/Bossam.jpg", "/demo-images/Bossam2.jpg"],
 
-  "_generated": ["Jajangmyeon", "짜장면", "Galbitang", "갈비탕", "Hotteok", "호떡", "Sundae", "순대", "Bossam", "보쌈"]
+  "_generated": ["Jajangmyeon", "짜장면", "Hotteok", "호떡", "Sundae", "순대", "Bossam", "보쌈"]
 }

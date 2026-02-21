@@ -146,7 +146,7 @@ export default function OrderPage() {
       <div className="mb-6 flex items-center gap-3">
         <button
           onClick={() => router.back()}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-pe-surface"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-pe-surface shadow-pe-card"
         >
           <svg className="h-5 w-5 text-pe-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -181,7 +181,7 @@ export default function OrderPage() {
           const imageUrl = dishImages[dish.id]?.[0]
           const price = parsePrice(dish.price)
           return (
-            <div key={dish.id} className="flex items-center gap-3 rounded-2xl bg-pe-elevated/60 p-3">
+            <div key={dish.id} className="flex items-center gap-3 rounded-2xl bg-pe-surface p-3 shadow-pe-card">
               <div className="h-14 w-14 flex-shrink-0 overflow-hidden rounded-xl bg-pe-elevated">
                 {imageUrl ? (
                   <img src={imageUrl} alt={dish.nameEnglish} className="h-full w-full object-cover" />
@@ -210,7 +210,7 @@ export default function OrderPage() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => qty <= 1 ? removeFromOrder(dish.id) : updateQuantity(dish.id, qty - 1)}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-pe-surface text-pe-text"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-pe-elevated text-pe-text"
                 >
                   {qty <= 1 ? (
                     <svg className="h-4 w-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -223,7 +223,7 @@ export default function OrderPage() {
                 <span className="w-6 text-center text-sm font-bold text-pe-text">{qty}</span>
                 <button
                   onClick={() => updateQuantity(dish.id, qty + 1)}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-pe-surface text-pe-text"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-pe-elevated text-pe-text"
                 >
                   <span className="text-sm font-bold">+</span>
                 </button>
@@ -236,7 +236,7 @@ export default function OrderPage() {
       {/* Show to Staff card */}
       <div className="mt-8">
         <p className="mb-2 text-xs font-bold uppercase tracking-widest text-pe-text-muted">Show to Staff</p>
-        <div className="relative overflow-hidden rounded-2xl bg-pe-surface p-6">
+        <div className="relative overflow-hidden rounded-2xl bg-pe-surface p-6 shadow-pe-card">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pe-accent via-pe-accent/60 to-transparent" />
           <p className="whitespace-pre-line text-2xl leading-relaxed text-pe-text">{showText}</p>
           <p className="mt-3 text-[10px] text-pe-text-muted">Show your phone to the server</p>
@@ -277,7 +277,7 @@ export default function OrderPage() {
         )}
         <button
           onClick={speakWithDevice}
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-pe-border py-3 text-sm font-medium text-pe-text-secondary"
+          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-pe-surface py-3 text-sm font-medium text-pe-text-secondary shadow-pe-card"
         >
           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
@@ -304,7 +304,10 @@ export default function OrderPage() {
       </button>
 
       {/* Sticky bottom bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-pe-border/50 bg-[#0f0f0f]/95 px-4 py-4 backdrop-blur-md">
+      <div
+        className="fixed bottom-0 left-0 right-0 z-50 border-t border-pe-border/50 px-4 py-4 backdrop-blur-md"
+        style={{ backgroundColor: 'var(--pe-sticky-bg)' }}
+      >
         <div className="flex items-center gap-3">
           {hasPrices && total > 0 && (
             <div className="flex-1">
