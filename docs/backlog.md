@@ -1,5 +1,23 @@
 # Plate Expectations — Improvement Backlog
 
+## Wikipedia Image Picker Improvement
+
+Current `pageimages` API returns only the single lead thumbnail — no control over which image Wikipedia picks. For Galbi-tang, it returns a preparation shot instead of the finished dish.
+
+**Proposed: Filename-scored multi-image picker (zero Vision calls)**
+
+1. Fetch all article images via `prop=images`
+2. Score filenames:
+   - Contains dish name (Korean or English) → +10
+   - Contains food keywords (cuisine, food, dish, soup, stew, bowl, plate) → +5
+   - Contains prep/process keywords (ingredients, preparation, making, raw, cutting) → -5
+   - Contains non-food keywords (map, restaurant, sign, logo, flag) → reject
+3. Pick highest-scoring filename, fetch thumb URL via `imageinfo`
+4. Fallback to `pageimages` if no filename scores well
+5. Optionally fetch `iiprop=extmetadata` for `ImageDescription` as a secondary signal
+
+Cost: zero — pure filename string matching. Dish name already known from Phase 1.
+
 ## Priority 1: Perceived Speed & Loading UX
 
 ### 1.1 Progressive dish loading
@@ -71,10 +89,10 @@
 - **Status**: DONE (live rates via open.er-api.com with 6-hour cache, fallback to approximate rates, default INR)
 
 ### 2.3 Scan history
-- **What**: Save past scans to localStorage so users can revisit previous restaurants
+- **What**: Save past scans to IndexedDB so users can revisit previous restaurants
 - **Why**: Users want to reference what they ordered or compare menus
-- **How**: Store scan results with timestamp and restaurant name (GPT can infer from menu) in localStorage
-- **Status**: TODO
+- **How**: Auto-save completed scans to IndexedDB with thumbnail, dishes, and dish images. Home page carousel shows recent scans for instant restore. Max 20 entries, oldest auto-evicted. DALL-E URLs filtered out (they expire).
+- **Status**: DONE (see docs/20-scan-history.md)
 
 ### 2.4 Share a dish
 - **What**: Share button on dish detail to send info to a travel companion

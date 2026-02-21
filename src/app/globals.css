@@ -3,13 +3,66 @@
 @tailwind utilities;
 
 :root {
-  --background: #1a1a1a;
-  --foreground: #f5f5f5;
+  --pe-bg: #faf8f5;
+  --pe-surface: #ffffff;
+  --pe-elevated: #f2efe9;
+  --pe-text: #1a1a1a;
+  --pe-text-secondary: #5c5c5c;
+  --pe-text-muted: #9a9a9a;
+  --pe-accent: #f25c54;
+  --pe-accent-hover: #e04840;
+  --pe-teal: #2bbcb3;
+  --pe-amber: #f5a623;
+  --pe-border: #e8e4de;
+  --pe-border-subtle: #f0ece6;
+  --pe-tag-dietary-bg: #fde8eb;
+  --pe-tag-dietary: #d4365c;
+  --pe-tag-allergen-bg: #fff3dc;
+  --pe-tag-allergen: #c57d15;
+  --pe-tag-macro-bg: #e0f5f2;
+  --pe-tag-macro: #1a8a7e;
+  --pe-tag-rank-bg: #fff3dc;
+  --pe-tag-rank: #b8860b;
+  --pe-tag-spice-bg: #fde8e5;
+  --pe-tag-spice: #e04030;
+  --pe-hero-base: #ffffff;
+  --pe-sticky-bg: rgba(250, 248, 245, 0.95);
+  --pe-shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --pe-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  --pe-bg: #1a1a1a;
+  --pe-surface: #242424;
+  --pe-elevated: #2a2a2a;
+  --pe-text: #f5f5f5;
+  --pe-text-secondary: #a0a0a0;
+  --pe-text-muted: #707070;
+  --pe-accent: #f25c54;
+  --pe-accent-hover: #ff7068;
+  --pe-teal: #2bbcb3;
+  --pe-amber: #f5a623;
+  --pe-border: #333333;
+  --pe-border-subtle: #2a2a2a;
+  --pe-tag-dietary-bg: #3d2028;
+  --pe-tag-dietary: #f4a0b0;
+  --pe-tag-allergen-bg: #3d3520;
+  --pe-tag-allergen: #f0c060;
+  --pe-tag-macro-bg: #1a3030;
+  --pe-tag-macro: #60c0b0;
+  --pe-tag-rank-bg: #3d3520;
+  --pe-tag-rank: #d4a030;
+  --pe-tag-spice-bg: #3d2020;
+  --pe-tag-spice: #f06040;
+  --pe-hero-base: #0f0f0f;
+  --pe-sticky-bg: rgba(15, 15, 15, 0.95);
+  --pe-shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+  --pe-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--pe-text);
+  background: var(--pe-bg);
 }
 
 @keyframes bounce-in {

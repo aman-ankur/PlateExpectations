@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { Dish, RawDish, Preferences, DEFAULT_PREFERENCES } from './types'
 import { APPROX_RATES_TO_USD } from './constants'
+import { ScanHistorySummary, getAllScans, getScan, putScan, deleteScan as deleteHistoryScan, generateThumbnail } from './scan-history'
 
 // Shared across all batches — tracks URLs already assigned to prevent duplicates
 const usedImageUrls = new Set<string>()
@@ -57,6 +58,21 @@ function loadDemoMode(): boolean {
   return document.cookie.split('; ').some((c) => c === 'pe-demo=true')
 }
 
+function loadTheme(): 'light' | 'dark' {
+  if (typeof window === 'undefined') return 'light'
+  try {
+    const stored = localStorage.getItem('pe-theme')
+    if (stored === 'dark' || stored === 'light') return stored
+  } catch {}
+  return 'light'
+}
+
+function applyTheme(theme: 'light' | 'dark') {
+  if (typeof window === 'undefined') return
+  document.documentElement.classList.toggle('dark', theme === 'dark')
+  try { localStorage.setItem('pe-theme', theme) } catch {}
+}
+
 function saveOrder(order: Record<string, number>) {
   if (typeof window === 'undefined') return
   try {
@@ -65,6 +81,10 @@ function saveOrder(order: Record<string, number>) {
 }
 
 interface AppState {
+  // Theme
+  theme: 'light' | 'dark'
+  setTheme: (theme: 'light' | 'dark') => void
+
   // Demo mode
   demoMode: boolean
   toggleDemoMode: () => void
@@ -107,6 +127,13 @@ interface AppState {
   lastRatesUpdate: number
   fetchExchangeRates: () => void
 
+  // Scan history
+  scanHistoryList: ScanHistorySummary[]
+  loadScanHistoryList: () => Promise<void>
+  saveScan: () => Promise<void>
+  loadScan: (id: string) => Promise<void>
+  deleteScanFromHistory: (id: string) => Promise<void>
+
   // Order
   order: Record<string, number>
   addToOrder: (dishId: string) => void
@@ -116,6 +143,13 @@ interface AppState {
 }
 
 export const useStore = create<AppState>((set, get) => ({
+  // Theme
+  theme: loadTheme(),
+  setTheme: (theme) => {
+    applyTheme(theme)
+    set({ theme })
+  },
+
   // Demo mode
   demoMode: loadDemoMode(),
   toggleDemoMode: () => {
@@ -270,6 +304,73 @@ export const useStore = create<AppState>((set, get) => ({
         }
       })
       .catch(() => {})
+  },
+
+  // Scan history
+  scanHistoryList: [],
+  loadScanHistoryList: async () => {
+    try {
+      const list = await getAllScans()
+      set({ scanHistoryList: list })
+    } catch { /* IDB unavailable */ }
+  },
+  saveScan: async () => {
+    try {
+      const { dishes, menuImage, dishImages } = get()
+      if (dishes.length === 0 || !menuImage) return
+
+      const thumbnail = await generateThumbnail(menuImage)
+
+      // Determine majority country
+      const countryCount: Record<string, number> = {}
+      for (const d of dishes) {
+        countryCount[d.country] = (countryCount[d.country] || 0) + 1
+      }
+      const country = Object.entries(countryCount).sort((a, b) => b[1] - a[1])[0]?.[0] || 'Unknown'
+
+      // Filter out generated (DALL-E) image URLs — they expire
+      const stableImages: Record<string, string[]> = {}
+      for (const [dishId, urls] of Object.entries(dishImages)) {
+        const stable = urls.filter((u) => !generatedImageUrls.has(u))
+        if (stable.length > 0) stableImages[dishId] = stable
+      }
+
+      await putScan({
+        id: `scan-${Date.now()}`,
+        thumbnail,
+        savedAt: Date.now(),
+        country,
+        cuisineLabel: `${country} cuisine`,
+        dishCount: dishes.length,
+        dishes,
+        dishImages: stableImages,
+      })
+
+      // Refresh list
+      const list = await getAllScans()
+      set({ scanHistoryList: list })
+    } catch { /* IDB unavailable */ }
+  },
+  loadScan: async (id) => {
+    try {
+      const entry = await getScan(id)
+      if (!entry) return
+      set({
+        dishes: entry.dishes,
+        dishImages: entry.dishImages,
+        menuImage: entry.thumbnail, // use thumbnail as menuImage stand-in
+        skeletonDishes: [],
+        scanProgress: null,
+        error: null,
+      })
+    } catch { /* IDB unavailable */ }
+  },
+  deleteScanFromHistory: async (id) => {
+    try {
+      await deleteHistoryScan(id)
+      const list = await getAllScans()
+      set({ scanHistoryList: list })
+    } catch { /* IDB unavailable */ }
   },
 
   // Order
