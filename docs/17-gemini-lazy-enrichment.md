@@ -10,7 +10,7 @@ The scan pipeline is now built on pluggable providers, selected via environment 
 
 | Env Var | Values | Default |
 |---------|--------|---------|
-| `SCAN_PHASE1_PROVIDER` | `gemini`, `cloud-vision-groq`, `gpt-vision` | `gemini` |
+| `SCAN_PHASE1_PROVIDER` | `gemini`, `cloud-vision-groq`, `gpt-vision` | `cloud-vision-groq` |
 | `SCAN_ENRICHMENT_PROVIDER` | `groq`, `gpt` | `groq` |
 | `SCAN_LAZY_ENRICHMENT` | `true`, `false` | `true` |
 | `GEMINI_API_KEY` | API key | Required for `gemini` provider |
