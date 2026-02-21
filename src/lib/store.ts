@@ -153,11 +153,24 @@ export const useStore = create<AppState>((set, get) => ({
   appendEnrichedDishes: (newDishes) => {
     const existing = get().dishes
     // Merge by replacing any existing dish with same id, or append
+    // When lazy enrichment is on, incoming dishes may have empty Tier 2 fields —
+    // preserve existing Tier 2 data (from cache) if the incoming dish has defaults
     const merged = [...existing]
     for (const dish of newDishes) {
       const idx = merged.findIndex((d) => d.id === dish.id)
-      if (idx >= 0) merged[idx] = dish
-      else merged.push(dish)
+      if (idx >= 0) {
+        const prev = merged[idx]
+        merged[idx] = {
+          ...dish,
+          // Keep existing Tier 2 data if incoming has empty defaults
+          ingredients: dish.ingredients?.length > 0 ? dish.ingredients : prev.ingredients,
+          nutrition: dish.nutrition?.kcal > 0 ? dish.nutrition : prev.nutrition,
+          explanation: dish.explanation || prev.explanation,
+          culturalTerms: dish.culturalTerms?.length > 0 ? dish.culturalTerms : prev.culturalTerms,
+        }
+      } else {
+        merged.push(dish)
+      }
     }
     set({ dishes: merged })
   },
