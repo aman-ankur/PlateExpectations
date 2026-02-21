@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
+import { getDishConflicts } from '@/lib/ranking'
 import { buildShowText, getLangCode } from '@/lib/orderTemplates'
 import { convertPrice, convertTotal } from '@/lib/currency'
 
@@ -27,8 +28,8 @@ export default function OrderPage() {
   const [audioLoading, setAudioLoading] = useState(false)
   const [audioError, setAudioError] = useState<string | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [showKiosk, setShowKiosk] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
-  const showCardRef = useRef<HTMLDivElement | null>(null)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => { setMounted(true) }, [])
@@ -36,11 +37,9 @@ export default function OrderPage() {
   const orderDishes = dishes.filter((d) => order[d.id] && order[d.id] > 0)
   const country = orderDishes[0]?.country || ''
 
-  // Allergen warnings
-  const userAllergies = preferences.allergies || []
-  const allergenWarnings = orderDishes.filter(
-    (d) => d.allergens.some((a) => userAllergies.some((ua) => a.toLowerCase().includes(ua.toLowerCase())))
-  )
+  // Allergen + dietary conflict warnings
+  // Per-dish conflict map for inline ⚠️ icons
+  const dishConflicts = new Map(orderDishes.map((d) => [d.id, getDishConflicts(d, preferences)]))
 
   // Total price
   const total = orderDishes.reduce((sum, d) => {
@@ -103,7 +102,7 @@ export default function OrderPage() {
     }
   }, [audioUrl, isPlaying])
 
-  const useDeviceVoice = useCallback(() => {
+  const speakWithDevice = useCallback(() => {
     if (!('speechSynthesis' in window)) return
     window.speechSynthesis.cancel()
     const utterance = new SpeechSynthesisUtterance(showText)
@@ -115,10 +114,6 @@ export default function OrderPage() {
     if (match) utterance.voice = match
     window.speechSynthesis.speak(utterance)
   }, [showText, country])
-
-  const scrollToShowCard = () => {
-    showCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
 
   // Cleanup audio URL on unmount
   useEffect(() => {
@@ -163,19 +158,21 @@ export default function OrderPage() {
         </div>
       </div>
 
-      {/* Allergen warnings */}
-      {allergenWarnings.length > 0 && (
-        <div className="mb-4 rounded-xl border border-pe-tag-allergen/30 bg-pe-tag-allergen-bg p-3">
-          <p className="text-xs font-semibold text-pe-tag-allergen">Allergen Warning</p>
-          {allergenWarnings.map((d) => (
-            <p key={d.id} className="mt-1 text-xs text-pe-tag-allergen/80">
-              {d.nameEnglish}: contains {d.allergens.filter((a) =>
-                userAllergies.some((ua) => a.toLowerCase().includes(ua.toLowerCase()))
-              ).join(', ')}
-            </p>
-          ))}
-        </div>
-      )}
+      {/* Allergen + dietary warnings */}
+      {(() => {
+        const dishesWithConflicts = orderDishes.filter((d) => (dishConflicts.get(d.id) || []).length > 0)
+        if (dishesWithConflicts.length === 0) return null
+        return (
+          <div className="mb-4 rounded-xl border border-pe-tag-allergen/30 bg-pe-tag-allergen-bg p-3">
+            <p className="text-xs font-semibold text-pe-tag-allergen">⚠️ Dietary Conflict</p>
+            {dishesWithConflicts.map((d) => (
+              <p key={d.id} className="mt-1 text-xs text-pe-tag-allergen/80">
+                {d.nameEnglish}: {(dishConflicts.get(d.id) || []).join(', ')}
+              </p>
+            ))}
+          </div>
+        )
+      })()}
 
       {/* Order items */}
       <div className="space-y-3">
@@ -193,7 +190,12 @@ export default function OrderPage() {
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-pe-text truncate">{dish.nameEnglish}</p>
+                <div className="flex items-center gap-1">
+                  <p className="text-sm font-semibold text-pe-text truncate">{dish.nameEnglish}</p>
+                  {(dishConflicts.get(dish.id) || []).length > 0 && (
+                    <span className="flex-shrink-0 text-[10px]" title={(dishConflicts.get(dish.id) || []).join(', ')}>⚠️</span>
+                  )}
+                </div>
                 <p className="text-xs text-pe-text-muted truncate">{dish.nameLocalCorrected || dish.nameLocal}</p>
                 {price !== null && (
                   <p className="text-xs font-medium text-pe-accent">
@@ -232,7 +234,7 @@ export default function OrderPage() {
       </div>
 
       {/* Show to Staff card */}
-      <div ref={showCardRef} className="mt-8">
+      <div className="mt-8">
         <p className="mb-2 text-xs font-bold uppercase tracking-widest text-pe-text-muted">Show to Staff</p>
         <div className="relative overflow-hidden rounded-2xl bg-pe-surface p-6">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pe-accent via-pe-accent/60 to-transparent" />
@@ -274,7 +276,7 @@ export default function OrderPage() {
           </button>
         )}
         <button
-          onClick={useDeviceVoice}
+          onClick={speakWithDevice}
           className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-pe-border py-3 text-sm font-medium text-pe-text-secondary"
         >
           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -315,13 +317,65 @@ export default function OrderPage() {
             </div>
           )}
           <button
-            onClick={scrollToShowCard}
+            onClick={() => {
+              setShowKiosk(true)
+              try { document.documentElement.requestFullscreen?.() } catch {}
+              try { (screen.orientation as { lock?: (o: string) => Promise<void> }).lock?.('portrait') } catch {}
+            }}
             className={`rounded-2xl bg-pe-accent px-6 py-3 text-sm font-semibold text-white ${hasPrices && total > 0 ? '' : 'flex-1'}`}
           >
             Show to Staff
           </button>
         </div>
       </div>
+
+      {/* Kiosk Overlay */}
+      {showKiosk && (
+        <div
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white px-8"
+          onClick={() => {
+            setShowKiosk(false)
+            try { document.exitFullscreen?.() } catch {}
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              setShowKiosk(false)
+              try { document.exitFullscreen?.() } catch {}
+            }
+          }}
+          tabIndex={0}
+          role="dialog"
+          aria-label="Show order to staff"
+        >
+          <div className="w-full max-w-sm space-y-6 text-center">
+            {orderDishes.map((d) => (
+              <div key={d.id} className="flex items-baseline justify-between gap-4">
+                <p className="text-3xl font-bold text-black leading-tight text-left">
+                  {d.nameLocalCorrected || d.nameLocal || d.nameEnglish}
+                </p>
+                <span className="flex-shrink-0 text-2xl font-bold text-gray-500">
+                  ×{order[d.id] || 1}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Audio button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              if (audioUrl) { playAudio() } else { speakWithDevice() }
+            }}
+            className="mt-10 flex h-16 w-16 items-center justify-center rounded-full bg-black text-white shadow-lg"
+          >
+            <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+          </button>
+
+          <p className="mt-8 text-sm text-gray-400">Tap anywhere to dismiss</p>
+        </div>
+      )}
     </div>
   )
 }
