@@ -17,6 +17,8 @@ export default function SettingsPage() {
   const { preferences, setPreferences } = useStore()
   const demoMode = useStore((s) => s.demoMode)
   const toggleDemoMode = useStore((s) => s.toggleDemoMode)
+  const theme = useStore((s) => s.theme)
+  const setTheme = useStore((s) => s.setTheme)
 
   const [proteins, setProteins] = useState<string[]>(preferences.proteins)
   const [spice, setSpice] = useState(preferences.spice || 'Medium')
@@ -38,7 +40,7 @@ export default function SettingsPage() {
       <div className="mb-6 flex items-center gap-3">
         <button
           onClick={() => router.back()}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-pe-surface"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-pe-surface shadow-pe-card"
         >
           <svg className="h-5 w-5 text-pe-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -46,6 +48,35 @@ export default function SettingsPage() {
         </button>
         <h1 className="text-xl font-bold">Settings</h1>
       </div>
+
+      {/* Theme Toggle */}
+      <section className="mb-6">
+        <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-pe-text-secondary">
+          Appearance
+        </h2>
+        <div className="flex gap-2">
+          <button
+            onClick={() => setTheme('light')}
+            className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+              theme === 'light'
+                ? 'bg-pe-text text-pe-bg'
+                : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
+            }`}
+          >
+            ☀️ Light
+          </button>
+          <button
+            onClick={() => setTheme('dark')}
+            className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+              theme === 'dark'
+                ? 'bg-pe-text text-pe-bg'
+                : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
+            }`}
+          >
+            🌙 Dark
+          </button>
+        </div>
+      </section>
 
       {/* Home Currency */}
       <section className="mb-6">
@@ -61,7 +92,7 @@ export default function SettingsPage() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 homeCurrency === c.id
                   ? 'bg-pe-accent text-white'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               {c.symbol} {c.id}
@@ -83,7 +114,7 @@ export default function SettingsPage() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 diet === d
                   ? 'bg-pe-accent text-white'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               {d}
@@ -105,7 +136,7 @@ export default function SettingsPage() {
               className={`flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
                 proteins.includes(p.id)
                   ? 'bg-pe-accent text-white'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               <span className="text-xl">{p.emoji}</span>
@@ -136,7 +167,7 @@ export default function SettingsPage() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 restrictions.includes(r)
                   ? 'bg-pe-tag-dietary-bg text-pe-tag-dietary'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               {r}
@@ -158,7 +189,7 @@ export default function SettingsPage() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 allergies.includes(a)
                   ? 'bg-pe-tag-allergen-bg text-pe-tag-allergen'
-                  : 'bg-pe-surface text-pe-text-secondary border border-pe-border'
+                  : 'bg-pe-surface text-pe-text-secondary shadow-pe-card'
               }`}
             >
               {a}
@@ -169,7 +200,7 @@ export default function SettingsPage() {
 
       <button
         onClick={handleSave}
-        className="w-full rounded-full bg-pe-accent px-6 py-3.5 font-semibold text-white transition-colors hover:bg-pe-accent-hover"
+        className="w-full rounded-full bg-pe-text px-6 py-3.5 font-semibold text-pe-bg transition-colors hover:opacity-90"
       >
         Save Preferences
       </button>
