@@ -9,7 +9,7 @@ PWA for travelers to scan and understand foreign-language menus anywhere. Scan a
 - **Framework:** Next.js 14, App Router, TypeScript
 - **Styling:** Tailwind CSS 3 (dark theme, `pe-*` color namespace)
 - **State:** Zustand + localStorage for preferences
-- **AI:** Groq Llama 3.3 70B (Phase 1 parsing + Phase 2 enrichment) with GPT-4o-mini fallback; OpenAI GPT-4o-mini Vision for image validation
+- **AI:** Pluggable provider system — Gemini 2.0 Flash (default Phase 1) or Cloud Vision OCR + Groq Llama 3.3 70B; Groq (default Phase 2 enrichment) with GPT-4o-mini fallback; OpenAI GPT-4o-mini Vision for image validation
 - **Images:** Wikipedia pageimages API + GPT-4o-mini Vision validation + DALL-E 3 fallback
 - **Deploy:** Vercel | **Package manager:** npm
 
@@ -24,6 +24,7 @@ src/app/
   order/page.tsx            — Order summary with quantity controls + TTS
   settings/page.tsx         — Edit preferences + demo mode toggle
   api/scan/route.ts         — NDJSON streaming scan pipeline
+  api/enrich-detail/route.ts — On-demand Tier 2 detail enrichment
   api/dish-image/route.ts   — Vision-validated dish image search + DALL-E fallback
   api/exchange-rates/route.ts — Live exchange rates (open.er-api.com)
   api/tts/route.ts          — Text-to-speech for ordering phrases
@@ -33,7 +34,8 @@ src/components/
   DemoBanner.tsx            — Amber banner when demo mode is active
   ExchangeRateLoader.tsx    — Fetches exchange rates on mount
 src/lib/
-  openai.ts                 — extractDishes() + scanMenuStreaming() + enrichBatch()
+  openai.ts                 — Thin orchestrator: scanMenu() + scanMenuStreaming() using providers
+  providers/                — Pluggable Phase 1 + enrichment providers (gemini, cloud-vision-groq, groq, gpt)
   store.ts                  — Zustand store (preferences, scan, skeletons, dish images, order, demo, rates)
   types.ts                  — Dish, RawDish, ScanEvent, Ingredient, CulturalTerm, Preferences
   ranking.ts                — Preference-based dish ranking (top 5 labels, menu order preserved)
@@ -54,6 +56,7 @@ docs/
   accuracy-results.md       — Accuracy test results tracking
 scripts/
   accuracy-test.sh          — Automated accuracy comparison (scan + image check vs ground truth)
+  benchmark.ts              — Pipeline benchmark (timing + accuracy vs ground truth)
   ground-truth/             — Expected output JSON files for test menus
 ```
 
@@ -72,8 +75,8 @@ scripts/
 {"type":"done"}
 ```
 
-1. **Phase 1**: Cloud Vision OCR → Groq Llama 3.3 70B text parsing → dish names, prices, local script (~6s)
-2. **Phase 2**: Groq Llama 3.3 70B × N parallel batches of 3 → full enrichment (~3-5s concurrent, GPT-4o-mini fallback)
+1. **Phase 1**: Pluggable provider — Gemini 2.0 Flash (single vision call, default) or Cloud Vision OCR → Groq Llama 3.3 70B text parsing (~2-6s depending on provider)
+2. **Phase 2**: Groq Llama 3.3 70B × N parallel batches of 3 → enrichment (GPT-4o-mini fallback). With `SCAN_LAZY_ENRICHMENT=true` (default), only Tier 1 card fields are fetched (~1.2s); Tier 2 detail fields load on-demand when user opens dish detail.
 3. Events streamed via `ReadableStream` with `pull()` pattern
 4. Batches yielded in completion order (first-finished-first-shown)
 5. Client ranks dishes on `done` event (top 5 get labels, menu order preserved)
@@ -181,7 +184,7 @@ Wikipedia opensearch → article lead image (pageimages) → Commons fallback �
 
 ## State Management
 
-Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral: dishes, skeletonDishes, scanProgress), **dishImages** (cache with dedup), **generatedDishIds** (module-level Set tracking AI-generated images), **order** (dish ID → quantity map), **demoMode** (boolean, synced to `pe-demo` cookie), **exchangeRates** (cached for 6 hours). Key actions: `appendEnrichedDishes()` for incremental batch merging, `clearScan()` for full reset, `fetchDishImagesForBatch()` for per-batch image loading, `isGeneratedImage()` for checking if a dish image was AI-generated, `toggleDemoMode()` for runtime demo/real switching, `fetchExchangeRates()` for live rates.
+Zustand store: **preferences** (synced to localStorage), **scan** (ephemeral: dishes, skeletonDishes, scanProgress), **dishImages** (cache with dedup), **generatedDishIds** (module-level Set tracking AI-generated images), **order** (dish ID → quantity map), **demoMode** (boolean, synced to `pe-demo` cookie), **exchangeRates** (cached for 6 hours). Key actions: `appendEnrichedDishes()` for incremental batch merging, `mergeDishDetail()` for lazy Tier 2 enrichment merge, `clearScan()` for full reset, `fetchDishImagesForBatch()` for per-batch image loading, `isGeneratedImage()` for checking if a dish image was AI-generated, `toggleDemoMode()` for runtime demo/real switching, `fetchExchangeRates()` for live rates.
 
 ## Git Workflow
 
@@ -199,9 +202,9 @@ Before creating any commit or pull request, **always** write a changelog doc fir
 
 ## Key Rules
 
-- Never hardcode API keys — use `OPENAI_API_KEY` env var
+- Never hardcode API keys — use env vars (`OPENAI_API_KEY`, `GROQ_API_KEY`, `GEMINI_API_KEY`, `GOOGLE_CLOUD_VISION_API_KEY`)
 - Always show disclaimer: "AI-estimated. Verify with restaurant staff."
-- All AI prompts live in `src/lib/openai.ts`
+- AI prompts live in `src/lib/providers/shared.ts`; orchestration in `src/lib/openai.ts`
 - Compress images client-side before upload (max 1MB)
 - Keep bundle small — no heavy UI libraries
 - Backlog tracked in `docs/backlog.md`
