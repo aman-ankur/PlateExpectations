@@ -28,6 +28,8 @@ const config: Config = {
           "tag-macro": "#60c0b0",
           "tag-rank-bg": "#3d3520",
           "tag-rank": "#d4a030",
+          "tag-spice-bg": "#3d2020",
+          "tag-spice": "#f06040",
           "badge-protein": "#e05050",
           "badge-vegetable": "#50b050",
           "badge-sauce": "#e08030",

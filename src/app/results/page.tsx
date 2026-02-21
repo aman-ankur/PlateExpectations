@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useStore } from '@/lib/store'
-import { rankDishes } from '@/lib/ranking'
+import { rankDishes, getDishConflicts } from '@/lib/ranking'
 import { convertPrice } from '@/lib/currency'
 import { matchFromCache } from '@/lib/cuisine-cache'
 import OrderFab from '@/components/OrderFab'
@@ -59,7 +59,9 @@ function DishCard({ dish }: { dish: Dish }) {
   const addToOrder = useStore((s) => s.addToOrder)
   const homeCurrency = useStore((s) => s.preferences.homeCurrency)
   const exchangeRates = useStore((s) => s.exchangeRates)
+  const preferences = useStore((s) => s.preferences)
   const [flash, setFlash] = useState(false)
+  const conflicts = getDishConflicts(dish, preferences)
 
   return (
     <div
@@ -114,6 +116,26 @@ function DishCard({ dish }: { dish: Dish }) {
           <p className="mt-1 line-clamp-2 text-sm text-pe-text-secondary">
             {dish.description}
           </p>
+          {/* Spice + taste + allergen row */}
+          <div className="mt-1 flex flex-wrap items-center gap-1.5">
+            {(dish.spiceLevel ?? 0) >= 2 && (
+              <span className="inline-flex items-center gap-0.5 rounded bg-pe-tag-spice-bg px-1.5 py-0.5 text-[10px] font-medium text-pe-tag-spice" title={`Spice ${dish.spiceLevel}/5`}>
+                {Array.from({ length: Math.min(dish.spiceLevel!, 5) }).map((_, i) => (
+                  <svg key={i} className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 23c-3.3 0-7-2.4-7-8 0-3.2 1.9-6.3 4-8.2.4-.3.9-.1 1 .4.3 1.2.9 2.3 1.7 3.2C13 8.4 13 5.2 12.5 2.5c-.1-.5.4-.8.8-.5C17 4.7 20 9.3 20 15c0 5.6-4.3 8-8 8z"/></svg>
+                ))}
+              </span>
+            )}
+            {dish.tasteProfile && dish.tasteProfile.length > 0 && (
+              <span className="text-[10px] text-pe-text-muted">
+                {dish.tasteProfile.join(' · ')}
+              </span>
+            )}
+            {conflicts.length > 0 && (
+              <span className="rounded bg-pe-tag-allergen-bg px-1.5 py-0.5 text-[10px] font-medium text-pe-tag-allergen" title={conflicts.join(', ')}>
+                ⚠️
+              </span>
+            )}
+          </div>
         </div>
         <div className="flex flex-col items-end gap-1.5 pl-1">
           <div className="text-right">

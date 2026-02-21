@@ -127,6 +127,8 @@ For each dish return ALL these fields:
 - "nutrition": {"protein":g, "carbs":g, "fat":g, "fiber":g, "kcal":num} — approximate
 - "explanation": 2-3 sentences. First: describe what the dish actually is (cooking method, key flavors, how it's served/eaten). Second: compare to a well-known Indian or global dish if a good analogy exists (e.g. "Similar to tandoori chicken..." or "Think of it as a Korean version of biryani..."). Third (optional): a tip or recommendation (e.g. "Best enjoyed with steamed rice" or "Ask for extra sauce on the side").
 - "culturalTerms": [{"term":"...", "explanation":"..."}] — 0-2 terms
+- "spiceLevel": 1-5 (1=no spice, 5=very hot)
+- "tasteProfile": pick 2-3 from [sweet, sour, salty, umami, bitter, smoky, rich, savory]
 - "imageSearchQuery": the dish's most common/canonical name for Wikipedia search. Use the well-known local name if it has a Wikipedia article (e.g. "Gỏi cuốn", "Phở", "Bánh mì") rather than generic English (e.g. DON'T use "Vietnamese spring rolls")
 - "rankScore": 0-30 popularity score
 
@@ -149,6 +151,8 @@ For each dish return these fields:
 - "price": as given
 - "dietaryType": "veg" (no meat/fish/eggs), "non-veg", or "jain-safe"
 - "allergens": from [egg, soy, sesame, peanut, shellfish, gluten, dairy] — only those present
+- "spiceLevel": 1-5 (1=no spice, 5=very hot)
+- "tasteProfile": pick 2-3 from [sweet, sour, salty, umami, bitter, smoky, rich, savory]
 - "imageSearchQuery": canonical local name for Wikipedia (e.g. "Gỏi cuốn", "Phở", not generic English)
 - "rankScore": 0-30 popularity score
 
