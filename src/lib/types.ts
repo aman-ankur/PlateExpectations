@@ -32,6 +32,8 @@ export interface Dish {
   explanation: string
   culturalTerms: CulturalTerm[]
   imageUrl?: string
+  spiceLevel?: number
+  tasteProfile?: string[]
   imageSearchQuery?: string
   rankScore?: number
   rankLabel?: string

@@ -2,6 +2,34 @@ import { Preferences, Dish } from './types'
 
 const TOP_N = 5
 
+/** Returns list of conflict reasons for a dish given user preferences, or empty array if no conflicts. */
+export function getDishConflicts(dish: Dish, preferences: Preferences): string[] {
+  const conflicts: string[] = []
+  // Dietary type conflicts
+  if (preferences.diet === 'Veg' && dish.dietaryType === 'non-veg') {
+    conflicts.push('Non-veg (you prefer Veg)')
+  }
+  if (preferences.diet === 'Jain' && dish.dietaryType !== 'jain-safe') {
+    conflicts.push(`${dish.dietaryType === 'non-veg' ? 'Non-veg' : 'Not Jain-safe'} (you prefer Jain)`)
+  }
+  // Restriction conflicts
+  if (preferences.restrictions.includes('No Beef') &&
+      dish.ingredients.some((i) => i.name.toLowerCase().includes('beef'))) {
+    conflicts.push('Contains beef')
+  }
+  if (preferences.restrictions.includes('No Pork') &&
+      dish.ingredients.some((i) => i.name.toLowerCase().includes('pork'))) {
+    conflicts.push('Contains pork')
+  }
+  // Allergen conflicts
+  for (const allergy of preferences.allergies) {
+    if (dish.allergens.some((a) => a.toLowerCase() === allergy.toLowerCase())) {
+      conflicts.push(`Contains ${allergy}`)
+    }
+  }
+  return conflicts
+}
+
 export function rankDishes(dishes: Dish[], preferences: Preferences): Dish[] {
   // Score each dish but keep original menu order
   const scored = dishes.map((dish) => {
@@ -28,6 +56,14 @@ export function rankDishes(dishes: Dish[], preferences: Preferences): Dish[] {
       if (dish.allergens.some((a) => a.toLowerCase() === allergy.toLowerCase())) {
         score -= 50
       }
+    }
+
+    // Spice compatibility
+    if (preferences.spice === 'Mild' && (dish.spiceLevel ?? 0) >= 4) {
+      score -= 20
+    }
+    if (preferences.spice === 'Spicy' && (dish.spiceLevel ?? 0) <= 1) {
+      score -= 5
     }
 
     // Protein match bonus
