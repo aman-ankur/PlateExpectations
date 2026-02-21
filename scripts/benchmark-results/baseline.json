@@ -1,0 +1,237 @@
+{
+  "config": {
+    "phase1": "cloud-vision-groq",
+    "enrichment": "groq",
+    "lazy": false,
+    "runs": 2,
+    "image": "/Users/aankur/Downloads/menuapp/korean.jpg"
+  },
+  "results": [
+    {
+      "run": 1,
+      "phase1Provider": "cloud-vision-groq",
+      "enrichmentProvider": "groq",
+      "lazy": false,
+      "dishCount": 17,
+      "totalMs": 10725,
+      "dishes": [
+        {
+          "id": "dish-1",
+          "nameEnglish": "Korean Pancake",
+          "nameLocal": "PA JEON (파전)",
+          "price": 9
+        },
+        {
+          "id": "dish-2",
+          "nameEnglish": "Kimchi Pancake",
+          "nameLocal": "KIMCHI JEON (김치전)",
+          "price": 9
+        },
+        {
+          "id": "dish-3",
+          "nameEnglish": "Seafood Pancake",
+          "nameLocal": "HAEMUL PAJEON (해물파전)",
+          "price": 13
+        },
+        {
+          "id": "dish-4",
+          "nameEnglish": "Spicy Rice Cake",
+          "nameLocal": "떡볶이",
+          "price": 10
+        },
+        {
+          "id": "dish-5",
+          "nameEnglish": "Fried Rice Cake",
+          "nameLocal": "떡꼬치",
+          "price": 7
+        },
+        {
+          "id": "dish-6",
+          "nameEnglish": "Fried Dumplings",
+          "nameLocal": "만두",
+          "price": 6
+        },
+        {
+          "id": "dish-7",
+          "nameEnglish": "Steamed Dumplings",
+          "nameLocal": "물만두",
+          "price": 5
+        },
+        {
+          "id": "dish-8",
+          "nameEnglish": "Steamed Egg",
+          "nameLocal": "계란찜",
+          "price": 6
+        },
+        {
+          "id": "dish-9",
+          "nameEnglish": "Fish Cake Soup",
+          "nameLocal": "오뎅국",
+          "price": 5
+        },
+        {
+          "id": "dish-10",
+          "nameEnglish": "Dumpling Soup",
+          "nameLocal": "만두국",
+          "price": 11
+        },
+        {
+          "id": "dish-11",
+          "nameEnglish": "Stir Fried Noodles",
+          "nameLocal": "잡채",
+          "price": 12
+        },
+        {
+          "id": "dish-12",
+          "nameEnglish": "Stir Fried Udon",
+          "nameLocal": "야키우동",
+          "price": 13
+        },
+        {
+          "id": "dish-13",
+          "nameEnglish": "Spicy Korean Ramen",
+          "nameLocal": "라면",
+          "price": 10
+        },
+        {
+          "id": "dish-14",
+          "nameEnglish": "Spicy Seafood Soup",
+          "nameLocal": "짬뽕",
+          "price": 14
+        },
+        {
+          "id": "dish-15",
+          "nameEnglish": "Cold Buckwheat Noodles",
+          "nameLocal": "물냉면",
+          "price": 12
+        },
+        {
+          "id": "dish-16",
+          "nameEnglish": "Mixed Cold Noodles",
+          "nameLocal": "비빔냉면",
+          "price": 12
+        },
+        {
+          "id": "dish-17",
+          "nameEnglish": "Black Bean Noodles",
+          "nameLocal": "짜장면",
+          "price": 11
+        }
+      ],
+      "accuracy": null
+    },
+    {
+      "run": 2,
+      "phase1Provider": "cloud-vision-groq",
+      "enrichmentProvider": "groq",
+      "lazy": false,
+      "dishCount": 17,
+      "totalMs": 25462,
+      "dishes": [
+        {
+          "id": "dish-1",
+          "nameEnglish": "Korean Pancake",
+          "nameLocal": "PA JEON",
+          "price": 9
+        },
+        {
+          "id": "dish-2",
+          "nameEnglish": "Kimchi Pancake",
+          "nameLocal": "KIMCHI JEON",
+          "price": 9
+        },
+        {
+          "id": "dish-3",
+          "nameEnglish": "Seafood Pancake",
+          "nameLocal": "HAEMUL PAJEON",
+          "price": 13
+        },
+        {
+          "id": "dish-4",
+          "nameEnglish": "Tteokbokki",
+          "nameLocal": "떡볶이",
+          "price": 10
+        },
+        {
+          "id": "dish-5",
+          "nameEnglish": "Tteokkochi",
+          "nameLocal": "떡꼬치",
+          "price": 7
+        },
+        {
+          "id": "dish-6",
+          "nameEnglish": "Mandu",
+          "nameLocal": "만두",
+          "price": 6
+        },
+        {
+          "id": "dish-7",
+          "nameEnglish": "MUL MANDU",
+          "nameLocal": "물만두",
+          "price": 5
+        },
+        {
+          "id": "dish-8",
+          "nameEnglish": "GYERAN JJIM",
+          "nameLocal": "계란찜",
+          "price": 6
+        },
+        {
+          "id": "dish-9",
+          "nameEnglish": "ODENG GUK",
+          "nameLocal": "오뎅국",
+          "price": 5
+        },
+        {
+          "id": "dish-10",
+          "nameEnglish": "Dumpling Soup",
+          "nameLocal": "만두국",
+          "price": 11
+        },
+        {
+          "id": "dish-11",
+          "nameEnglish": "Stir Fried Noodles",
+          "nameLocal": "잡채",
+          "price": 12
+        },
+        {
+          "id": "dish-12",
+          "nameEnglish": "Stir Fried Udon",
+          "nameLocal": "야키우동",
+          "price": 13
+        },
+        {
+          "id": "dish-13",
+          "nameEnglish": "Spicy Korean Ramen",
+          "nameLocal": "라면",
+          "price": 10
+        },
+        {
+          "id": "dish-14",
+          "nameEnglish": "Spicy Seafood Soup",
+          "nameLocal": "짬뽕",
+          "price": 14
+        },
+        {
+          "id": "dish-15",
+          "nameEnglish": "Cold Buckwheat Noodles",
+          "nameLocal": "물냉면",
+          "price": 12
+        },
+        {
+          "id": "dish-16",
+          "nameEnglish": "Bibim Naengmyeon",
+          "nameLocal": "비빔냉면",
+          "price": 12
+        },
+        {
+          "id": "dish-17",
+          "nameEnglish": "Jajangmyeon",
+          "nameLocal": "짜장면",
+          "price": 11
+        }
+      ],
+      "accuracy": null
+    }
+  ]
+}

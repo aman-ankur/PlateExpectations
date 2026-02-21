@@ -87,6 +87,7 @@ interface AppState {
   setScanProgress: (message: string | null) => void
   setSkeletonDishes: (dishes: RawDish[]) => void
   appendEnrichedDishes: (dishes: Dish[]) => void
+  mergeDishDetail: (dishId: string, detail: Partial<Dish>) => void
   clearScan: () => void
 
   // Image
@@ -159,6 +160,12 @@ export const useStore = create<AppState>((set, get) => ({
       else merged.push(dish)
     }
     set({ dishes: merged })
+  },
+  mergeDishDetail: (dishId, detail) => {
+    const dishes = get().dishes.map((d) =>
+      d.id === dishId ? { ...d, ...detail } : d
+    )
+    set({ dishes })
   },
   clearScan: () => {
     usedImageUrls.clear()

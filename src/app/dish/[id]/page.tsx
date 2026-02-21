@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import type { CulturalTerm, Ingredient } from '@/lib/types'
@@ -56,16 +56,44 @@ function IngredientBadge({ ing, position, expanded, onTap }: { ing: Ingredient; 
 export default function DishDetailPage() {
   const router = useRouter()
   const params = useParams()
-  const { dishes, dishImages, addDishImage, isGeneratedImage, order, addToOrder, removeFromOrder, updateQuantity } = useStore()
+  const { dishes, dishImages, addDishImage, isGeneratedImage, order, addToOrder, removeFromOrder, updateQuantity, mergeDishDetail } = useStore()
   const [expandedTerm, setExpandedTerm] = useState<string | null>(null)
   const [expandedBadge, setExpandedBadge] = useState<string | null>(null)
   const [generating, setGenerating] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showBadges, setShowBadges] = useState(false)
+  const [detailLoading, setDetailLoading] = useState(false)
   const galleryRef = useRef<HTMLDivElement>(null)
 
   const dish = dishes.find((d) => String(d.id) === String(params.id))
   const images: string[] = dish ? (dishImages[dish.id] || []) : []
+
+  // Lazy load Tier 2 detail data if not yet available
+  const needsDetail = dish && dish.ingredients.length === 0 && !dish.explanation
+  useEffect(() => {
+    if (!needsDetail || !dish || detailLoading) return
+    setDetailLoading(true)
+    fetch('/api/enrich-detail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        dishes: [{
+          id: dish.id,
+          nameEnglish: dish.nameEnglish,
+          nameLocal: dish.nameLocal,
+          brief: dish.description || '',
+          country: dish.country,
+        }],
+      }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        const detail = data.dishes?.[0]
+        if (detail) mergeDishDetail(dish.id, detail)
+      })
+      .catch(() => {})
+      .finally(() => setDetailLoading(false))
+  }, [needsDetail, dish?.id]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleScroll = useCallback(() => {
     const el = galleryRef.current
@@ -273,40 +301,66 @@ export default function DishDetailPage() {
         {/* What is this dish? */}
         <div className="mb-5 rounded-xl border border-pe-border bg-pe-surface p-4">
           <h2 className="mb-2 text-sm font-semibold text-pe-text-secondary">What is this dish?</h2>
-          <p className="text-sm leading-relaxed text-pe-text">{dish.explanation}</p>
+          {dish.explanation ? (
+            <p className="text-sm leading-relaxed text-pe-text">{dish.explanation}</p>
+          ) : detailLoading ? (
+            <div className="space-y-2 animate-pulse">
+              <div className="h-3 w-full rounded bg-pe-elevated" />
+              <div className="h-3 w-3/4 rounded bg-pe-elevated" />
+            </div>
+          ) : (
+            <p className="text-sm text-pe-text-muted">No details available yet.</p>
+          )}
         </div>
 
         {/* Nutrition */}
         <div className="mb-5 rounded-xl border border-pe-border bg-pe-surface p-4">
           <h2 className="mb-3 text-sm font-semibold text-pe-text-secondary">Approx. Nutrition</h2>
-          <div className="grid grid-cols-4 gap-2 text-center">
-            <div>
-              <p className="text-lg font-bold text-pe-badge-vegetable">{dish.nutrition.protein}g</p>
-              <p className="text-[10px] text-pe-text-muted">Protein</p>
+          {dish.nutrition.kcal > 0 ? (
+            <>
+              <div className="grid grid-cols-4 gap-2 text-center">
+                <div>
+                  <p className="text-lg font-bold text-pe-badge-vegetable">{dish.nutrition.protein}g</p>
+                  <p className="text-[10px] text-pe-text-muted">Protein</p>
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-pe-tag-allergen">{dish.nutrition.carbs}g</p>
+                  <p className="text-[10px] text-pe-text-muted">Carbs</p>
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-pe-badge-protein">{dish.nutrition.fat}g</p>
+                  <p className="text-[10px] text-pe-text-muted">Fat</p>
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-blue-400">{dish.nutrition.fiber}g</p>
+                  <p className="text-[10px] text-pe-text-muted">Fiber</p>
+                </div>
+              </div>
+              <p className="mt-2 text-center text-[10px] text-pe-text-muted">
+                {dish.nutrition.kcal} kcal estimated per serving
+              </p>
+            </>
+          ) : detailLoading ? (
+            <div className="grid grid-cols-4 gap-2 animate-pulse">
+              {[0,1,2,3].map(i => (
+                <div key={i} className="flex flex-col items-center gap-1">
+                  <div className="h-5 w-8 rounded bg-pe-elevated" />
+                  <div className="h-2 w-10 rounded bg-pe-elevated" />
+                </div>
+              ))}
             </div>
-            <div>
-              <p className="text-lg font-bold text-pe-tag-allergen">{dish.nutrition.carbs}g</p>
-              <p className="text-[10px] text-pe-text-muted">Carbs</p>
-            </div>
-            <div>
-              <p className="text-lg font-bold text-pe-badge-protein">{dish.nutrition.fat}g</p>
-              <p className="text-[10px] text-pe-text-muted">Fat</p>
-            </div>
-            <div>
-              <p className="text-lg font-bold text-blue-400">{dish.nutrition.fiber}g</p>
-              <p className="text-[10px] text-pe-text-muted">Fiber</p>
-            </div>
-          </div>
-          <p className="mt-2 text-center text-[10px] text-pe-text-muted">
-            {dish.nutrition.kcal} kcal estimated per serving
-          </p>
+          ) : (
+            <p className="text-center text-sm text-pe-text-muted">Loading nutrition data...</p>
+          )}
         </div>
 
         {/* Ingredients */}
         <div className="mb-5">
           <h2 className="mb-3 text-sm font-semibold text-pe-text-secondary">Ingredients</h2>
-          <div className="flex flex-wrap gap-2">
-            {dish.ingredients.map((ing) => (
+          {dish.ingredients.length > 0 ? (
+            <>
+            <div className="flex flex-wrap gap-2">
+              {dish.ingredients.map((ing) => (
               <span
                 key={ing.name}
                 className="flex items-center gap-1 rounded-full bg-pe-surface border border-pe-border px-3 py-1.5 text-xs text-pe-text"
@@ -330,6 +384,13 @@ export default function DishDetailPage() {
                 'No explanation available.'}
             </div>
           )}
+          </>) : detailLoading ? (
+            <div className="flex flex-wrap gap-2 animate-pulse">
+              {[0,1,2,3].map(i => (
+                <div key={i} className="h-7 w-20 rounded-full bg-pe-elevated" />
+              ))}
+            </div>
+          ) : null}
         </div>
 
         {/* Cultural Terms */}

@@ -43,8 +43,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No image provided' }, { status: 400 })
     }
 
-    if (!process.env.OPENAI_API_KEY) {
-      return NextResponse.json({ error: 'OpenAI API key not configured' }, { status: 500 })
+    if (!process.env.OPENAI_API_KEY && !process.env.GEMINI_API_KEY && !process.env.GROQ_API_KEY) {
+      return NextResponse.json({ error: 'No API keys configured (need GEMINI_API_KEY, OPENAI_API_KEY, or GROQ_API_KEY)' }, { status: 500 })
     }
 
     const prefs = preferences || DEFAULT_PREFERENCES
