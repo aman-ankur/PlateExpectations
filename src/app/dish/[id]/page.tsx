@@ -148,7 +148,7 @@ export default function DishDetailPage() {
             <div
               className="pointer-events-none absolute inset-0"
               style={{
-                background: `linear-gradient(to top, var(--pe-hero-base) 0%, color-mix(in srgb, var(--pe-hero-base) 40%, transparent) 18%, transparent 40%)`,
+                background: `linear-gradient(to top, var(--pe-hero-base) 0%, color-mix(in srgb, var(--pe-hero-base) 85%, transparent) 20%, color-mix(in srgb, var(--pe-hero-base) 45%, transparent) 40%, transparent 60%)`,
               }}
             />
             {/* Dot indicators */}
@@ -250,11 +250,11 @@ export default function DishDetailPage() {
 
           {/* Dietary / allergen / AI tags */}
           <div className="mt-2 flex flex-wrap gap-1.5">
-            <span className="flex items-center gap-1 rounded-full bg-pe-tag-dietary-bg/80 px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-dietary backdrop-blur-sm">
+            <span className="flex items-center gap-1 rounded-full bg-pe-tag-dietary-bg px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-dietary backdrop-blur-sm">
               {dish.dietaryType === 'veg' ? '🟢' : '🔴'} {dish.dietaryType === 'jain-safe' ? 'Jain Safe' : dish.dietaryType === 'veg' ? 'Veg' : 'Non-Veg'}
             </span>
             {(dish.spiceLevel ?? 0) >= 1 && (
-              <span className="flex items-center gap-1 rounded-full bg-pe-tag-spice-bg/80 px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-spice backdrop-blur-sm">
+              <span className="flex items-center gap-1 rounded-full bg-pe-tag-spice-bg px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-spice backdrop-blur-sm">
                 {Array.from({ length: Math.min(dish.spiceLevel!, 5) }).map((_, i) => (
                   <svg key={i} className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 23c-3.3 0-7-2.4-7-8 0-3.2 1.9-6.3 4-8.2.4-.3.9-.1 1 .4.3 1.2.9 2.3 1.7 3.2C13 8.4 13 5.2 12.5 2.5c-.1-.5.4-.8.8-.5C17 4.7 20 9.3 20 15c0 5.6-4.3 8-8 8z"/></svg>
                 ))}
@@ -262,15 +262,15 @@ export default function DishDetailPage() {
               </span>
             )}
             {dish.allergens.length > 0 && (
-              <span className="flex items-center gap-1 rounded-full bg-pe-tag-allergen-bg/80 px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-allergen backdrop-blur-sm">
+              <span className="flex items-center gap-1 rounded-full bg-pe-tag-allergen-bg px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-allergen backdrop-blur-sm">
                 ⚠️ {dish.allergens.join(', ')}
               </span>
             )}
-            <span className="flex items-center gap-1 rounded-full bg-pe-tag-macro-bg/80 px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-macro backdrop-blur-sm">
+            <span className="flex items-center gap-1 rounded-full bg-pe-tag-macro-bg px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-macro backdrop-blur-sm">
               ⚡ {dish.nutrition.protein > dish.nutrition.carbs ? 'Protein' : 'Carbs'}
             </span>
             {isGeneratedImage(images[currentIndex]) && (
-              <span className="flex items-center gap-1 rounded-full bg-pe-accent/20 px-2.5 py-0.5 text-[10px] font-medium text-pe-accent backdrop-blur-sm">
+              <span className="flex items-center gap-1 rounded-full bg-pe-accent/30 px-2.5 py-0.5 text-[10px] font-semibold text-pe-accent backdrop-blur-sm">
                 ✨ AI Generated
               </span>
             )}
