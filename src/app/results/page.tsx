@@ -232,10 +232,11 @@ export default function ResultsPage() {
       setScanProgress('Starting scan...')
 
       try {
+        const isDemoMode = document.cookie.split('; ').some((c) => c === 'pe-demo=true')
         const res = await fetch('/api/scan', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ image: menuImage, preferences }),
+          body: JSON.stringify(isDemoMode ? { preferences } : { image: menuImage, preferences }),
         })
 
         if (!res.ok) throw new Error('Failed to analyze menu')
