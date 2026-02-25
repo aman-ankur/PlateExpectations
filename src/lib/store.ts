@@ -328,10 +328,14 @@ export const useStore = create<AppState>((set, get) => ({
       }
       const country = Object.entries(countryCount).sort((a, b) => b[1] - a[1])[0]?.[0] || 'Unknown'
 
-      // Filter out generated (DALL-E) image URLs — they expire
+      // Filter out expiring DALL-E URLs but keep local paths and Wikipedia CDN links
       const stableImages: Record<string, string[]> = {}
       for (const [dishId, urls] of Object.entries(dishImages)) {
-        const stable = urls.filter((u) => !generatedImageUrls.has(u))
+        const stable = urls.filter((u) => {
+          if (u.startsWith('/')) return true
+          if (u.includes('wikipedia.org') || u.includes('wikimedia.org')) return true
+          return !generatedImageUrls.has(u)
+        })
         if (stable.length > 0) stableImages[dishId] = stable
       }
 
