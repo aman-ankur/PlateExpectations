@@ -144,11 +144,11 @@ export default function DishDetailPage() {
                 </div>
               ))}
             </div>
-            {/* Gradient overlay — uses theme-aware hero base */}
+            {/* Gradient overlay — tight bottom scrim for text legibility */}
             <div
-              className="pointer-events-none absolute inset-0"
+              className="pointer-events-none absolute bottom-0 left-0 right-0 h-[40%]"
               style={{
-                background: `linear-gradient(to top, var(--pe-hero-base) 0%, color-mix(in srgb, var(--pe-hero-base) 85%, transparent) 20%, color-mix(in srgb, var(--pe-hero-base) 45%, transparent) 40%, transparent 60%)`,
+                background: `linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.35) 50%, transparent 100%)`,
               }}
             />
             {/* Dot indicators */}
@@ -234,22 +234,22 @@ export default function DishDetailPage() {
         {/* Hero overlay content — compact, sits inside gradient zone */}
         <div className="absolute bottom-0 left-0 right-0 z-10 px-5 pb-4">
           {/* Country label */}
-          <p className="mb-0.5 text-[10px] font-bold uppercase tracking-widest text-pe-accent">
+          <p className="mb-0.5 text-[10px] font-bold uppercase tracking-widest text-pe-accent" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>
             {dish.country}
           </p>
 
           {/* Dish name */}
-          <h1 className="text-2xl font-bold text-pe-text">{dish.nameEnglish}</h1>
+          <h1 className="text-2xl font-bold text-white" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>{dish.nameEnglish}</h1>
           {(dish.nameRomanized || dish.nameLocalCorrected || dish.nameLocal) && (
-            <p className="mt-0.5 text-sm text-pe-text-muted">
-              {dish.nameRomanized && <span className="font-medium text-pe-text-secondary">{dish.nameRomanized}</span>}
+            <p className="mt-0.5 text-sm text-white/80" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>
+              {dish.nameRomanized && <span className="font-medium text-white/90">{dish.nameRomanized}</span>}
               {dish.nameRomanized && (dish.nameLocalCorrected || dish.nameLocal) && ' · '}
               {dish.nameLocalCorrected || dish.nameLocal}
             </p>
           )}
 
           {/* Dietary / allergen / AI tags */}
-          <div className="mt-2 flex flex-wrap gap-1.5">
+          <div className="mt-2 flex flex-wrap gap-1.5 [&>span]:shadow-sm">
             <span className="flex items-center gap-1 rounded-full bg-pe-tag-dietary-bg px-2.5 py-0.5 text-[10px] font-medium text-pe-tag-dietary backdrop-blur-sm">
               {dish.dietaryType === 'veg' ? '🟢' : '🔴'} {dish.dietaryType === 'jain-safe' ? 'Jain Safe' : dish.dietaryType === 'veg' ? 'Veg' : 'Non-Veg'}
             </span>

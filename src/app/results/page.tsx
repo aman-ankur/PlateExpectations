@@ -115,8 +115,6 @@ function DishCard({ dish }: { dish: Dish }) {
             <GenerateButton dish={dish} />
           </>
         )}
-        {/* Gradient fade — image dissolves into card */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-r from-transparent to-pe-surface" />
         {orderQty > 0 && (
           <span className="absolute top-2 left-2 z-10 flex h-5 min-w-5 items-center justify-center rounded-md bg-pe-accent px-1 text-[10px] font-bold text-white shadow-sm">
             {orderQty}
@@ -125,23 +123,37 @@ function DishCard({ dish }: { dish: Dish }) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 min-w-0 items-center gap-2 py-3 pr-3">
+      <div className="flex flex-1 min-w-0 flex-col gap-1 py-3 pr-3">
         <div className="flex-1 min-w-0">
           {dish.rankLabel && (
             <span className="mb-1 inline-block rounded-full bg-pe-tag-rank-bg px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-pe-tag-rank">
               {dish.rankLabel}
             </span>
           )}
-          <h3 className="font-semibold text-pe-text">{dish.nameEnglish}</h3>
-          <p className="text-sm text-pe-text-muted">
-            {dish.nameRomanized && <span className="font-medium text-pe-text-secondary">{dish.nameRomanized} · </span>}
-            {dish.nameLocalCorrected || dish.nameLocal}
-          </p>
+          <div className="flex items-start justify-between gap-2">
+            <div className="min-w-0">
+              <h3 className="font-semibold text-pe-text">{dish.nameEnglish}</h3>
+              <p className="text-sm text-pe-text-muted">
+                {dish.nameRomanized && <span className="font-medium text-pe-text-secondary">{dish.nameRomanized} · </span>}
+                {dish.nameLocalCorrected || dish.nameLocal}
+              </p>
+            </div>
+            <div className="text-right flex-shrink-0">
+              <span className="text-[15px] font-bold text-pe-text">{dish.price}</span>
+              {(() => {
+                const converted = convertPrice(dish.price, dish.country, homeCurrency, exchangeRates)
+                return converted ? <p className="text-[11px] text-pe-text-muted">{converted}</p> : null
+              })()}
+            </div>
+          </div>
           <p className="mt-1 line-clamp-2 text-sm text-pe-text-secondary">
             {dish.description}
           </p>
+        </div>
+        {/* Footer: tags + add button */}
+        <div className="flex items-end justify-between gap-2">
           {/* Spice + taste + allergen row */}
-          <div className="mt-1 flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1.5">
             {(dish.spiceLevel ?? 0) >= 2 && (
               <span className="inline-flex items-center gap-0.5 rounded bg-pe-tag-spice-bg px-1.5 py-0.5 text-[10px] font-medium text-pe-tag-spice" title={`Spice ${dish.spiceLevel}/5`}>
                 {Array.from({ length: Math.min(dish.spiceLevel!, 5) }).map((_, i) => (
@@ -163,15 +175,6 @@ function DishCard({ dish }: { dish: Dish }) {
               )
             })}
           </div>
-        </div>
-        <div className="flex flex-col items-end gap-1.5 pl-1">
-          <div className="text-right">
-            <span className="text-sm font-medium text-pe-text-secondary">{dish.price}</span>
-            {(() => {
-              const converted = convertPrice(dish.price, dish.country, homeCurrency, exchangeRates)
-              return converted ? <p className="text-[11px] text-pe-text-muted">{converted}</p> : null
-            })()}
-          </div>
           <button
             onClick={(e) => {
               e.stopPropagation()
@@ -179,7 +182,7 @@ function DishCard({ dish }: { dish: Dish }) {
               setFlash(true)
               setTimeout(() => setFlash(false), 400)
             }}
-            className="flex h-7 w-7 items-center justify-center rounded-lg bg-pe-accent/15 text-pe-accent transition-colors active:bg-pe-accent/30"
+            className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-[10px] bg-pe-accent text-white shadow-sm transition-colors active:bg-pe-accent/80"
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
