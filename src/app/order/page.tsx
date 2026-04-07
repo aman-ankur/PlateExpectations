@@ -91,6 +91,8 @@ export default function OrderPage() {
     if (!audioRef.current) {
       audioRef.current = new Audio(audioUrl)
       audioRef.current.onended = () => setIsPlaying(false)
+    } else if (audioRef.current.src !== audioUrl) {
+      audioRef.current.src = audioUrl
     }
     if (isPlaying) {
       audioRef.current.pause()
@@ -129,7 +131,7 @@ export default function OrderPage() {
       <div className="flex min-h-screen flex-col items-center justify-center px-4">
         <span className="mb-4 text-6xl">📋</span>
         <h1 className="mb-2 text-xl font-bold">No Items Yet</h1>
-        <p className="mb-6 text-sm text-pe-text-secondary">Long-press dishes from the menu to add them to your order.</p>
+        <p className="mb-6 text-sm text-pe-text-secondary">Tap the + button on dishes to add them to your order.</p>
         <button
           onClick={() => router.back()}
           className="rounded-full bg-pe-accent px-6 py-2 text-sm font-semibold text-white"
