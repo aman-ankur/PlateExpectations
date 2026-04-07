@@ -36,12 +36,12 @@ export default function PreferencesPage() {
       homeCurrency: homeCurrency || undefined,
       hasCompletedOnboarding: true,
     })
-    router.push('/results')
+    router.push('/')
   }
 
   const handleSkip = () => {
     setPreferences({ hasCompletedOnboarding: true })
-    router.push('/results')
+    router.push('/')
   }
 
   return (
