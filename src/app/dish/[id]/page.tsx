@@ -387,7 +387,7 @@ export default function DishDetailPage() {
               ))}
             </div>
           ) : (
-            <p className="text-center text-sm text-pe-text-muted">Loading nutrition data...</p>
+            <p className="text-center text-sm text-pe-text-muted">Nutrition data unavailable</p>
           )}
         </div>
 

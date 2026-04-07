@@ -26,7 +26,7 @@ export default function OrderFab() {
         <button
           onClick={(e) => {
             e.stopPropagation()
-            clearOrder()
+            if (window.confirm('Clear your order?')) clearOrder()
           }}
           className="flex h-6 w-6 items-center justify-center rounded-full text-pe-text-muted hover:bg-pe-elevated hover:text-pe-text transition-colors"
           aria-label="Clear order"

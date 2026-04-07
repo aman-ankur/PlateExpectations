@@ -63,7 +63,7 @@ function GenerateButton({ dish }: { dish: Dish }) {
         } catch { /* ignore */ }
         setGenerating(false)
       }}
-      className="absolute inset-0 flex items-center justify-center bg-pe-elevated/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
+      className="absolute inset-0 flex items-center justify-center bg-pe-elevated/80 rounded-lg sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
       title="Generate with AI"
     >
       {generating ? (
@@ -345,7 +345,7 @@ export default function ResultsPage() {
         </div>
         {scanDone && (
           <button
-            onClick={() => { clearScan(); router.push('/') }}
+            onClick={() => { if (window.confirm('Start a new scan? Current results will be cleared.')) { clearScan(); router.push('/') } }}
             className="rounded-full bg-pe-accent px-4 py-2 text-sm font-semibold text-white shadow-pe-card"
           >
             Scan New Menu

@@ -10,7 +10,7 @@ const templates: Record<string, LanguageTemplate> = {
   Korea: {
     greeting: '안녕하세요, 주문하겠습니다.',
     itemPrefix: '',
-    quantitySuffix: (qty) => ` ${qty}개`,
+    quantitySuffix: (qty) => ` ${qty}인분`,
     closing: '감사합니다.',
     langCode: 'ko',
   },
@@ -22,10 +22,10 @@ const templates: Record<string, LanguageTemplate> = {
     langCode: 'vi',
   },
   Thailand: {
-    greeting: 'สวัสดีครับ/ค่ะ ขอสั่งอาหารครับ/ค่ะ',
+    greeting: 'สวัสดีครับ ขอสั่งอาหารครับ',
     itemPrefix: '',
     quantitySuffix: (qty) => ` ${qty} จาน`,
-    closing: 'ขอบคุณครับ/ค่ะ',
+    closing: 'ขอบคุณครับ',
     langCode: 'th',
   },
   Japan: {
